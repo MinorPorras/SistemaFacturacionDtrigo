@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D454EDC5-DC72-47BF-8D78-64C107657109}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>SistemaFacturación.My.MyApplication</StartupObject>
+    <RootNamespace>SistemaFacturación</RootNamespace>
+    <AssemblyName>SistemaFacturación</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SistemaFacturación.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SistemaFacturación.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>recursos\LogoPanaderíaDtrigo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Access, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="B_Cliente.Designer.vb">
+      <DependentUpon>B_Cliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="B_Cliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="B_Producto.Designer.vb">
+      <DependentUpon>B_Producto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="B_Producto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="E_ProveedorPedido.Designer.vb">
+      <DependentUpon>E_ProveedorPedido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="E_ProveedorPedido.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Md_BackupDB.vb" />
+    <Compile Include="B_Categoria.Designer.vb">
+      <DependentUpon>B_Categoria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="B_Categoria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="B_Impuesto.Designer.vb">
+      <DependentUpon>B_Impuesto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="B_Impuesto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="B_Marca.Designer.vb">
+      <DependentUpon>B_Marca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="B_Marca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="B_Proveedor.Designer.vb">
+      <DependentUpon>B_Proveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="B_Proveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClsCategoria.vb" />
+    <Compile Include="ClsMarca.vb" />
+    <Compile Include="ClsProveedor.vb" />
+    <Compile Include="ConfigGeneral.Designer.vb">
+      <DependentUpon>ConfigGeneral.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigGeneral.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="E_NuevoProducto.Designer.vb">
+      <DependentUpon>E_NuevoProducto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="E_NuevoProducto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Md_IMPRIMIR.vb" />
+    <Compile Include="Md_Inicializacion.vb" />
+    <Compile Include="P_Caja.Designer.vb">
+      <DependentUpon>P_Caja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Caja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_LoginCaja.Designer.vb">
+      <DependentUpon>P_LoginCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_LoginCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_ReimprimirFact.Designer.vb">
+      <DependentUpon>P_ReimprimirFact.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_ReimprimirFact.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_SelectUsu.Designer.vb">
+      <DependentUpon>P_SelectUsu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_SelectUsu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Productos.Designer.vb">
+      <DependentUpon>P_Productos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Productos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Proveedor.Designer.vb">
+      <DependentUpon>P_Proveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Proveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="E_NuevaCategoria.Designer.vb">
+      <DependentUpon>E_NuevaCategoria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="E_NuevaCategoria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="E_NuevaMarca.Designer.vb">
+      <DependentUpon>E_NuevaMarca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="E_NuevaMarca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="E_NuevoCliente.Designer.vb">
+      <DependentUpon>E_NuevoCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="E_NuevoCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="E_NuevoImpuesto.Designer.vb">
+      <DependentUpon>E_NuevoImpuesto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="E_NuevoImpuesto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="E_NuevoProveedor.Designer.vb">
+      <DependentUpon>E_NuevoProveedor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="E_NuevoProveedor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Categoria.Designer.vb">
+      <DependentUpon>P_Categoria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Categoria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Clientes.Designer.vb">
+      <DependentUpon>P_Clientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClsSucursal.vb" />
+    <Compile Include="Md_CONEXION.vb" />
+    <Compile Include="E_NuevaSucursal.Designer.vb">
+      <DependentUpon>E_NuevaSucursal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="E_NuevaSucursal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="E_NuevoUsuario.Designer.vb">
+      <DependentUpon>E_NuevoUsuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="E_NuevoUsuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="M_Inicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="M_Inicio.Designer.vb">
+      <DependentUpon>M_Inicio.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Md_INTERRACION_DB.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="M_Mantenimiento.Designer.vb">
+      <DependentUpon>M_Mantenimiento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="M_Mantenimiento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Md_PROCESOS_BD.vb" />
+    <Compile Include="P_Impuestos.Designer.vb">
+      <DependentUpon>P_Impuestos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Impuestos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Marca.Designer.vb">
+      <DependentUpon>P_Marca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Marca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Sucursal.Designer.vb">
+      <DependentUpon>P_Sucursal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Sucursal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TerminarVenta.Designer.vb">
+      <DependentUpon>P_TerminarVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_TerminarVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Usuarios.Designer.vb">
+      <DependentUpon>P_Usuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Usuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Md_VARIABLES_GLOBALES.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="B_Categoria.resx">
+      <DependentUpon>B_Categoria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="B_Cliente.resx">
+      <DependentUpon>B_Cliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="B_Impuesto.resx">
+      <DependentUpon>B_Impuesto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="B_Marca.resx">
+      <DependentUpon>B_Marca.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="B_Producto.resx">
+      <DependentUpon>B_Producto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="B_Proveedor.resx">
+      <DependentUpon>B_Proveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigGeneral.resx">
+      <DependentUpon>ConfigGeneral.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E_NuevoProducto.resx">
+      <DependentUpon>E_NuevoProducto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E_ProveedorPedido.resx">
+      <DependentUpon>E_ProveedorPedido.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Caja.resx">
+      <DependentUpon>P_Caja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_LoginCaja.resx">
+      <DependentUpon>P_LoginCaja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_ReimprimirFact.resx">
+      <DependentUpon>P_ReimprimirFact.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_SelectUsu.resx">
+      <DependentUpon>P_SelectUsu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Productos.resx">
+      <DependentUpon>P_Productos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Proveedor.resx">
+      <DependentUpon>P_Proveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E_NuevaCategoria.resx">
+      <DependentUpon>E_NuevaCategoria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E_NuevaMarca.resx">
+      <DependentUpon>E_NuevaMarca.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E_NuevoCliente.resx">
+      <DependentUpon>E_NuevoCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E_NuevoImpuesto.resx">
+      <DependentUpon>E_NuevoImpuesto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E_NuevoProveedor.resx">
+      <DependentUpon>E_NuevoProveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Categoria.resx">
+      <DependentUpon>P_Categoria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Clientes.resx">
+      <DependentUpon>P_Clientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E_NuevaSucursal.resx">
+      <DependentUpon>E_NuevaSucursal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E_NuevoUsuario.resx">
+      <DependentUpon>E_NuevoUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="M_Inicio.resx">
+      <DependentUpon>M_Inicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="M_Mantenimiento.resx">
+      <DependentUpon>M_Mantenimiento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Impuestos.resx">
+      <DependentUpon>P_Impuestos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Marca.resx">
+      <DependentUpon>P_Marca.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Sucursal.resx">
+      <DependentUpon>P_Sucursal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TerminarVenta.resx">
+      <DependentUpon>P_TerminarVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Usuarios.resx">
+      <DependentUpon>P_Usuarios.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bd\backupDB\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bd\dbSistemaFacturación.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Caja.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Cajero.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Categoria.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Cerrar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_clave.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Cliente.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Config.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_exportar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Guardar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Importar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Imprimir.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Impuestos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Mantenimiento.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Marcas.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Mas.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_MasBlanco.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Menos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_modificar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Producto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Proveedor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Regresar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Reportes.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Select.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Sucursal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\LogoPanaderíaDtrigo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\LogoPanaderíaDtrigo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\Principal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloBusqueda.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloCajero.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloCategoria.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloCliente.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloConfigGeneral.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloImpuesto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloMantenimiento.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloMarca.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloProductos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloProveedor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloReimprimir.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloSucursal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
