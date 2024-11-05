@@ -156,6 +156,7 @@ Partial Class P_Clientes
         Me.TXT_BuscarCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarCliente.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarCliente.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarCliente.Location = New System.Drawing.Point(36, 189)
         Me.TXT_BuscarCliente.Name = "TXT_BuscarCliente"
@@ -283,7 +284,7 @@ Partial Class P_Clientes
         Me.KeyPreview = True
         Me.Name = "P_Clientes"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_Clientes"
+        Me.Text = "Clientes"
         Me.MNU_CONTX.ResumeLayout(False)
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)

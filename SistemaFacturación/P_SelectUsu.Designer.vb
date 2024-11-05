@@ -76,7 +76,7 @@ Partial Class P_SelectUsu
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "P_SelectUsu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_LoginCaja"
+        Me.Text = "Selección de usuario"
         Me.ResumeLayout(False)
 
     End Sub

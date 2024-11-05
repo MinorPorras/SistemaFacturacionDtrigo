@@ -86,6 +86,7 @@ Partial Class E_NuevaMarca
         Me.TXT_NombreMarca.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_NombreMarca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_NombreMarca.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_NombreMarca.ForeColor = System.Drawing.Color.Black
         Me.TXT_NombreMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_NombreMarca.Location = New System.Drawing.Point(112, 234)
         Me.TXT_NombreMarca.Name = "TXT_NombreMarca"
@@ -118,6 +119,7 @@ Partial Class E_NuevaMarca
         Me.TXT_CodMarca.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CodMarca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodMarca.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CodMarca.ForeColor = System.Drawing.Color.Black
         Me.TXT_CodMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodMarca.Location = New System.Drawing.Point(112, 188)
         Me.TXT_CodMarca.Name = "TXT_CodMarca"
@@ -176,7 +178,7 @@ Partial Class E_NuevaMarca
         Me.KeyPreview = True
         Me.Name = "E_NuevaMarca"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "E_NuevaMarca"
+        Me.Text = "Marca"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

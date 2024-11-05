@@ -73,6 +73,7 @@ Partial Class B_Proveedor
         Me.TXT_Nombre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_Nombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_Nombre.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_Nombre.ForeColor = System.Drawing.Color.Black
         Me.TXT_Nombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_Nombre.Location = New System.Drawing.Point(478, 341)
         Me.TXT_Nombre.Name = "TXT_Nombre"
@@ -105,6 +106,7 @@ Partial Class B_Proveedor
         Me.TXT_codigo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_codigo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_codigo.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_codigo.ForeColor = System.Drawing.Color.Black
         Me.TXT_codigo.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_codigo.Location = New System.Drawing.Point(478, 260)
         Me.TXT_codigo.Name = "TXT_codigo"
@@ -243,6 +245,7 @@ Partial Class B_Proveedor
         Me.TXT_BuscarProv.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarProv.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarProv.Location = New System.Drawing.Point(34, 163)
         Me.TXT_BuscarProv.Name = "TXT_BuscarProv"
@@ -286,7 +289,7 @@ Partial Class B_Proveedor
         Me.KeyPreview = True
         Me.Name = "B_Proveedor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "B_Proveedor"
+        Me.Text = "Buscar proveedores"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()

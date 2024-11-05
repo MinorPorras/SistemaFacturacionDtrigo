@@ -196,6 +196,7 @@ Partial Class P_ReimprimirFact
         Me.TXT_BuscarFact.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarFact.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarFact.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarFact.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarFact.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarFact.Location = New System.Drawing.Point(41, 199)
         Me.TXT_BuscarFact.Name = "TXT_BuscarFact"
@@ -259,7 +260,7 @@ Partial Class P_ReimprimirFact
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "P_ReimprimirFact"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_ReimprimirFact"
+        Me.Text = "Reimprimir factura"
         Me.MNU_CONTX.ResumeLayout(False)
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

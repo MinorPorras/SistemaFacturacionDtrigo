@@ -279,7 +279,7 @@ Partial Class M_Mantenimiento
         Me.KeyPreview = True
         Me.Name = "M_Mantenimiento"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "M_Mantenimiento"
+        Me.Text = "Mantenimiento"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

@@ -209,6 +209,7 @@ Partial Class P_Categoria
         Me.TXT_BuscarCat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarCat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarCat.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarCat.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarCat.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarCat.Location = New System.Drawing.Point(12, 147)
         Me.TXT_BuscarCat.Name = "TXT_BuscarCat"
@@ -274,7 +275,7 @@ Partial Class P_Categoria
         Me.KeyPreview = True
         Me.Name = "P_Categoria"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_Categoria"
+        Me.Text = "Categorías"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.MNU_CONTX.ResumeLayout(False)

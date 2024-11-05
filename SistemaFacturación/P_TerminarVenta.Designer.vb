@@ -921,6 +921,9 @@ Partial Class P_TerminarVenta
         Me.TXT_Comentario.Size = New System.Drawing.Size(735, 86)
         Me.TXT_Comentario.TabIndex = 129
         '
+        'PrintDocument
+        '
+        '
         'PrintDialog
         '
         Me.PrintDialog.UseEXDialog = True
@@ -941,7 +944,7 @@ Partial Class P_TerminarVenta
         Me.KeyPreview = True
         Me.Name = "P_TerminarVenta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_TerminarVenta"
+        Me.Text = "Terminar venta"
         Me.TabControlTVenta.ResumeLayout(False)
         Me.Efectivo.ResumeLayout(False)
         Me.Efectivo.PerformLayout()

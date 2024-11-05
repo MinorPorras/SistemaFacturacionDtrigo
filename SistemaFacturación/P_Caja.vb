@@ -170,15 +170,16 @@ Public Class P_Caja
     End Sub
 
     Private Sub agregarProdFav(btnFav As Guna.UI2.WinForms.Guna2Button)
-        T.Tables.Clear()
-        SQL = "SELECT codigo, precio_venta FROM producto WHERE ID = " + btnFav.Tag.ToString()
-        Cargar_Tabla(T, SQL)
-        If T.Tables(0).Rows.Count > 0 Then
-            agregarProd(btnFav.Tag.ToString(), T.Tables(0).Rows(0).Item(0), btnFav.Text, T.Tables(0).Rows(0).Item(1), 1)
-        Else
-            MsgBox("El código que colocó está mal escrito o no existe", vbCritical + vbOKOnly, "Código incorrecto")
+        If Not String.IsNullOrWhiteSpace(btnFav.Tag) Then
+            T.Tables.Clear()
+            SQL = "SELECT codigo, precio_venta FROM producto WHERE ID = " + btnFav.Tag.ToString()
+            Cargar_Tabla(T, SQL)
+            If T.Tables(0).Rows.Count > 0 Then
+                agregarProd(btnFav.Tag.ToString(), T.Tables(0).Rows(0).Item(0), btnFav.Text, T.Tables(0).Rows(0).Item(1), 1)
+            Else
+                MsgBox("El código que colocó está mal escrito o no existe", vbCritical + vbOKOnly, "Código incorrecto")
+            End If
         End If
-
     End Sub
 
     Private Sub BTN_Fav1_Click(sender As Object, e As EventArgs) Handles BTN_Fav1.Click

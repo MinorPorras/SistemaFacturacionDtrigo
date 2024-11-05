@@ -68,7 +68,7 @@ Partial Class E_NuevoProducto
         '
         Me.Guna2PictureBox2.Image = CType(resources.GetObject("Guna2PictureBox2.Image"), System.Drawing.Image)
         Me.Guna2PictureBox2.ImageRotate = 0!
-        Me.Guna2PictureBox2.Location = New System.Drawing.Point(295, -94)
+        Me.Guna2PictureBox2.Location = New System.Drawing.Point(334, -99)
         Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
         Me.Guna2PictureBox2.Size = New System.Drawing.Size(409, 361)
         Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -87,8 +87,9 @@ Partial Class E_NuevoProducto
         Me.TXT_Cod.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_Cod.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_Cod.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_Cod.ForeColor = System.Drawing.Color.Black
         Me.TXT_Cod.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Cod.Location = New System.Drawing.Point(122, 190)
+        Me.TXT_Cod.Location = New System.Drawing.Point(161, 185)
         Me.TXT_Cod.Name = "TXT_Cod"
         Me.TXT_Cod.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Cod.PlaceholderText = ""
@@ -101,7 +102,7 @@ Partial Class E_NuevoProducto
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(37, 194)
+        Me.Label1.Location = New System.Drawing.Point(76, 189)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(79, 23)
         Me.Label1.TabIndex = 63
@@ -119,8 +120,9 @@ Partial Class E_NuevoProducto
         Me.TXT_Nombre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_Nombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_Nombre.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_Nombre.ForeColor = System.Drawing.Color.Black
         Me.TXT_Nombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Nombre.Location = New System.Drawing.Point(122, 240)
+        Me.TXT_Nombre.Location = New System.Drawing.Point(161, 235)
         Me.TXT_Nombre.Name = "TXT_Nombre"
         Me.TXT_Nombre.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Nombre.PlaceholderText = ""
@@ -133,7 +135,7 @@ Partial Class E_NuevoProducto
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(30, 244)
+        Me.Label3.Location = New System.Drawing.Point(69, 239)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(87, 23)
         Me.Label3.TabIndex = 67
@@ -150,8 +152,9 @@ Partial Class E_NuevoProducto
         Me.TXT_Desc.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_Desc.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_Desc.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_Desc.ForeColor = System.Drawing.Color.Black
         Me.TXT_Desc.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Desc.Location = New System.Drawing.Point(123, 287)
+        Me.TXT_Desc.Location = New System.Drawing.Point(162, 282)
         Me.TXT_Desc.Multiline = True
         Me.TXT_Desc.Name = "TXT_Desc"
         Me.TXT_Desc.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -165,7 +168,7 @@ Partial Class E_NuevoProducto
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(-8, 336)
+        Me.Label4.Location = New System.Drawing.Point(31, 331)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(125, 23)
         Me.Label4.TabIndex = 69
@@ -176,7 +179,7 @@ Partial Class E_NuevoProducto
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(672, 194)
+        Me.Label6.Location = New System.Drawing.Point(711, 189)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(72, 23)
         Me.Label6.TabIndex = 72
@@ -187,7 +190,7 @@ Partial Class E_NuevoProducto
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(635, 244)
+        Me.Label5.Location = New System.Drawing.Point(674, 239)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(109, 23)
         Me.Label5.TabIndex = 74
@@ -198,7 +201,7 @@ Partial Class E_NuevoProducto
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(639, 291)
+        Me.Label7.Location = New System.Drawing.Point(678, 286)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(105, 23)
         Me.Label7.TabIndex = 76
@@ -209,7 +212,7 @@ Partial Class E_NuevoProducto
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(639, 336)
+        Me.Label8.Location = New System.Drawing.Point(678, 331)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(90, 23)
         Me.Label8.TabIndex = 77
@@ -222,7 +225,7 @@ Partial Class E_NuevoProducto
         Me.CKB_Fav.CheckedState.BorderRadius = 0
         Me.CKB_Fav.CheckedState.BorderThickness = 0
         Me.CKB_Fav.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_Fav.Location = New System.Drawing.Point(735, 341)
+        Me.CKB_Fav.Location = New System.Drawing.Point(774, 336)
         Me.CKB_Fav.Name = "CKB_Fav"
         Me.CKB_Fav.Size = New System.Drawing.Size(15, 14)
         Me.CKB_Fav.TabIndex = 78
@@ -243,8 +246,9 @@ Partial Class E_NuevoProducto
         Me.TXT_PrecioBase.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_PrecioBase.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_PrecioBase.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_PrecioBase.ForeColor = System.Drawing.Color.Black
         Me.TXT_PrecioBase.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_PrecioBase.Location = New System.Drawing.Point(122, 422)
+        Me.TXT_PrecioBase.Location = New System.Drawing.Point(161, 417)
         Me.TXT_PrecioBase.Name = "TXT_PrecioBase"
         Me.TXT_PrecioBase.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_PrecioBase.PlaceholderText = ""
@@ -257,7 +261,7 @@ Partial Class E_NuevoProducto
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(-7, 426)
+        Me.Label9.Location = New System.Drawing.Point(32, 421)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(123, 23)
         Me.Label9.TabIndex = 79
@@ -275,8 +279,9 @@ Partial Class E_NuevoProducto
         Me.TXT_Impuesto.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_Impuesto.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_Impuesto.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_Impuesto.ForeColor = System.Drawing.Color.Black
         Me.TXT_Impuesto.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Impuesto.Location = New System.Drawing.Point(462, 422)
+        Me.TXT_Impuesto.Location = New System.Drawing.Point(501, 417)
         Me.TXT_Impuesto.Name = "TXT_Impuesto"
         Me.TXT_Impuesto.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Impuesto.PlaceholderText = ""
@@ -289,7 +294,7 @@ Partial Class E_NuevoProducto
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(355, 426)
+        Me.Label10.Location = New System.Drawing.Point(394, 421)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(101, 23)
         Me.Label10.TabIndex = 81
@@ -307,8 +312,9 @@ Partial Class E_NuevoProducto
         Me.TXT_Marca.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_Marca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_Marca.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_Marca.ForeColor = System.Drawing.Color.Black
         Me.TXT_Marca.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Marca.Location = New System.Drawing.Point(750, 190)
+        Me.TXT_Marca.Location = New System.Drawing.Point(789, 185)
         Me.TXT_Marca.Name = "TXT_Marca"
         Me.TXT_Marca.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Marca.PlaceholderText = ""
@@ -328,8 +334,9 @@ Partial Class E_NuevoProducto
         Me.TXT_Proveedor.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_Proveedor.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_Proveedor.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_Proveedor.ForeColor = System.Drawing.Color.Black
         Me.TXT_Proveedor.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Proveedor.Location = New System.Drawing.Point(750, 240)
+        Me.TXT_Proveedor.Location = New System.Drawing.Point(789, 235)
         Me.TXT_Proveedor.Name = "TXT_Proveedor"
         Me.TXT_Proveedor.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Proveedor.PlaceholderText = ""
@@ -349,8 +356,9 @@ Partial Class E_NuevoProducto
         Me.TXT_Categoria.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_Categoria.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_Categoria.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_Categoria.ForeColor = System.Drawing.Color.Black
         Me.TXT_Categoria.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Categoria.Location = New System.Drawing.Point(750, 287)
+        Me.TXT_Categoria.Location = New System.Drawing.Point(789, 282)
         Me.TXT_Categoria.Name = "TXT_Categoria"
         Me.TXT_Categoria.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Categoria.PlaceholderText = ""
@@ -370,8 +378,9 @@ Partial Class E_NuevoProducto
         Me.TXT_Ganancia.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_Ganancia.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_Ganancia.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_Ganancia.ForeColor = System.Drawing.Color.Black
         Me.TXT_Ganancia.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Ganancia.Location = New System.Drawing.Point(122, 469)
+        Me.TXT_Ganancia.Location = New System.Drawing.Point(161, 464)
         Me.TXT_Ganancia.Name = "TXT_Ganancia"
         Me.TXT_Ganancia.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Ganancia.PlaceholderText = ""
@@ -384,7 +393,7 @@ Partial Class E_NuevoProducto
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(14, 473)
+        Me.Label11.Location = New System.Drawing.Point(53, 468)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(102, 23)
         Me.Label11.TabIndex = 86
@@ -402,8 +411,9 @@ Partial Class E_NuevoProducto
         Me.TXT_PrecioVenta.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_PrecioVenta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_PrecioVenta.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_PrecioVenta.ForeColor = System.Drawing.Color.Black
         Me.TXT_PrecioVenta.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_PrecioVenta.Location = New System.Drawing.Point(462, 469)
+        Me.TXT_PrecioVenta.Location = New System.Drawing.Point(501, 464)
         Me.TXT_PrecioVenta.Name = "TXT_PrecioVenta"
         Me.TXT_PrecioVenta.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_PrecioVenta.PlaceholderText = ""
@@ -416,7 +426,7 @@ Partial Class E_NuevoProducto
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(299, 473)
+        Me.Label12.Location = New System.Drawing.Point(338, 468)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(157, 23)
         Me.Label12.TabIndex = 88
@@ -436,7 +446,7 @@ Partial Class E_NuevoProducto
         Me.BTN_RegresarProv.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarProv.Image = CType(resources.GetObject("BTN_RegresarProv.Image"), System.Drawing.Image)
         Me.BTN_RegresarProv.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarProv.Location = New System.Drawing.Point(685, 448)
+        Me.BTN_RegresarProv.Location = New System.Drawing.Point(724, 443)
         Me.BTN_RegresarProv.Name = "BTN_RegresarProv"
         Me.BTN_RegresarProv.Size = New System.Drawing.Size(285, 70)
         Me.BTN_RegresarProv.TabIndex = 91
@@ -455,7 +465,7 @@ Partial Class E_NuevoProducto
         Me.BTN_NProv.ForeColor = System.Drawing.Color.White
         Me.BTN_NProv.Image = CType(resources.GetObject("BTN_NProv.Image"), System.Drawing.Image)
         Me.BTN_NProv.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NProv.Location = New System.Drawing.Point(685, 371)
+        Me.BTN_NProv.Location = New System.Drawing.Point(724, 366)
         Me.BTN_NProv.Name = "BTN_NProv"
         Me.BTN_NProv.Size = New System.Drawing.Size(285, 71)
         Me.BTN_NProv.TabIndex = 90
@@ -499,9 +509,9 @@ Partial Class E_NuevoProducto
         Me.pBar_guardar.BorderColor = System.Drawing.Color.White
         Me.pBar_guardar.BorderThickness = 1
         Me.pBar_guardar.FillColor = System.Drawing.Color.Transparent
-        Me.pBar_guardar.Location = New System.Drawing.Point(12, 528)
+        Me.pBar_guardar.Location = New System.Drawing.Point(12, 523)
         Me.pBar_guardar.Name = "pBar_guardar"
-        Me.pBar_guardar.Size = New System.Drawing.Size(942, 30)
+        Me.pBar_guardar.Size = New System.Drawing.Size(981, 30)
         Me.pBar_guardar.TabIndex = 95
         Me.pBar_guardar.Text = "Guna2ProgressBar1"
         Me.pBar_guardar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
@@ -511,7 +521,7 @@ Partial Class E_NuevoProducto
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(980, 570)
+        Me.ClientSize = New System.Drawing.Size(1025, 570)
         Me.Controls.Add(Me.pBar_guardar)
         Me.Controls.Add(Me.LBL_IDCat)
         Me.Controls.Add(Me.LBL_Prov)
@@ -546,7 +556,7 @@ Partial Class E_NuevoProducto
         Me.KeyPreview = True
         Me.Name = "E_NuevoProducto"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "E_NuevoProducto"
+        Me.Text = "Producto"
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -161,7 +161,7 @@ Partial Class ConfigGeneral
         Me.KeyPreview = True
         Me.Name = "ConfigGeneral"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "ConfigGeneral"
+        Me.Text = "Configuración general"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)

@@ -70,6 +70,7 @@ Partial Class E_NuevoProveedor
         Me.TXT_NombreProv.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_NombreProv.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_NombreProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_NombreProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_NombreProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_NombreProv.Location = New System.Drawing.Point(349, 181)
         Me.TXT_NombreProv.Name = "TXT_NombreProv"
@@ -113,6 +114,7 @@ Partial Class E_NuevoProveedor
         Me.TXT_CodProv.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CodProv.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CodProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_CodProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodProv.Location = New System.Drawing.Point(97, 181)
         Me.TXT_CodProv.Name = "TXT_CodProv"
@@ -134,6 +136,7 @@ Partial Class E_NuevoProveedor
         Me.TXT_CorreoProv.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CorreoProv.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CorreoProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CorreoProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_CorreoProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CorreoProv.Location = New System.Drawing.Point(97, 237)
         Me.TXT_CorreoProv.Name = "TXT_CorreoProv"
@@ -166,6 +169,7 @@ Partial Class E_NuevoProveedor
         Me.TXT_TelProv.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_TelProv.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_TelProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_TelProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_TelProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_TelProv.Location = New System.Drawing.Point(105, 290)
         Me.TXT_TelProv.Name = "TXT_TelProv"
@@ -271,7 +275,7 @@ Partial Class E_NuevoProveedor
         Me.KeyPreview = True
         Me.Name = "E_NuevoProveedor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "E_NuevoProveedor"
+        Me.Text = "Proveedor"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

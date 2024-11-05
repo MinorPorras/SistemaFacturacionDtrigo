@@ -81,6 +81,7 @@ Partial Class E_NuevoUsuario
         Me.TXT_NombreUsuario.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_NombreUsuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_NombreUsuario.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_NombreUsuario.ForeColor = System.Drawing.Color.Black
         Me.TXT_NombreUsuario.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_NombreUsuario.Location = New System.Drawing.Point(121, 245)
         Me.TXT_NombreUsuario.Name = "TXT_NombreUsuario"
@@ -113,6 +114,7 @@ Partial Class E_NuevoUsuario
         Me.TXT_CodUsuario.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CodUsuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodUsuario.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CodUsuario.ForeColor = System.Drawing.Color.Black
         Me.TXT_CodUsuario.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodUsuario.Location = New System.Drawing.Point(121, 199)
         Me.TXT_CodUsuario.Name = "TXT_CodUsuario"
@@ -134,6 +136,7 @@ Partial Class E_NuevoUsuario
         Me.TXT_ClaveUsuario.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_ClaveUsuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_ClaveUsuario.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_ClaveUsuario.ForeColor = System.Drawing.Color.Black
         Me.TXT_ClaveUsuario.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_ClaveUsuario.Location = New System.Drawing.Point(121, 291)
         Me.TXT_ClaveUsuario.Name = "TXT_ClaveUsuario"
@@ -250,7 +253,7 @@ Partial Class E_NuevoUsuario
         Me.KeyPreview = True
         Me.Name = "E_NuevoUsuario"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "E_NuevoUsuario"
+        Me.Text = "Usuario"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

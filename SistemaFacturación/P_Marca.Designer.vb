@@ -203,6 +203,7 @@ Partial Class P_Marca
         Me.TXT_BuscarMarca.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarMarca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarMarca.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarMarca.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarMarca.Location = New System.Drawing.Point(24, 139)
         Me.TXT_BuscarMarca.Name = "TXT_BuscarMarca"
@@ -268,7 +269,7 @@ Partial Class P_Marca
         Me.KeyPreview = True
         Me.Name = "P_Marca"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_Marca"
+        Me.Text = "Marcas"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.MNU_CONTX.ResumeLayout(False)

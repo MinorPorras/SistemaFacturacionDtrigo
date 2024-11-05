@@ -103,6 +103,7 @@ Partial Class E_NuevaCategoria
         Me.TXT_NombreCat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_NombreCat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_NombreCat.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_NombreCat.ForeColor = System.Drawing.Color.Black
         Me.TXT_NombreCat.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_NombreCat.Location = New System.Drawing.Point(102, 249)
         Me.TXT_NombreCat.Name = "TXT_NombreCat"
@@ -135,6 +136,7 @@ Partial Class E_NuevaCategoria
         Me.TXT_CodCat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CodCat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodCat.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CodCat.ForeColor = System.Drawing.Color.Black
         Me.TXT_CodCat.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodCat.Location = New System.Drawing.Point(102, 203)
         Me.TXT_CodCat.Name = "TXT_CodCat"
@@ -194,7 +196,7 @@ Partial Class E_NuevaCategoria
         Me.KeyPreview = True
         Me.Name = "E_NuevaCategoria"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "E_NuevaCategoria"
+        Me.Text = "Categoría"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

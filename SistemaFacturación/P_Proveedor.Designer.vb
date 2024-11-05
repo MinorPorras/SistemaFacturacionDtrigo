@@ -220,6 +220,7 @@ Partial Class P_Proveedor
         Me.TXT_BuscarProv.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarProv.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarProv.Location = New System.Drawing.Point(47, 190)
         Me.TXT_BuscarProv.Name = "TXT_BuscarProv"
@@ -278,7 +279,7 @@ Partial Class P_Proveedor
         Me.KeyPreview = True
         Me.Name = "P_Proveedor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_Proveedor"
+        Me.Text = "Proveedores"
         Me.MNU_CONTX.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

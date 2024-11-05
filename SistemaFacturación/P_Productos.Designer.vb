@@ -282,6 +282,7 @@ Partial Class P_Productos
         Me.TXT_BuscarProd.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarProd.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarProd.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarProd.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarProd.Location = New System.Drawing.Point(47, 206)
         Me.TXT_BuscarProd.Name = "TXT_BuscarProd"
@@ -424,6 +425,7 @@ Partial Class P_Productos
         Me.TXT_BuscarMarca.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarMarca.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarMarca.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarMarca.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarMarca.Location = New System.Drawing.Point(121, 265)
         Me.TXT_BuscarMarca.Name = "TXT_BuscarMarca"
@@ -444,6 +446,7 @@ Partial Class P_Productos
         Me.TXT_BuscarProv.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarProv.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarProv.Location = New System.Drawing.Point(545, 265)
         Me.TXT_BuscarProv.Name = "TXT_BuscarProv"
@@ -464,6 +467,7 @@ Partial Class P_Productos
         Me.TXT_BuscarCat.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarCat.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarCat.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarCat.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarCat.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarCat.Location = New System.Drawing.Point(970, 265)
         Me.TXT_BuscarCat.Name = "TXT_BuscarCat"
@@ -502,7 +506,7 @@ Partial Class P_Productos
         Me.KeyPreview = True
         Me.Name = "P_Productos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_Productos"
+        Me.Text = "Lista de Productos"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.MNU_CONTX.ResumeLayout(False)

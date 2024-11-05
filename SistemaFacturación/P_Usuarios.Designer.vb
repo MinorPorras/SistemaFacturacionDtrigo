@@ -104,6 +104,7 @@ Partial Class P_Usuarios
         Me.TXT_BuscarUsuario.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_BuscarUsuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarUsuario.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_BuscarUsuario.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarUsuario.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarUsuario.Location = New System.Drawing.Point(46, 191)
         Me.TXT_BuscarUsuario.Name = "TXT_BuscarUsuario"
@@ -279,7 +280,7 @@ Partial Class P_Usuarios
         Me.KeyPreview = True
         Me.Name = "P_Usuarios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_Usuarios"
+        Me.Text = "Cajeros"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MNU_CONTX.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)

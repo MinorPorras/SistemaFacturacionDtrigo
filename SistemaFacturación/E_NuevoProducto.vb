@@ -58,16 +58,16 @@ Public Class E_NuevoProducto
         Try
             T.Tables.Clear()
             If ModProd = False Then
-                SQL = "SELECT p.ID " &
-                        "FROM producto AS p " &
-                        "WHERE c.codigo = '" & TXT_Cod.Text & "' "
+                SQL = "SELECT ID " &
+                        "FROM producto " &
+                        "WHERE codigo = '" & TXT_Cod.Text & "' "
             Else
                 If TXT_Cod.Text = CodigoPreMod Then
                     SQL = "SELECT ID FROM producto WHERE ID = 0"
                 Else
-                    SQL = "SELECT p.ID " &
-                          "FROM producto AS p " &
-                          "WHERE c.codigo = '" & TXT_Cod.Text & "' "
+                    SQL = "SELECT ID " &
+                          "FROM producto " &
+                          "WHERE codigo = '" & TXT_Cod.Text & "' "
                 End If
             End If
             ActualizarProgressBar(10)

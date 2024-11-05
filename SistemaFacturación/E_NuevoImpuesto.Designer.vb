@@ -68,6 +68,7 @@ Partial Class E_NuevoImpuesto
         Me.TXT_CodImpuesto.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CodImpuesto.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodImpuesto.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CodImpuesto.ForeColor = System.Drawing.Color.Black
         Me.TXT_CodImpuesto.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodImpuesto.Location = New System.Drawing.Point(143, 148)
         Me.TXT_CodImpuesto.Name = "TXT_CodImpuesto"
@@ -100,6 +101,7 @@ Partial Class E_NuevoImpuesto
         Me.TXT_DescImpuesto.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_DescImpuesto.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_DescImpuesto.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_DescImpuesto.ForeColor = System.Drawing.Color.Black
         Me.TXT_DescImpuesto.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_DescImpuesto.Location = New System.Drawing.Point(143, 204)
         Me.TXT_DescImpuesto.Name = "TXT_DescImpuesto"
@@ -205,7 +207,7 @@ Partial Class E_NuevoImpuesto
         Me.KeyPreview = True
         Me.Name = "E_NuevoImpuesto"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "E_NuevoImpuesto"
+        Me.Text = "Impuesto"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NUD_Porc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

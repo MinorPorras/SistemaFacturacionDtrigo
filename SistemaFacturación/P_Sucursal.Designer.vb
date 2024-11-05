@@ -66,6 +66,7 @@ Partial Class P_Sucursal
         Me.TXT_TelefonoSucursal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_TelefonoSucursal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_TelefonoSucursal.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_TelefonoSucursal.ForeColor = System.Drawing.Color.Black
         Me.TXT_TelefonoSucursal.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_TelefonoSucursal.Location = New System.Drawing.Point(451, 259)
         Me.TXT_TelefonoSucursal.Name = "TXT_TelefonoSucursal"
@@ -149,6 +150,7 @@ Partial Class P_Sucursal
         Me.TXT_EmailSucursal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_EmailSucursal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_EmailSucursal.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_EmailSucursal.ForeColor = System.Drawing.Color.Black
         Me.TXT_EmailSucursal.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_EmailSucursal.Location = New System.Drawing.Point(165, 304)
         Me.TXT_EmailSucursal.Name = "TXT_EmailSucursal"
@@ -182,6 +184,7 @@ Partial Class P_Sucursal
         Me.TXT_CedJuridicaSucursal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CedJuridicaSucursal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CedJuridicaSucursal.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CedJuridicaSucursal.ForeColor = System.Drawing.Color.Black
         Me.TXT_CedJuridicaSucursal.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CedJuridicaSucursal.Location = New System.Drawing.Point(165, 261)
         Me.TXT_CedJuridicaSucursal.Name = "TXT_CedJuridicaSucursal"
@@ -214,6 +217,7 @@ Partial Class P_Sucursal
         Me.TXT_DireccionSucursal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_DireccionSucursal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_DireccionSucursal.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_DireccionSucursal.ForeColor = System.Drawing.Color.Black
         Me.TXT_DireccionSucursal.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_DireccionSucursal.Location = New System.Drawing.Point(165, 350)
         Me.TXT_DireccionSucursal.Multiline = True
@@ -249,6 +253,7 @@ Partial Class P_Sucursal
         Me.TXT_NombreSucursal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_NombreSucursal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_NombreSucursal.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_NombreSucursal.ForeColor = System.Drawing.Color.Black
         Me.TXT_NombreSucursal.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_NombreSucursal.Location = New System.Drawing.Point(451, 212)
         Me.TXT_NombreSucursal.Name = "TXT_NombreSucursal"
@@ -293,6 +298,7 @@ Partial Class P_Sucursal
         Me.TXT_CodSucursal.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CodSucursal.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodSucursal.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CodSucursal.ForeColor = System.Drawing.Color.Black
         Me.TXT_CodSucursal.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodSucursal.Location = New System.Drawing.Point(165, 214)
         Me.TXT_CodSucursal.Name = "TXT_CodSucursal"
@@ -374,7 +380,7 @@ Partial Class P_Sucursal
         Me.KeyPreview = True
         Me.Name = "P_Sucursal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_Sucursal"
+        Me.Text = "Sucursal"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PIC_Logo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

@@ -32,9 +32,9 @@ Partial Class E_ProveedorPedido
         Me.Label5 = New System.Windows.Forms.Label()
         Me.CBX_DiaPedido = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.LSV_Pedido = New System.Windows.Forms.ListView()
-        Me.LBL_Proveedor = New System.Windows.Forms.Label()
         Me.HacerPed = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.rebPed = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.LBL_Proveedor = New System.Windows.Forms.Label()
         Me.BTN_RegresarPed = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_NProv = New Guna.UI2.WinForms.Guna2Button()
         Me.MNU_CONTX.SuspendLayout()
@@ -54,12 +54,12 @@ Partial Class E_ProveedorPedido
         Me.MNU_CONTX.RenderStyle.SelectionForeColor = System.Drawing.Color.White
         Me.MNU_CONTX.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.MNU_CONTX.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.MNU_CONTX.Size = New System.Drawing.Size(181, 48)
+        Me.MNU_CONTX.Size = New System.Drawing.Size(118, 26)
         '
         'MNU_ELIMINAR
         '
         Me.MNU_ELIMINAR.Name = "MNU_ELIMINAR"
-        Me.MNU_ELIMINAR.Size = New System.Drawing.Size(180, 22)
+        Me.MNU_ELIMINAR.Size = New System.Drawing.Size(117, 22)
         Me.MNU_ELIMINAR.Text = "Eliminar"
         Me.MNU_ELIMINAR.Visible = False
         '
@@ -91,7 +91,7 @@ Partial Class E_ProveedorPedido
         Me.CBX_RecibirPedido.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CBX_RecibirPedido.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CBX_RecibirPedido.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.CBX_RecibirPedido.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CBX_RecibirPedido.ForeColor = System.Drawing.Color.Black
         Me.CBX_RecibirPedido.ItemHeight = 30
         Me.CBX_RecibirPedido.Items.AddRange(New Object() {"", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"})
         Me.CBX_RecibirPedido.Location = New System.Drawing.Point(472, 106)
@@ -120,7 +120,7 @@ Partial Class E_ProveedorPedido
         Me.CBX_DiaPedido.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CBX_DiaPedido.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CBX_DiaPedido.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.CBX_DiaPedido.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CBX_DiaPedido.ForeColor = System.Drawing.Color.Black
         Me.CBX_DiaPedido.ItemHeight = 30
         Me.CBX_DiaPedido.Items.AddRange(New Object() {"", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"})
         Me.CBX_DiaPedido.Location = New System.Drawing.Point(472, 207)
@@ -144,6 +144,16 @@ Partial Class E_ProveedorPedido
         Me.LSV_Pedido.UseCompatibleStateImageBehavior = False
         Me.LSV_Pedido.View = System.Windows.Forms.View.Details
         '
+        'HacerPed
+        '
+        Me.HacerPed.Text = "Hacer el pedido"
+        Me.HacerPed.Width = 179
+        '
+        'rebPed
+        '
+        Me.rebPed.Text = "Recibir el pedido"
+        Me.rebPed.Width = 176
+        '
         'LBL_Proveedor
         '
         Me.LBL_Proveedor.AutoSize = True
@@ -154,16 +164,6 @@ Partial Class E_ProveedorPedido
         Me.LBL_Proveedor.Size = New System.Drawing.Size(103, 23)
         Me.LBL_Proveedor.TabIndex = 64
         Me.LBL_Proveedor.Text = "Proveedor"
-        '
-        'HacerPed
-        '
-        Me.HacerPed.Text = "Hacer el pedido"
-        Me.HacerPed.Width = 179
-        '
-        'rebPed
-        '
-        Me.rebPed.Text = "Recibir el pedido"
-        Me.rebPed.Width = 176
         '
         'BTN_RegresarPed
         '
@@ -224,7 +224,7 @@ Partial Class E_ProveedorPedido
         Me.KeyPreview = True
         Me.Name = "E_ProveedorPedido"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "E_ProveedorPedido"
+        Me.Text = "Días de pedidos"
         Me.MNU_CONTX.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()

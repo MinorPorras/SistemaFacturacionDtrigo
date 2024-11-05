@@ -121,6 +121,7 @@ Partial Class E_NuevoCliente
         Me.TXT_CodCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CodCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodCliente.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CodCliente.ForeColor = System.Drawing.Color.Black
         Me.TXT_CodCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CodCliente.Location = New System.Drawing.Point(108, 179)
         Me.TXT_CodCliente.Name = "TXT_CodCliente"
@@ -153,6 +154,7 @@ Partial Class E_NuevoCliente
         Me.TXT_CedCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CedCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CedCliente.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CedCliente.ForeColor = System.Drawing.Color.Black
         Me.TXT_CedCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CedCliente.Location = New System.Drawing.Point(108, 216)
         Me.TXT_CedCliente.Name = "TXT_CedCliente"
@@ -185,6 +187,7 @@ Partial Class E_NuevoCliente
         Me.txtNombreCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.txtNombreCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtNombreCliente.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.txtNombreCliente.ForeColor = System.Drawing.Color.Black
         Me.txtNombreCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtNombreCliente.Location = New System.Drawing.Point(108, 253)
         Me.txtNombreCliente.Name = "txtNombreCliente"
@@ -217,6 +220,7 @@ Partial Class E_NuevoCliente
         Me.TXT_TelCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_TelCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_TelCliente.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_TelCliente.ForeColor = System.Drawing.Color.Black
         Me.TXT_TelCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_TelCliente.Location = New System.Drawing.Point(108, 290)
         Me.TXT_TelCliente.Name = "TXT_TelCliente"
@@ -249,6 +253,7 @@ Partial Class E_NuevoCliente
         Me.TXT_CorreoCliente.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TXT_CorreoCliente.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CorreoCliente.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CorreoCliente.ForeColor = System.Drawing.Color.Black
         Me.TXT_CorreoCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_CorreoCliente.Location = New System.Drawing.Point(108, 327)
         Me.TXT_CorreoCliente.Name = "TXT_CorreoCliente"
@@ -284,7 +289,7 @@ Partial Class E_NuevoCliente
         Me.KeyPreview = True
         Me.Name = "E_NuevoCliente"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "E_NuevoCliente"
+        Me.Text = "Cliente"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

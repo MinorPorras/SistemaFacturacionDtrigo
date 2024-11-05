@@ -198,7 +198,7 @@ Partial Class P_Impuestos
         Me.KeyPreview = True
         Me.Name = "P_Impuestos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "P_Impuestos"
+        Me.Text = "Impuestos"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MNU_CONTX.ResumeLayout(False)
         Me.ResumeLayout(False)
