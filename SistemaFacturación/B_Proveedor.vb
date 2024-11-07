@@ -80,4 +80,12 @@
         End Try
 
     End Sub
+
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
+        REFRESCAR()
+    End Sub
+
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+        REFRESCAR()
+    End Sub
 End Class

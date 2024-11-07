@@ -2,10 +2,10 @@
 
 Module Md_Inicializacion
     Friend Sub main()
-        Dim rutaRaiz As String = AppDomain.CurrentDomain.BaseDirectory
-        If Not (ConfigurationManager.AppSettings("DirectorioRespaldo") = rutaRaiz + "bd\backupDB\") Then
-            SetAppSetting("DirectorioRespaldo", rutaRaiz + "bd\backupDB\")
-        End If
+        'Dim rutaRaiz As String = AppDomain.CurrentDomain.BaseDirectory
+        'If Not (ConfigurationManager.AppSettings("DirectorioRespaldo") = rutaRaiz + "bd\backupDB\") Then
+        '    SetAppSetting("DirectorioRespaldo", rutaRaiz + "bd\backupDB\")
+        'End If
         'If Not (ConfigurationManager.ConnectionStrings("DbConnectionString").ToString() = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + rutaRaiz + "bd\dbSistemaFactiracion.accdb") Then
         '    SetConnectionString("DbConnectionString", rutaRaiz + "bd\dbSistemaFactiracion.accdb")
         'End If

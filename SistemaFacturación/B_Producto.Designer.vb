@@ -279,6 +279,7 @@ Partial Class B_Producto
         Me.TXT_Nombre.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Nombre.PlaceholderText = ""
         Me.TXT_Nombre.ReadOnly = True
+        Me.TXT_Nombre.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
         Me.TXT_Nombre.SelectedText = ""
         Me.TXT_Nombre.Size = New System.Drawing.Size(329, 42)
         Me.TXT_Nombre.TabIndex = 94
@@ -332,7 +333,7 @@ Partial Class B_Producto
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(670, 425)
+        Me.Label3.Location = New System.Drawing.Point(705, 427)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(92, 23)
         Me.Label3.TabIndex = 101
@@ -373,7 +374,7 @@ Partial Class B_Producto
         Me.TXT_CantProd.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXT_CantProd.ForeColor = System.Drawing.Color.Black
         Me.TXT_CantProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_CantProd.Location = New System.Drawing.Point(615, 454)
+        Me.TXT_CantProd.Location = New System.Drawing.Point(650, 456)
         Me.TXT_CantProd.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.TXT_CantProd.Name = "TXT_CantProd"
         Me.TXT_CantProd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -395,7 +396,7 @@ Partial Class B_Producto
         Me.BTN_MenosCant.ForeColor = System.Drawing.Color.White
         Me.BTN_MenosCant.Image = CType(resources.GetObject("BTN_MenosCant.Image"), System.Drawing.Image)
         Me.BTN_MenosCant.ImageSize = New System.Drawing.Size(60, 60)
-        Me.BTN_MenosCant.Location = New System.Drawing.Point(556, 448)
+        Me.BTN_MenosCant.Location = New System.Drawing.Point(591, 450)
         Me.BTN_MenosCant.Name = "BTN_MenosCant"
         Me.BTN_MenosCant.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
         Me.BTN_MenosCant.Size = New System.Drawing.Size(50, 50)
@@ -417,7 +418,7 @@ Partial Class B_Producto
         Me.BTN_MasCant.ForeColor = System.Drawing.Color.White
         Me.BTN_MasCant.Image = CType(resources.GetObject("BTN_MasCant.Image"), System.Drawing.Image)
         Me.BTN_MasCant.ImageSize = New System.Drawing.Size(60, 60)
-        Me.BTN_MasCant.Location = New System.Drawing.Point(832, 446)
+        Me.BTN_MasCant.Location = New System.Drawing.Point(867, 448)
         Me.BTN_MasCant.Name = "BTN_MasCant"
         Me.BTN_MasCant.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
         Me.BTN_MasCant.Size = New System.Drawing.Size(50, 50)

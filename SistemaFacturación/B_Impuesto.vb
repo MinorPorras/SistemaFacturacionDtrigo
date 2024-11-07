@@ -6,18 +6,18 @@
             T.Tables.Clear()
             If TXT_BuscarImp.Text <> "" Then
                 If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT ID, codigo, nombre FROM marca where codigo LIKE '%" & TXT_BuscarImp.Text & "%'"
-                ElseIf RDB_BuscarNombre.Checked = True Then
-                    SQL = "SELECT ID, codigo, nombre FROM marca where nombre LIKE '%" & TXT_BuscarImp.Text & "%'"
+                    SQL = "SELECT ID, codigo, descripcion, porcentaje FROM impuestos where codigo LIKE '%" & TXT_BuscarImp.Text & "%'"
+                ElseIf RDB_BuscarDesc.Checked = True Then
+                    SQL = "SELECT ID, codigo, descripcion, porcentaje FROM impuestos where descripcion LIKE '%" & TXT_BuscarImp.Text & "%'"
                 End If
             Else
-                SQL = "SELECT ID, codigo, nombre FROM marca"
+                SQL = "SELECT ID, codigo, descripcion, porcentaje FROM impuestos"
             End If
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
                 For i As Integer = 0 To T.Tables(0).Rows.Count - 1
                     Dim item As New ListViewItem(T.Tables(0).Rows(i).Item("ID").ToString())
-                    For j As Integer = 1 To 2
+                    For j As Integer = 1 To 3
                         Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
                         item.SubItems.Add(subItem)
                     Next
@@ -44,15 +44,8 @@
 
     Private Sub BTN_NMarca_Click(sender As Object, e As EventArgs) Handles BTN_SelectImpuesto.Click
         Try
-            Select Case caso
-                Case "Prod"
-
-                Case "NProd"
-                    E_NuevoProducto.TXT_Impuesto.Text = TXT_Nombre.Text
-                    E_NuevoProducto.LBL_IDCat.Text = LSV_Impuesto.SelectedItems(0).SubItems(0).Text
-
-            End Select
-
+            E_NuevoProducto.TXT_Impuesto.Text = TXT_porcentaje.Text
+            E_NuevoProducto.LBL_IDCat.Text = LSV_Impuesto.SelectedItems(0).SubItems(0).Text
             Me.Close()
         Catch ex As Exception
             Me.Close()
@@ -64,17 +57,27 @@
     End Sub
 
     Private Sub B_Marca_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RDB_BuscarNombre.Checked = True
+        RDB_BuscarDesc.Checked = True
         REFRESCAR()
     End Sub
 
     Private Sub LSV_Marca_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LSV_Impuesto.SelectedIndexChanged
         Try
             TXT_codigo.Text = LSV_Impuesto.SelectedItems(0).SubItems(1).Text
-            TXT_Nombre.Text = LSV_Impuesto.SelectedItems(0).SubItems(2).Text
+            TXT_Desc.Text = LSV_Impuesto.SelectedItems(0).SubItems(2).Text
+            TXT_porcentaje.Text = LSV_Impuesto.SelectedItems(0).SubItems(3).Text
         Catch ex As Exception
             TXT_codigo.Text = ""
-            TXT_Nombre.Text = ""
+            TXT_Desc.Text = ""
+            TXT_porcentaje.Text = ""
         End Try
+    End Sub
+
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarDesc.CheckedChanged
+        REFRESCAR()
+    End Sub
+
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+        REFRESCAR()
     End Sub
 End Class

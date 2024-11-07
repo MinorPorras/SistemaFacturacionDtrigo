@@ -1,4 +1,5 @@
-﻿Public Class ConfigGeneral
+﻿Imports System.Configuration
+Public Class ConfigGeneral
     Private Sub BTN_RegresarConfig_Click(sender As Object, e As EventArgs) Handles BTN_RegresarConfig.Click
         M_Inicio.Show()
         Me.Close()
@@ -7,6 +8,7 @@
     Private Sub BTN_RspaldoDB_Click(sender As Object, e As EventArgs) Handles BTN_RspaldoDB.Click
         If MsgBox("¿Desea hacer el respaldo de la base de datos?", vbOKCancel + vbQuestion, "Confirmación") = MsgBoxResult.Ok Then
             Md_BackupDB.exportarDB()
+            MsgBox("Se exportó la base de datos correctamente", vbOKCancel + vbQuestion, "Exportación completada")
         End If
     End Sub
 
@@ -24,10 +26,19 @@
                         If Not OFD_ImportarDB.FileName = "" Then
                             Dim NuevaDB As String = OFD_ImportarDB.FileName
                             Md_BackupDB.importarDB(NuevaDB)
+                            MsgBox("Se importó la base de datos correctamente", vbOKCancel + vbQuestion, "Importación completada")
                         End If
                     End If
                 End If
             End If
+        End If
+    End Sub
+
+    Private Sub BTN_ModBackupDir_Click(sender As Object, e As EventArgs) Handles BTN_ModBackupDir.Click
+        If OFD_ModBackUpDIr.ShowDialog() = DialogResult.OK Then
+            Dim folderPath As String = IO.Path.GetDirectoryName(OFD_ModBackUpDIr.FileName)
+            Md_Inicializacion.SetAppSetting("DirectorioRespaldo", folderPath)
+            MessageBox.Show("Carpeta seleccionada: " & folderPath)
         End If
     End Sub
 End Class

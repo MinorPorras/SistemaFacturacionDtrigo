@@ -25,21 +25,25 @@ Partial Class B_Impuesto
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(B_Impuesto))
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TXT_Nombre = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXT_Desc = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXT_codigo = New Guna.UI2.WinForms.Guna2TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RDB_BuscarNombre = New Guna.UI2.WinForms.Guna2RadioButton()
+        Me.RDB_BuscarDesc = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.RDB_BuscarCodigo = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.LSV_Impuesto = New System.Windows.Forms.ListView()
         Me.ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.codigo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.nombre = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.descripcion = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BTN_RegresarImpuesto = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_SelectImpuesto = New Guna.UI2.WinForms.Guna2Button()
         Me.TXT_BuscarImp = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TXT_porcentaje = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.porcentaje = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -51,31 +55,31 @@ Partial Class B_Impuesto
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(484, 310)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(81, 23)
+        Me.Label2.Size = New System.Drawing.Size(125, 23)
         Me.Label2.TabIndex = 74
-        Me.Label2.Text = "Nombre"
+        Me.Label2.Text = "Descripción:"
         '
-        'TXT_Nombre
+        'TXT_Desc
         '
-        Me.TXT_Nombre.BorderRadius = 20
-        Me.TXT_Nombre.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXT_Nombre.DefaultText = ""
-        Me.TXT_Nombre.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXT_Nombre.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXT_Nombre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXT_Nombre.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXT_Nombre.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Nombre.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TXT_Nombre.ForeColor = System.Drawing.Color.Black
-        Me.TXT_Nombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Nombre.Location = New System.Drawing.Point(475, 337)
-        Me.TXT_Nombre.Name = "TXT_Nombre"
-        Me.TXT_Nombre.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_Nombre.PlaceholderText = "Buscar marca"
-        Me.TXT_Nombre.ReadOnly = True
-        Me.TXT_Nombre.SelectedText = ""
-        Me.TXT_Nombre.Size = New System.Drawing.Size(210, 42)
-        Me.TXT_Nombre.TabIndex = 73
+        Me.TXT_Desc.BorderRadius = 20
+        Me.TXT_Desc.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXT_Desc.DefaultText = ""
+        Me.TXT_Desc.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXT_Desc.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXT_Desc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXT_Desc.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXT_Desc.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_Desc.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_Desc.ForeColor = System.Drawing.Color.Black
+        Me.TXT_Desc.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_Desc.Location = New System.Drawing.Point(475, 337)
+        Me.TXT_Desc.Name = "TXT_Desc"
+        Me.TXT_Desc.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXT_Desc.PlaceholderText = ""
+        Me.TXT_Desc.ReadOnly = True
+        Me.TXT_Desc.SelectedText = ""
+        Me.TXT_Desc.Size = New System.Drawing.Size(210, 42)
+        Me.TXT_Desc.TabIndex = 73
         '
         'Label1
         '
@@ -104,7 +108,7 @@ Partial Class B_Impuesto
         Me.TXT_codigo.Location = New System.Drawing.Point(475, 256)
         Me.TXT_codigo.Name = "TXT_codigo"
         Me.TXT_codigo.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_codigo.PlaceholderText = "Buscar marca"
+        Me.TXT_codigo.PlaceholderText = ""
         Me.TXT_codigo.ReadOnly = True
         Me.TXT_codigo.SelectedText = ""
         Me.TXT_codigo.Size = New System.Drawing.Size(210, 42)
@@ -112,7 +116,7 @@ Partial Class B_Impuesto
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.RDB_BuscarNombre)
+        Me.GroupBox1.Controls.Add(Me.RDB_BuscarDesc)
         Me.GroupBox1.Controls.Add(Me.RDB_BuscarCodigo)
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.Control
         Me.GroupBox1.Location = New System.Drawing.Point(556, 147)
@@ -122,24 +126,24 @@ Partial Class B_Impuesto
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Filtros de busqueda"
         '
-        'RDB_BuscarNombre
+        'RDB_BuscarDesc
         '
-        Me.RDB_BuscarNombre.AutoSize = True
-        Me.RDB_BuscarNombre.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarNombre.CheckedState.BorderThickness = 0
-        Me.RDB_BuscarNombre.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarNombre.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.RDB_BuscarNombre.CheckedState.InnerOffset = -4
-        Me.RDB_BuscarNombre.ForeColor = System.Drawing.Color.White
-        Me.RDB_BuscarNombre.Location = New System.Drawing.Point(29, 19)
-        Me.RDB_BuscarNombre.Name = "RDB_BuscarNombre"
-        Me.RDB_BuscarNombre.Size = New System.Drawing.Size(62, 17)
-        Me.RDB_BuscarNombre.TabIndex = 36
-        Me.RDB_BuscarNombre.Text = "Nombre"
-        Me.RDB_BuscarNombre.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.RDB_BuscarNombre.UncheckedState.BorderThickness = 2
-        Me.RDB_BuscarNombre.UncheckedState.FillColor = System.Drawing.Color.Transparent
-        Me.RDB_BuscarNombre.UncheckedState.InnerColor = System.Drawing.Color.Transparent
+        Me.RDB_BuscarDesc.AutoSize = True
+        Me.RDB_BuscarDesc.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.RDB_BuscarDesc.CheckedState.BorderThickness = 0
+        Me.RDB_BuscarDesc.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.RDB_BuscarDesc.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.RDB_BuscarDesc.CheckedState.InnerOffset = -4
+        Me.RDB_BuscarDesc.ForeColor = System.Drawing.Color.White
+        Me.RDB_BuscarDesc.Location = New System.Drawing.Point(29, 19)
+        Me.RDB_BuscarDesc.Name = "RDB_BuscarDesc"
+        Me.RDB_BuscarDesc.Size = New System.Drawing.Size(81, 17)
+        Me.RDB_BuscarDesc.TabIndex = 36
+        Me.RDB_BuscarDesc.Text = "Descripción"
+        Me.RDB_BuscarDesc.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.RDB_BuscarDesc.UncheckedState.BorderThickness = 2
+        Me.RDB_BuscarDesc.UncheckedState.FillColor = System.Drawing.Color.Transparent
+        Me.RDB_BuscarDesc.UncheckedState.InnerColor = System.Drawing.Color.Transparent
         '
         'RDB_BuscarCodigo
         '
@@ -163,14 +167,14 @@ Partial Class B_Impuesto
         'LSV_Impuesto
         '
         Me.LSV_Impuesto.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LSV_Impuesto.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.codigo, Me.nombre})
+        Me.LSV_Impuesto.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.codigo, Me.descripcion, Me.porcentaje})
         Me.LSV_Impuesto.FullRowSelect = True
         Me.LSV_Impuesto.GridLines = True
         Me.LSV_Impuesto.HideSelection = False
         Me.LSV_Impuesto.Location = New System.Drawing.Point(31, 219)
         Me.LSV_Impuesto.MultiSelect = False
         Me.LSV_Impuesto.Name = "LSV_Impuesto"
-        Me.LSV_Impuesto.Size = New System.Drawing.Size(425, 206)
+        Me.LSV_Impuesto.Size = New System.Drawing.Size(425, 236)
         Me.LSV_Impuesto.TabIndex = 69
         Me.LSV_Impuesto.UseCompatibleStateImageBehavior = False
         Me.LSV_Impuesto.View = System.Windows.Forms.View.Details
@@ -183,9 +187,10 @@ Partial Class B_Impuesto
         '
         Me.codigo.Text = "Codigo"
         '
-        'nombre
+        'descripcion
         '
-        Me.nombre.Text = "Nombre"
+        Me.descripcion.Text = "Descripción"
+        Me.descripcion.Width = 178
         '
         'BTN_RegresarImpuesto
         '
@@ -199,9 +204,9 @@ Partial Class B_Impuesto
         Me.BTN_RegresarImpuesto.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarImpuesto.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarImpuesto.ForeColor = System.Drawing.Color.White
-        Me.BTN_RegresarImpuesto.Location = New System.Drawing.Point(43, 443)
+        Me.BTN_RegresarImpuesto.Location = New System.Drawing.Point(40, 484)
         Me.BTN_RegresarImpuesto.Name = "BTN_RegresarImpuesto"
-        Me.BTN_RegresarImpuesto.Size = New System.Drawing.Size(240, 57)
+        Me.BTN_RegresarImpuesto.Size = New System.Drawing.Size(273, 57)
         Me.BTN_RegresarImpuesto.TabIndex = 68
         Me.BTN_RegresarImpuesto.Text = "Regresar"
         '
@@ -216,9 +221,9 @@ Partial Class B_Impuesto
         Me.BTN_SelectImpuesto.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_SelectImpuesto.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_SelectImpuesto.ForeColor = System.Drawing.Color.White
-        Me.BTN_SelectImpuesto.Location = New System.Drawing.Point(403, 443)
+        Me.BTN_SelectImpuesto.Location = New System.Drawing.Point(380, 484)
         Me.BTN_SelectImpuesto.Name = "BTN_SelectImpuesto"
-        Me.BTN_SelectImpuesto.Size = New System.Drawing.Size(240, 57)
+        Me.BTN_SelectImpuesto.Size = New System.Drawing.Size(263, 57)
         Me.BTN_SelectImpuesto.TabIndex = 67
         Me.BTN_SelectImpuesto.Text = "Seleccionar"
         '
@@ -238,7 +243,7 @@ Partial Class B_Impuesto
         Me.TXT_BuscarImp.Location = New System.Drawing.Point(31, 159)
         Me.TXT_BuscarImp.Name = "TXT_BuscarImp"
         Me.TXT_BuscarImp.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_BuscarImp.PlaceholderText = "Buscar marca"
+        Me.TXT_BuscarImp.PlaceholderText = "Buscar impuesto"
         Me.TXT_BuscarImp.SelectedText = ""
         Me.TXT_BuscarImp.Size = New System.Drawing.Size(506, 42)
         Me.TXT_BuscarImp.TabIndex = 66
@@ -261,6 +266,55 @@ Partial Class B_Impuesto
         Me.Guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6R
         Me.Guna2BorderlessForm1.TransparentWhileDrag = True
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(484, 391)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(115, 23)
+        Me.Label3.TabIndex = 76
+        Me.Label3.Text = "Porcentaje:"
+        '
+        'TXT_porcentaje
+        '
+        Me.TXT_porcentaje.BorderRadius = 20
+        Me.TXT_porcentaje.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXT_porcentaje.DefaultText = ""
+        Me.TXT_porcentaje.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXT_porcentaje.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXT_porcentaje.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXT_porcentaje.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXT_porcentaje.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_porcentaje.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_porcentaje.ForeColor = System.Drawing.Color.Black
+        Me.TXT_porcentaje.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_porcentaje.Location = New System.Drawing.Point(475, 418)
+        Me.TXT_porcentaje.Name = "TXT_porcentaje"
+        Me.TXT_porcentaje.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXT_porcentaje.PlaceholderText = ""
+        Me.TXT_porcentaje.ReadOnly = True
+        Me.TXT_porcentaje.SelectedText = ""
+        Me.TXT_porcentaje.Size = New System.Drawing.Size(173, 42)
+        Me.TXT_porcentaje.TabIndex = 75
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Britannic Bold", 27.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(654, 418)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(46, 41)
+        Me.Label4.TabIndex = 77
+        Me.Label4.Text = "%"
+        '
+        'porcentaje
+        '
+        Me.porcentaje.Text = "Porcentaje"
+        Me.porcentaje.Width = 64
+        '
         'B_Impuesto
         '
         Me.AcceptButton = Me.BTN_SelectImpuesto
@@ -268,9 +322,12 @@ Partial Class B_Impuesto
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarImpuesto
-        Me.ClientSize = New System.Drawing.Size(713, 526)
+        Me.ClientSize = New System.Drawing.Size(713, 553)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.TXT_porcentaje)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TXT_Nombre)
+        Me.Controls.Add(Me.TXT_Desc)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_codigo)
         Me.Controls.Add(Me.GroupBox1)
@@ -294,19 +351,23 @@ Partial Class B_Impuesto
     End Sub
 
     Friend WithEvents Label2 As Label
-    Friend WithEvents TXT_Nombre As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TXT_Desc As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents TXT_codigo As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents RDB_BuscarNombre As Guna.UI2.WinForms.Guna2RadioButton
+    Friend WithEvents RDB_BuscarDesc As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents RDB_BuscarCodigo As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents LSV_Impuesto As ListView
     Friend WithEvents ID As ColumnHeader
     Friend WithEvents codigo As ColumnHeader
-    Friend WithEvents nombre As ColumnHeader
+    Friend WithEvents descripcion As ColumnHeader
     Friend WithEvents BTN_RegresarImpuesto As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_SelectImpuesto As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarImp As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents TXT_porcentaje As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents porcentaje As ColumnHeader
 End Class

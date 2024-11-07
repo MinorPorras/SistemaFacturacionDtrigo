@@ -127,7 +127,7 @@ Partial Class P_Categoria
         '
         'colorCat
         '
-        Me.colorCat.Text = "color"
+        Me.colorCat.Text = "Color"
         '
         'MNU_CONTX
         '

@@ -23,13 +23,15 @@
             T.Tables.Clear()
             If TXT_BuscarProv.Text <> "" Then
                 If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, T.telefono" +
-                    "FROM proveedor p LEFT JOIN proveedor_correo c ON C.ID_Proveedor = p.ID " +
-                    "LEFT JOIN proveedor_telefono t ON t.ID_Proveedor = p.ID  where codigo LIKE '%" & TXT_BuscarProv.Text & "%';"
+                    SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, t.telefono " +
+                        "FROM ((proveedor AS p " +
+                        "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +
+                        "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.codigo LIKE '%" & TXT_BuscarProv.Text & "%';"
                 ElseIf RDB_BuscarNombre.Checked = True Then
-                    SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, T.telefono " +
-                    "FROM proveedor p LEFT JOIN proveedor_correo c ON C.ID_Proveedor = p.ID " +
-                    "LEFT JOIN proveedor_telefono t ON t.ID_Proveedor = p.ID where nombre LIKE '%" & TXT_BuscarProv.Text & "%';"
+                    SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, t.telefono " +
+                        "FROM ((proveedor AS p " +
+                        "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +
+                        "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.nombre LIKE '%" & TXT_BuscarProv.Text & "%';"
                 End If
             Else
                 SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, t.telefono " +
@@ -164,5 +166,13 @@
         Catch ex As Exception
             MsgBox("Error al eliminar el proveedor: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
+    End Sub
+
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
+        REFRESCAR()
+    End Sub
+
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+        REFRESCAR()
     End Sub
 End Class

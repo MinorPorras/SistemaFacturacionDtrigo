@@ -52,9 +52,9 @@ Partial Class B_Cliente
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(469, 302)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(81, 23)
+        Me.Label2.Size = New System.Drawing.Size(87, 23)
         Me.Label2.TabIndex = 84
-        Me.Label2.Text = "Nombre"
+        Me.Label2.Text = "Nombre:"
         '
         'TXT_Nombre
         '

@@ -2,6 +2,7 @@
 Imports System.IO
 Imports Microsoft.Office.Interop.Access
 Imports System.Configuration
+
 Module Md_BackupDB
     ' Lista de tablas a procesar
     Dim tablas As List(Of String) = New List(Of String) From {"productos", "clientes", "pedidos"}
@@ -11,8 +12,8 @@ Module Md_BackupDB
         ' Define the paths
         Dim fechaActual As String = DateTime.Now.ToString("yyyyMMdd_HHmmss")
         ' Acceder a la ruta de acceso desde el archivo App.config
-        Dim backupDir As String = ConfigurationManager.AppSettings("DirectorioRespaldo")
-        Dim respaldo As String = backupDir & "DBSistemaFact_" & fechaActual & ".accdb"
+        Dim backupDir As String = ConfigurationManager.AppSettings("DirectorioRespaldo") + "\RespaldosSF"
+        Dim respaldo As String = backupDir & "\DBSistemaFact_" & fechaActual & ".accdb"
 
         ' Create the backup directory if it doesn't exist
         If Not Directory.Exists(backupDir) Then

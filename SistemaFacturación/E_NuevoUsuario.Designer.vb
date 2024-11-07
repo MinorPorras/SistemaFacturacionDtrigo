@@ -163,9 +163,9 @@ Partial Class E_NuevoUsuario
         Me.BTN_Color.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Color.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_Color.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTN_Color.FillColor = System.Drawing.Color.White
+        Me.BTN_Color.FillColor = System.Drawing.Color.DimGray
         Me.BTN_Color.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BTN_Color.ForeColor = System.Drawing.Color.Black
+        Me.BTN_Color.ForeColor = System.Drawing.Color.White
         Me.BTN_Color.Location = New System.Drawing.Point(132, 339)
         Me.BTN_Color.Name = "BTN_Color"
         Me.BTN_Color.Size = New System.Drawing.Size(180, 100)

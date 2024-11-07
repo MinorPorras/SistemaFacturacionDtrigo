@@ -53,6 +53,7 @@ Partial Class M_Inicio
         Me.BTN_CajaVenta = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_Config = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.PIC_Logo = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.LBL_Version = New System.Windows.Forms.Label()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -142,6 +143,7 @@ Partial Class M_Inicio
         Me.BTN_Reporte.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Reporte.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_Reporte.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_Reporte.Enabled = False
         Me.BTN_Reporte.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.BTN_Reporte.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_Reporte.ForeColor = System.Drawing.Color.White
@@ -330,6 +332,17 @@ Partial Class M_Inicio
         Me.PIC_Logo.TabIndex = 28
         Me.PIC_Logo.TabStop = False
         '
+        'LBL_Version
+        '
+        Me.LBL_Version.AutoSize = True
+        Me.LBL_Version.Font = New System.Drawing.Font("Britannic Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBL_Version.ForeColor = System.Drawing.Color.White
+        Me.LBL_Version.Location = New System.Drawing.Point(12, 685)
+        Me.LBL_Version.Name = "LBL_Version"
+        Me.LBL_Version.Size = New System.Drawing.Size(84, 16)
+        Me.LBL_Version.TabIndex = 29
+        Me.LBL_Version.Text = "Ver. 1.0.0.2"
+        '
         'M_Inicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -338,6 +351,7 @@ Partial Class M_Inicio
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CancelButton = Me.CerrarApp
         Me.ClientSize = New System.Drawing.Size(1100, 710)
+        Me.Controls.Add(Me.LBL_Version)
         Me.Controls.Add(Me.PIC_Logo)
         Me.Controls.Add(Me.BTN_Config)
         Me.Controls.Add(Me.BTN_CajaVenta)
@@ -393,4 +407,5 @@ Partial Class M_Inicio
     Friend WithEvents BTN_CajaVenta As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_Config As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents PIC_Logo As Guna.UI2.WinForms.Guna2PictureBox
+    Friend WithEvents LBL_Version As Label
 End Class

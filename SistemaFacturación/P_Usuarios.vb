@@ -91,7 +91,8 @@ Public Class P_Usuarios
 
                 ' Dibuja el fondo de la celda con el color especificado
                 e.Graphics.FillRectangle(New SolidBrush(backColor), e.Bounds)
-                e.Graphics.DrawString(e.SubItem.Text, LSV_Usuario.Font, Brushes.Black, e.Bounds)
+
+                e.Graphics.DrawString(e.SubItem.Text, LSV_Usuario.Font, New SolidBrush(backColor), e.Bounds)
             Else
                 e.DrawDefault = True
             End If
@@ -154,5 +155,13 @@ Public Class P_Usuarios
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
+    End Sub
+
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
+        REFRESCAR()
+    End Sub
+
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+        REFRESCAR()
     End Sub
 End Class

@@ -37,6 +37,7 @@ Partial Class E_ProveedorPedido
         Me.LBL_Proveedor = New System.Windows.Forms.Label()
         Me.BTN_RegresarPed = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_NProv = New Guna.UI2.WinForms.Guna2Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.MNU_CONTX.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -75,7 +76,7 @@ Partial Class E_ProveedorPedido
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(427, 66)
+        Me.Label6.Location = New System.Drawing.Point(427, 200)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(312, 23)
         Me.Label6.TabIndex = 62
@@ -94,7 +95,7 @@ Partial Class E_ProveedorPedido
         Me.CBX_RecibirPedido.ForeColor = System.Drawing.Color.Black
         Me.CBX_RecibirPedido.ItemHeight = 30
         Me.CBX_RecibirPedido.Items.AddRange(New Object() {"", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"})
-        Me.CBX_RecibirPedido.Location = New System.Drawing.Point(472, 106)
+        Me.CBX_RecibirPedido.Location = New System.Drawing.Point(472, 240)
         Me.CBX_RecibirPedido.Name = "CBX_RecibirPedido"
         Me.CBX_RecibirPedido.Size = New System.Drawing.Size(213, 36)
         Me.CBX_RecibirPedido.TabIndex = 61
@@ -104,7 +105,7 @@ Partial Class E_ProveedorPedido
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(427, 163)
+        Me.Label5.Location = New System.Drawing.Point(427, 77)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(299, 23)
         Me.Label5.TabIndex = 60
@@ -123,7 +124,7 @@ Partial Class E_ProveedorPedido
         Me.CBX_DiaPedido.ForeColor = System.Drawing.Color.Black
         Me.CBX_DiaPedido.ItemHeight = 30
         Me.CBX_DiaPedido.Items.AddRange(New Object() {"", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"})
-        Me.CBX_DiaPedido.Location = New System.Drawing.Point(472, 207)
+        Me.CBX_DiaPedido.Location = New System.Drawing.Point(472, 121)
         Me.CBX_DiaPedido.Name = "CBX_DiaPedido"
         Me.CBX_DiaPedido.Size = New System.Drawing.Size(213, 36)
         Me.CBX_DiaPedido.TabIndex = 59
@@ -139,7 +140,7 @@ Partial Class E_ProveedorPedido
         Me.LSV_Pedido.Location = New System.Drawing.Point(32, 66)
         Me.LSV_Pedido.MultiSelect = False
         Me.LSV_Pedido.Name = "LSV_Pedido"
-        Me.LSV_Pedido.Size = New System.Drawing.Size(354, 324)
+        Me.LSV_Pedido.Size = New System.Drawing.Size(360, 259)
         Me.LSV_Pedido.TabIndex = 63
         Me.LSV_Pedido.UseCompatibleStateImageBehavior = False
         Me.LSV_Pedido.View = System.Windows.Forms.View.Details
@@ -159,7 +160,7 @@ Partial Class E_ProveedorPedido
         Me.LBL_Proveedor.AutoSize = True
         Me.LBL_Proveedor.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBL_Proveedor.ForeColor = System.Drawing.Color.White
-        Me.LBL_Proveedor.Location = New System.Drawing.Point(217, 20)
+        Me.LBL_Proveedor.Location = New System.Drawing.Point(138, 40)
         Me.LBL_Proveedor.Name = "LBL_Proveedor"
         Me.LBL_Proveedor.Size = New System.Drawing.Size(103, 23)
         Me.LBL_Proveedor.TabIndex = 64
@@ -179,7 +180,7 @@ Partial Class E_ProveedorPedido
         Me.BTN_RegresarPed.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarPed.Image = CType(resources.GetObject("BTN_RegresarPed.Image"), System.Drawing.Image)
         Me.BTN_RegresarPed.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarPed.Location = New System.Drawing.Point(417, 367)
+        Me.BTN_RegresarPed.Location = New System.Drawing.Point(32, 350)
         Me.BTN_RegresarPed.Name = "BTN_RegresarPed"
         Me.BTN_RegresarPed.Size = New System.Drawing.Size(322, 57)
         Me.BTN_RegresarPed.TabIndex = 65
@@ -199,11 +200,22 @@ Partial Class E_ProveedorPedido
         Me.BTN_NProv.ForeColor = System.Drawing.Color.White
         Me.BTN_NProv.Image = CType(resources.GetObject("BTN_NProv.Image"), System.Drawing.Image)
         Me.BTN_NProv.ImageSize = New System.Drawing.Size(60, 60)
-        Me.BTN_NProv.Location = New System.Drawing.Point(472, 268)
+        Me.BTN_NProv.Location = New System.Drawing.Point(413, 350)
         Me.BTN_NProv.Name = "BTN_NProv"
-        Me.BTN_NProv.Size = New System.Drawing.Size(213, 57)
+        Me.BTN_NProv.Size = New System.Drawing.Size(313, 57)
         Me.BTN_NProv.TabIndex = 66
         Me.BTN_NProv.Text = "Agregar"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(28, 40)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(115, 23)
+        Me.Label1.TabIndex = 67
+        Me.Label1.Text = "Proveedor: "
         '
         'E_ProveedorPedido
         '
@@ -211,6 +223,7 @@ Partial Class E_ProveedorPedido
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(766, 436)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BTN_NProv)
         Me.Controls.Add(Me.BTN_RegresarPed)
         Me.Controls.Add(Me.LBL_Proveedor)
@@ -244,4 +257,5 @@ Partial Class E_ProveedorPedido
     Friend WithEvents rebPed As ColumnHeader
     Friend WithEvents BTN_RegresarPed As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_NProv As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Label1 As Label
 End Class

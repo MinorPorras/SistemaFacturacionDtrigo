@@ -90,7 +90,7 @@ Partial Class P_Productos
         Me.GroupBox1.Controls.Add(Me.RDB_BuscarNombre)
         Me.GroupBox1.Controls.Add(Me.RDB_BuscarCodigo)
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.Control
-        Me.GroupBox1.Location = New System.Drawing.Point(1015, 185)
+        Me.GroupBox1.Location = New System.Drawing.Point(1108, 196)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(122, 63)
         Me.GroupBox1.TabIndex = 50
@@ -289,7 +289,7 @@ Partial Class P_Productos
         Me.TXT_BuscarProd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarProd.PlaceholderText = "Buscar producto"
         Me.TXT_BuscarProd.SelectedText = ""
-        Me.TXT_BuscarProd.Size = New System.Drawing.Size(962, 42)
+        Me.TXT_BuscarProd.Size = New System.Drawing.Size(1055, 42)
         Me.TXT_BuscarProd.TabIndex = 47
         '
         'Guna2PictureBox1

@@ -215,7 +215,7 @@ Partial Class B_Marca
         Me.TXT_codigo.Location = New System.Drawing.Point(490, 250)
         Me.TXT_codigo.Name = "TXT_codigo"
         Me.TXT_codigo.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_codigo.PlaceholderText = "Buscar marca"
+        Me.TXT_codigo.PlaceholderText = ""
         Me.TXT_codigo.ReadOnly = True
         Me.TXT_codigo.SelectedText = ""
         Me.TXT_codigo.Size = New System.Drawing.Size(210, 42)
@@ -259,7 +259,7 @@ Partial Class B_Marca
         Me.TXT_Nombre.Location = New System.Drawing.Point(490, 331)
         Me.TXT_Nombre.Name = "TXT_Nombre"
         Me.TXT_Nombre.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_Nombre.PlaceholderText = "Buscar marca"
+        Me.TXT_Nombre.PlaceholderText = ""
         Me.TXT_Nombre.ReadOnly = True
         Me.TXT_Nombre.SelectedText = ""
         Me.TXT_Nombre.Size = New System.Drawing.Size(210, 42)

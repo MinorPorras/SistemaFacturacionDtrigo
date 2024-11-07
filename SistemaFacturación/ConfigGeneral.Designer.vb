@@ -30,8 +30,10 @@ Partial Class ConfigGeneral
         Me.BTN_Importar = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.BTN_ModBackupDir = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_RegresarConfig = New Guna.UI2.WinForms.Guna2Button()
         Me.OFD_ImportarDB = New System.Windows.Forms.OpenFileDialog()
+        Me.OFD_ModBackUpDIr = New System.Windows.Forms.OpenFileDialog()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -54,11 +56,11 @@ Partial Class ConfigGeneral
         Me.CerrarApp.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.CerrarApp.ForeColor = System.Drawing.Color.White
         Me.CerrarApp.Image = CType(resources.GetObject("CerrarApp.Image"), System.Drawing.Image)
-        Me.CerrarApp.ImageSize = New System.Drawing.Size(90, 90)
-        Me.CerrarApp.Location = New System.Drawing.Point(627, 12)
+        Me.CerrarApp.ImageSize = New System.Drawing.Size(60, 60)
+        Me.CerrarApp.Location = New System.Drawing.Point(406, 12)
         Me.CerrarApp.Name = "CerrarApp"
         Me.CerrarApp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.CerrarApp.Size = New System.Drawing.Size(66, 66)
+        Me.CerrarApp.Size = New System.Drawing.Size(47, 47)
         Me.CerrarApp.TabIndex = 10
         '
         'BTN_RspaldoDB
@@ -74,28 +76,29 @@ Partial Class ConfigGeneral
         Me.BTN_RspaldoDB.ForeColor = System.Drawing.Color.White
         Me.BTN_RspaldoDB.Image = CType(resources.GetObject("BTN_RspaldoDB.Image"), System.Drawing.Image)
         Me.BTN_RspaldoDB.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RspaldoDB.Location = New System.Drawing.Point(15, 151)
+        Me.BTN_RspaldoDB.Location = New System.Drawing.Point(16, 99)
         Me.BTN_RspaldoDB.Name = "BTN_RspaldoDB"
-        Me.BTN_RspaldoDB.Size = New System.Drawing.Size(339, 73)
+        Me.BTN_RspaldoDB.Size = New System.Drawing.Size(341, 58)
         Me.BTN_RspaldoDB.TabIndex = 11
         Me.BTN_RspaldoDB.Text = "Exportar base de datos"
         '
         'BTN_Importar
         '
-        Me.BTN_Importar.BorderRadius = 25
+        Me.BTN_Importar.AutoRoundedCorners = True
+        Me.BTN_Importar.BorderRadius = 28
         Me.BTN_Importar.BorderThickness = 2
         Me.BTN_Importar.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Importar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Importar.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_Importar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTN_Importar.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BTN_Importar.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_Importar.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold)
         Me.BTN_Importar.ForeColor = System.Drawing.Color.White
         Me.BTN_Importar.Image = CType(resources.GetObject("BTN_Importar.Image"), System.Drawing.Image)
         Me.BTN_Importar.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_Importar.Location = New System.Drawing.Point(15, 46)
+        Me.BTN_Importar.Location = New System.Drawing.Point(16, 19)
         Me.BTN_Importar.Name = "BTN_Importar"
-        Me.BTN_Importar.Size = New System.Drawing.Size(339, 73)
+        Me.BTN_Importar.Size = New System.Drawing.Size(341, 58)
         Me.BTN_Importar.TabIndex = 12
         Me.BTN_Importar.Text = "Importar base de datos"
         '
@@ -103,24 +106,44 @@ Partial Class ConfigGeneral
         '
         Me.Guna2PictureBox1.Image = CType(resources.GetObject("Guna2PictureBox1.Image"), System.Drawing.Image)
         Me.Guna2PictureBox1.ImageRotate = 0!
-        Me.Guna2PictureBox1.Location = New System.Drawing.Point(135, -105)
+        Me.Guna2PictureBox1.Location = New System.Drawing.Point(43, -79)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.Size = New System.Drawing.Size(426, 377)
+        Me.Guna2PictureBox1.Size = New System.Drawing.Size(363, 310)
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Guna2PictureBox1.TabIndex = 13
         Me.Guna2PictureBox1.TabStop = False
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.BTN_ModBackupDir)
         Me.GroupBox1.Controls.Add(Me.BTN_Importar)
         Me.GroupBox1.Controls.Add(Me.BTN_RspaldoDB)
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.GroupBox1.Location = New System.Drawing.Point(159, 169)
+        Me.GroupBox1.Location = New System.Drawing.Point(46, 164)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(373, 256)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Gestión de base de datos"
+        '
+        'BTN_ModBackupDir
+        '
+        Me.BTN_ModBackupDir.BorderRadius = 25
+        Me.BTN_ModBackupDir.BorderThickness = 2
+        Me.BTN_ModBackupDir.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_ModBackupDir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_ModBackupDir.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_ModBackupDir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_ModBackupDir.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BTN_ModBackupDir.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_ModBackupDir.ForeColor = System.Drawing.Color.White
+        Me.BTN_ModBackupDir.Image = CType(resources.GetObject("BTN_ModBackupDir.Image"), System.Drawing.Image)
+        Me.BTN_ModBackupDir.ImageSize = New System.Drawing.Size(40, 40)
+        Me.BTN_ModBackupDir.Location = New System.Drawing.Point(16, 181)
+        Me.BTN_ModBackupDir.Name = "BTN_ModBackupDir"
+        Me.BTN_ModBackupDir.Size = New System.Drawing.Size(341, 58)
+        Me.BTN_ModBackupDir.TabIndex = 13
+        Me.BTN_ModBackupDir.Text = "Modificar directorio backup"
         '
         'BTN_RegresarConfig
         '
@@ -136,7 +159,7 @@ Partial Class ConfigGeneral
         Me.BTN_RegresarConfig.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarConfig.Image = CType(resources.GetObject("BTN_RegresarConfig.Image"), System.Drawing.Image)
         Me.BTN_RegresarConfig.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarConfig.Location = New System.Drawing.Point(176, 453)
+        Me.BTN_RegresarConfig.Location = New System.Drawing.Point(66, 453)
         Me.BTN_RegresarConfig.Name = "BTN_RegresarConfig"
         Me.BTN_RegresarConfig.Size = New System.Drawing.Size(322, 57)
         Me.BTN_RegresarConfig.TabIndex = 45
@@ -146,12 +169,18 @@ Partial Class ConfigGeneral
         '
         Me.OFD_ImportarDB.FileName = "OpenFileDialog1"
         '
+        'OFD_ModBackUpDIr
+        '
+        Me.OFD_ModBackUpDIr.CheckFileExists = False
+        Me.OFD_ModBackUpDIr.FileName = "Selleciona la carpeta en la que se guardaran los respaldos"
+        Me.OFD_ModBackUpDIr.ValidateNames = False
+        '
         'ConfigGeneral
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(705, 522)
+        Me.ClientSize = New System.Drawing.Size(468, 522)
         Me.Controls.Add(Me.BTN_RegresarConfig)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Guna2PictureBox1)
@@ -176,4 +205,6 @@ Partial Class ConfigGeneral
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents BTN_RegresarConfig As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents OFD_ImportarDB As OpenFileDialog
+    Friend WithEvents BTN_ModBackupDir As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents OFD_ModBackUpDIr As OpenFileDialog
 End Class

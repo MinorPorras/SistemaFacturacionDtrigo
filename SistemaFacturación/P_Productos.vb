@@ -58,10 +58,10 @@
                     'Verifica el estado del textbox
                     If TXT_BuscarProd.Text <> "" Then
                         'Si tiene texto se agrega el AND al inicio y un espcio al final para que calce con el query
-                        cat = "And cat.nombre = '" + TXT_BuscarCat.Text + "' "
+                        cat = "And cat.nombre Like '%" + TXT_BuscarCat.Text + "%' "
                     Else
                         'Si no tiene nada se agrega el espacio al inicio y el AND al final
-                        cat = " cat.nombre = '" + TXT_BuscarCat.Text + "' "
+                        cat = " cat.nombre Like '%" + TXT_BuscarCat.Text + "%' "
                     End If
                 Else
                     'Si se tiene seleccionado el -1
@@ -79,10 +79,10 @@
                     'Verifica el estado del textbox
                     If TXT_BuscarProd.Text <> "" Then
                         'Si tiene texto se agrega el AND al inicio y un espcio al final para que calce con el query
-                        Marca = "And m.nombre = '" + TXT_BuscarMarca.Text + "' "
+                        Marca = "And m.nombre Like '%" + TXT_BuscarMarca.Text + "%' "
                     Else
                         'Si no tiene nada se agrega el espacio al inicio y el AND al final
-                        Marca = " m.nombre = '" + TXT_BuscarMarca.Text + "' "
+                        Marca = " m.nombre Like '%" + TXT_BuscarMarca.Text + "%' "
                     End If
                 Else
                     'Si se tiene seleccionado el -1
@@ -96,14 +96,14 @@
             'Se  verifica que el chec box de buscar por proveedor este seleccionado
             If CKB_Proveedor.Checked = True Then
                 'Que la selección no se -1
-                If TXT_BuscarProd.Text <> "" Then
+                If TXT_BuscarProv.Text <> "" Then
                     'Verifica el estado del textbox
                     If TXT_BuscarProd.Text <> "" Then
                         'Si tiene texto se agrega el AND al inicio y un espcio al final para que calce con el query
-                        Prov = "And pr.nombre = '" + TXT_BuscarProd.Text + "' "
+                        Prov = "And pr.nombre Like '%" + TXT_BuscarProv.Text + "%' "
                     Else
                         'Si no tiene nada se agrega el espacio al inicio y el AND al final
-                        Prov = " pr.nombre = '" + TXT_BuscarProd.Text + "' "
+                        Prov = " pr.nombre Like '%" + TXT_BuscarProv.Text + "%' "
                     End If
                 Else
                     'Si se tiene seleccionado el -1
@@ -126,7 +126,7 @@
                 End If
             Else
                 'SXi el textbox esta vacio
-                If cat = "" Or Marca = "" Or Prov = "" Then
+                If cat = "" And Marca = "" And Prov = "" Then
                     'Si los valores de cat, marca y prov estan vacios hace este query
                     SQL = stringConsultaBase + ";"
                 Else
@@ -149,7 +149,7 @@
                         'Si hay una marca y un proveedor de agrega el AND despues de Marca
                         Marca = Marca + " And "
                     End If
-                    SQL = stringConsultaBase + "WHERE " + cat + Marca + Prov
+                    SQL = stringConsultaBase + " WHERE " + cat + Marca + Prov
                 End If
 
             End If
@@ -318,5 +318,13 @@
         Catch ex As Exception
             MsgBox("Error al eliminar el producto: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
+    End Sub
+
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
+        REFRESCAR()
+    End Sub
+
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+        REFRESCAR()
     End Sub
 End Class

@@ -41,7 +41,7 @@ Public Class P_Caja
         SQL = "SELECT ID, nombre FROM producto WHERE favorito = 'Si'"
         Cargar_Tabla(T, SQL)
         If T.Tables(0).Rows.Count > 0 Then
-            For i As Integer = 1 To T.Tables(0).Rows.Count
+            For i As Integer = 0 To T.Tables(0).Rows.Count - 1
                 Select Case i
                     Case 1
                         BTN_Fav1.Tag = T.Tables(0).Rows(i).Item(0)

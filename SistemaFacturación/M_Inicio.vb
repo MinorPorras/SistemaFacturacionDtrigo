@@ -26,6 +26,7 @@ Public Class M_Inicio
         LBL_Telefono.Text = "Telefono: " + ConfigurationManager.AppSettings("Telefono").ToString()
         LBL_Email.Text = "Email: " + ConfigurationManager.AppSettings("Correo").ToString()
         PIC_Logo.Image = Image.FromFile(ConfigurationManager.AppSettings("Logo").ToString())
+        LBL_Version.Text = "Ver. " + ConfigurationManager.AppSettings("AppVer").ToString()
         cargarCalProveedores("dia_pedido", "proveedor_diaPedido")
         cargarCalProveedores("dia_recibido", "proveedor_recibirPedido")
 

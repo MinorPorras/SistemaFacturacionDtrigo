@@ -24,10 +24,15 @@
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <MapFileExtensions>false</MapFileExtensions>
+    <TargetCulture>es-CR</TargetCulture>
+    <ProductName>Sistema de Facturación</ProductName>
+    <PublisherName>Minor Porras Varela</PublisherName>
+    <SuiteName>Sistema Fact</SuiteName>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -64,7 +69,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>recursos\LogoPanaderíaDtrigo.ico</ApplicationIcon>
+    <ApplicationIcon>recursos\logoApp.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>64BC42BEA3A50124A9044B89A5AFFFBE2EBAB2CF</ManifestCertificateThumbprint>
@@ -76,7 +81,13 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
@@ -101,6 +112,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -122,6 +134,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="B_Cliente.Designer.vb">
       <DependentUpon>B_Cliente.vb</DependentUpon>
     </Compile>
@@ -440,6 +453,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -453,10 +467,11 @@
     <None Include="packages.config" />
     <None Include="SistemaFacturación_TemporaryKey.pfx" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="bd\backupDB\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="bd\backupDB\dbSistemaFacturaciónStock.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="bd\dbSistemaFacturación.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -533,6 +548,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="recursos\ICO_Sucursal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\logoApp.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="recursos\LogoPanaderíaDtrigo.ico">

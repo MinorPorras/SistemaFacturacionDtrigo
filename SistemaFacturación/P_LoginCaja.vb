@@ -2,6 +2,7 @@
     Friend idUsu As Integer
     Private Sub TXT_Clave_TextChanged(sender As Object, e As EventArgs) Handles TXT_Clave.TextChanged
         revisionClave()
+        TXT_Clave.PasswordChar = "*"
     End Sub
 
     Private Sub P_LoginCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load

@@ -178,7 +178,7 @@ Partial Class P_Usuarios
         '
         'colorUsuario
         '
-        Me.colorUsuario.Text = "color"
+        Me.colorUsuario.Text = "Color"
         '
         'MNU_CONTX
         '

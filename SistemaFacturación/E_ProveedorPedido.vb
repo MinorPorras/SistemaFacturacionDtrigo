@@ -32,10 +32,13 @@
     End Sub
 
     Private Sub BTN_NProv_Click(sender As Object, e As EventArgs) Handles BTN_NProv.Click
-        E_NuevoProveedor.LHacerPed.Add(CBX_DiaPedido.Text)
-        E_NuevoProveedor.LRebPed.Add(CBX_RecibirPedido.Text)
-        LIMPIAR()
+        If Not String.IsNullOrEmpty(CBX_DiaPedido.Text) Or Not String.IsNullOrEmpty(CBX_RecibirPedido.Text) Then
+            E_NuevoProveedor.LHacerPed.Add(CBX_DiaPedido.Text)
+            E_NuevoProveedor.LRebPed.Add(CBX_RecibirPedido.Text)
+            LIMPIAR()
+        End If
         REFRESCAR()
+        VALIDAR()
     End Sub
 
     Private Sub LIMPIAR()
@@ -44,7 +47,7 @@
     End Sub
 
     Private Sub VALIDAR()
-        If CBX_DiaPedido.SelectedIndex <> -1 And CBX_RecibirPedido.SelectedIndex <> -1 Then
+        If CBX_DiaPedido.SelectedIndex <> -1 And CBX_RecibirPedido.SelectedIndex <> -1 And (Not String.IsNullOrEmpty(CBX_DiaPedido.Text) Or Not String.IsNullOrEmpty(CBX_RecibirPedido.Text)) Then
             BTN_NProv.Enabled = True
         Else
             BTN_NProv.Enabled = False
@@ -60,8 +63,14 @@
     End Sub
 
     Private Sub MNU_ELIMINAR_Click(sender As Object, e As EventArgs) Handles MNU_ELIMINAR.Click
-        E_NuevoProveedor.LHacerPed.RemoveAt(LSV_Pedido.SelectedIndices(0))
-        E_NuevoProveedor.LRebPed.RemoveAt(LSV_Pedido.SelectedIndices(0))
-        REFRESCAR()
+        If LSV_Pedido.SelectedItems.Count > 0 Then
+            E_NuevoProveedor.LHacerPed.RemoveAt(LSV_Pedido.SelectedIndices(0))
+            E_NuevoProveedor.LRebPed.RemoveAt(LSV_Pedido.SelectedIndices(0))
+            REFRESCAR()
+            VALIDAR()
+        Else
+                MsgBox("Ninguna fila fue seleccionada", vbCritical + vbOKOnly, "Error")
+        End If
+
     End Sub
 End Class

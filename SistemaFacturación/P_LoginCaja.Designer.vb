@@ -30,8 +30,6 @@ Partial Class P_LoginCaja
         Me.TXT_Clave = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.LBL_Usu = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,9 +57,9 @@ Partial Class P_LoginCaja
         Me.BTN_RegresarLogin.ForeColor = System.Drawing.SystemColors.Control
         Me.BTN_RegresarLogin.Image = CType(resources.GetObject("BTN_RegresarLogin.Image"), System.Drawing.Image)
         Me.BTN_RegresarLogin.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarLogin.Location = New System.Drawing.Point(21, 236)
+        Me.BTN_RegresarLogin.Location = New System.Drawing.Point(16, 211)
         Me.BTN_RegresarLogin.Name = "BTN_RegresarLogin"
-        Me.BTN_RegresarLogin.Size = New System.Drawing.Size(241, 53)
+        Me.BTN_RegresarLogin.Size = New System.Drawing.Size(210, 53)
         Me.BTN_RegresarLogin.TabIndex = 111
         Me.BTN_RegresarLogin.Text = "Regresar"
         '
@@ -79,9 +77,9 @@ Partial Class P_LoginCaja
         Me.BTN_Login.ForeColor = System.Drawing.SystemColors.Control
         Me.BTN_Login.Image = CType(resources.GetObject("BTN_Login.Image"), System.Drawing.Image)
         Me.BTN_Login.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_Login.Location = New System.Drawing.Point(268, 236)
+        Me.BTN_Login.Location = New System.Drawing.Point(232, 211)
         Me.BTN_Login.Name = "BTN_Login"
-        Me.BTN_Login.Size = New System.Drawing.Size(256, 53)
+        Me.BTN_Login.Size = New System.Drawing.Size(231, 53)
         Me.BTN_Login.TabIndex = 112
         Me.BTN_Login.Text = "Iniciar sesión"
         '
@@ -98,9 +96,9 @@ Partial Class P_LoginCaja
         Me.TXT_Clave.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_Clave.ForeColor = System.Drawing.Color.Black
         Me.TXT_Clave.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Clave.Location = New System.Drawing.Point(173, 154)
+        Me.TXT_Clave.Location = New System.Drawing.Point(126, 140)
         Me.TXT_Clave.Name = "TXT_Clave"
-        Me.TXT_Clave.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXT_Clave.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TXT_Clave.PlaceholderText = ""
         Me.TXT_Clave.SelectedText = ""
         Me.TXT_Clave.Size = New System.Drawing.Size(296, 42)
@@ -112,7 +110,7 @@ Partial Class P_LoginCaja
         Me.Guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel3.Font = New System.Drawing.Font("Segoe UI Black", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel3.ForeColor = System.Drawing.SystemColors.Control
-        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(163, 12)
+        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(126, 13)
         Me.Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
         Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(222, 49)
         Me.Guna2HtmlLabel3.TabIndex = 113
@@ -125,7 +123,7 @@ Partial Class P_LoginCaja
         Me.LBL_Usu.BackColor = System.Drawing.Color.Transparent
         Me.LBL_Usu.Font = New System.Drawing.Font("Segoe UI Black", 15.75!, System.Drawing.FontStyle.Bold)
         Me.LBL_Usu.ForeColor = System.Drawing.SystemColors.Control
-        Me.LBL_Usu.Location = New System.Drawing.Point(203, 94)
+        Me.LBL_Usu.Location = New System.Drawing.Point(126, 85)
         Me.LBL_Usu.Name = "LBL_Usu"
         Me.LBL_Usu.Size = New System.Drawing.Size(82, 32)
         Me.LBL_Usu.TabIndex = 115
@@ -133,37 +131,11 @@ Partial Class P_LoginCaja
         Me.LBL_Usu.TextAlignment = System.Drawing.ContentAlignment.TopCenter
         Me.LBL_Usu.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit
         '
-        'Guna2HtmlLabel2
-        '
-        Me.Guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel2.Font = New System.Drawing.Font("Segoe UI Black", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Guna2HtmlLabel2.ForeColor = System.Drawing.SystemColors.Control
-        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(98, 157)
-        Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
-        Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(65, 32)
-        Me.Guna2HtmlLabel2.TabIndex = 116
-        Me.Guna2HtmlLabel2.Text = "Clave:"
-        Me.Guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.TopCenter
-        Me.Guna2HtmlLabel2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit
-        '
-        'Guna2HtmlLabel1
-        '
-        Me.Guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Segoe UI Black", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Control
-        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(98, 94)
-        Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(89, 32)
-        Me.Guna2HtmlLabel1.TabIndex = 117
-        Me.Guna2HtmlLabel1.Text = "Usuario:"
-        Me.Guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.TopCenter
-        Me.Guna2HtmlLabel1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit
-        '
         'Guna2PictureBox2
         '
         Me.Guna2PictureBox2.Image = CType(resources.GetObject("Guna2PictureBox2.Image"), System.Drawing.Image)
         Me.Guna2PictureBox2.ImageRotate = 0!
-        Me.Guna2PictureBox2.Location = New System.Drawing.Point(38, 83)
+        Me.Guna2PictureBox2.Location = New System.Drawing.Point(66, 74)
         Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
         Me.Guna2PictureBox2.Size = New System.Drawing.Size(54, 54)
         Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -174,7 +146,7 @@ Partial Class P_LoginCaja
         '
         Me.Guna2PictureBox1.Image = CType(resources.GetObject("Guna2PictureBox1.Image"), System.Drawing.Image)
         Me.Guna2PictureBox1.ImageRotate = 0!
-        Me.Guna2PictureBox1.Location = New System.Drawing.Point(38, 145)
+        Me.Guna2PictureBox1.Location = New System.Drawing.Point(66, 136)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
         Me.Guna2PictureBox1.Size = New System.Drawing.Size(54, 54)
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -188,11 +160,9 @@ Partial Class P_LoginCaja
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarLogin
-        Me.ClientSize = New System.Drawing.Size(540, 310)
+        Me.ClientSize = New System.Drawing.Size(486, 284)
         Me.Controls.Add(Me.Guna2PictureBox1)
         Me.Controls.Add(Me.Guna2PictureBox2)
-        Me.Controls.Add(Me.Guna2HtmlLabel1)
-        Me.Controls.Add(Me.Guna2HtmlLabel2)
         Me.Controls.Add(Me.LBL_Usu)
         Me.Controls.Add(Me.TXT_Clave)
         Me.Controls.Add(Me.Guna2HtmlLabel3)
@@ -214,11 +184,9 @@ Partial Class P_LoginCaja
     Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
     Friend WithEvents BTN_Login As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_RegresarLogin As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents LBL_Usu As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents TXT_Clave As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
 End Class
