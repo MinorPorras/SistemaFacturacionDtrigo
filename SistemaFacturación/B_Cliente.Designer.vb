@@ -201,7 +201,7 @@ Partial Class B_Cliente
         Me.BTN_RegresarBCLiente.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarBCLiente.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarBCLiente.Image = CType(resources.GetObject("BTN_RegresarBCLiente.Image"), System.Drawing.Image)
-        Me.BTN_RegresarBCLiente.ImageSize = New System.Drawing.Size(40, 40)
+        Me.BTN_RegresarBCLiente.ImageSize = New System.Drawing.Size(50, 50)
         Me.BTN_RegresarBCLiente.Location = New System.Drawing.Point(28, 435)
         Me.BTN_RegresarBCLiente.Name = "BTN_RegresarBCLiente"
         Me.BTN_RegresarBCLiente.Size = New System.Drawing.Size(287, 57)
@@ -220,7 +220,7 @@ Partial Class B_Cliente
         Me.BTN_SelectCliente.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_SelectCliente.ForeColor = System.Drawing.Color.White
         Me.BTN_SelectCliente.Image = CType(resources.GetObject("BTN_SelectCliente.Image"), System.Drawing.Image)
-        Me.BTN_SelectCliente.ImageSize = New System.Drawing.Size(40, 40)
+        Me.BTN_SelectCliente.ImageSize = New System.Drawing.Size(50, 50)
         Me.BTN_SelectCliente.Location = New System.Drawing.Point(345, 435)
         Me.BTN_SelectCliente.Name = "BTN_SelectCliente"
         Me.BTN_SelectCliente.Size = New System.Drawing.Size(283, 57)
@@ -240,6 +240,8 @@ Partial Class B_Cliente
         Me.TXT_BuscarCliente.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarCliente.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_BuscarCliente.IconRight = CType(resources.GetObject("TXT_BuscarCliente.IconRight"), System.Drawing.Image)
+        Me.TXT_BuscarCliente.IconRightSize = New System.Drawing.Size(35, 35)
         Me.TXT_BuscarCliente.Location = New System.Drawing.Point(16, 151)
         Me.TXT_BuscarCliente.Name = "TXT_BuscarCliente"
         Me.TXT_BuscarCliente.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)

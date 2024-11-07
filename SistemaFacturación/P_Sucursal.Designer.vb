@@ -132,7 +132,7 @@ Partial Class P_Sucursal
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(43, 562)
+        Me.Label6.Location = New System.Drawing.Point(87, 562)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(60, 23)
         Me.Label6.TabIndex = 42
@@ -342,7 +342,7 @@ Partial Class P_Sucursal
         '
         Me.PIC_Logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PIC_Logo.ImageRotate = 0!
-        Me.PIC_Logo.Location = New System.Drawing.Point(152, 477)
+        Me.PIC_Logo.Location = New System.Drawing.Point(165, 477)
         Me.PIC_Logo.Name = "PIC_Logo"
         Me.PIC_Logo.Size = New System.Drawing.Size(300, 200)
         Me.PIC_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage

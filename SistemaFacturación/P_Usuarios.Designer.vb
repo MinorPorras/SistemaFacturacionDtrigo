@@ -106,6 +106,8 @@ Partial Class P_Usuarios
         Me.TXT_BuscarUsuario.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarUsuario.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarUsuario.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_BuscarUsuario.IconRight = CType(resources.GetObject("TXT_BuscarUsuario.IconRight"), System.Drawing.Image)
+        Me.TXT_BuscarUsuario.IconRightSize = New System.Drawing.Size(40, 40)
         Me.TXT_BuscarUsuario.Location = New System.Drawing.Point(46, 191)
         Me.TXT_BuscarUsuario.Name = "TXT_BuscarUsuario"
         Me.TXT_BuscarUsuario.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)

@@ -247,6 +247,8 @@ Partial Class B_Proveedor
         Me.TXT_BuscarProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_BuscarProv.IconRight = CType(resources.GetObject("TXT_BuscarProv.IconRight"), System.Drawing.Image)
+        Me.TXT_BuscarProv.IconRightSize = New System.Drawing.Size(40, 40)
         Me.TXT_BuscarProv.Location = New System.Drawing.Point(34, 163)
         Me.TXT_BuscarProv.Name = "TXT_BuscarProv"
         Me.TXT_BuscarProv.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)

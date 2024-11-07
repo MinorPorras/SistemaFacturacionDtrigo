@@ -205,6 +205,8 @@ Partial Class P_Marca
         Me.TXT_BuscarMarca.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarMarca.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_BuscarMarca.IconRight = CType(resources.GetObject("TXT_BuscarMarca.IconRight"), System.Drawing.Image)
+        Me.TXT_BuscarMarca.IconRightSize = New System.Drawing.Size(40, 40)
         Me.TXT_BuscarMarca.Location = New System.Drawing.Point(24, 139)
         Me.TXT_BuscarMarca.Name = "TXT_BuscarMarca"
         Me.TXT_BuscarMarca.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)

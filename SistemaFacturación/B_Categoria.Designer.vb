@@ -208,7 +208,7 @@ Partial Class B_Categoria
         Me.BTN_RegresarCat.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarCat.Image = CType(resources.GetObject("BTN_RegresarCat.Image"), System.Drawing.Image)
         Me.BTN_RegresarCat.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarCat.Location = New System.Drawing.Point(46, 443)
+        Me.BTN_RegresarCat.Location = New System.Drawing.Point(50, 443)
         Me.BTN_RegresarCat.Name = "BTN_RegresarCat"
         Me.BTN_RegresarCat.Size = New System.Drawing.Size(289, 57)
         Me.BTN_RegresarCat.TabIndex = 68
@@ -227,7 +227,7 @@ Partial Class B_Categoria
         Me.BTN_SelectCat.ForeColor = System.Drawing.Color.White
         Me.BTN_SelectCat.Image = CType(resources.GetObject("BTN_SelectCat.Image"), System.Drawing.Image)
         Me.BTN_SelectCat.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_SelectCat.Location = New System.Drawing.Point(357, 443)
+        Me.BTN_SelectCat.Location = New System.Drawing.Point(361, 443)
         Me.BTN_SelectCat.Name = "BTN_SelectCat"
         Me.BTN_SelectCat.Size = New System.Drawing.Size(289, 57)
         Me.BTN_SelectCat.TabIndex = 67
@@ -271,6 +271,7 @@ Partial Class B_Categoria
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.CancelButton = Me.BTN_RegresarCat
         Me.ClientSize = New System.Drawing.Size(726, 530)
         Me.Controls.Add(Me.Label2)
@@ -283,6 +284,7 @@ Partial Class B_Categoria
         Me.Controls.Add(Me.BTN_SelectCat)
         Me.Controls.Add(Me.TXT_BuscarCat)
         Me.Controls.Add(Me.Guna2PictureBox2)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True

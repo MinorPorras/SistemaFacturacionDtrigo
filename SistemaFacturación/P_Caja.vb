@@ -43,28 +43,28 @@ Public Class P_Caja
         If T.Tables(0).Rows.Count > 0 Then
             For i As Integer = 0 To T.Tables(0).Rows.Count - 1
                 Select Case i
-                    Case 1
+                    Case 0
                         BTN_Fav1.Tag = T.Tables(0).Rows(i).Item(0)
                         BTN_Fav1.Text = T.Tables(0).Rows(i).Item(1)
-                    Case 2
+                    Case 1
                         BTN_Fav2.Tag = T.Tables(0).Rows(i).Item(0)
                         BTN_Fav2.Text = T.Tables(0).Rows(i).Item(1)
-                    Case 3
+                    Case 2
                         BTN_Fav3.Tag = T.Tables(0).Rows(i).Item(0)
                         BTN_Fav3.Text = T.Tables(0).Rows(i).Item(1)
-                    Case 4
+                    Case 3
                         BTN_Fav4.Tag = T.Tables(0).Rows(i).Item(0)
                         BTN_Fav4.Text = T.Tables(0).Rows(i).Item(1)
-                    Case 5
+                    Case 4
                         BTN_Fav5.Tag = T.Tables(0).Rows(i).Item(0)
                         BTN_Fav5.Text = T.Tables(0).Rows(i).Item(1)
-                    Case 6
+                    Case 5
                         BTN_Fav6.Tag = T.Tables(0).Rows(i).Item(0)
                         BTN_Fav6.Text = T.Tables(0).Rows(i).Item(1)
-                    Case 7
+                    Case 6
                         BTN_Fav7.Tag = T.Tables(0).Rows(i).Item(0)
                         BTN_Fav7.Text = T.Tables(0).Rows(i).Item(1)
-                    Case 8
+                    Case 7
                         BTN_Fav8.Tag = T.Tables(0).Rows(i).Item(0)
                         BTN_Fav8.Text = T.Tables(0).Rows(i).Item(1)
                 End Select
@@ -306,8 +306,8 @@ Public Class P_Caja
         BTN_DelFactura.PerformClick()
         TXT_BuscarProducto.Clear()
         TXT_Total.Clear()
-        TXT_BuscarCliente.Clear()
-        idCliente = 0
+        TXT_BuscarCliente.Text = "0001"
+        idCliente = 1
         StrNumFactura = ""
 
         'Se carga el último número de factura que se haya agregado, que va a ser el mas alto

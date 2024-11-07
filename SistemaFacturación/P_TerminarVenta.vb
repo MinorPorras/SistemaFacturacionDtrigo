@@ -84,7 +84,7 @@ Public Class P_TerminarVenta
 
     Private Sub guardarFactura(txtTotal As Guna.UI2.WinForms.Guna2TextBox, txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox, txtVuelto As Guna.UI2.WinForms.Guna2TextBox)
         T.Tables.Clear()
-        If MessageBox.Show("¿Desea guardar los cambios?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+        If MessageBox.Show("¿Desea terminar la venta?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             Try
                 ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
                 If EXISTEPK("factura", "ID", idFactura) = False Then ' Si no se ha guardado la categoría
@@ -194,8 +194,9 @@ Public Class P_TerminarVenta
 
         Dim printPreview As New PrintPreviewDialog()
         printPreview.Document = printDoc
-        printDoc.Print()
-
+        If PrintDialog.ShowDialog() = DialogResult.OK Then ' Si el usuario selecciona OK, procedemos a imprimir 
+            printDoc.Print()
+        End If
     End Sub
 
 

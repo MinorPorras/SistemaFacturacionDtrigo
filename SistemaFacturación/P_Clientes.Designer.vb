@@ -158,6 +158,8 @@ Partial Class P_Clientes
         Me.TXT_BuscarCliente.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarCliente.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarCliente.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_BuscarCliente.IconRight = CType(resources.GetObject("TXT_BuscarCliente.IconRight"), System.Drawing.Image)
+        Me.TXT_BuscarCliente.IconRightSize = New System.Drawing.Size(40, 40)
         Me.TXT_BuscarCliente.Location = New System.Drawing.Point(36, 189)
         Me.TXT_BuscarCliente.Name = "TXT_BuscarCliente"
         Me.TXT_BuscarCliente.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)

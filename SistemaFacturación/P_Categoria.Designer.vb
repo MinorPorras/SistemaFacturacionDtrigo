@@ -211,6 +211,8 @@ Partial Class P_Categoria
         Me.TXT_BuscarCat.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarCat.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarCat.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_BuscarCat.IconRight = CType(resources.GetObject("TXT_BuscarCat.IconRight"), System.Drawing.Image)
+        Me.TXT_BuscarCat.IconRightSize = New System.Drawing.Size(40, 40)
         Me.TXT_BuscarCat.Location = New System.Drawing.Point(12, 147)
         Me.TXT_BuscarCat.Name = "TXT_BuscarCat"
         Me.TXT_BuscarCat.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)

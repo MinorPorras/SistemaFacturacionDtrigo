@@ -16,14 +16,14 @@ Public Class P_ReimprimirFact
             T.Tables.Clear()
             If TXT_BuscarFact.Text <> "" Then
                 SQL = "SELECT f.ID, f.num_factura, f.fecha_emision, c.nombre, u.usuario, fc.comentario, f.total, f.entrega_cliente, f.vuelto, f.tipo_venta, f.cobrada " &
-                    " FROM (((factura f INNER JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
-                    " INNER JOIN usuario u ON u.ID = f.ID_USUARIO) " &
-                    " INNER JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura LIKE '%" & TXT_BuscarFact.Text & "%' ORDER BY f.ID ASC;"
+                    " FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
+                    " LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
+                    " LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura LIKE '%" & TXT_BuscarFact.Text & "%' ORDER BY f.ID ASC;"
             Else
                 SQL = "SELECT f.ID, f.num_factura, f.fecha_emision, c.nombre, u.usuario, fc.comentario, f.total, f.entrega_cliente, f.vuelto, f.tipo_venta, f.cobrada " &
-                    " FROM (((factura f INNER JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
-                    " INNER JOIN usuario u ON u.ID = f.ID_USUARIO) " &
-                    " INNER JOIN factura_comentario fc ON fc.ID_Factura = f.ID) ORDER BY f.ID ASC;"
+                    " FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
+                    " LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
+                    " LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) ORDER BY f.ID ASC;"
 
             End If
             Cargar_Tabla(T, SQL)

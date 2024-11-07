@@ -309,11 +309,11 @@ Partial Class M_Inicio
         Me.BTN_Config.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Config.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_Config.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTN_Config.FillColor = System.Drawing.Color.Gray
+        Me.BTN_Config.FillColor = System.Drawing.Color.Transparent
         Me.BTN_Config.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTN_Config.ForeColor = System.Drawing.Color.White
         Me.BTN_Config.Image = CType(resources.GetObject("BTN_Config.Image"), System.Drawing.Image)
-        Me.BTN_Config.ImageSize = New System.Drawing.Size(70, 70)
+        Me.BTN_Config.ImageSize = New System.Drawing.Size(75, 75)
         Me.BTN_Config.Location = New System.Drawing.Point(1022, 84)
         Me.BTN_Config.Name = "BTN_Config"
         Me.BTN_Config.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle

@@ -129,13 +129,13 @@
             P_ReimprimirFact.finFactura = "-------------------------------------------" & vbCrLf &
                       "Total de la venta: ₡ " & total & vbCrLf &
                       vbCrLf &
-                      "Efectivo cliente: ₡ " & eCliente & vbCrLf &
+                      "Pago del cliente: ₡ " & eCliente & vbCrLf &
                       vbCrLf &
-                      "Vueto: ₡ " & vuelto & vbCrLf &
+                      "Vuelto: ₡ " & vuelto & vbCrLf &
                       vbCrLf &
                       "Tipo de pago: " & strVenta & vbCrLf &
                       vbCrLf &
-                      "Comentario: " & comentario & vbCrLf & " " &
+                      "Comentario: " & comentario & vbCrLf & " " & vbCrLf &
                       "-------------------------------------------" & vbCrLf
         End If
 

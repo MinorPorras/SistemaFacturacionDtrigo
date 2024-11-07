@@ -124,7 +124,7 @@
   <data name="BTN_GuardarNSucursal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAASvlJREFUeF7t3QeULUd19XGTjEAkkaNEztkmgxE5GxBZGJsgkTE5C7DAgEgmiGQE
+        vwAADr8BOAVTJAAASvlJREFUeF7t3QeULUd19XGTjEAkkaNEztkmgxE5GxBZGJsgkTE5C7DAgEgmiGQE
         iGQQOeeMSTbY5IzJQogkQKQPbP7fOqiePdrMmz5V3be7b9/9W+stLb03s6u6a+ae232rq/7sz8zMzMzM
         zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM
         zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM
@@ -450,7 +450,7 @@
   <data name="BTN_RegresarNSuc.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAGwhJREFUeF7t3Xvcd/lc7/H+HAajySGZUlMTNU41u8YmhCjSASGFdBQlJTo4ZUfq
+        vwAADr8BOAVTJAAAGwhJREFUeF7t3Xvcd/lc7/H+HAajySGZUlMTNU41u8YmhCjSASGFdBQlJTo4ZUfq
         UVFp73SihByik1Q7k9TD1lRTqWRCGmdyyHn8+dqPxarGxxzu+577uq7f4fl8POafe67rt9Z3/b7f7/ta
         a30Pn/RJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -767,7 +767,7 @@
   <data name="Guna2PictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAARrlJREFUeF7tnQeYFeXZv6UX6X3pvS4gTZr0JiIdEVvsGgxRNJZgjdEQEREhigXF
+        vwAADr8BOAVTJAAARrlJREFUeF7tnQeYFeXZv6UX6X3pvS4gTZr0JiIdEVvsGgxRNJZgjdEQEREhigXF
         AgqoiGJDY0ODXbF3Y3r5xxTT/b58ef7Xb2bfZXZmTtnZdnb3vq/rvr4vcs6cs2fPzm/mfZ/3eQ84AAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

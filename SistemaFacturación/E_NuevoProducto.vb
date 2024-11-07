@@ -346,7 +346,7 @@ Public Class E_NuevoProducto
             End If
             T.Tables.Clear()
             Cargar_Tabla(T, SQL)
-            If T.Tables(0).Rows(0).Item(0) >= 10 Then
+            If T.Tables(0).Rows(0).Item(0) >= 8 Then
                 MsgBox("Solo puede tener un máximo de 10 productos en favorito" + vbCrLf + "Elimine el favorito de otro producto para agregar este", vbCritical + vbOKOnly, "Limite de favoritos alcanzado")
                 CKB_Fav.Checked = False
             End If

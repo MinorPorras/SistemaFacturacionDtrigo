@@ -861,7 +861,7 @@ Partial Class P_TerminarVenta
         Me.BTN_TVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTN_TVenta.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_TVenta.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
-        Me.BTN_TVenta.ForeColor = System.Drawing.Color.Black
+        Me.BTN_TVenta.ForeColor = System.Drawing.Color.White
         Me.BTN_TVenta.Location = New System.Drawing.Point(510, 501)
         Me.BTN_TVenta.Name = "BTN_TVenta"
         Me.BTN_TVenta.Size = New System.Drawing.Size(337, 53)
@@ -879,7 +879,7 @@ Partial Class P_TerminarVenta
         Me.BTN_RegresarVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTN_RegresarVenta.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarVenta.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
-        Me.BTN_RegresarVenta.ForeColor = System.Drawing.Color.Black
+        Me.BTN_RegresarVenta.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarVenta.Location = New System.Drawing.Point(58, 501)
         Me.BTN_RegresarVenta.Name = "BTN_RegresarVenta"
         Me.BTN_RegresarVenta.Size = New System.Drawing.Size(337, 53)

@@ -198,6 +198,8 @@ Partial Class P_ReimprimirFact
         Me.TXT_BuscarFact.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarFact.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarFact.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_BuscarFact.IconRight = CType(resources.GetObject("TXT_BuscarFact.IconRight"), System.Drawing.Image)
+        Me.TXT_BuscarFact.IconRightSize = New System.Drawing.Size(40, 40)
         Me.TXT_BuscarFact.Location = New System.Drawing.Point(41, 199)
         Me.TXT_BuscarFact.Name = "TXT_BuscarFact"
         Me.TXT_BuscarFact.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)

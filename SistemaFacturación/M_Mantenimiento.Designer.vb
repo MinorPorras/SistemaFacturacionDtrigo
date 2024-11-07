@@ -128,7 +128,7 @@ Partial Class M_Mantenimiento
         Me.BTN_Proveedor.ForeColor = System.Drawing.Color.White
         Me.BTN_Proveedor.Image = CType(resources.GetObject("BTN_Proveedor.Image"), System.Drawing.Image)
         Me.BTN_Proveedor.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.BTN_Proveedor.ImageSize = New System.Drawing.Size(60, 60)
+        Me.BTN_Proveedor.ImageSize = New System.Drawing.Size(70, 70)
         Me.BTN_Proveedor.Location = New System.Drawing.Point(428, 301)
         Me.BTN_Proveedor.Name = "BTN_Proveedor"
         Me.BTN_Proveedor.Size = New System.Drawing.Size(359, 84)
@@ -188,7 +188,7 @@ Partial Class M_Mantenimiento
         Me.BTN_Impuesto.ForeColor = System.Drawing.Color.White
         Me.BTN_Impuesto.Image = CType(resources.GetObject("BTN_Impuesto.Image"), System.Drawing.Image)
         Me.BTN_Impuesto.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.BTN_Impuesto.ImageSize = New System.Drawing.Size(60, 60)
+        Me.BTN_Impuesto.ImageSize = New System.Drawing.Size(70, 70)
         Me.BTN_Impuesto.Location = New System.Drawing.Point(37, 391)
         Me.BTN_Impuesto.Name = "BTN_Impuesto"
         Me.BTN_Impuesto.Size = New System.Drawing.Size(359, 84)

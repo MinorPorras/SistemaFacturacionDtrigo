@@ -35,6 +35,7 @@ Partial Class B_Impuesto
         Me.ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.codigo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.descripcion = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.porcentaje = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BTN_RegresarImpuesto = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_SelectImpuesto = New Guna.UI2.WinForms.Guna2Button()
         Me.TXT_BuscarImp = New Guna.UI2.WinForms.Guna2TextBox()
@@ -43,7 +44,6 @@ Partial Class B_Impuesto
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TXT_porcentaje = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.porcentaje = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -192,6 +192,11 @@ Partial Class B_Impuesto
         Me.descripcion.Text = "Descripción"
         Me.descripcion.Width = 178
         '
+        'porcentaje
+        '
+        Me.porcentaje.Text = "Porcentaje"
+        Me.porcentaje.Width = 64
+        '
         'BTN_RegresarImpuesto
         '
         Me.BTN_RegresarImpuesto.BorderColor = System.Drawing.Color.Red
@@ -204,6 +209,8 @@ Partial Class B_Impuesto
         Me.BTN_RegresarImpuesto.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarImpuesto.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarImpuesto.ForeColor = System.Drawing.Color.White
+        Me.BTN_RegresarImpuesto.Image = CType(resources.GetObject("BTN_RegresarImpuesto.Image"), System.Drawing.Image)
+        Me.BTN_RegresarImpuesto.ImageSize = New System.Drawing.Size(40, 40)
         Me.BTN_RegresarImpuesto.Location = New System.Drawing.Point(40, 484)
         Me.BTN_RegresarImpuesto.Name = "BTN_RegresarImpuesto"
         Me.BTN_RegresarImpuesto.Size = New System.Drawing.Size(273, 57)
@@ -221,6 +228,8 @@ Partial Class B_Impuesto
         Me.BTN_SelectImpuesto.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_SelectImpuesto.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_SelectImpuesto.ForeColor = System.Drawing.Color.White
+        Me.BTN_SelectImpuesto.Image = CType(resources.GetObject("BTN_SelectImpuesto.Image"), System.Drawing.Image)
+        Me.BTN_SelectImpuesto.ImageSize = New System.Drawing.Size(40, 40)
         Me.BTN_SelectImpuesto.Location = New System.Drawing.Point(380, 484)
         Me.BTN_SelectImpuesto.Name = "BTN_SelectImpuesto"
         Me.BTN_SelectImpuesto.Size = New System.Drawing.Size(263, 57)
@@ -240,6 +249,8 @@ Partial Class B_Impuesto
         Me.TXT_BuscarImp.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarImp.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarImp.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_BuscarImp.IconRight = CType(resources.GetObject("TXT_BuscarImp.IconRight"), System.Drawing.Image)
+        Me.TXT_BuscarImp.IconRightSize = New System.Drawing.Size(35, 35)
         Me.TXT_BuscarImp.Location = New System.Drawing.Point(31, 159)
         Me.TXT_BuscarImp.Name = "TXT_BuscarImp"
         Me.TXT_BuscarImp.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -309,11 +320,6 @@ Partial Class B_Impuesto
         Me.Label4.Size = New System.Drawing.Size(46, 41)
         Me.Label4.TabIndex = 77
         Me.Label4.Text = "%"
-        '
-        'porcentaje
-        '
-        Me.porcentaje.Text = "Porcentaje"
-        Me.porcentaje.Width = 64
         '
         'B_Impuesto
         '
