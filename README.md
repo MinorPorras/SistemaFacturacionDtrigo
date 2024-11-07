@@ -7,3 +7,9 @@ Versión 1.0.0.4
 - Se colocó un identificador de la versión de la aplicación en el menu de inicio
 - Se modificaron los nombres de algunos controles que anteriormente aparecían con nombres incorrectos
 - Se agregaron los nombre y titulos de cada una de las pestañas
+
+Versión 1.0.0.5
+
+- Se modifican los iconos de varios de los botones para que esten mejor alineados
+- Correción de errores en la impresión de las facturas
+- Bugfix general
