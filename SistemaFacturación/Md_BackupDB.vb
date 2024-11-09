@@ -2,6 +2,7 @@
 Imports System.IO
 Imports Microsoft.Office.Interop.Access
 Imports System.Configuration
+Imports System.Threading
 
 Module Md_BackupDB
     Dim DBActual As String
@@ -25,6 +26,7 @@ Module Md_BackupDB
             Try
                 accessApp.NewCurrentDatabase(respaldo)
                 Console.WriteLine("Nuevo archivo creado exitosamente: " & respaldo)
+                Thread.Sleep(500) ' Pausa de 500 milisegundos
             Catch ex As Exception
                 Console.WriteLine("Error al crear el nuevo archivo: " & ex.Message)
                 MsgBox("Error al generar el archivo de respaldo" + vbCrLf + ex.Message, vbOKOnly + vbCritical, "Error de generación")
@@ -32,9 +34,10 @@ Module Md_BackupDB
                 ' Close the application
                 accessApp.Quit()
                 accessApp = Nothing
+                Thread.Sleep(500) ' Pausa de 500 milisegundos
             End Try
         End If
-
+        DESCONECTAR()
         ' Copy the original database to the new file
         Try
             Dim strsplit As String() = ObtenerConnectionString("DbConnectionString").Split("=")
@@ -44,6 +47,7 @@ Module Md_BackupDB
             MsgBox("Archivo de respaldo de la base de datos generado correctamente en la ruta: " & vbCrLf & vbCrLf & respaldo, vbOK, "Respaldo generado")
         Catch ex As Exception
             Console.WriteLine("Error al crear la copia de seguridad: " & ex.Message)
+            MsgBox("Error al crear la copia de seguridad: " & ex.Message, vbOK, "Respaldo generado")
         End Try
     End Sub
 #End Region
