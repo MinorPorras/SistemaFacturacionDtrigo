@@ -37,7 +37,8 @@ Module Md_BackupDB
 
         ' Copy the original database to the new file
         Try
-            DBActual = ObtenerConnectionString("DbConnectionString")
+            Dim strsplit As String() = ObtenerConnectionString("DbConnectionString").Split("=")
+            DBActual = strsplit(2)
             File.Copy(DBActual, respaldo, True)
             Console.WriteLine("Copia de seguridad creada exitosamente: " & respaldo)
             MsgBox("Archivo de respaldo de la base de datos generado correctamente en la ruta: " & vbCrLf & vbCrLf & respaldo, vbOK, "Respaldo generado")
@@ -51,7 +52,8 @@ Module Md_BackupDB
     Friend Sub importarDB(respaldo As String)
         ' Copy the original database to the new file
         Try
-            DBActual = ObtenerConnectionString("DbConnectionString")
+            Dim strsplit As String() = ObtenerConnectionString("DbConnectionString").Split("=")
+            DBActual = strsplit(2)
             File.Copy(respaldo, DBActual, True)
             Console.WriteLine("Importación de la base de datos realizada correctamente: " & respaldo)
         Catch ex As Exception

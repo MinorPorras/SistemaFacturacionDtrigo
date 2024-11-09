@@ -194,13 +194,14 @@ Partial Class ConfigGeneral
         'OFD_ModBackUpDIr
         '
         Me.OFD_ModBackUpDIr.CheckFileExists = False
-        Me.OFD_ModBackUpDIr.FileName = "Selleciona la carpeta en la que se guardaran los respaldos"
+        Me.OFD_ModBackUpDIr.Title = "Seleciona la carpeta en la que se guardaran los respaldos"
         Me.OFD_ModBackUpDIr.ValidateNames = False
         '
         'OFD_ModDirDB
         '
         Me.OFD_ModDirDB.CheckFileExists = False
         Me.OFD_ModDirDB.Filter = "Archivos de Access (*.accdb)|*.accdb"
+        Me.OFD_ModDirDB.Title = "Seleccione un archivo de access"
         Me.OFD_ModDirDB.ValidateNames = False
         '
         'ConfigGeneral

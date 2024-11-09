@@ -2,6 +2,7 @@
 Public Class ConfigGeneral
     Private Sub BTN_RegresarConfig_Click(sender As Object, e As EventArgs) Handles BTN_RegresarConfig.Click
         M_Inicio.Show()
+        M_Inicio.REFRESCAR()
         Me.Close()
     End Sub
 
@@ -26,7 +27,18 @@ Public Class ConfigGeneral
                             Dim NuevaDB As String = OFD_ImportarDB.FileName
                             Md_BackupDB.importarDB(NuevaDB)
                             MsgBox("Se importó la base de datos correctamente", vbOKCancel + vbQuestion, "Importación completada")
-                        End If
+                            T.Tables.Clear()
+                            SQL = "SELECT nombre, telefono, email, logo FROM sucursal"
+                            Cargar_Tabla(T, SQL)
+                            If Not IsDBNull(T.Tables(0).Rows(0).Item(0)) Then
+                                If T.Tables(0).Rows.Count > 0 Then
+                                    ActConfig("Empresa", T.Tables(0).Rows(0).Item(0).ToString())
+                                    ActConfig("Telefono", T.Tables(0).Rows(0).Item(1).ToString())
+                                    ActConfig("Correo", T.Tables(0).Rows(0).Item(2).ToString())
+                                    ActConfig("Logo", T.Tables(0).Rows(0).Item(3).ToString())
+                                End If
+                            End If
+                            End If
                     End If
                 End If
             End If
@@ -35,19 +47,25 @@ Public Class ConfigGeneral
 
     Private Sub BTN_ModBackupDir_Click(sender As Object, e As EventArgs) Handles BTN_ModBackupDir.Click
         If OFD_ModBackUpDIr.ShowDialog() = DialogResult.OK Then
-            Dim folderPath As String = IO.Path.GetDirectoryName(OFD_ModBackUpDIr.FileName)
+            Dim folderPath As String = IO.Path.GetDirectoryName(OFD_ModBackUpDIr.FileName) + "\"
             Md_Inicializacion.SetAppSetting("DirectorioRespaldo", folderPath)
             MessageBox.Show("Carpeta seleccionada: " & folderPath)
         End If
     End Sub
 
     Private Sub BTN_ModDirectorioDB_Click(sender As Object, e As EventArgs) Handles BTN_ModConnDB.Click
-        OFD_ModDirDB.Title = "Seleccione un archivo de Access"
-        OFD_ModDirDB.FileName = String.Empty ' Asegurarse de que FileName esté vacío inicialmente
-        If OFD_ModDirDB.ShowDialog() = DialogResult.OK Then
-            Dim folderPath As String = IO.Path.GetFullPath(OFD_ModDirDB.FileName)
-            Md_Inicializacion.SetConnectionString("DbConnectionString", "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & folderPath)
-            MessageBox.Show("Conexión actualizada: " & folderPath)
+        If MsgBox("¿Esta seguro de querer importar la base de datos? Se cambiará la información de la bd y no se podrá recuperar si hay un error", vbOKCancel + vbQuestion, "Confirmación") = MsgBoxResult.Ok Then
+            If MsgBox("Asegurate de hacer un respaldo antes de realizar esta acción", vbOKCancel + vbQuestion, "Confirmación") = MsgBoxResult.Ok Then
+                If MsgBox("Ultima comprobación, si presionas OK la base de datos será actualizada a la que se seleccione", vbOKCancel + vbQuestion, "Confirmación") = MsgBoxResult.Ok Then
+                    OFD_ModDirDB.Title = "Seleccione un archivo de Access"
+                    OFD_ModDirDB.FileName = String.Empty ' Asegurarse de que FileName esté vacío inicialmente
+                    If OFD_ModDirDB.ShowDialog() = DialogResult.OK Then
+                        Dim folderPath As String = IO.Path.GetFullPath(OFD_ModDirDB.FileName)
+                        Md_Inicializacion.SetConnectionString("DbConnectionString", "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & folderPath)
+                        MessageBox.Show("Conexión actualizada: " & folderPath)
+                    End If
+                End If
+            End If
         End If
     End Sub
 End Class
