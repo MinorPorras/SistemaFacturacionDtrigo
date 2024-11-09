@@ -21,3 +21,6 @@ Versión 1.0.0.6
 - Se agregó un botón para modficar la conexión con la base de datos a otra distinta(Importante que tenga la misma estructura o sino dará errores)
 - Se eliminaron procesos de Md_inicialización que no se utilizaron
 - Se agregó un par de líneas en el Md_Backup para obtener la conection string que está almacenado en el app config
+
+Versión 1.0.0.7
+- Se modificó de nuevo el proceso de creación de respaldos y los procesos de la pestaña de configuración general
