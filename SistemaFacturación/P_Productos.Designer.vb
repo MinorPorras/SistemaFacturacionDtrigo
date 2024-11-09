@@ -49,7 +49,6 @@ Partial Class P_Productos
         Me.MNU_ELIMINAR = New System.Windows.Forms.ToolStripMenuItem()
         Me.BTN_RegresarProd = New Guna.UI2.WinForms.Guna2Button()
         Me.TXT_BuscarProd = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.CerrarApp = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
@@ -63,7 +62,6 @@ Partial Class P_Productos
         Me.TXT_BuscarCat = New Guna.UI2.WinForms.Guna2TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.MNU_CONTX.SuspendLayout()
-        CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BTN_NProd
@@ -79,7 +77,7 @@ Partial Class P_Productos
         Me.BTN_NProd.ForeColor = System.Drawing.Color.White
         Me.BTN_NProd.Image = CType(resources.GetObject("BTN_NProd.Image"), System.Drawing.Image)
         Me.BTN_NProd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NProd.Location = New System.Drawing.Point(776, 769)
+        Me.BTN_NProd.Location = New System.Drawing.Point(771, 584)
         Me.BTN_NProd.Name = "BTN_NProd"
         Me.BTN_NProd.Size = New System.Drawing.Size(464, 57)
         Me.BTN_NProd.TabIndex = 51
@@ -90,7 +88,7 @@ Partial Class P_Productos
         Me.GroupBox1.Controls.Add(Me.RDB_BuscarNombre)
         Me.GroupBox1.Controls.Add(Me.RDB_BuscarCodigo)
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.Control
-        Me.GroupBox1.Location = New System.Drawing.Point(1108, 196)
+        Me.GroupBox1.Location = New System.Drawing.Point(1037, 11)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(122, 63)
         Me.GroupBox1.TabIndex = 50
@@ -143,7 +141,7 @@ Partial Class P_Productos
         Me.LSV_Prod.FullRowSelect = True
         Me.LSV_Prod.GridLines = True
         Me.LSV_Prod.HideSelection = False
-        Me.LSV_Prod.Location = New System.Drawing.Point(12, 360)
+        Me.LSV_Prod.Location = New System.Drawing.Point(7, 175)
         Me.LSV_Prod.MultiSelect = False
         Me.LSV_Prod.Name = "LSV_Prod"
         Me.LSV_Prod.Size = New System.Drawing.Size(1256, 387)
@@ -265,7 +263,7 @@ Partial Class P_Productos
         Me.BTN_RegresarProd.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarProd.Image = CType(resources.GetObject("BTN_RegresarProd.Image"), System.Drawing.Image)
         Me.BTN_RegresarProd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarProd.Location = New System.Drawing.Point(47, 769)
+        Me.BTN_RegresarProd.Location = New System.Drawing.Point(42, 584)
         Me.BTN_RegresarProd.Name = "BTN_RegresarProd"
         Me.BTN_RegresarProd.Size = New System.Drawing.Size(458, 57)
         Me.BTN_RegresarProd.TabIndex = 48
@@ -286,24 +284,13 @@ Partial Class P_Productos
         Me.TXT_BuscarProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarProd.IconRight = CType(resources.GetObject("TXT_BuscarProd.IconRight"), System.Drawing.Image)
         Me.TXT_BuscarProd.IconRightSize = New System.Drawing.Size(40, 40)
-        Me.TXT_BuscarProd.Location = New System.Drawing.Point(47, 206)
+        Me.TXT_BuscarProd.Location = New System.Drawing.Point(42, 21)
         Me.TXT_BuscarProd.Name = "TXT_BuscarProd"
         Me.TXT_BuscarProd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarProd.PlaceholderText = "Buscar producto"
         Me.TXT_BuscarProd.SelectedText = ""
-        Me.TXT_BuscarProd.Size = New System.Drawing.Size(1055, 42)
+        Me.TXT_BuscarProd.Size = New System.Drawing.Size(989, 42)
         Me.TXT_BuscarProd.TabIndex = 47
-        '
-        'Guna2PictureBox1
-        '
-        Me.Guna2PictureBox1.Image = CType(resources.GetObject("Guna2PictureBox1.Image"), System.Drawing.Image)
-        Me.Guna2PictureBox1.ImageRotate = 0!
-        Me.Guna2PictureBox1.Location = New System.Drawing.Point(373, -125)
-        Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.Size = New System.Drawing.Size(539, 442)
-        Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Guna2PictureBox1.TabIndex = 46
-        Me.Guna2PictureBox1.TabStop = False
         '
         'CerrarApp
         '
@@ -316,7 +303,7 @@ Partial Class P_Productos
         Me.CerrarApp.ForeColor = System.Drawing.Color.White
         Me.CerrarApp.Image = CType(resources.GetObject("CerrarApp.Image"), System.Drawing.Image)
         Me.CerrarApp.ImageSize = New System.Drawing.Size(90, 90)
-        Me.CerrarApp.Location = New System.Drawing.Point(1202, 12)
+        Me.CerrarApp.Location = New System.Drawing.Point(1197, 11)
         Me.CerrarApp.Name = "CerrarApp"
         Me.CerrarApp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
         Me.CerrarApp.Size = New System.Drawing.Size(66, 66)
@@ -334,7 +321,7 @@ Partial Class P_Productos
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(43, 273)
+        Me.Label1.Location = New System.Drawing.Point(38, 88)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(72, 23)
         Me.Label1.TabIndex = 57
@@ -345,7 +332,7 @@ Partial Class P_Productos
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(430, 273)
+        Me.Label2.Location = New System.Drawing.Point(425, 88)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(109, 23)
         Me.Label2.TabIndex = 59
@@ -356,7 +343,7 @@ Partial Class P_Productos
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(859, 273)
+        Me.Label3.Location = New System.Drawing.Point(854, 88)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(105, 23)
         Me.Label3.TabIndex = 61
@@ -370,7 +357,7 @@ Partial Class P_Productos
         Me.CKB_Marca.CheckedState.BorderThickness = 0
         Me.CKB_Marca.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CKB_Marca.ForeColor = System.Drawing.Color.White
-        Me.CKB_Marca.Location = New System.Drawing.Point(134, 313)
+        Me.CKB_Marca.Location = New System.Drawing.Point(129, 128)
         Me.CKB_Marca.Name = "CKB_Marca"
         Me.CKB_Marca.Size = New System.Drawing.Size(159, 17)
         Me.CKB_Marca.TabIndex = 62
@@ -388,7 +375,7 @@ Partial Class P_Productos
         Me.CKB_Proveedor.CheckedState.BorderThickness = 0
         Me.CKB_Proveedor.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CKB_Proveedor.ForeColor = System.Drawing.Color.White
-        Me.CKB_Proveedor.Location = New System.Drawing.Point(556, 313)
+        Me.CKB_Proveedor.Location = New System.Drawing.Point(551, 128)
         Me.CKB_Proveedor.Name = "CKB_Proveedor"
         Me.CKB_Proveedor.Size = New System.Drawing.Size(178, 17)
         Me.CKB_Proveedor.TabIndex = 63
@@ -406,7 +393,7 @@ Partial Class P_Productos
         Me.CKB_Categoria.CheckedState.BorderThickness = 0
         Me.CKB_Categoria.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.CKB_Categoria.ForeColor = System.Drawing.Color.White
-        Me.CKB_Categoria.Location = New System.Drawing.Point(988, 313)
+        Me.CKB_Categoria.Location = New System.Drawing.Point(983, 128)
         Me.CKB_Categoria.Name = "CKB_Categoria"
         Me.CKB_Categoria.Size = New System.Drawing.Size(176, 17)
         Me.CKB_Categoria.TabIndex = 64
@@ -429,7 +416,7 @@ Partial Class P_Productos
         Me.TXT_BuscarMarca.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarMarca.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_BuscarMarca.Location = New System.Drawing.Point(121, 265)
+        Me.TXT_BuscarMarca.Location = New System.Drawing.Point(116, 80)
         Me.TXT_BuscarMarca.Name = "TXT_BuscarMarca"
         Me.TXT_BuscarMarca.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarMarca.PlaceholderText = "Buscar marca"
@@ -450,7 +437,7 @@ Partial Class P_Productos
         Me.TXT_BuscarProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_BuscarProv.Location = New System.Drawing.Point(545, 265)
+        Me.TXT_BuscarProv.Location = New System.Drawing.Point(540, 80)
         Me.TXT_BuscarProv.Name = "TXT_BuscarProv"
         Me.TXT_BuscarProv.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarProv.PlaceholderText = "Buscar proveedor"
@@ -471,7 +458,7 @@ Partial Class P_Productos
         Me.TXT_BuscarCat.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarCat.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarCat.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_BuscarCat.Location = New System.Drawing.Point(970, 265)
+        Me.TXT_BuscarCat.Location = New System.Drawing.Point(965, 80)
         Me.TXT_BuscarCat.Name = "TXT_BuscarCat"
         Me.TXT_BuscarCat.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarCat.PlaceholderText = "Buscar categoría"
@@ -486,7 +473,7 @@ Partial Class P_Productos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProd
-        Me.ClientSize = New System.Drawing.Size(1280, 840)
+        Me.ClientSize = New System.Drawing.Size(1280, 665)
         Me.Controls.Add(Me.TXT_BuscarCat)
         Me.Controls.Add(Me.TXT_BuscarProv)
         Me.Controls.Add(Me.TXT_BuscarMarca)
@@ -501,7 +488,6 @@ Partial Class P_Productos
         Me.Controls.Add(Me.LSV_Prod)
         Me.Controls.Add(Me.BTN_RegresarProd)
         Me.Controls.Add(Me.TXT_BuscarProd)
-        Me.Controls.Add(Me.Guna2PictureBox1)
         Me.Controls.Add(Me.CerrarApp)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -512,7 +498,6 @@ Partial Class P_Productos
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.MNU_CONTX.ResumeLayout(False)
-        CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -530,7 +515,6 @@ Partial Class P_Productos
     Friend WithEvents precio_base As ColumnHeader
     Friend WithEvents BTN_RegresarProd As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarProd As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents CerrarApp As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
     Friend WithEvents MNU_CONTX As Guna.UI2.WinForms.Guna2ContextMenuStrip

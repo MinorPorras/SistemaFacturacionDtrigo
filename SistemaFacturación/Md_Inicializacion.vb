@@ -43,4 +43,17 @@ Module Md_Inicializacion
         ConfigurationManager.RefreshSection("connectionStrings")
     End Sub
 
+    Function ObtenerConnectionString(name As String) As String
+        ' Acceder a la conexión desde el archivo de configuración
+        Dim settings As ConnectionStringSettings = ConfigurationManager.ConnectionStrings(name)
+
+        ' Comprobar si existe la configuración
+        If settings IsNot Nothing Then
+            Return settings.ConnectionString
+        Else
+            Return String.Empty ' O devolver un mensaje de error o valor por defecto
+        End If
+    End Function
+
+
 End Module
