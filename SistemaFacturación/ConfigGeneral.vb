@@ -46,8 +46,8 @@ Public Class ConfigGeneral
     End Sub
 
     Private Sub BTN_ModBackupDir_Click(sender As Object, e As EventArgs) Handles BTN_ModBackupDir.Click
-        If OFD_ModBackUpDIr.ShowDialog() = DialogResult.OK Then
-            Dim folderPath As String = IO.Path.GetDirectoryName(OFD_ModBackUpDIr.FileName) + "\"
+        If OFD_ModBackUpDir.ShowDialog() = DialogResult.OK Then
+            Dim folderPath As String = OFD_ModBackUpDir.SelectedPath + "\"
             Md_Inicializacion.SetAppSetting("DirectorioRespaldo", folderPath)
             MessageBox.Show("Carpeta seleccionada: " & folderPath)
         End If

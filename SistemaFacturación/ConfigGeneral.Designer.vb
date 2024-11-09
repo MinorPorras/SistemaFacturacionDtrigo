@@ -34,8 +34,8 @@ Partial Class ConfigGeneral
         Me.BTN_ModBackupDir = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_RegresarConfig = New Guna.UI2.WinForms.Guna2Button()
         Me.OFD_ImportarDB = New System.Windows.Forms.OpenFileDialog()
-        Me.OFD_ModBackUpDIr = New System.Windows.Forms.OpenFileDialog()
         Me.OFD_ModDirDB = New System.Windows.Forms.OpenFileDialog()
+        Me.OFD_ModBackUpDir = New System.Windows.Forms.FolderBrowserDialog()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -191,12 +191,6 @@ Partial Class ConfigGeneral
         '
         Me.OFD_ImportarDB.FileName = "OpenFileDialog1"
         '
-        'OFD_ModBackUpDIr
-        '
-        Me.OFD_ModBackUpDIr.CheckFileExists = False
-        Me.OFD_ModBackUpDIr.Title = "Seleciona la carpeta en la que se guardaran los respaldos"
-        Me.OFD_ModBackUpDIr.ValidateNames = False
-        '
         'OFD_ModDirDB
         '
         Me.OFD_ModDirDB.CheckFileExists = False
@@ -235,7 +229,7 @@ Partial Class ConfigGeneral
     Friend WithEvents BTN_RegresarConfig As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents OFD_ImportarDB As OpenFileDialog
     Friend WithEvents BTN_ModBackupDir As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents OFD_ModBackUpDIr As OpenFileDialog
     Friend WithEvents BTN_ModConnDB As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents OFD_ModDirDB As OpenFileDialog
+    Friend WithEvents OFD_ModBackUpDir As FolderBrowserDialog
 End Class
