@@ -13,3 +13,11 @@ Versión 1.0.0.5
 - Se modifican los iconos de varios de los botones para que esten mejor alineados
 - Correción de errores en la impresión de las facturas
 - Bugfix general
+
+Versión 1.0.0.6
+
+- Arreglos al apartado de la creación de respaldos
+- Se agregaron botones para modificar el directorio donde se guardan los respaldos
+- Se agregó un botón para modficar la conexión con la base de datos a otra distinta(Importante que tenga la misma estructura o sino dará errores)
+- Se eliminaron procesos de Md_inicialización que no se utilizaron
+- Se agregó un par de líneas en el Md_Backup para obtener la conection string que está almacenado en el app config
