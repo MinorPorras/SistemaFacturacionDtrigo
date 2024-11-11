@@ -7,6 +7,7 @@
     Friend LRebPed As New List(Of String)()
 
     Private Sub E_NuevaCat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TXT_CodigoProv.Focus()
         If ModProv = False Then
             idProv = OBTENERPK("proveedor", "ID")
         End If
@@ -15,7 +16,7 @@
 
     Private Sub VALIDAR()
         ' Si el texto no está vacío en el textbox habilita el botón de guardar/agregar
-        If TXT_CodProv.Text <> "" And TXT_NombreProv.Text <> "" Then
+        If TXT_CodigoProv.Text <> "" And TXT_NombreProv.Text <> "" Then
             BTN_NProv.Enabled = True
             BTN_Pedidos.Enabled = True
         Else
@@ -33,12 +34,12 @@
         Try
             T.Tables.Clear()
             If ModProv = False Then
-                SQL = "SELECT codigo FROM proveedor WHERE codigo = '" + TXT_CodProv.Text + "'"
+                SQL = "SELECT codigo FROM proveedor WHERE codigo = '" + TXT_CodigoProv.Text + "'"
             Else
-                If TXT_CodProv.Text = CodigoPreMod Then
+                If TXT_CodigoProv.Text = CodigoPreMod Then
                     SQL = "SELECT ID FROM proveedor WHERE ID = 0"
                 Else
-                    SQL = "SELECT codigo FROM proveedor WHERE codigo = '" + TXT_CodProv.Text + "'"
+                    SQL = "SELECT codigo FROM proveedor WHERE codigo = '" + TXT_CodigoProv.Text + "'"
                 End If
             End If
             Cargar_Tabla(T, SQL)
@@ -54,7 +55,7 @@
                             End If
                         End If
                         ' Actualizar los campos en la base de datos
-                        GUARDAR_STR("proveedor", "codigo", TXT_CodProv.Text, "ID", idProv)
+                        GUARDAR_STR("proveedor", "codigo", TXT_CodigoProv.Text, "ID", idProv)
                         GUARDAR_STR("proveedor", "nombre", TXT_NombreProv.Text, "ID", idProv)
 
                         If Not String.IsNullOrEmpty(TXT_CorreoProv.Text) Then
@@ -66,6 +67,9 @@
                             Else
                                 GUARDAR_STR("proveedor_correo", "correo", TXT_CorreoProv.Text, "ID_Proveedor", idProv)
                             End If
+                        Else
+                            SQL = "DELETE * FROM proveedor_correo WHERE ID_Proveedor = " + idProv
+                            EJECUTAR(SQL)
                         End If
 
                         If Not String.IsNullOrEmpty(TXT_TelProv.Text) Then
@@ -77,6 +81,9 @@
                             Else
                                 GUARDAR_STR("proveedor_telefono", "telefono", TXT_TelProv.Text, "ID_Proveedor", idProv)
                             End If
+                        Else
+                            SQL = "DELETE * FROM proveedor_telefono WHERE ID_Proveedor = " + idProv
+                            EJECUTAR(SQL)
                         End If
 
                         T.Tables.Clear()
@@ -112,7 +119,7 @@
                     End Try
                 End If
             Else
-                MsgBox("El código " + TXT_CodProv.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
+                MsgBox("El código " + TXT_CodigoProv.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
             End If
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
@@ -120,7 +127,7 @@
     End Sub
 
     Friend Sub LIMPIAR()
-        TXT_CodProv.Clear()
+        TXT_CodigoProv.Clear()
         TXT_NombreProv.Clear()
         TXT_CorreoProv.Clear()
         TXT_TelProv.Clear()

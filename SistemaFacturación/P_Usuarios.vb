@@ -148,7 +148,12 @@ Public Class P_Usuarios
             Dim blue As Integer = Convert.ToInt32(rgbValues(2))
             E_NuevoUsuario.BTN_Color.FillColor = Color.FromArgb(red, green, blue)
             E_NuevoUsuario.ColorDialog1.Color = Color.FromArgb(red, green, blue)
-            E_NuevoUsuario.ColorUsuario = Color.FromArgb(red, green, blue).ToString()
+            E_NuevoUsuario.ColorUsuario = LSV_Usuario.SelectedItems(0).SubItems(4).Text
+            If String.IsNullOrEmpty(LSV_Usuario.SelectedItems(0).SubItems(3).Text) Then
+                E_NuevoUsuario.CBK_NoClaveUsu.Checked = True
+            Else
+                E_NuevoUsuario.CBK_NoClaveUsu.Checked = False
+            End If
             E_NuevoUsuario.ModUsu = True
             E_NuevoUsuario.CodigoPreMod = LSV_Usuario.SelectedItems(0).SubItems(1).Text
             E_NuevoUsuario.Show()

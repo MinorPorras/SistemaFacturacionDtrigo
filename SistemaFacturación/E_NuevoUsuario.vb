@@ -83,7 +83,7 @@
                         GUARDAR_STR("usuario", "codigo", TXT_CodUsuario.Text, "ID", idUsuario)
                         GUARDAR_STR("usuario", "usuario", TXT_NombreUsuario.Text, "ID", idUsuario)
                         If CBK_NoClaveUsu.Checked = True Then
-                            GUARDAR_STR("usuario", "clave", "n", "ID", idUsuario)
+                            GUARDAR_STR("usuario", "clave", String.Empty, "ID", idUsuario)
                         Else
                             GUARDAR_STR("usuario", "clave", TXT_ClaveUsuario.Text, "ID", idUsuario)
                         End If

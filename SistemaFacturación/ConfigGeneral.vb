@@ -46,6 +46,7 @@ Public Class ConfigGeneral
     End Sub
 
     Private Sub BTN_ModBackupDir_Click(sender As Object, e As EventArgs) Handles BTN_ModBackupDir.Click
+        OFD_ModBackUpDir.SelectedPath = ConfigurationManager.AppSettings("DirectorioRespaldo")
         If OFD_ModBackUpDir.ShowDialog() = DialogResult.OK Then
             Dim folderPath As String
             If OFD_ModBackUpDir.SelectedPath = "C:\" Then
@@ -64,7 +65,9 @@ Public Class ConfigGeneral
             If MsgBox("Asegurate de hacer un respaldo antes de realizar esta acción", vbOKCancel + vbQuestion, "Confirmación") = MsgBoxResult.Ok Then
                 If MsgBox("Ultima comprobación, si presionas OK la base de datos será actualizada a la que se seleccione", vbOKCancel + vbQuestion, "Confirmación") = MsgBoxResult.Ok Then
                     OFD_ModDirDB.Title = "Seleccione un archivo de Access"
-                    OFD_ModDirDB.FileName = String.Empty ' Asegurarse de que FileName esté vacío inicialmente
+                    Dim strConn As String() = ObtenerConnectionString("DbConnectionString").Split("="c)
+                    OFD_ModDirDB.FileName = strConn(2)
+                    OFD_ModDirDB.InitialDirectory = strConn(2)
                     If OFD_ModDirDB.ShowDialog() = DialogResult.OK Then
                         Dim folderPath As String = IO.Path.GetFullPath(OFD_ModDirDB.FileName)
                         Md_Inicializacion.SetConnectionString("DbConnectionString", "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & folderPath)

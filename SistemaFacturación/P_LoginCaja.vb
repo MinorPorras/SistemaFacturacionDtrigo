@@ -1,20 +1,7 @@
 ﻿Public Class P_LoginCaja
     Friend idUsu As Integer
     Private Sub TXT_Clave_TextChanged(sender As Object, e As EventArgs) Handles TXT_Clave.TextChanged
-        revisionClave()
         TXT_Clave.PasswordChar = "*"
-    End Sub
-
-    Private Sub P_LoginCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        revisionClave()
-    End Sub
-
-    Private Sub revisionClave()
-        If TXT_Clave.Text <> "" Then
-            BTN_Login.Enabled = True
-        Else
-            BTN_Login.Enabled = False
-        End If
     End Sub
 
     Private Sub BTN_Login_Click(sender As Object, e As EventArgs) Handles BTN_Login.Click

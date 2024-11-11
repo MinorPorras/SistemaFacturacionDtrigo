@@ -283,7 +283,7 @@
         Try
             If LSV_Prod.SelectedItems.Count > 0 Then
                 ' Se pregunta una confirmación para eliminar el tema
-                If MsgBox("¿Desea eliminar el producto: " & LSV_Prod.SelectedItems(0).SubItems(3).Text & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
+                If MsgBox("¿Desea eliminar el producto: " & LSV_Prod.SelectedItems(0).SubItems(2).Text & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
                     Dim idEliminar As Integer = Convert.ToInt32(LSV_Prod.SelectedItems(0).SubItems(0).Text)
                     ' Verificar si hay categorías asociadas
                     SQL = "SELECT COUNT(ID) FROM producto WHERE ID = " & idEliminar
@@ -291,16 +291,16 @@
 
                     If T.Tables(0).Rows(0).Item(0) <> 0 Then
                         'Se elimina
-                        SQL = "DELETE FROM producto_marca WHERE ID = " & idEliminar
+                        SQL = "DELETE FROM producto_marca WHERE ID_Producto = " & idEliminar
                         EJECUTAR(SQL)
 
-                        SQL = "DELETE FROM producto_categoria WHERE ID = " & idEliminar
+                        SQL = "DELETE FROM producto_categoria WHERE ID_Producto = " & idEliminar
                         EJECUTAR(SQL)
 
-                        SQL = "DELETE FROM producto_proveedor WHERE ID = " & idEliminar
+                        SQL = "DELETE FROM producto_proveedor WHERE ID_Producto = " & idEliminar
                         EJECUTAR(SQL)
 
-                        SQL = "DELETE FROM producto_desc WHERE ID = " & idEliminar
+                        SQL = "DELETE FROM producto_desc WHERE ID_Producto = " & idEliminar
                         EJECUTAR(SQL)
 
                         SQL = "DELETE FROM producto WHERE ID = " & idEliminar

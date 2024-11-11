@@ -18,27 +18,37 @@ Public Class P_TerminarVenta
 
     Private Sub TXT_ECliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_ECliente.TextChanged
         calcVuelto(TXT_ECliente, TXT_EVuelto)
+        VALIDAR(TXT_ECliente, TXT_ECliente, total, False)
     End Sub
 
     Private Sub TXT_TCliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_TCliente.TextChanged
         calcVuelto(TXT_TCliente, TXT_TVuelto)
+        VALIDAR(TXT_TCliente, TXT_TCliente, total, False)
     End Sub
     Private Sub TXT_SCliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_SCliente.TextChanged
         calcVuelto(TXT_SCliente, TXT_SVuelto)
+        VALIDAR(TXT_SCliente, TXT_SCliente, total, False)
+
     End Sub
 
     Private Sub TXT_DCliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_DCliente.TextChanged
         calcVuelto(TXT_DCliente, TXT_DVuelto)
+        VALIDAR(TXT_DCliente, TXT_DCliente, total, False)
+
     End Sub
 
     Private Sub TXT_PagoTarjeta_TextChanged(sender As Object, e As EventArgs) Handles TXT_PagoTarjeta.TextChanged
         'Se pone cualquier textbox debido a que el calculo en este caso se hace solo
         calcVuelto(TXT_DCliente, TXT_MVuelto)
+        VALIDAR(TXT_PagoTarjeta, TXT_PagoEfectivo, total, True)
+
     End Sub
 
     Private Sub TXT_PagoEfectivo_TextChanged(sender As Object, e As EventArgs) Handles TXT_PagoEfectivo.TextChanged
         'Se pone cualquier textbox debido a que el calculo en este caso se hace solo
         calcVuelto(TXT_DCliente, TXT_MVuelto)
+        VALIDAR(TXT_PagoTarjeta, TXT_PagoEfectivo, total, True)
+
     End Sub
 
     Private Sub calcVuelto(txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox, txtVuelto As Guna.UI2.WinForms.Guna2TextBox)
@@ -64,6 +74,35 @@ Public Class P_TerminarVenta
                 End If
             End If
         End If
+    End Sub
+
+    Private Sub VALIDAR(txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox, txtEntregaCliente2 As Guna.UI2.WinForms.Guna2TextBox, Total As Double, mixto As Boolean)
+        Try
+            If String.IsNullOrEmpty(txtEntregaCliente.Text) Then
+                txtEntregaCliente.Text = 0
+            End If
+            If mixto Then 'Si es mixto el pago
+
+                If String.IsNullOrEmpty(txtEntregaCliente2.Text) Then
+                    txtEntregaCliente2.Text = 0
+                End If
+
+                If Convert.ToDouble(txtEntregaCliente.Text) + Convert.ToDouble(txtEntregaCliente2.Text) >= Total Then
+                    BTN_TVenta.Enabled = True
+                Else
+                    BTN_TVenta.Enabled = False
+                End If
+            Else
+
+                If Convert.ToDouble(txtEntregaCliente.Text) >= Total Then
+                    BTN_TVenta.Enabled = True
+                Else
+                    BTN_TVenta.Enabled = False
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+        End Try
     End Sub
 
     Private Sub BTN_TVenta_Click(sender As Object, e As EventArgs) Handles BTN_TVenta.Click
@@ -296,5 +335,42 @@ Public Class P_TerminarVenta
 
     Private Sub colocarTotal(txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox)
         txtEntregaCliente.Text = total
+    End Sub
+
+    Private Function cargarRestante(efectivo As Boolean)
+        If String.IsNullOrEmpty(TXT_PagoEfectivo.Text) Then
+            TXT_PagoEfectivo.Text = 0
+        End If
+        If String.IsNullOrEmpty(TXT_PagoTarjeta.Text) Then
+            TXT_PagoTarjeta.Text = 0
+        End If
+        Dim restante As Double
+        Dim eCLiente As Double
+        Dim pEfectivo As Double = Convert.ToDouble(TXT_PagoEfectivo.Text)
+        Dim pTarjeta As Double = Convert.ToDouble(TXT_PagoTarjeta.Text)
+        If efectivo Then
+            restante = total - pTarjeta
+            If restante < 0 Then
+                restante = 0
+            End If
+            Return restante
+        Else
+            restante = total - pEfectivo
+            If restante < 0 Then
+                restante = 0
+            End If
+            Return restante
+        End If
+
+    End Function
+
+    Private Sub BTN_RestanteTarjeta_Click(sender As Object, e As EventArgs) Handles BTN_RestanteTarjeta.Click
+        TXT_PagoEfectivo.Text = cargarRestante(True)
+        calcVuelto(TXT_DCliente, TXT_MVuelto)
+    End Sub
+
+    Private Sub BTN_RestanteEfectivo_Click(sender As Object, e As EventArgs) Handles BTN_RestanteEfectivo.Click
+        TXT_PagoTarjeta.Text = cargarRestante(False)
+        calcVuelto(TXT_DCliente, TXT_MVuelto)
     End Sub
 End Class

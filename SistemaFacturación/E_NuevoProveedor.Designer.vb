@@ -29,7 +29,7 @@ Partial Class E_NuevoProveedor
         Me.TXT_NombreProv = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TXT_CodProv = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.TXT_CodigoProv = New Guna.UI2.WinForms.Guna2TextBox()
         Me.TXT_CorreoProv = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TXT_TelProv = New Guna.UI2.WinForms.Guna2TextBox()
@@ -102,27 +102,27 @@ Partial Class E_NuevoProveedor
         Me.Label1.TabIndex = 49
         Me.Label1.Text = "Codigo:"
         '
-        'TXT_CodProv
+        'TXT_CodigoProv
         '
-        Me.TXT_CodProv.AutoRoundedCorners = True
-        Me.TXT_CodProv.BorderRadius = 14
-        Me.TXT_CodProv.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXT_CodProv.DefaultText = ""
-        Me.TXT_CodProv.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXT_CodProv.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXT_CodProv.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXT_CodProv.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXT_CodProv.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_CodProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TXT_CodProv.ForeColor = System.Drawing.Color.Black
-        Me.TXT_CodProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_CodProv.Location = New System.Drawing.Point(97, 181)
-        Me.TXT_CodProv.Name = "TXT_CodProv"
-        Me.TXT_CodProv.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_CodProv.PlaceholderText = ""
-        Me.TXT_CodProv.SelectedText = ""
-        Me.TXT_CodProv.Size = New System.Drawing.Size(134, 31)
-        Me.TXT_CodProv.TabIndex = 50
+        Me.TXT_CodigoProv.AutoRoundedCorners = True
+        Me.TXT_CodigoProv.BorderRadius = 14
+        Me.TXT_CodigoProv.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXT_CodigoProv.DefaultText = ""
+        Me.TXT_CodigoProv.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXT_CodigoProv.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXT_CodigoProv.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXT_CodigoProv.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXT_CodigoProv.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_CodigoProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TXT_CodigoProv.ForeColor = System.Drawing.Color.Black
+        Me.TXT_CodigoProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_CodigoProv.Location = New System.Drawing.Point(97, 181)
+        Me.TXT_CodigoProv.Name = "TXT_CodigoProv"
+        Me.TXT_CodigoProv.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXT_CodigoProv.PlaceholderText = ""
+        Me.TXT_CodigoProv.SelectedText = ""
+        Me.TXT_CodigoProv.Size = New System.Drawing.Size(134, 31)
+        Me.TXT_CodigoProv.TabIndex = 50
         '
         'TXT_CorreoProv
         '
@@ -265,7 +265,7 @@ Partial Class E_NuevoProveedor
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.TXT_CorreoProv)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.TXT_CodProv)
+        Me.Controls.Add(Me.TXT_CodigoProv)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_NombreProv)
         Me.Controls.Add(Me.Label2)
@@ -290,7 +290,7 @@ Partial Class E_NuevoProveedor
     Friend WithEvents Label4 As Label
     Friend WithEvents TXT_CorreoProv As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents TXT_CodProv As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TXT_CodigoProv As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents BTN_RegresarProv As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_NProv As Guna.UI2.WinForms.Guna2Button

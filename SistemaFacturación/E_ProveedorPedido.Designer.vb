@@ -191,6 +191,7 @@ Partial Class E_ProveedorPedido
         Me.BTN_NProv.AutoRoundedCorners = True
         Me.BTN_NProv.BorderColor = System.Drawing.Color.Red
         Me.BTN_NProv.BorderRadius = 27
+        Me.BTN_NProv.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_NProv.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NProv.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NProv.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -222,6 +223,7 @@ Partial Class E_ProveedorPedido
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.CancelButton = Me.BTN_RegresarPed
         Me.ClientSize = New System.Drawing.Size(766, 436)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BTN_NProv)

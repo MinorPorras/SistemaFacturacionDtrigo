@@ -113,7 +113,7 @@ Partial Class M_Mantenimiento
         Me.BTN_Usuario.Name = "BTN_Usuario"
         Me.BTN_Usuario.Size = New System.Drawing.Size(359, 84)
         Me.BTN_Usuario.TabIndex = 12
-        Me.BTN_Usuario.Text = "2. Usuarios"
+        Me.BTN_Usuario.Text = "2. Cajeros"
         '
         'BTN_Proveedor
         '

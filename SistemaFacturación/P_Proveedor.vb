@@ -77,7 +77,7 @@
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
         Try
             E_NuevoProveedor.idProv = LSV_Prov.SelectedItems.Item(0).Text
-            E_NuevoProveedor.TXT_CodProv.Text = LSV_Prov.SelectedItems(0).SubItems(1).Text
+            E_NuevoProveedor.TXT_CodigoProv.Text = LSV_Prov.SelectedItems(0).SubItems(1).Text
             E_NuevoProveedor.TXT_NombreProv.Text = LSV_Prov.SelectedItems(0).SubItems(2).Text
 
             If Not String.IsNullOrEmpty(LSV_Prov.SelectedItems(0).SubItems(3).Text) Then

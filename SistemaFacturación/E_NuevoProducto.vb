@@ -70,12 +70,12 @@ Public Class E_NuevoProducto
                           "WHERE codigo = '" & TXT_Cod.Text & "' "
                 End If
             End If
-            ActualizarProgressBar(10)
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count = 0 Then
                 ActualizarProgressBar(10)
                 ' Comprobación de que se quiere modificar la información en la base de datos por parte del usuario
                 If MessageBox.Show("¿Desea guardar los cambios?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    ActualizarProgressBar(10)
                     Try
                         If ModProd = False Then
                             ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
@@ -196,6 +196,7 @@ Public Class E_NuevoProducto
                         ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
                         P_Productos.Show()
                         P_Productos.REFRESCAR()
+                        pBar_guardar.Value = 100
                         Me.Close()
                     Catch ex As Exception
                         MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
@@ -207,6 +208,7 @@ Public Class E_NuevoProducto
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
+        pBar_guardar.Value = 0
         ModProd = False
     End Sub
     Private Sub ActualizarProgressBar(paso As Integer)

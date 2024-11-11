@@ -229,25 +229,6 @@ Public Class P_Caja
         End If
     End Sub
 
-    Private Sub P_Caja_KeyPress(sender As Object, e As KeyPressEventArgs) Handles MyBase.KeyPress
-        Select Case e.KeyChar
-            Case ChrW(Keys.F1)
-                BTN_Conteo.PerformClick()
-            Case ChrW(Keys.F2)
-                BTN_Reprint.PerformClick()
-            Case ChrW(Keys.F3)
-                BTN_RegresarCliente.PerformClick()
-            Case ChrW(Keys.F4)
-                BTN_DelFactura.PerformClick()
-            Case ChrW(Keys.F5)
-                BTN_CuentaCobrar.PerformClick()
-            Case ChrW(Keys.F6)
-                BTN_GuardarCuenta.PerformClick()
-            Case ChrW(Keys.F7)
-                BTN_TVenta.PerformClick()
-        End Select
-    End Sub
-
     Private Sub BTN_TVenta_Click(sender As Object, e As EventArgs) Handles BTN_TVenta.Click
         P_TerminarVenta.TXT_ECliente.Text = "0"
         P_TerminarVenta.TXT_EVuelto.Text = "0"
@@ -338,6 +319,25 @@ Public Class P_Caja
     Private Sub BTN_Reprint_Click(sender As Object, e As EventArgs) Handles BTN_Reprint.Click
         P_ReimprimirFact.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub P_Caja_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        Select Case e.KeyCode
+            Case Keys.F1
+                BTN_Conteo.PerformClick()
+            Case Keys.F2
+                BTN_Reprint.PerformClick()
+            Case Keys.F3
+                BTN_RegresarCliente.PerformClick()
+            Case Keys.F4
+                BTN_DelFactura.PerformClick()
+            Case Keys.F5
+                BTN_CuentaCobrar.PerformClick()
+            Case Keys.F6
+                BTN_GuardarCuenta.PerformClick()
+            Case Keys.F7
+                BTN_TVenta.PerformClick()
+        End Select
     End Sub
 
 
