@@ -9,7 +9,7 @@ Versión 1.0.0.9 (11 de noviembre de 2024)
 - Se corrigió un error donde no se eliminaban correctamente de la base de datos los valores de la marca, categoría, proveedor y descripción de los productos por problemas con los atrivutos de entre estos
 - Ahora cuando se cancela la modificación o agregación de un producto se reinicia la barra de progreso, anteriormente no lo hacía y se seguía incrementando hasta fallar
 
-  Versión 1.0.0.7
+Versión 1.0.0.7
 - Se modificó de nuevo el proceso de creación de respaldos y los procesos de la pestaña de configuración general
 
 Versión 1.0.0.6
