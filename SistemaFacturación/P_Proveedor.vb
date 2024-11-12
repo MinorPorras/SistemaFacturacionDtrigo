@@ -26,18 +26,18 @@
                     SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, t.telefono " +
                         "FROM ((proveedor AS p " +
                         "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +
-                        "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.codigo LIKE '%" & TXT_BuscarProv.Text & "%';"
+                        "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.codigo LIKE '%" & TXT_BuscarProv.Text & "%' ORDER BY Val(p.codigo) ASC;"
                 ElseIf RDB_BuscarNombre.Checked = True Then
                     SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, t.telefono " +
                         "FROM ((proveedor AS p " +
                         "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +
-                        "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.nombre LIKE '%" & TXT_BuscarProv.Text & "%';"
+                        "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.nombre LIKE '%" & TXT_BuscarProv.Text & "%' ORDER BY Val(p.codigo) ASC;"
                 End If
             Else
                 SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, t.telefono " +
                         "FROM ((proveedor AS p " +
                         "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +
-                        "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID);"
+                        "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) ORDER BY Val(p.codigo) ASC;"
 
             End If
             Cargar_Tabla(T, SQL)
@@ -66,7 +66,12 @@
     End Sub
 
     Private Sub TXT_BuscarCat_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProv.TextChanged
-        REFRESCAR()
+        If RDB_BuscarCodigo.Checked = True Then
+            Dim num As Integer
+            If Integer.TryParse(TXT_BuscarProv.Text, num) Then
+                REFRESCAR()
+            End If
+        End If
     End Sub
 
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NProv.Click
@@ -170,9 +175,11 @@
 
     Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
         REFRESCAR()
+        TXT_BuscarProv.Focus()
     End Sub
 
     Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
         REFRESCAR()
+        TXT_BuscarProv.Focus()
     End Sub
 End Class

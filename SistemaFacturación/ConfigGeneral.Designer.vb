@@ -89,6 +89,7 @@ Partial Class ConfigGeneral
         Me.BTN_Importar.AutoRoundedCorners = True
         Me.BTN_Importar.BorderRadius = 28
         Me.BTN_Importar.BorderThickness = 2
+        Me.BTN_Importar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_Importar.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Importar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Importar.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -133,6 +134,7 @@ Partial Class ConfigGeneral
         '
         Me.BTN_ModConnDB.BorderRadius = 25
         Me.BTN_ModConnDB.BorderThickness = 2
+        Me.BTN_ModConnDB.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_ModConnDB.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_ModConnDB.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_ModConnDB.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -152,6 +154,7 @@ Partial Class ConfigGeneral
         '
         Me.BTN_ModBackupDir.BorderRadius = 25
         Me.BTN_ModBackupDir.BorderThickness = 2
+        Me.BTN_ModBackupDir.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_ModBackupDir.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_ModBackupDir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_ModBackupDir.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -203,6 +206,7 @@ Partial Class ConfigGeneral
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.CancelButton = Me.BTN_RegresarConfig
         Me.ClientSize = New System.Drawing.Size(468, 592)
         Me.Controls.Add(Me.BTN_RegresarConfig)
         Me.Controls.Add(Me.GroupBox1)

@@ -16,18 +16,18 @@
                     SQL = "SELECT c.ID, c.codigo, c.nombre, cc.cedula, ct.telefono, co.correo FROM (((clientes c" + " 
                         LEFT JOIN cliente_cedula cc ON cc.ID_Cliente = c.ID)" + "
                         LEFT JOIN cliente_correo co ON co.ID_Cliente = c.ID)" + "
-                        LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) where c.codigo LIKE '%" & TXT_BuscarCliente.Text & "%'"
+                        LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) where c.codigo LIKE '%" & TXT_BuscarCliente.Text & "%' ORDER BY Val(c.codigo) ASC;"
                 ElseIf RDB_BuscarNombre.Checked = True Then
                     SQL = "SELECT c.ID, c.codigo, c.nombre, cc.cedula, ct.telefono, co.correo FROM (((clientes c" + " 
                         LEFT JOIN cliente_cedula cc ON cc.ID_Cliente = c.ID)" + "
                         LEFT JOIN cliente_correo co ON co.ID_Cliente = c.ID)" + "
-                        LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) where c.nombre LIKE '%" & TXT_BuscarCliente.Text & "%'"
+                        LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) where c.nombre LIKE '%" & TXT_BuscarCliente.Text & "%' ORDER BY Val(c.codigo) ASC;"
                 End If
             Else
                 SQL = "SELECT c.ID, c.codigo, c.nombre, cc.cedula, ct.telefono, co.correo FROM (((clientes c" + " 
                         LEFT JOIN cliente_cedula cc ON cc.ID_Cliente = c.ID)" + "
                         LEFT JOIN cliente_correo co ON co.ID_Cliente = c.ID)" + "
-                        LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID);"
+                        LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) ORDER BY Val(c.codigo) ASC;"
             End If
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
@@ -64,7 +64,12 @@
     End Sub
 
     Private Sub TXT_BuscarCliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarCliente.TextChanged
-        REFRESCAR()
+        If RDB_BuscarCodigo.Checked = True Then
+            Dim num As Integer
+            If Integer.TryParse(TXT_BuscarCliente.Text, num) Then
+                REFRESCAR()
+            End If
+        End If
     End Sub
 
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
@@ -152,9 +157,11 @@
 
     Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
         REFRESCAR()
+        TXT_BuscarCliente.Focus()
     End Sub
 
     Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
         REFRESCAR()
+        TXT_BuscarCliente.Focus()
     End Sub
 End Class

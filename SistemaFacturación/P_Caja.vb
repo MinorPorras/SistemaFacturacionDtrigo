@@ -28,6 +28,16 @@ Public Class P_Caja
         cargarNumFactura()
 
         TXT_BuscarCliente.Text = "0001"
+        DGV_Caja.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 128, 0)
+        DGV_Caja.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 120, 30)
+        DGV_Caja.Font = New Font("Arial", 12)
+        DGV_Caja.ColumnHeadersHeight = 25
+        DGV_Caja.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True
+        DGV_Caja.Columns(1).Width = 50
+        DGV_Caja.Columns(2).Width = 270
+        DGV_Caja.Columns(3).Width = 45
+        DGV_Caja.Columns(4).Width = 35
+        DGV_Caja.Columns(5).Width = 60
 
         'Se coloca la imagen y los datos de la fecha y el día y se inicia el contador para que los vaya actualizando
         PIC_Logo.ImageLocation = ConfigurationManager.AppSettings("Logo").ToString()
@@ -143,17 +153,10 @@ Public Class P_Caja
 
 
     Private Sub agregarProd(ID As String, codigo As String, nombre As String, precioVenta As String, cant As String)
-        Dim item As New ListViewItem(ID)
-        item.SubItems.Add(codigo)
-        item.SubItems.Add(nombre)
-        item.SubItems.Add(precioVenta)
-        item.SubItems.Add(cant)
         Dim Subtotal As Double = cant * Convert.ToInt32(precioVenta)
-        item.SubItems.Add(Subtotal)
-        LSV_Factura.Items.Add(item)
-        LSV_Factura.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-        LSV_Factura.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
-        LSV_Factura.Columns(0).Width = 0
+        Dim row As String() = {ID, codigo, nombre, precioVenta, cant, Subtotal}
+        DGV_Caja.Columns(0).Visible = False
+        DGV_Caja.Rows.Add(row)
         TXT_BuscarProducto.Clear()
         validadListView()
         TXT_BuscarProducto.Focus()
@@ -163,8 +166,8 @@ Public Class P_Caja
 
     Friend Sub cargarTotal()
         Dim total As Double = 0
-        For i As Integer = 0 To LSV_Factura.Items.Count - 1
-            total += Convert.ToDouble(LSV_Factura.Items(i).SubItems(5).Text)
+        For i As Integer = 0 To DGV_Caja.Rows.Count - 2
+            total += Convert.ToDouble(DGV_Caja.Rows(i).Cells(5).Value)
         Next
         TXT_Total.Text = "₡ " + total.ToString()
     End Sub
@@ -176,6 +179,7 @@ Public Class P_Caja
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
                 agregarProd(btnFav.Tag.ToString(), T.Tables(0).Rows(0).Item(0), btnFav.Text, T.Tables(0).Rows(0).Item(1), 1)
+
             Else
                 MsgBox("El código que colocó está mal escrito o no existe", vbCritical + vbOKOnly, "Código incorrecto")
             End If
@@ -215,7 +219,7 @@ Public Class P_Caja
     End Sub
 
     Private Sub BTN_DelFactura_Click(sender As Object, e As EventArgs) Handles BTN_DelFactura.Click
-        LSV_Factura.Items.Clear()
+        DGV_Caja.Rows.Clear()
         TXT_BuscarProducto.Clear()
         validadListView()
         cargarTotal()
@@ -247,7 +251,7 @@ Public Class P_Caja
         P_TerminarVenta.TXT_MVuelto.Text = "0"
 
         Dim precio As String() = TXT_Total.Text.Split(" "c)
-        If LSV_Factura.Items.Count > 0 Then
+        If DGV_Caja.Rows.Count > 1 Then
 
             P_TerminarVenta.total = If(Double.TryParse(precio(1), P_TerminarVenta.total), Convert.ToDouble(precio(1)), Convert.ToDouble(0))
             P_TerminarVenta.TXT_ETotal.Text = TXT_Total.Text
@@ -262,8 +266,8 @@ Public Class P_Caja
     End Sub
 
     Friend Sub validadListView()
-        itemCount = LSV_Factura.Items.Count
-        If itemCount > 0 Then
+        itemCount = DGV_Caja.Rows.Count
+        If itemCount > 1 Then
             BTN_TVenta.Enabled = True
             MNU_MODIFICAR.Visible = True
             MNU_ELIMINAR.Visible = True
@@ -297,11 +301,11 @@ Public Class P_Caja
     End Sub
 
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
-        B_Producto.LBL_IDProd.Text = LSV_Factura.SelectedItems(0).SubItems(0).Text
-        B_Producto.TXT_codigo.Text = LSV_Factura.SelectedItems(0).SubItems(1).Text
-        B_Producto.TXT_Nombre.Text = LSV_Factura.SelectedItems(0).SubItems(2).Text
-        B_Producto.TXT_Precio.Text = LSV_Factura.SelectedItems(0).SubItems(3).Text
-        B_Producto.TXT_CantProd.Text = LSV_Factura.SelectedItems(0).SubItems(4).Text
+        B_Producto.LBL_IDProd.Text = DGV_Caja.SelectedRows(0).Cells(0).Value
+        B_Producto.TXT_codigo.Text = DGV_Caja.SelectedRows(0).Cells(1).Value
+        B_Producto.TXT_Nombre.Text = DGV_Caja.SelectedRows(0).Cells(2).Value
+        B_Producto.TXT_Precio.Text = DGV_Caja.SelectedRows(0).Cells(3).Value
+        B_Producto.TXT_CantProd.Text = DGV_Caja.SelectedRows(0).Cells(4).Value
         B_Producto.ModProd = True
         B_Producto.Show()
         validadListView()
@@ -310,7 +314,7 @@ Public Class P_Caja
     End Sub
 
     Private Sub MNU_ELIMINAR_Click(sender As Object, e As EventArgs) Handles MNU_ELIMINAR.Click
-        LSV_Factura.Items.RemoveAt(LSV_Factura.SelectedIndices.Count - 1)
+        DGV_Caja.Rows.RemoveAt(DGV_Caja.SelectedRows(0).Index)
         validadListView()
         cargarTotal()
 
@@ -340,45 +344,12 @@ Public Class P_Caja
         End Select
     End Sub
 
-
-    'Private Sub LSV_Factura_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles LSV_Factura.MouseDoubleClick
-    '    ' Determinar qué ítem y subítem fue clickeado
-    '    Dim hitTestInfo As ListViewHitTestInfo = LSV_Factura.HitTest(e.Location)
-    '    editingItem = hitTestInfo.Item
-    '    editingSubItemIndex = hitTestInfo.Item.SubItems.IndexOf(hitTestInfo.SubItem)
-
-    '    ' Permitir la edición solo si la fila es la quinta
-    '    If editingItem IsNot Nothing AndAlso editingSubItemIndex >= 0 AndAlso LSV_Factura.Items.IndexOf(editingItem) = 4 Then
-    '        With TXT_ModCant
-    '            .Bounds = hitTestInfo.SubItem.Bounds
-    '            .Text = hitTestInfo.SubItem.Text
-    '            .Visible = True
-    '            .Focus()
-    '        End With
-    '    End If
-    'End Sub
-
-    'Private Sub TXT_ModCant_Leave(sender As Object, e As EventArgs) Handles TXT_ModCant.Leave
-    '    ' Guardar el valor editado de vuelta en el ListView
-    '    If editingItem IsNot Nothing AndAlso editingSubItemIndex >= 0 Then
-    '        ' Convertir el texto a número y sumarlo al valor de la fila 4
-    '        Dim Cant As Integer
-    '        Dim pUnitario As Integer
-    '        If Integer.TryParse(TXT_ModCant.Text, Cant) AndAlso Integer.TryParse(LSV_Factura.Items(3).SubItems(editingSubItemIndex).Text, pUnitario) Then
-    '            LSV_Factura.Items(editingItem.Index).SubItems(editingSubItemIndex).Text = TXT_ModCant.Text
-    '            Dim sum As Integer = Cant * pUnitario
-    '            LSV_Factura.Items(5).SubItems(editingSubItemIndex).Text = sum.ToString()
-    '        End If
-    '        TXT_ModCant.Visible = False
-    '    End If
-    'End Sub
-
-    'Private Sub TXT_ModCant_KeyDown(sender As Object, e As KeyEventArgs) Handles TXT_ModCant.KeyDown
-    '    ' Guardar el valor al presionar la tecla Enter
-    '    If e.KeyCode = Keys.Enter Then
-    '        TXT_ModCant_Leave(sender, e)
-    '        e.Handled = True
-    '        e.SuppressKeyPress = True
-    '    End If
-    'End Sub
+    Private Sub DGV_Caja_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles DGV_Caja.CellValueChanged
+        If DGV_Caja.Rows.Count > 1 Then
+            Dim cant As Double = Convert.ToDouble(DGV_Caja.SelectedRows(0).Cells(4).Value)
+            Dim precioVenta As Double = Convert.ToDouble(DGV_Caja.SelectedRows(0).Cells(3).Value)
+            DGV_Caja.SelectedRows(0).Cells(5).Value = precioVenta * cant
+        End If
+        cargarTotal()
+    End Sub
 End Class

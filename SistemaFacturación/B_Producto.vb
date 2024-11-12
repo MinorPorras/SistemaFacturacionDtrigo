@@ -53,10 +53,12 @@
 
     Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
         REFRESCAR()
+        TXT_BuscarProd.Focus()
     End Sub
 
     Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
         REFRESCAR()
+        TXT_BuscarProd.Focus()
     End Sub
 
     Private Sub LSV_Producto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LSV_Producto.SelectedIndexChanged
@@ -79,13 +81,13 @@
                 P_Caja.Buscar_DatosProd(TXT_codigo, True)
                 P_Caja.validadListView()
             Else
-                P_Caja.LSV_Factura.SelectedItems(0).SubItems(0).Text = LBL_IDProd.Text
-                P_Caja.LSV_Factura.SelectedItems(0).SubItems(1).Text = TXT_codigo.Text
-                P_Caja.LSV_Factura.SelectedItems(0).SubItems(2).Text = TXT_Nombre.Text
-                P_Caja.LSV_Factura.SelectedItems(0).SubItems(3).Text = TXT_Precio.Text
-                P_Caja.LSV_Factura.SelectedItems(0).SubItems(4).Text = TXT_CantProd.Text
+                P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value = LBL_IDProd.Text
+                P_Caja.DGV_Caja.SelectedRows(0).Cells(1).Value = TXT_codigo.Text
+                P_Caja.DGV_Caja.SelectedRows(0).Cells(2).Value = TXT_Nombre.Text
+                P_Caja.DGV_Caja.SelectedRows(0).Cells(3).Value = TXT_Precio.Text
+                P_Caja.DGV_Caja.SelectedRows(0).Cells(4).Value = TXT_CantProd.Text
                 Dim subtotal As Double = Convert.ToDouble(TXT_CantProd.Text) * Convert.ToDouble(TXT_Precio.Text)
-                P_Caja.LSV_Factura.SelectedItems(0).SubItems(5).Text = subtotal.ToString()
+                P_Caja.DGV_Caja.SelectedRows(0).Cells(5).Value = subtotal.ToString()
             End If
             ModProd = False
             LIMPIAR()

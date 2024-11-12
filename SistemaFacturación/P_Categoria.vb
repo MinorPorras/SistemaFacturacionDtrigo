@@ -26,12 +26,12 @@
             T.Tables.Clear()
             If TXT_BuscarCat.Text <> "" Then
                 If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT ID, codigo, nombre, color FROM categoria where codigo LIKE '%" & TXT_BuscarCat.Text & "%'"
+                    SQL = "SELECT ID, codigo, nombre, color FROM categoria where codigo LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
                 ElseIf RDB_BuscarNombre.Checked = True Then
-                    SQL = "SELECT ID, codigo, nombre, color FROM categoria where nombre LIKE '%" & TXT_BuscarCat.Text & "%'"
+                    SQL = "SELECT ID, codigo, nombre, color FROM categoria where nombre LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
                 End If
             Else
-                SQL = "SELECT ID, codigo, nombre, color FROM categoria"
+                SQL = "SELECT ID, codigo, nombre, color FROM categoria ORDER BY Val(Codigo) ASC;"
             End If
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
@@ -94,7 +94,12 @@
     End Sub
 
     Private Sub TXT_BuscarCat_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarCat.TextChanged
-        REFRESCAR()
+        If RDB_BuscarCodigo.Checked = True Then
+            Dim num As Integer
+            If Integer.TryParse(TXT_BuscarCat.Text, num) Then
+                REFRESCAR()
+            End If
+        End If
     End Sub
 
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NCat.Click
@@ -103,7 +108,9 @@
     End Sub
 
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
+        E_NuevaCategoria.ModCat = True
         Try
+            E_NuevaCategoria.CodigoPreMod = LSV_Cat.SelectedItems(0).SubItems(1).Text
             E_NuevaCategoria.idCat = LSV_Cat.SelectedItems.Item(0).Text
             E_NuevaCategoria.TXT_CodCat.Text = LSV_Cat.SelectedItems(0).SubItems(1).Text
             E_NuevaCategoria.TXT_NombreCat.Text = LSV_Cat.SelectedItems(0).SubItems(2).Text
@@ -114,8 +121,6 @@
             E_NuevaCategoria.BTN_Color.FillColor = Color.FromArgb(red, green, blue)
             E_NuevaCategoria.ColorDialog1.Color = Color.FromArgb(red, green, blue)
             E_NuevaCategoria.ColorCat = LSV_Cat.SelectedItems(0).SubItems(3).Text
-            E_NuevaCategoria.ModCat = True
-            E_NuevaCategoria.CodigoPreMod = LSV_Cat.SelectedItems(0).SubItems(1).Text
             E_NuevaCategoria.Show()
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
@@ -156,9 +161,11 @@
 
     Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
         REFRESCAR()
+        TXT_BuscarCat.Focus()
     End Sub
 
     Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
         REFRESCAR()
+        TXT_BuscarCat.Focus()
     End Sub
 End Class

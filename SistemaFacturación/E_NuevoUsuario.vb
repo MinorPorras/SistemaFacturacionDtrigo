@@ -1,4 +1,6 @@
-﻿Public Class E_NuevoUsuario
+﻿Imports System.Drawing.Imaging
+
+Public Class E_NuevoUsuario
     Friend ColorUsuario As String
     Friend idUsuario As String
     Friend ModUsu As Boolean = False
@@ -56,55 +58,60 @@
     End Sub
 
     Private Sub BTN_NUsuario_Click(sender As Object, e As EventArgs) Handles BTN_NUsuario.Click
-        Try
-            T.Tables.Clear()
-            If ModUsu = False Then
-                SQL = "SELECT codigo FROM usuario WHERE codigo = '" + TXT_CodUsuario.Text + "'"
-            Else
-                If TXT_CodUsuario.Text = CodigoPreMod Then
-                    SQL = "SELECT ID FROM usuario WHERE ID = 0"
-                Else
+        If Not String.IsNullOrEmpty(TXT_CodUsuario.Text) Or Not String.IsNullOrEmpty(TXT_NombreUsuario.Text) Then
+            Try
+                T.Tables.Clear()
+                If ModUsu = False Then
                     SQL = "SELECT codigo FROM usuario WHERE codigo = '" + TXT_CodUsuario.Text + "'"
+                Else
+                    If TXT_CodUsuario.Text = CodigoPreMod Then
+                        SQL = "SELECT ID FROM usuario WHERE ID = 0"
+                    Else
+                        SQL = "SELECT codigo FROM usuario WHERE codigo = '" + TXT_CodUsuario.Text + "'"
+                    End If
                 End If
-            End If
-            Cargar_Tabla(T, SQL)
-            If T.Tables(0).Rows.Count = 0 Then
-                ' Comprobación de que se quiere modificar la información en la base de datos por parte del usuario
-                If MessageBox.Show("¿Desea guardar los cambios?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                    Try
-                        If ModUsu = False Then
-                            ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
-                            If EXISTEPK("usuario", "ID", idUsuario) = False Then ' Si no se ha guardado la categoría
-                                ' Guarda la PK almacenada en IdCat dentro de la Base de datos en la tabla y PK indicado
-                                GUARDAR_PK("usuario", "ID", idUsuario)
+                Cargar_Tabla(T, SQL)
+                If T.Tables(0).Rows.Count = 0 Then
+                    ' Comprobación de que se quiere modificar la información en la base de datos por parte del usuario
+                    If MessageBox.Show("¿Desea guardar los cambios?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                        Try
+                            If ModUsu = False Then
+                                ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
+                                If EXISTEPK("usuario", "ID", idUsuario) = False Then ' Si no se ha guardado la categoría
+                                    ' Guarda la PK almacenada en IdCat dentro de la Base de datos en la tabla y PK indicado
+                                    GUARDAR_PK("usuario", "ID", idUsuario)
+                                End If
                             End If
-                        End If
-                        ' Actualizar los campos en la base de datos
-                        GUARDAR_STR("usuario", "codigo", TXT_CodUsuario.Text, "ID", idUsuario)
-                        GUARDAR_STR("usuario", "usuario", TXT_NombreUsuario.Text, "ID", idUsuario)
-                        If CBK_NoClaveUsu.Checked = True Then
-                            GUARDAR_STR("usuario", "clave", String.Empty, "ID", idUsuario)
-                        Else
-                            GUARDAR_STR("usuario", "clave", TXT_ClaveUsuario.Text, "ID", idUsuario)
-                        End If
-
-                        GUARDAR_STR("usuario", "color", ColorUsuario, "ID", idUsuario)
-                        LIMPIAR()
-                        MsgBox("Datos almacenados satisfactoriamente", vbInformation + vbOKOnly, "Transacción exitosa")
-                        ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
-                        P_Usuarios.Show()
-                        P_Usuarios.REFRESCAR()
-                        Me.Close()
-                    Catch ex As Exception
-                        MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
-                    End Try
+                            ' Actualizar los campos en la base de datos
+                            GUARDAR_STR("usuario", "codigo", TXT_CodUsuario.Text, "ID", idUsuario)
+                            GUARDAR_STR("usuario", "usuario", TXT_NombreUsuario.Text, "ID", idUsuario)
+                            If CBK_NoClaveUsu.Checked = True Then
+                                GUARDAR_STR("usuario", "clave", String.Empty, "ID", idUsuario)
+                            Else
+                                GUARDAR_STR("usuario", "clave", TXT_ClaveUsuario.Text, "ID", idUsuario)
+                            End If
+                            If String.IsNullOrEmpty(ColorUsuario) Then
+                                GUARDAR_STR("usuario", "color", "0,0,0", "ID", idUsuario)
+                            Else
+                                GUARDAR_STR("usuario", "color", ColorUsuario, "ID", idUsuario)
+                            End If
+                            LIMPIAR()
+                            MsgBox("Datos almacenados satisfactoriamente", vbInformation + vbOKOnly, "Transacción exitosa")
+                            ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
+                            P_Usuarios.Show()
+                            P_Usuarios.REFRESCAR()
+                            Me.Close()
+                        Catch ex As Exception
+                            MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                        End Try
+                    End If
+                Else
+                    MsgBox("El código " + TXT_CodUsuario.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
                 End If
-            Else
-                MsgBox("El código " + TXT_CodUsuario.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
-            End If
-        Catch ex As Exception
-            MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
-        End Try
+            Catch ex As Exception
+                MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+            End Try
+        End If
     End Sub
 
     Friend Sub LIMPIAR()

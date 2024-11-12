@@ -69,6 +69,7 @@ Partial Class P_SelectUsu
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.CancelButton = Me.BTN_RegresarLogin
         Me.ClientSize = New System.Drawing.Size(760, 518)
         Me.Controls.Add(Me.BTN_RegresarLogin)
         Me.Controls.Add(Me.FlowLayoutPanel1)

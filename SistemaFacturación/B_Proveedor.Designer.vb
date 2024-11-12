@@ -78,7 +78,7 @@ Partial Class B_Proveedor
         Me.TXT_Nombre.Location = New System.Drawing.Point(478, 341)
         Me.TXT_Nombre.Name = "TXT_Nombre"
         Me.TXT_Nombre.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_Nombre.PlaceholderText = "Buscar marca"
+        Me.TXT_Nombre.PlaceholderText = ""
         Me.TXT_Nombre.ReadOnly = True
         Me.TXT_Nombre.SelectedText = ""
         Me.TXT_Nombre.Size = New System.Drawing.Size(210, 42)
@@ -111,7 +111,7 @@ Partial Class B_Proveedor
         Me.TXT_codigo.Location = New System.Drawing.Point(478, 260)
         Me.TXT_codigo.Name = "TXT_codigo"
         Me.TXT_codigo.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_codigo.PlaceholderText = "Buscar marca"
+        Me.TXT_codigo.PlaceholderText = ""
         Me.TXT_codigo.ReadOnly = True
         Me.TXT_codigo.SelectedText = ""
         Me.TXT_codigo.Size = New System.Drawing.Size(210, 42)
@@ -252,7 +252,7 @@ Partial Class B_Proveedor
         Me.TXT_BuscarProv.Location = New System.Drawing.Point(34, 163)
         Me.TXT_BuscarProv.Name = "TXT_BuscarProv"
         Me.TXT_BuscarProv.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_BuscarProv.PlaceholderText = "Buscar marca"
+        Me.TXT_BuscarProv.PlaceholderText = "Buscar proveedor"
         Me.TXT_BuscarProv.SelectedText = ""
         Me.TXT_BuscarProv.Size = New System.Drawing.Size(506, 42)
         Me.TXT_BuscarProv.TabIndex = 66

@@ -111,7 +111,7 @@ Partial Class P_Usuarios
         Me.TXT_BuscarUsuario.Location = New System.Drawing.Point(46, 191)
         Me.TXT_BuscarUsuario.Name = "TXT_BuscarUsuario"
         Me.TXT_BuscarUsuario.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_BuscarUsuario.PlaceholderText = "Buscar Usuario"
+        Me.TXT_BuscarUsuario.PlaceholderText = "Buscar cajeros"
         Me.TXT_BuscarUsuario.SelectedText = ""
         Me.TXT_BuscarUsuario.Size = New System.Drawing.Size(638, 42)
         Me.TXT_BuscarUsuario.TabIndex = 25

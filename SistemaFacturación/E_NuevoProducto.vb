@@ -55,161 +55,163 @@ Public Class E_NuevoProducto
     End Sub
 
     Private Sub BTN_NProv_Click(sender As Object, e As EventArgs) Handles BTN_NProv.Click
-        Try
-            T.Tables.Clear()
-            If ModProd = False Then
-                SQL = "SELECT ID " &
-                        "FROM producto " &
-                        "WHERE codigo = '" & TXT_Cod.Text & "' "
-            Else
-                If TXT_Cod.Text = CodigoPreMod Then
-                    SQL = "SELECT ID FROM producto WHERE ID = 0"
-                Else
+        If TXT_Cod.Text <> "" And TXT_Nombre.Text <> "" And TXT_PrecioVenta.Text <> "" Then
+            Try
+                T.Tables.Clear()
+                If ModProd = False Then
                     SQL = "SELECT ID " &
-                          "FROM producto " &
-                          "WHERE codigo = '" & TXT_Cod.Text & "' "
+                            "FROM producto " &
+                            "WHERE codigo = '" & TXT_Cod.Text + "'"
+                Else
+                    If TXT_Cod.Text = CodigoPreMod Then
+                        SQL = "SELECT ID FROM producto WHERE ID = 0"
+                    Else
+                        SQL = "SELECT ID " &
+                              "FROM producto " &
+                              "WHERE codigo = '" & TXT_Cod.Text + "'"
+                    End If
                 End If
-            End If
-            Cargar_Tabla(T, SQL)
-            If T.Tables(0).Rows.Count = 0 Then
-                ActualizarProgressBar(10)
-                ' Comprobación de que se quiere modificar la información en la base de datos por parte del usuario
-                If MessageBox.Show("¿Desea guardar los cambios?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Cargar_Tabla(T, SQL)
+                If T.Tables(0).Rows.Count = 0 Then
                     ActualizarProgressBar(10)
-                    Try
-                        If ModProd = False Then
-                            ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
-                            If EXISTEPK("producto", "ID", idProd) = False Then ' Si no se ha guardado la categoría
-                                ' Guarda la PK almacenada en IdCat dentro de la Base de datos en la tabla y PK indicado
-                                GUARDAR_PK("producto", "ID", idProd)
-                            End If
-                        End If
+                    ' Comprobación de que se quiere modificar la información en la base de datos por parte del usuario
+                    If MessageBox.Show("¿Desea guardar los cambios?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                         ActualizarProgressBar(10)
-
-                        ' Actualizar los campos en la base de datos
-                        GUARDAR_STR("producto", "codigo", TXT_Cod.Text, "ID", idProd)
-
-                        GUARDAR_STR("producto", "nombre", TXT_Nombre.Text, "ID", idProd)
-
-                        If Not String.IsNullOrEmpty(TXT_PrecioBase.Text) Then
-                            Dim precioB = Replace(TXT_PrecioBase.Text, ",", ".")
-                            GUARDAR_DOUBLE("producto", "precio_base", precioB, "ID", idProd)
-                        Else
-                            GUARDAR_DOUBLE("producto", "precio_base", 0, "ID", idProd)
-                        End If
-                        ActualizarProgressBar(10)
-                        If Not String.IsNullOrEmpty(TXT_Impuesto.Text) Then
-                            Dim impP = Replace(TXT_Impuesto.Text, ",", ".")
-
-                            GUARDAR_DOUBLE("producto", "porc_impuesto", impP, "ID", idProd)
-                        Else
-                            GUARDAR_DOUBLE("producto", "porc_impuesto", 0, "ID", idProd)
-                        End If
-
-                        Dim precioV = Replace(TXT_PrecioVenta.Text, ",", ".")
-                        GUARDAR_DOUBLE("producto", "precio_venta", precioV, "ID", idProd)
-                        ActualizarProgressBar(10)
-
-                        If Not String.IsNullOrEmpty(TXT_Ganancia.Text) Then
-                            Dim ganancia = Replace(TXT_Ganancia.Text, ",", ".")
-                            GUARDAR_DOUBLE("producto", "ganancia", ganancia, "ID", idProd)
-                        Else
-                            GUARDAR_DOUBLE("producto", "ganancia", 0, "ID", idProd)
-                        End If
-
-                        If CKB_Fav.Checked = True Then
-                            GUARDAR_STR("producto", "favorito", "Si", "ID", idProd)
-                        Else
-                            GUARDAR_STR("producto", "favorito", "No", "ID", idProd)
-                        End If
-                        ActualizarProgressBar(10)
-                        'Se agregan los campos en las tablas relacionadas en caso de ser necesario
-
-
-                        ActualizarProgressBar(10)
-
-                        If Not String.IsNullOrEmpty(TXT_Desc.Text) Then
-                            T.Tables.Clear()
-                            SQL = "SELECT ID_Producto FROM producto_desc WHERE ID_Producto = " + idProd
-                            Cargar_Tabla(T, SQL)
-                            If T.Tables(0).Rows.Count <= 0 Then
-                                GUARDAR_VarCompuestas("producto_desc", idProd, TXT_Desc.Text)
-                            Else
-                                GUARDAR_STR("producto_desc", "descripcion", TXT_Desc.Text, "ID_Producto", idProd)
-                            End If
-                        End If
-
-                        If Not String.IsNullOrEmpty(LBL_IDCat.Text) And LBL_IDCat.Text <> "idCat" Then
-                            T.Tables.Clear()
-                            SQL = "SELECT ID_Producto FROM producto_categoria WHERE ID_Producto = " + idProd
-                            Cargar_Tabla(T, SQL)
-                            If T.Tables(0).Rows.Count <= 0 Then
-                                Dim idCat As Integer
-                                If Integer.TryParse(LBL_IDCat.Text, idCat) Then
-                                    GUARDAR_VarComp2Int("producto_categoria", idProd, idCat)
-                                Else
-                                    MsgBox("No se logró almacenar la categoría, vuelva a intentarlo", vbInformation + vbOKOnly, "Proveedor no guardads")
+                        Try
+                            If ModProd = False Then
+                                ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
+                                If EXISTEPK("producto", "ID", idProd) = False Then ' Si no se ha guardado la categoría
+                                    ' Guarda la PK almacenada en IdCat dentro de la Base de datos en la tabla y PK indicado
+                                    GUARDAR_PK("producto", "ID", idProd)
                                 End If
-                            Else
-                                GUARDAR_STR("producto_categoria", "ID_Categoria", LBL_IDCat.Text, "ID_Producto", idProd)
                             End If
-                        End If
+                            ActualizarProgressBar(10)
 
-                        ActualizarProgressBar(10)
+                            ' Actualizar los campos en la base de datos
+                            GUARDAR_STR("producto", "codigo", TXT_Cod.Text, "ID", idProd)
 
-                        If Not String.IsNullOrEmpty(LBL_IDMarca.Text) And LBL_IDMarca.Text <> "idMarca" Then
-                            T.Tables.Clear()
-                            SQL = "SELECT ID_Producto FROM producto_marca WHERE ID_Producto = " + idProd
-                            Cargar_Tabla(T, SQL)
-                            If T.Tables(0).Rows.Count <= 0 Then
-                                Dim idMarca As Integer
-                                If Integer.TryParse(LBL_IDMarca.Text, idMarca) Then
-                                    GUARDAR_VarComp2Int("producto_marca", idProd, idMarca)
+                            GUARDAR_STR("producto", "nombre", TXT_Nombre.Text, "ID", idProd)
+
+                            If Not String.IsNullOrEmpty(TXT_PrecioBase.Text) Then
+                                Dim precioB = Replace(TXT_PrecioBase.Text, ",", ".")
+                                GUARDAR_DOUBLE("producto", "precio_base", precioB, "ID", idProd)
+                            Else
+                                GUARDAR_DOUBLE("producto", "precio_base", 0, "ID", idProd)
+                            End If
+                            ActualizarProgressBar(10)
+                            If Not String.IsNullOrEmpty(TXT_Impuesto.Text) Then
+                                Dim impP = Replace(TXT_Impuesto.Text, ",", ".")
+
+                                GUARDAR_DOUBLE("producto", "porc_impuesto", impP, "ID", idProd)
+                            Else
+                                GUARDAR_DOUBLE("producto", "porc_impuesto", 0, "ID", idProd)
+                            End If
+
+                            Dim precioV = Replace(TXT_PrecioVenta.Text, ",", ".")
+                            GUARDAR_DOUBLE("producto", "precio_venta", precioV, "ID", idProd)
+                            ActualizarProgressBar(10)
+
+                            If Not String.IsNullOrEmpty(TXT_Ganancia.Text) Then
+                                Dim ganancia = Replace(TXT_Ganancia.Text, ",", ".")
+                                GUARDAR_DOUBLE("producto", "ganancia", ganancia, "ID", idProd)
+                            Else
+                                GUARDAR_DOUBLE("producto", "ganancia", 0, "ID", idProd)
+                            End If
+
+                            If CKB_Fav.Checked = True Then
+                                GUARDAR_STR("producto", "favorito", "Si", "ID", idProd)
+                            Else
+                                GUARDAR_STR("producto", "favorito", "No", "ID", idProd)
+                            End If
+                            ActualizarProgressBar(10)
+                            'Se agregan los campos en las tablas relacionadas en caso de ser necesario
+
+
+                            ActualizarProgressBar(10)
+
+                            If Not String.IsNullOrEmpty(TXT_Desc.Text) Then
+                                T.Tables.Clear()
+                                SQL = "SELECT ID_Producto FROM producto_desc WHERE ID_Producto = " + idProd
+                                Cargar_Tabla(T, SQL)
+                                If T.Tables(0).Rows.Count <= 0 Then
+                                    GUARDAR_VarCompuestas("producto_desc", idProd, TXT_Desc.Text)
                                 Else
-                                    MsgBox("No se logró almacenar la marca, vuelva a intentarlo", vbInformation + vbOKOnly, "Marca no guardada")
+                                    GUARDAR_STR("producto_desc", "descripcion", TXT_Desc.Text, "ID_Producto", idProd)
                                 End If
-                            Else
-                                GUARDAR_STR("producto_marca", "ID_Marca", LBL_IDMarca.Text, "ID_Producto", idProd)
                             End If
-                        End If
 
-                        If Not String.IsNullOrEmpty(LBL_Prov.Text) And LBL_Prov.Text <> "idProv" Then
-                            T.Tables.Clear()
-                            SQL = "SELECT ID_Producto FROM producto_proveedor WHERE ID_Producto = " + idProd
-                            Cargar_Tabla(T, SQL)
-                            If T.Tables(0).Rows.Count <= 0 Then
-                                Dim idProv As Integer
-                                If Integer.TryParse(LBL_Prov.Text, idProv) Then
-                                    GUARDAR_VarComp2Int("producto_proveedor", idProd, idProv)
+                            If Not String.IsNullOrEmpty(LBL_IDCat.Text) And LBL_IDCat.Text <> "idCat" Then
+                                T.Tables.Clear()
+                                SQL = "SELECT ID_Producto FROM producto_categoria WHERE ID_Producto = " + idProd
+                                Cargar_Tabla(T, SQL)
+                                If T.Tables(0).Rows.Count <= 0 Then
+                                    Dim idCat As Integer
+                                    If Integer.TryParse(LBL_IDCat.Text, idCat) Then
+                                        GUARDAR_VarComp2Int("producto_categoria", idProd, idCat)
+                                    Else
+                                        MsgBox("No se logró almacenar la categoría, vuelva a intentarlo", vbInformation + vbOKOnly, "Proveedor no guardads")
+                                    End If
                                 Else
-                                    MsgBox("No se logró almacenar el proveedor, vuelva a intentarlo", vbInformation + vbOKOnly, "Proveedor no guardads")
+                                    GUARDAR_STR("producto_categoria", "ID_Categoria", LBL_IDCat.Text, "ID_Producto", idProd)
                                 End If
-                            Else
-                                GUARDAR_STR("producto_proveedor", "ID_Proveedor", LBL_Prov.Text, "ID_Producto", idProd)
                             End If
-                        End If
 
-                        ActualizarProgressBar(20)
+                            ActualizarProgressBar(10)
 
-                        LIMPIAR()
-                        MsgBox("Datos almacenados satisfactoriamente", vbInformation + vbOKOnly, "Transacción exitosa")
-                        ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
-                        P_Productos.Show()
-                        P_Productos.REFRESCAR()
-                        pBar_guardar.Value = 100
-                        Me.Close()
-                    Catch ex As Exception
-                        MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
-                    End Try
+                            If Not String.IsNullOrEmpty(LBL_IDMarca.Text) And LBL_IDMarca.Text <> "idMarca" Then
+                                T.Tables.Clear()
+                                SQL = "SELECT ID_Producto FROM producto_marca WHERE ID_Producto = " + idProd
+                                Cargar_Tabla(T, SQL)
+                                If T.Tables(0).Rows.Count <= 0 Then
+                                    Dim idMarca As Integer
+                                    If Integer.TryParse(LBL_IDMarca.Text, idMarca) Then
+                                        GUARDAR_VarComp2Int("producto_marca", idProd, idMarca)
+                                    Else
+                                        MsgBox("No se logró almacenar la marca, vuelva a intentarlo", vbInformation + vbOKOnly, "Marca no guardada")
+                                    End If
+                                Else
+                                    GUARDAR_STR("producto_marca", "ID_Marca", LBL_IDMarca.Text, "ID_Producto", idProd)
+                                End If
+                            End If
+
+                            If Not String.IsNullOrEmpty(LBL_Prov.Text) And LBL_Prov.Text <> "idProv" Then
+                                T.Tables.Clear()
+                                SQL = "SELECT ID_Producto FROM producto_proveedor WHERE ID_Producto = " + idProd
+                                Cargar_Tabla(T, SQL)
+                                If T.Tables(0).Rows.Count <= 0 Then
+                                    Dim idProv As Integer
+                                    If Integer.TryParse(LBL_Prov.Text, idProv) Then
+                                        GUARDAR_VarComp2Int("producto_proveedor", idProd, idProv)
+                                    Else
+                                        MsgBox("No se logró almacenar el proveedor, vuelva a intentarlo", vbInformation + vbOKOnly, "Proveedor no guardads")
+                                    End If
+                                Else
+                                    GUARDAR_STR("producto_proveedor", "ID_Proveedor", LBL_Prov.Text, "ID_Producto", idProd)
+                                End If
+                            End If
+
+                            ActualizarProgressBar(20)
+
+                            LIMPIAR()
+                            MsgBox("Datos almacenados satisfactoriamente", vbInformation + vbOKOnly, "Transacción exitosa")
+                            ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
+                            P_Productos.Show()
+                            P_Productos.REFRESCAR()
+                            pBar_guardar.Value = 100
+                            Me.Close()
+                        Catch ex As Exception
+                            MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                        End Try
+                    End If
+                Else
+                    MsgBox("El código " + TXT_Cod.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
                 End If
-            Else
-                MsgBox("El código " + TXT_Cod.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
-            End If
-        Catch ex As Exception
-            MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
-        End Try
-        pBar_guardar.Value = 0
-        ModProd = False
+            Catch ex As Exception
+                MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+            End Try
+            pBar_guardar.Value = 0
+            ModProd = False
+        End If
     End Sub
     Private Sub ActualizarProgressBar(paso As Integer)
         If pBar_guardar.Value + paso <= pBar_guardar.Maximum Then

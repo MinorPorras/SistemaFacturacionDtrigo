@@ -247,7 +247,7 @@ Partial Class B_Producto
         Me.TXT_BuscarProd.Location = New System.Drawing.Point(23, 152)
         Me.TXT_BuscarProd.Name = "TXT_BuscarProd"
         Me.TXT_BuscarProd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_BuscarProd.PlaceholderText = "Buscar cliente"
+        Me.TXT_BuscarProd.PlaceholderText = "Buscar producto"
         Me.TXT_BuscarProd.SelectedText = ""
         Me.TXT_BuscarProd.Size = New System.Drawing.Size(748, 42)
         Me.TXT_BuscarProd.TabIndex = 87

@@ -203,7 +203,7 @@ Partial Class P_ReimprimirFact
         Me.TXT_BuscarFact.Location = New System.Drawing.Point(41, 199)
         Me.TXT_BuscarFact.Name = "TXT_BuscarFact"
         Me.TXT_BuscarFact.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_BuscarFact.PlaceholderText = "Buscar proveedor"
+        Me.TXT_BuscarFact.PlaceholderText = "Buscar número de factura"
         Me.TXT_BuscarFact.SelectedText = ""
         Me.TXT_BuscarFact.Size = New System.Drawing.Size(1166, 42)
         Me.TXT_BuscarFact.TabIndex = 49

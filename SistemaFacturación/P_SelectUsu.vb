@@ -48,7 +48,8 @@ Public Class P_SelectUsu
 
 
     Private Sub BTN_RegresarLogin_Click(sender As Object, e As EventArgs) Handles BTN_RegresarLogin.Click
-        Me.Close()
         M_Inicio.Show()
+        M_Inicio.REFRESCAR()
+        Me.Close()
     End Sub
 End Class

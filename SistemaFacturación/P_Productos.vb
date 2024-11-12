@@ -32,7 +32,12 @@
     End Sub
 
     Private Sub TXT_BuscarProd_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProd.TextChanged
-        REFRESCAR()
+        If RDB_BuscarCodigo.Checked = True Then
+            Dim num As Integer
+            If Integer.TryParse(TXT_BuscarProd.Text, num) Then
+                REFRESCAR()
+            End If
+        End If
     End Sub
     Public Sub REFRESCAR()
         Try
@@ -119,10 +124,10 @@
                 'Si el textbox tiene algo de texto
                 If RDB_BuscarCodigo.Checked = True Then
                     'Si busca por codigo hace este query
-                    SQL = stringConsultaBase + " where p.codigo Like '%" & TXT_BuscarProd.Text & "%' " + cat + Marca + Prov + ";"
+                    SQL = stringConsultaBase + " where p.codigo Like '%" & TXT_BuscarProd.Text & "%' " + cat + Marca + Prov + " ORDER BY Val(p.codigo) ASC;"
                 ElseIf RDB_BuscarNombre.Checked = True Then
                     'Si busca por nombre hace este query
-                    SQL = stringConsultaBase + " where p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' " + cat + Marca + Prov + ";"
+                    SQL = stringConsultaBase + " where p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' " + cat + Marca + Prov + " ORDER BY Val(p.codigo) ASC;"
                 End If
             Else
                 'SXi el textbox esta vacio
@@ -149,7 +154,7 @@
                         'Si hay una marca y un proveedor de agrega el AND despues de Marca
                         Marca = Marca + " And "
                     End If
-                    SQL = stringConsultaBase + " WHERE " + cat + Marca + Prov
+                    SQL = stringConsultaBase + " WHERE " + cat + Marca + Prov + " ORDER BY Val(codigo) ASC;"
                 End If
 
             End If
@@ -322,9 +327,11 @@
 
     Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
         REFRESCAR()
+        TXT_BuscarProd.Focus()
     End Sub
 
     Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
         REFRESCAR()
+        TXT_BuscarProd.Focus()
     End Sub
 End Class

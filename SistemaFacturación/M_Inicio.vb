@@ -160,7 +160,7 @@ Public Class M_Inicio
 
     Private Sub BTN_Mantenimiento_Click(sender As Object, e As EventArgs) Handles BTN_Mantenimiento.Click
         M_Mantenimiento.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
 
     Private Sub BTN_Reporte_Click(sender As Object, e As EventArgs) Handles BTN_Reporte.Click
@@ -184,6 +184,6 @@ Public Class M_Inicio
 
     Private Sub BTN_CajaVenta_Click_1(sender As Object, e As EventArgs) Handles BTN_CajaVenta.Click
         P_SelectUsu.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
 End Class

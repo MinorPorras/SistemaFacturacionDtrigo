@@ -10,7 +10,7 @@
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
             T.Tables.Clear()
-            SQL = "SELECT * FROM impuestos"
+            SQL = "SELECT * FROM impuestos ORDER BY Val(Codigo) ASC;"
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
                 For i As Integer = 0 To T.Tables(0).Rows.Count - 1

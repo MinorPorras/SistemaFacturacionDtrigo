@@ -24,6 +24,9 @@ Partial Class P_Caja
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(P_Caja))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
@@ -60,18 +63,19 @@ Partial Class P_Caja
         Me.BTN_Fav8 = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2GroupBox1 = New Guna.UI2.WinForms.Guna2GroupBox()
         Me.BTN_NProd = New Guna.UI2.WinForms.Guna2CircleButton()
-        Me.LSV_Factura = New System.Windows.Forms.ListView()
-        Me.ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.cod = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.nombre = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.precio_venta = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.cant = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.subtotal = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.LBL_Usu = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel6 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.DGV_Caja = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.ID_Prod = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nombre_prod = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.precioVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.PIC_Logo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2GroupBox1.SuspendLayout()
+        CType(Me.DGV_Caja, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -582,46 +586,6 @@ Partial Class P_Caja
         Me.BTN_NProd.Text = "+"
         Me.BTN_NProd.TextOffset = New System.Drawing.Point(2, -2)
         '
-        'LSV_Factura
-        '
-        Me.LSV_Factura.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LSV_Factura.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.cod, Me.nombre, Me.precio_venta, Me.cant, Me.subtotal})
-        Me.LSV_Factura.ContextMenuStrip = Me.MNU_CONTX
-        Me.LSV_Factura.FullRowSelect = True
-        Me.LSV_Factura.GridLines = True
-        Me.LSV_Factura.HideSelection = False
-        Me.LSV_Factura.Location = New System.Drawing.Point(630, 105)
-        Me.LSV_Factura.MultiSelect = False
-        Me.LSV_Factura.Name = "LSV_Factura"
-        Me.LSV_Factura.Size = New System.Drawing.Size(675, 331)
-        Me.LSV_Factura.TabIndex = 112
-        Me.LSV_Factura.UseCompatibleStateImageBehavior = False
-        Me.LSV_Factura.View = System.Windows.Forms.View.Details
-        '
-        'ID
-        '
-        Me.ID.Text = "ID"
-        '
-        'cod
-        '
-        Me.cod.Text = "Cod."
-        '
-        'nombre
-        '
-        Me.nombre.Text = "Producto"
-        '
-        'precio_venta
-        '
-        Me.precio_venta.Text = "Precio Unitario"
-        '
-        'cant
-        '
-        Me.cant.Text = "Cant."
-        '
-        'subtotal
-        '
-        Me.subtotal.Text = "Subtotal"
-        '
         'LBL_Usu
         '
         Me.LBL_Usu.BackColor = System.Drawing.Color.Transparent
@@ -646,6 +610,97 @@ Partial Class P_Caja
         Me.Guna2HtmlLabel6.Text = "Usuario:"
         Me.Guna2HtmlLabel6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit
         '
+        'DGV_Caja
+        '
+        Me.DGV_Caja.AllowUserToDeleteRows = False
+        Me.DGV_Caja.AllowUserToOrderColumns = True
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.DGV_Caja.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.DGV_Caja.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_Caja.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGV_Caja.ColumnHeadersHeight = 15
+        Me.DGV_Caja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Me.DGV_Caja.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID_Prod, Me.codigo, Me.Nombre_prod, Me.precioVenta, Me.cantidad, Me.Total})
+        Me.DGV_Caja.ContextMenuStrip = Me.MNU_CONTX
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGV_Caja.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGV_Caja.GridColor = System.Drawing.Color.White
+        Me.DGV_Caja.Location = New System.Drawing.Point(629, 105)
+        Me.DGV_Caja.Name = "DGV_Caja"
+        Me.DGV_Caja.RowHeadersVisible = False
+        Me.DGV_Caja.Size = New System.Drawing.Size(675, 331)
+        Me.DGV_Caja.TabIndex = 115
+        Me.DGV_Caja.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_Caja.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.DGV_Caja.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.DGV_Caja.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.DGV_Caja.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.DGV_Caja.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_Caja.ThemeStyle.GridColor = System.Drawing.Color.White
+        Me.DGV_Caja.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_Caja.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DGV_Caja.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_Caja.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGV_Caja.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Me.DGV_Caja.ThemeStyle.HeaderStyle.Height = 15
+        Me.DGV_Caja.ThemeStyle.ReadOnly = False
+        Me.DGV_Caja.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_Caja.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGV_Caja.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_Caja.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_Caja.ThemeStyle.RowsStyle.Height = 22
+        Me.DGV_Caja.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_Caja.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
+        'ID_Prod
+        '
+        Me.ID_Prod.HeaderText = "ID"
+        Me.ID_Prod.Name = "ID_Prod"
+        Me.ID_Prod.ReadOnly = True
+        Me.ID_Prod.Visible = False
+        '
+        'codigo
+        '
+        Me.codigo.HeaderText = "Codigo"
+        Me.codigo.Name = "codigo"
+        Me.codigo.ReadOnly = True
+        '
+        'Nombre_prod
+        '
+        Me.Nombre_prod.HeaderText = "Producto"
+        Me.Nombre_prod.Name = "Nombre_prod"
+        Me.Nombre_prod.ReadOnly = True
+        '
+        'precioVenta
+        '
+        Me.precioVenta.HeaderText = "P. Venta"
+        Me.precioVenta.Name = "precioVenta"
+        Me.precioVenta.ReadOnly = True
+        '
+        'cantidad
+        '
+        Me.cantidad.HeaderText = "Cant."
+        Me.cantidad.Name = "cantidad"
+        '
+        'Total
+        '
+        Me.Total.HeaderText = "Total"
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        '
         'P_Caja
         '
         Me.AcceptButton = Me.BTN_NProd
@@ -654,9 +709,9 @@ Partial Class P_Caja
         Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1339, 763)
+        Me.Controls.Add(Me.DGV_Caja)
         Me.Controls.Add(Me.Guna2HtmlLabel6)
         Me.Controls.Add(Me.LBL_Usu)
-        Me.Controls.Add(Me.LSV_Factura)
         Me.Controls.Add(Me.BTN_NProd)
         Me.Controls.Add(Me.BTN_GuardarCuenta)
         Me.Controls.Add(Me.BTN_CuentaCobrar)
@@ -688,6 +743,7 @@ Partial Class P_Caja
         Me.MNU_CONTX.ResumeLayout(False)
         CType(Me.PIC_Logo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2GroupBox1.ResumeLayout(False)
+        CType(Me.DGV_Caja, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -728,13 +784,13 @@ Partial Class P_Caja
     Friend WithEvents MNU_CONTX As Guna.UI2.WinForms.Guna2ContextMenuStrip
     Friend WithEvents MNU_MODIFICAR As ToolStripMenuItem
     Friend WithEvents MNU_ELIMINAR As ToolStripMenuItem
-    Friend WithEvents LSV_Factura As ListView
-    Friend WithEvents ID As ColumnHeader
-    Friend WithEvents cod As ColumnHeader
-    Friend WithEvents nombre As ColumnHeader
-    Friend WithEvents precio_venta As ColumnHeader
-    Friend WithEvents cant As ColumnHeader
-    Friend WithEvents subtotal As ColumnHeader
     Friend WithEvents LBL_Usu As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel6 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents DGV_Caja As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents ID_Prod As DataGridViewTextBoxColumn
+    Friend WithEvents codigo As DataGridViewTextBoxColumn
+    Friend WithEvents Nombre_prod As DataGridViewTextBoxColumn
+    Friend WithEvents precioVenta As DataGridViewTextBoxColumn
+    Friend WithEvents cantidad As DataGridViewTextBoxColumn
+    Friend WithEvents Total As DataGridViewTextBoxColumn
 End Class

@@ -1,4 +1,6 @@
-﻿Public Class B_Categoria
+﻿Imports System.Net.Mime.MediaTypeNames
+
+Public Class B_Categoria
     Friend caso As String
     Public Sub REFRESCAR()
         Try
@@ -82,9 +84,11 @@
 
     Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
         REFRESCAR()
+        TXT_BuscarCat.Focus()
     End Sub
 
     Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
         REFRESCAR()
+        TXT_BuscarCat.Focus()
     End Sub
 End Class

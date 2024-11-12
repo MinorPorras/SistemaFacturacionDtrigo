@@ -75,9 +75,12 @@
 
     Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarDesc.CheckedChanged
         REFRESCAR()
+        TXT_BuscarImp.Focus()
     End Sub
 
     Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
         REFRESCAR()
+        TXT_BuscarImp.Focus()
     End Sub
+
 End Class
