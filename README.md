@@ -3,7 +3,7 @@
 - Junto con el cambio anterior ahora en la tabla de los productos en caja se puede  modificar el valor de la cantidad y se actualizan los valores correctamente
 - Ahora al darle click a los filtros de buscar por nombre o código estos te colocan de una vez en la caja de etxto para que escribas tu busqueda, al igual que con los otros filtros del productos
 - Se ajustaron los textos de los placeholders de algunas cajas de texto puesto que habían varias con leyendas incorrectas
-- El botón de imprimir mas reciente debería de funcionar correctamente ahora grancias a los cambios en como se muestran los códigos
+- El botón de imprimir mas reciente debería de funcionar correctamente ahora
 - Se corrigieron errores en donde al presionar enter en las pestañas de modificar y agregar en el mantenimiento se guardaban los datos como estuvieran en el momento sin importar que le faltara información necesaria, ahora el mismo botón también hace una última verificación antes de guardar la información
 - Todas las listas del mantenimiento se acomodan por defecto por código de menor a mayor, en un futuro se podrá acomodar de muchas otras formas con los demás atributos de cada parte del mantenimiento.
 
