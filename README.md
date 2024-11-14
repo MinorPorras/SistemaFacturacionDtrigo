@@ -1,3 +1,7 @@
+**Version 1.0.0.12 (14 de noviembre de 2024)**
+- Se modificó el color de la pestala para agregar a la caja los producto variables para que sea más visible y se arreglaron problemas donde esta no se cerraba al terminar el proceso
+- Creo que ahora si resolví el problema con el botón de imprimir más reciente y ya funciona correctamente, además en la lista de facturas ahora la más recinte también es la que aparece en la parte de más arriba
+
 **Versión 1.0.0.11 (14 de nomviembre de 2024)**
 - Ahora se pueden crear productos con precios variables, este tipo de productos al pasarlo por la caja muestran un pestaña en la cual además de mostrar la info del producto, te permite colocar el precio que desees para ese tipo de productos que se vende por kilo y demás. En este caso no se almacena níngun impuesto, ganancia o precio de venta, unicamente el precio base
 - Había un error en la pestaña de agregar productos en el que a la hora de buscar un impuesto el resultado que te daba luego de escoger uno era incorrecto y estaba relacionado con la categoría en vez de con el impuesto correcto
