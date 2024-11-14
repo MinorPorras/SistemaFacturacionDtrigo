@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class E_ProductoVariable
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class E_ProductoVariable
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(E_ProductoVariable))
@@ -45,9 +45,9 @@ Partial Class E_ProductoVariable
         '
         'Guna2HtmlLabel4
         '
-        Me.Guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel4.BackColor = System.Drawing.SystemColors.Control
         Me.Guna2HtmlLabel4.Font = New System.Drawing.Font("Segoe UI Black", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Guna2HtmlLabel4.ForeColor = System.Drawing.SystemColors.Control
+        Me.Guna2HtmlLabel4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(12, 83)
         Me.Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
         Me.Guna2HtmlLabel4.Size = New System.Drawing.Size(104, 32)
@@ -57,9 +57,9 @@ Partial Class E_ProductoVariable
         '
         'LBL_Producto
         '
-        Me.LBL_Producto.BackColor = System.Drawing.Color.Transparent
+        Me.LBL_Producto.BackColor = System.Drawing.SystemColors.Control
         Me.LBL_Producto.Font = New System.Drawing.Font("Segoe UI Black", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.LBL_Producto.ForeColor = System.Drawing.SystemColors.Control
+        Me.LBL_Producto.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.LBL_Producto.Location = New System.Drawing.Point(122, 83)
         Me.LBL_Producto.Name = "LBL_Producto"
         Me.LBL_Producto.Size = New System.Drawing.Size(87, 32)
@@ -69,9 +69,9 @@ Partial Class E_ProductoVariable
         '
         'LBL_Cod
         '
-        Me.LBL_Cod.BackColor = System.Drawing.Color.Transparent
+        Me.LBL_Cod.BackColor = System.Drawing.SystemColors.Control
         Me.LBL_Cod.Font = New System.Drawing.Font("Segoe UI Black", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.LBL_Cod.ForeColor = System.Drawing.SystemColors.Control
+        Me.LBL_Cod.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.LBL_Cod.Location = New System.Drawing.Point(99, 29)
         Me.LBL_Cod.Name = "LBL_Cod"
         Me.LBL_Cod.Size = New System.Drawing.Size(39, 32)
@@ -81,9 +81,9 @@ Partial Class E_ProductoVariable
         '
         'Guna2HtmlLabel2
         '
-        Me.Guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel2.BackColor = System.Drawing.SystemColors.Control
         Me.Guna2HtmlLabel2.Font = New System.Drawing.Font("Segoe UI Black", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Guna2HtmlLabel2.ForeColor = System.Drawing.SystemColors.Control
+        Me.Guna2HtmlLabel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(12, 29)
         Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
         Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(81, 32)
@@ -93,6 +93,8 @@ Partial Class E_ProductoVariable
         '
         'TXT_PrecioVenta
         '
+        Me.TXT_PrecioVenta.BackColor = System.Drawing.SystemColors.Control
+        Me.TXT_PrecioVenta.BorderColor = System.Drawing.Color.DarkOrange
         Me.TXT_PrecioVenta.BorderRadius = 20
         Me.TXT_PrecioVenta.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.TXT_PrecioVenta.DefaultText = ""
@@ -114,9 +116,9 @@ Partial Class E_ProductoVariable
         '
         'Guna2HtmlLabel1
         '
-        Me.Guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel1.BackColor = System.Drawing.SystemColors.Control
         Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Segoe UI Black", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.Guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Control
+        Me.Guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(12, 138)
         Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
         Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(169, 32)
@@ -126,6 +128,7 @@ Partial Class E_ProductoVariable
         '
         'BTN_RegresarPrd
         '
+        Me.BTN_RegresarPrd.BackColor = System.Drawing.SystemColors.Control
         Me.BTN_RegresarPrd.BorderColor = System.Drawing.Color.Red
         Me.BTN_RegresarPrd.BorderRadius = 25
         Me.BTN_RegresarPrd.DialogResult = System.Windows.Forms.DialogResult.Cancel
@@ -138,13 +141,14 @@ Partial Class E_ProductoVariable
         Me.BTN_RegresarPrd.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarPrd.Image = CType(resources.GetObject("BTN_RegresarPrd.Image"), System.Drawing.Image)
         Me.BTN_RegresarPrd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarPrd.Location = New System.Drawing.Point(21, 201)
+        Me.BTN_RegresarPrd.Location = New System.Drawing.Point(31, 210)
         Me.BTN_RegresarPrd.Name = "BTN_RegresarPrd"
         Me.BTN_RegresarPrd.Size = New System.Drawing.Size(149, 57)
         Me.BTN_RegresarPrd.TabIndex = 111
         '
         'BTN_SelectProd
         '
+        Me.BTN_SelectProd.BackColor = System.Drawing.SystemColors.Control
         Me.BTN_SelectProd.BorderColor = System.Drawing.Color.Red
         Me.BTN_SelectProd.BorderRadius = 25
         Me.BTN_SelectProd.DisabledState.BorderColor = System.Drawing.Color.DarkGray
@@ -156,16 +160,16 @@ Partial Class E_ProductoVariable
         Me.BTN_SelectProd.ForeColor = System.Drawing.Color.White
         Me.BTN_SelectProd.Image = CType(resources.GetObject("BTN_SelectProd.Image"), System.Drawing.Image)
         Me.BTN_SelectProd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_SelectProd.Location = New System.Drawing.Point(210, 201)
+        Me.BTN_SelectProd.Location = New System.Drawing.Point(220, 210)
         Me.BTN_SelectProd.Name = "BTN_SelectProd"
         Me.BTN_SelectProd.Size = New System.Drawing.Size(149, 57)
         Me.BTN_SelectProd.TabIndex = 110
         '
         'LBL_ID
         '
-        Me.LBL_ID.BackColor = System.Drawing.Color.Transparent
+        Me.LBL_ID.BackColor = System.Drawing.SystemColors.Control
         Me.LBL_ID.Font = New System.Drawing.Font("Segoe UI Black", 15.75!, System.Drawing.FontStyle.Bold)
-        Me.LBL_ID.ForeColor = System.Drawing.SystemColors.Control
+        Me.LBL_ID.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.LBL_ID.Location = New System.Drawing.Point(349, 12)
         Me.LBL_ID.Name = "LBL_ID"
         Me.LBL_ID.Size = New System.Drawing.Size(22, 32)
@@ -178,7 +182,7 @@ Partial Class E_ProductoVariable
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(400, 290)
         Me.Controls.Add(Me.LBL_ID)
         Me.Controls.Add(Me.BTN_RegresarPrd)
@@ -189,6 +193,7 @@ Partial Class E_ProductoVariable
         Me.Controls.Add(Me.Guna2HtmlLabel2)
         Me.Controls.Add(Me.LBL_Producto)
         Me.Controls.Add(Me.Guna2HtmlLabel4)
+        Me.ForeColor = System.Drawing.SystemColors.Control
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "E_ProductoVariable"

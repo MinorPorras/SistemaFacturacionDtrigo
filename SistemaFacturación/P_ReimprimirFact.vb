@@ -18,12 +18,12 @@ Public Class P_ReimprimirFact
                 SQL = "SELECT f.ID, f.num_factura, f.fecha_emision, c.nombre, u.usuario, fc.comentario, f.total, f.entrega_cliente, f.vuelto, f.tipo_venta, f.cobrada " &
                     " FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
                     " LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
-                    " LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura LIKE '%" & TXT_BuscarFact.Text & "%' ORDER BY Val(f.num_factura) ASC;"
+                    " LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura LIKE '%" & TXT_BuscarFact.Text & "%' ORDER BY Val(f.num_factura) DESC;"
             Else
                 SQL = "SELECT f.ID, f.num_factura, f.fecha_emision, c.nombre, u.usuario, fc.comentario, f.total, f.entrega_cliente, f.vuelto, f.tipo_venta, f.cobrada " &
                     " FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
                     " LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
-                    " LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) ORDER BY Val(f.num_factura) ASC;"
+                    " LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) ORDER BY Val(f.num_factura) DESC;"
 
             End If
             Cargar_Tabla(T, SQL)
@@ -76,8 +76,8 @@ Public Class P_ReimprimirFact
 
     Private Sub BTN_ImpReciente_Click(sender As Object, e As EventArgs) Handles BTN_ImpReciente.Click
         encabezadoFactura = ""
-        For Each line As Integer In facturaContenido
-            facturaContenido.Remove(line)
+        For i As Integer = facturaContenido.Count - 1 To 0 Step -1
+            facturaContenido.RemoveAt(i)
         Next
 
         finFactura = ""

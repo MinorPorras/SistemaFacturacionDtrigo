@@ -2,6 +2,7 @@
     Dim cant As Integer
     Private Sub E_ProductoVariable_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         VALIDAR()
+        TXT_PrecioVenta.Select()
     End Sub
 
     Private Sub BTN_RegresarPrd_Click(sender As Object, e As EventArgs) Handles BTN_RegresarPrd.Click
@@ -11,6 +12,7 @@
     Private Sub BTN_SelectProd_Click(sender As Object, e As EventArgs) Handles BTN_SelectProd.Click
         P_Caja.agregarProd(LBL_ID.Text, LBL_Cod.Text, LBL_Producto.Text, TXT_PrecioVenta.Text, 1)
         TXT_PrecioVenta.Clear()
+        Me.Close()
     End Sub
 
     Private Sub TXT_PrecioVenta_TextChanged(sender As Object, e As EventArgs) Handles TXT_PrecioVenta.TextChanged

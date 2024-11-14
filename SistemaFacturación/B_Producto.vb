@@ -107,7 +107,10 @@
             P_Caja.cargarTotal()
             Me.Close()
         Else
-            MsgBox("Error: La cantidad debe de ser un numero entero", vbCritical + vbOKOnly, "Error")
+            E_ProductoVariable.LBL_Cod.Text = TXT_codigo.Text
+            E_ProductoVariable.LBL_Producto.Text = TXT_Nombre.Text
+            E_ProductoVariable.LBL_ID.Text = LSV_Producto.SelectedItems(0).SubItems(0).Text
+            E_ProductoVariable.Show()
         End If
     End Sub
 

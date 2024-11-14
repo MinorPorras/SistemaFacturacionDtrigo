@@ -144,7 +144,8 @@
 
     Private Sub cargarProds(idfact As Integer, reimprimir As Boolean)
         T.Tables.Clear()
-        SQL = "SELECT f.cant, p.nombre, p.precio_venta FROM factura_producto f INNER JOIN producto p ON p.ID = f.ID_Producto WHERE ID_Factura = " & idfact
+        SQL = "SELECT f.cant, p.nombre, v.precio_venta FROM ((factura_producto f INNER JOIN producto p ON p.ID = f.ID_Producto)" &
+            " LEFT JOIN Producto_precioVenta v ON p.ID = v.ID_Producto) WHERE ID_Factura = " & idfact
         Cargar_Tabla(T, SQL)
         Dim prods As String
         If T.Tables(0).Rows.Count > 0 Then
