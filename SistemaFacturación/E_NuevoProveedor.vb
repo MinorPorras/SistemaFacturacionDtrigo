@@ -8,6 +8,7 @@
 
     Private Sub E_NuevaCat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TXT_CodigoProv.Focus()
+        TXT_CodigoProv.Select()
         If ModProv = False Then
             idProv = OBTENERPK("proveedor", "ID")
         End If

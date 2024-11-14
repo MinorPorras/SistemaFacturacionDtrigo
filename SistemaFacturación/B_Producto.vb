@@ -13,18 +13,20 @@
             T.Tables.Clear()
             If TXT_BuscarProd.Text <> "" Then
                 If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT ID, codigo, nombre, precio_venta FROM producto where codigo LIKE '%" & TXT_BuscarProd.Text & "%'"
+                    SQL = "SELECT p.ID, p.codigo, p.nombre, v.precio_venta, p.variable FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+                        " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%'"
                 ElseIf RDB_BuscarNombre.Checked = True Then
-                    SQL = "SELECT ID, codigo, nombre, precio_venta FROM producto where nombre LIKE '%" & TXT_BuscarProd.Text & "%'"
+                    SQL = "SELECT p.ID, p.codigo, p.nombre, v.precio_venta, p.variable FROM producto p p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+                        " where p.nombre LIKE '%" & TXT_BuscarProd.Text & "%'"
                 End If
             Else
-                SQL = "SELECT ID, codigo, nombre, precio_venta FROM producto"
+                SQL = "SELECT p.ID, p.codigo, p.nombre, v.precio_venta, p.variable FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto"
             End If
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
                 For i As Integer = 0 To T.Tables(0).Rows.Count - 1
                     Dim item As New ListViewItem(T.Tables(0).Rows(i).Item("ID").ToString())
-                    For j As Integer = 1 To 3
+                    For j As Integer = 1 To 4
                         Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
                         item.SubItems.Add(subItem)
                     Next
@@ -65,7 +67,11 @@
         Try
             TXT_codigo.Text = LSV_Producto.SelectedItems(0).SubItems(1).Text
             TXT_Nombre.Text = LSV_Producto.SelectedItems(0).SubItems(2).Text
-            TXT_Precio.Text = LSV_Producto.SelectedItems(0).SubItems(3).Text
+            If LSV_Producto.SelectedItems(0).SubItems(4).Text = 1 Then
+                TXT_Precio.Text = "Variable"
+            Else
+                TXT_Precio.Text = LSV_Producto.SelectedItems(0).SubItems(3).Text
+            End If
             LBL_IDProd.Text = LSV_Producto.SelectedItems(0).SubItems(0).Text
         Catch ex As Exception
             TXT_codigo.Text = ""
@@ -78,7 +84,14 @@
         If Integer.TryParse(TXT_CantProd.Text, cant) Then
             If Not ModProd Then
                 P_Caja.cantProd = Convert.ToInt32(TXT_CantProd.Text)
-                P_Caja.Buscar_DatosProd(TXT_codigo, True)
+                If TXT_Precio.Text = "Variable" Then
+                    E_ProductoVariable.LBL_Cod.Text = TXT_codigo.Text
+                    E_ProductoVariable.LBL_Producto.Text = TXT_Nombre.Text
+                    E_ProductoVariable.LBL_ID.Text = LSV_Producto.SelectedItems(0).SubItems(0).Text
+                    E_ProductoVariable.Show()
+                Else
+                    P_Caja.Buscar_DatosProd(TXT_codigo, True)
+                End If
                 P_Caja.validadListView()
             Else
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value = LBL_IDProd.Text

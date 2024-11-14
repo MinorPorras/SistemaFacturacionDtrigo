@@ -128,13 +128,30 @@ Public Class P_Caja
     End Sub
 
     Private Sub BTN_NProd_Click(sender As Object, e As EventArgs) Handles BTN_NProd.Click
-        Buscar_DatosProd(TXT_BuscarProducto, False)
+        T.Tables.Clear()
+        SQL = "SELECT p.ID, p.variable, v.precio_venta, p.nombre FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+                " WHERE p.codigo = '" & TXT_BuscarProducto.Text & "';"
+        Cargar_Tabla(T, SQL)
+        If T.Tables(0).Rows.Count > 0 Then
+            If T.Tables(0).Rows(0).Item(1) = 0 Then
+                Buscar_DatosProd(TXT_BuscarProducto, False)
+            Else
+                E_ProductoVariable.LBL_Cod.Text = TXT_BuscarProducto.Text
+                E_ProductoVariable.LBL_Producto.Text = T.Tables(0).Rows(0).Item(3)
+                E_ProductoVariable.LBL_ID.Text = T.Tables(0).Rows(0).Item(0)
+                E_ProductoVariable.Show()
+            End If
+
+        Else
+            MsgBox("El código que colocó está mal escrito o no existe", vbCritical + vbOKOnly, "Código incorrecto")
+        End If
     End Sub
 
     Friend Sub Buscar_DatosProd(txtCodProd As Guna.UI2.WinForms.Guna2TextBox, buscado As Boolean)
         Try
             T.Tables.Clear()
-            SQL = "SELECT ID, nombre, precio_venta FROM producto WHERE codigo = '" & txtCodProd.Text & "'"
+            SQL = "SELECT p.ID, pnombre, pv.precio_venta, p.variable FROM producto p LEFT JOIN producto_precioVenta pv ON p.ID = pv.ID_Producto" +
+                " WHERE p.codigo = '" & txtCodProd.Text & "'"
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
                 If Not buscado Then
@@ -152,7 +169,7 @@ Public Class P_Caja
     End Sub
 
 
-    Private Sub agregarProd(ID As String, codigo As String, nombre As String, precioVenta As String, cant As String)
+    Friend Sub agregarProd(ID As String, codigo As String, nombre As String, precioVenta As String, cant As String)
         Dim Subtotal As Double = cant * Convert.ToInt32(precioVenta)
         Dim row As String() = {ID, codigo, nombre, precioVenta, cant, Subtotal}
         DGV_Caja.Columns(0).Visible = False
@@ -175,15 +192,27 @@ Public Class P_Caja
     Private Sub agregarProdFav(btnFav As Guna.UI2.WinForms.Guna2Button)
         If Not String.IsNullOrWhiteSpace(btnFav.Tag) Then
             T.Tables.Clear()
-            SQL = "SELECT codigo, precio_venta FROM producto WHERE ID = " + btnFav.Tag.ToString()
+            SQL = "SELECT p.codigo, p.variable, v.precio_venta FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+                " WHERE p.ID = " + btnFav.Tag.ToString()
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
-                agregarProd(btnFav.Tag.ToString(), T.Tables(0).Rows(0).Item(0), btnFav.Text, T.Tables(0).Rows(0).Item(1), 1)
+                If T.Tables(0).Rows(0).Item(1) = 0 Then
+                    agregarProd(btnFav.Tag.ToString(), T.Tables(0).Rows(0).Item(0), btnFav.Text, T.Tables(0).Rows(0).Item(2), 1)
+                Else
+                    E_ProductoVariable.LBL_Cod.Text = T.Tables(0).Rows(0).Item(0)
+                    E_ProductoVariable.LBL_Producto.Text = btnFav.Text
+                    E_ProductoVariable.LBL_ID.Text = btnFav.Tag
+                    E_ProductoVariable.Show()
+                End If
 
             Else
                 MsgBox("El código que colocó está mal escrito o no existe", vbCritical + vbOKOnly, "Código incorrecto")
             End If
         End If
+    End Sub
+
+    Private Sub agregarProdVariable()
+
     End Sub
 
     Private Sub BTN_Fav1_Click(sender As Object, e As EventArgs) Handles BTN_Fav1.Click

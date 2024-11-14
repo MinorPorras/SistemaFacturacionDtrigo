@@ -49,6 +49,7 @@ Partial Class B_Producto
         Me.TXT_CantProd = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTN_MenosCant = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.BTN_MasCant = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.variable = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -158,7 +159,7 @@ Partial Class B_Producto
         'LSV_Producto
         '
         Me.LSV_Producto.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LSV_Producto.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.codigo, Me.nombre, Me.precio_venta})
+        Me.LSV_Producto.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.codigo, Me.nombre, Me.precio_venta, Me.variable})
         Me.LSV_Producto.FullRowSelect = True
         Me.LSV_Producto.GridLines = True
         Me.LSV_Producto.HideSelection = False
@@ -183,7 +184,7 @@ Partial Class B_Producto
         'nombre
         '
         Me.nombre.Text = "Nombre"
-        Me.nombre.Width = 242
+        Me.nombre.Width = 239
         '
         'precio_venta
         '
@@ -428,6 +429,10 @@ Partial Class B_Producto
         Me.BTN_MasCant.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.BTN_MasCant.TextOffset = New System.Drawing.Point(-6, -5)
         '
+        'variable
+        '
+        Me.variable.Text = "Variable"
+        '
         'B_Producto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -492,4 +497,5 @@ Partial Class B_Producto
     Friend WithEvents TXT_CantProd As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents BTN_MenosCant As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents BTN_MasCant As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents variable As ColumnHeader
 End Class

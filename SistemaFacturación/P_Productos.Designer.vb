@@ -37,6 +37,7 @@ Partial Class P_Productos
         Me.porcentaje = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ganancia = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.precio_venta = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.variable = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ID_Categoría = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.categoria = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ID_Marca = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -136,7 +137,7 @@ Partial Class P_Productos
         'LSV_Prod
         '
         Me.LSV_Prod.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LSV_Prod.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.codigo, Me.nombre, Me.descripcion, Me.precio_base, Me.porcentaje, Me.ganancia, Me.precio_venta, Me.ID_Categoría, Me.categoria, Me.ID_Marca, Me.marca, Me.ID_Proveedor, Me.proveedor, Me.favorito})
+        Me.LSV_Prod.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.codigo, Me.nombre, Me.descripcion, Me.precio_base, Me.porcentaje, Me.ganancia, Me.precio_venta, Me.variable, Me.ID_Categoría, Me.categoria, Me.ID_Marca, Me.marca, Me.ID_Proveedor, Me.proveedor, Me.favorito})
         Me.LSV_Prod.ContextMenuStrip = Me.MNU_CONTX
         Me.LSV_Prod.FullRowSelect = True
         Me.LSV_Prod.GridLines = True
@@ -184,6 +185,10 @@ Partial Class P_Productos
         '
         Me.precio_venta.Text = "Precio de venta"
         Me.precio_venta.Width = 111
+        '
+        'variable
+        '
+        Me.variable.Text = "Variable"
         '
         'ID_Categoría
         '
@@ -538,4 +543,5 @@ Partial Class P_Productos
     Friend WithEvents TXT_BuscarCat As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents TXT_BuscarProv As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents ganancia As ColumnHeader
+    Friend WithEvents variable As ColumnHeader
 End Class

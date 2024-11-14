@@ -54,6 +54,9 @@ Partial Class E_NuevoProducto
         Me.LBL_Prov = New System.Windows.Forms.Label()
         Me.LBL_IDCat = New System.Windows.Forms.Label()
         Me.pBar_guardar = New Guna.UI2.WinForms.Guna2ProgressBar()
+        Me.CKB_variable = New Guna.UI2.WinForms.Guna2CheckBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.LBL_IDImp = New System.Windows.Forms.Label()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -509,19 +512,60 @@ Partial Class E_NuevoProducto
         Me.pBar_guardar.BorderColor = System.Drawing.Color.White
         Me.pBar_guardar.BorderThickness = 1
         Me.pBar_guardar.FillColor = System.Drawing.Color.Transparent
-        Me.pBar_guardar.Location = New System.Drawing.Point(12, 523)
+        Me.pBar_guardar.Location = New System.Drawing.Point(12, 545)
         Me.pBar_guardar.Name = "pBar_guardar"
         Me.pBar_guardar.Size = New System.Drawing.Size(981, 30)
         Me.pBar_guardar.TabIndex = 95
         Me.pBar_guardar.Text = "Guna2ProgressBar1"
         Me.pBar_guardar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
         '
+        'CKB_variable
+        '
+        Me.CKB_variable.AutoSize = True
+        Me.CKB_variable.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CKB_variable.CheckedState.BorderRadius = 0
+        Me.CKB_variable.CheckedState.BorderThickness = 0
+        Me.CKB_variable.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CKB_variable.Location = New System.Drawing.Point(501, 516)
+        Me.CKB_variable.Name = "CKB_variable"
+        Me.CKB_variable.Size = New System.Drawing.Size(15, 14)
+        Me.CKB_variable.TabIndex = 97
+        Me.CKB_variable.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.CKB_variable.UncheckedState.BorderRadius = 0
+        Me.CKB_variable.UncheckedState.BorderThickness = 0
+        Me.CKB_variable.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(341, 509)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(154, 23)
+        Me.Label2.TabIndex = 96
+        Me.Label2.Text = "Precio variable:"
+        '
+        'LBL_IDImp
+        '
+        Me.LBL_IDImp.AutoSize = True
+        Me.LBL_IDImp.ForeColor = System.Drawing.Color.Cornsilk
+        Me.LBL_IDImp.Location = New System.Drawing.Point(857, 120)
+        Me.LBL_IDImp.Name = "LBL_IDImp"
+        Me.LBL_IDImp.Size = New System.Drawing.Size(31, 13)
+        Me.LBL_IDImp.TabIndex = 98
+        Me.LBL_IDImp.Text = "idCat"
+        Me.LBL_IDImp.Visible = False
+        '
         'E_NuevoProducto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1025, 570)
+        Me.ClientSize = New System.Drawing.Size(1025, 587)
+        Me.Controls.Add(Me.LBL_IDImp)
+        Me.Controls.Add(Me.CKB_variable)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.pBar_guardar)
         Me.Controls.Add(Me.LBL_IDCat)
         Me.Controls.Add(Me.LBL_Prov)
@@ -593,4 +637,7 @@ Partial Class E_NuevoProducto
     Friend WithEvents LBL_IDCat As Label
     Friend WithEvents LBL_Prov As Label
     Friend WithEvents pBar_guardar As Guna.UI2.WinForms.Guna2ProgressBar
+    Friend WithEvents CKB_variable As Guna.UI2.WinForms.Guna2CheckBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents LBL_IDImp As Label
 End Class

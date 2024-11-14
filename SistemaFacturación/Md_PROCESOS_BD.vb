@@ -31,7 +31,14 @@ Module Md_PROCESOS_BD
     End Sub
 
     Friend Sub GUARDAR_VarCompuestas(ByVal TABLA As String, ByVal CONTENIDO As Integer, ByVal CONTENIDO2 As String)
-        SQL = "INSERT INTO " & TABLA & " VALUES " & "(" & CONTENIDO & ", '" & CONTENIDO2 + "')"
+        SQL = "INSERT INTO " & TABLA & " VALUES " & "(" & CONTENIDO & ", '" & CONTENIDO2 & "')"
+        'Actualiza en la tabla que se envió, en el atributo que se envió,
+        'el contenido dado donde la PK sea igual que la que se mandó
+        EJECUTAR(SQL)
+    End Sub
+
+    Friend Sub GUARDAR_VarCompuestasDouble(ByVal TABLA As String, ByVal CONTENIDO As Integer, ByVal CONTENIDO2 As Double)
+        SQL = "INSERT INTO " & TABLA & " VALUES " & "(" & CONTENIDO & ", " & CONTENIDO2 & " )"
         'Actualiza en la tabla que se envió, en el atributo que se envió,
         'el contenido dado donde la PK sea igual que la que se mandó
         EJECUTAR(SQL)

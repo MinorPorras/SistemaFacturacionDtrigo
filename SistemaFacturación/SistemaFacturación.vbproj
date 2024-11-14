@@ -147,6 +147,12 @@
     <Compile Include="B_Producto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="E_ProductoVariable.Designer.vb">
+      <DependentUpon>E_ProductoVariable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="E_ProductoVariable.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="E_ProveedorPedido.Designer.vb">
       <DependentUpon>E_ProveedorPedido.vb</DependentUpon>
     </Compile>
@@ -374,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="E_NuevoProducto.resx">
       <DependentUpon>E_NuevoProducto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="E_ProductoVariable.resx">
+      <DependentUpon>E_ProductoVariable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="E_ProveedorPedido.resx">
       <DependentUpon>E_ProveedorPedido.vb</DependentUpon>

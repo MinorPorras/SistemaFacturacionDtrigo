@@ -1,14 +1,15 @@
 ﻿Public Class P_Productos
-    Private stringConsultaBase As String = "SELECT p.ID, p.codigo, p.nombre, d.descripcion, p.precio_base, p.porc_impuesto, p.ganancia, p.precio_venta, " +
+    Private stringConsultaBase As String = "SELECT p.ID, p.codigo, p.nombre, d.descripcion, p.precio_base, p.porc_impuesto, p.ganancia, pv.precio_venta, p.variable, " +
                           "c.ID_Categoria, cat.nombre as 'Categoría', pm.ID_Marca, m.Nombre as 'Marca', pp.ID_Proveedor, pr.nombre as 'Proveedor', p.favorito " +
-                          "FROM (((((((producto p " +
+                          "FROM ((((((((producto p " +
                           "LEFT JOIN producto_categoria c ON p.ID = c.ID_Producto) " +
                           "LEFT JOIN categoria cat ON c.ID_Categoria = cat.ID) " +
                           "LEFT JOIN producto_marca pm ON p.ID = pm.ID_Producto) " +
                           "LEFT JOIN marca m ON m.ID = pm.ID_Marca) " +
                           "LEFT JOIN producto_proveedor pp ON p.ID = pp.ID_Producto) " +
                           "LEFT JOIN proveedor pr ON pp.ID_Proveedor = pr.ID) " +
-                          "LEFT JOIN producto_desc d ON p.ID = d.ID_Producto)"
+                          "LEFT JOIN producto_desc d ON p.ID = d.ID_Producto) " +
+                          "LEFT JOIN producto_precioVenta pv ON pv.ID_Producto= p.ID)"
     Private Sub P_Productos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cargarPestaña()
     End Sub
@@ -37,6 +38,8 @@
             If Integer.TryParse(TXT_BuscarProd.Text, num) Then
                 REFRESCAR()
             End If
+        Else
+            REFRESCAR()
         End If
     End Sub
     Public Sub REFRESCAR()
@@ -162,8 +165,21 @@
             If T.Tables(0).Rows.Count > 0 Then
                 For i As Integer = 0 To T.Tables(0).Rows.Count - 1
                     Dim item As New ListViewItem(T.Tables(0).Rows(i).Item("ID").ToString())
-                    For j As Integer = 1 To 14
-                        Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
+                    Dim subItem As String
+                    For j As Integer = 1 To 15
+                        If Not j = 8 Then
+                            subItem = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
+                        Else
+                            If Not IsDBNull(T.Tables(0).Rows(i).Item(j)) Then
+                                If T.Tables(0).Rows(i).Item(j) = 1 Then
+                                    subItem = "Si"
+                                Else
+                                    subItem = "No"
+                                End If
+                            Else
+                                subItem = ""
+                            End If
+                        End If
                         item.SubItems.Add(subItem)
                     Next
                     LSV_Prod.Items.Add(item)
@@ -174,9 +190,9 @@
             LSV_Prod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
             LSV_Prod.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
             LSV_Prod.Columns(0).Width = 0
-            LSV_Prod.Columns(8).Width = 0
-            LSV_Prod.Columns(10).Width = 0
-            LSV_Prod.Columns(12).Width = 0
+            LSV_Prod.Columns(9).Width = 0
+            LSV_Prod.Columns(11).Width = 0
+            LSV_Prod.Columns(13).Width = 0
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                 ' Mostrar un mensaje de error genérico
@@ -261,14 +277,19 @@
             E_NuevoProducto.TXT_PrecioBase.Text = LSV_Prod.SelectedItems(0).SubItems(4).Text
             E_NuevoProducto.TXT_Impuesto.Text = LSV_Prod.SelectedItems(0).SubItems(5).Text
             E_NuevoProducto.TXT_Ganancia.Text = LSV_Prod.SelectedItems(0).SubItems(6).Text
+            If LSV_Prod.SelectedItems(0).SubItems(8).Text = "Si" Then
+                E_NuevoProducto.CKB_variable.Checked = True
+            Else
+                E_NuevoProducto.CKB_variable.Checked = False
+            End If
             E_NuevoProducto.TXT_PrecioVenta.Text = LSV_Prod.SelectedItems(0).SubItems(7).Text
-            E_NuevoProducto.LBL_IDCat.Text = LSV_Prod.SelectedItems(0).SubItems(8).Text
-            E_NuevoProducto.TXT_Categoria.Text = LSV_Prod.SelectedItems(0).SubItems(9).Text
-            E_NuevoProducto.LBL_IDMarca.Text = LSV_Prod.SelectedItems(0).SubItems(10).Text
-            E_NuevoProducto.TXT_Marca.Text = LSV_Prod.SelectedItems(0).SubItems(11).Text
-            E_NuevoProducto.LBL_Prov.Text = LSV_Prod.SelectedItems(0).SubItems(12).Text
-            E_NuevoProducto.TXT_Proveedor.Text = LSV_Prod.SelectedItems(0).SubItems(13).Text
-            If LSV_Prod.SelectedItems(0).SubItems(14).Text = "Si" Then
+            E_NuevoProducto.LBL_IDCat.Text = LSV_Prod.SelectedItems(0).SubItems(9).Text
+            E_NuevoProducto.TXT_Categoria.Text = LSV_Prod.SelectedItems(0).SubItems(10).Text
+            E_NuevoProducto.LBL_IDMarca.Text = LSV_Prod.SelectedItems(0).SubItems(11).Text
+            E_NuevoProducto.TXT_Marca.Text = LSV_Prod.SelectedItems(0).SubItems(12).Text
+            E_NuevoProducto.LBL_Prov.Text = LSV_Prod.SelectedItems(0).SubItems(13).Text
+            E_NuevoProducto.TXT_Proveedor.Text = LSV_Prod.SelectedItems(0).SubItems(14).Text
+            If LSV_Prod.SelectedItems(0).SubItems(15).Text = "Si" Then
                 E_NuevoProducto.CKB_Fav.Checked = True
             Else
                 E_NuevoProducto.CKB_Fav.Checked = False

@@ -45,7 +45,7 @@
     Private Sub BTN_NMarca_Click(sender As Object, e As EventArgs) Handles BTN_SelectImpuesto.Click
         Try
             E_NuevoProducto.TXT_Impuesto.Text = TXT_porcentaje.Text
-            E_NuevoProducto.LBL_IDCat.Text = LSV_Impuesto.SelectedItems(0).SubItems(0).Text
+            E_NuevoProducto.LBL_IDImp.Text = LSV_Impuesto.SelectedItems(0).SubItems(0).Text
             Me.Close()
         Catch ex As Exception
             Me.Close()
