@@ -1,3 +1,8 @@
+**Versión 1.0.0.11 (14 de nomviembre de 2024)**
+- Ahora se pueden crear productos con precios variables, este tipo de productos al pasarlo por la caja muestran un pestaña en la cual además de mostrar la info del producto, te permite colocar el precio que desees para ese tipo de productos que se vende por kilo y demás. En este caso no se almacena níngun impuesto, ganancia o precio de venta, unicamente el precio base
+- Había un error en la pestaña de agregar productos en el que a la hora de buscar un impuesto el resultado que te daba luego de escoger uno era incorrecto y estaba relacionado con la categoría en vez de con el impuesto correcto
+- Ahora la crear o modificar un proveedor en el sistema el teclado para escribir se fija en la caja de de texto del código en vez de la del nombre como estaba antes
+
 **Versión 1.0.0.10 (12 de noviembre de 2024)**
 - Se cambio el formato de la lista de los productos en caja, ahora tiene un formato un poco más trabajado (se pasó de un list view a un datagrid), este cambio se hará en un futuro a todas las demás listas del sistema
 - Junto con el cambio anterior ahora en la tabla de los productos en caja se puede  modificar el valor de la cantidad y se actualizan los valores correctamente
