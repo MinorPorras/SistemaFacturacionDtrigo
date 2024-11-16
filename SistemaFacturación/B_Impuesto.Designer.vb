@@ -24,6 +24,10 @@ Partial Class B_Impuesto
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(B_Impuesto))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TXT_Desc = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -31,11 +35,6 @@ Partial Class B_Impuesto
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.RDB_BuscarDesc = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.RDB_BuscarCodigo = New Guna.UI2.WinForms.Guna2RadioButton()
-        Me.LSV_Impuesto = New System.Windows.Forms.ListView()
-        Me.ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.codigo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.descripcion = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.porcentaje = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BTN_RegresarImpuesto = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_SelectImpuesto = New Guna.UI2.WinForms.Guna2Button()
         Me.TXT_BuscarImp = New Guna.UI2.WinForms.Guna2TextBox()
@@ -44,8 +43,10 @@ Partial Class B_Impuesto
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TXT_porcentaje = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.DGV_BImp = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGV_BImp, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label2
@@ -163,39 +164,6 @@ Partial Class B_Impuesto
         Me.RDB_BuscarCodigo.UncheckedState.BorderThickness = 2
         Me.RDB_BuscarCodigo.UncheckedState.FillColor = System.Drawing.Color.Transparent
         Me.RDB_BuscarCodigo.UncheckedState.InnerColor = System.Drawing.Color.Transparent
-        '
-        'LSV_Impuesto
-        '
-        Me.LSV_Impuesto.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LSV_Impuesto.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.codigo, Me.descripcion, Me.porcentaje})
-        Me.LSV_Impuesto.FullRowSelect = True
-        Me.LSV_Impuesto.GridLines = True
-        Me.LSV_Impuesto.HideSelection = False
-        Me.LSV_Impuesto.Location = New System.Drawing.Point(31, 219)
-        Me.LSV_Impuesto.MultiSelect = False
-        Me.LSV_Impuesto.Name = "LSV_Impuesto"
-        Me.LSV_Impuesto.Size = New System.Drawing.Size(425, 236)
-        Me.LSV_Impuesto.TabIndex = 69
-        Me.LSV_Impuesto.UseCompatibleStateImageBehavior = False
-        Me.LSV_Impuesto.View = System.Windows.Forms.View.Details
-        '
-        'ID
-        '
-        Me.ID.Text = "ID"
-        '
-        'codigo
-        '
-        Me.codigo.Text = "Codigo"
-        '
-        'descripcion
-        '
-        Me.descripcion.Text = "Descripción"
-        Me.descripcion.Width = 178
-        '
-        'porcentaje
-        '
-        Me.porcentaje.Text = "Porcentaje"
-        Me.porcentaje.Width = 64
         '
         'BTN_RegresarImpuesto
         '
@@ -321,6 +289,73 @@ Partial Class B_Impuesto
         Me.Label4.TabIndex = 77
         Me.Label4.Text = "%"
         '
+        'DGV_BImp
+        '
+        Me.DGV_BImp.AllowUserToAddRows = False
+        Me.DGV_BImp.AllowUserToDeleteRows = False
+        Me.DGV_BImp.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_BImp.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_BImp.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGV_BImp.ColumnHeadersHeight = 20
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGV_BImp.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGV_BImp.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BImp.Location = New System.Drawing.Point(31, 232)
+        Me.DGV_BImp.MultiSelect = False
+        Me.DGV_BImp.Name = "DGV_BImp"
+        Me.DGV_BImp.ReadOnly = True
+        Me.DGV_BImp.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_BImp.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.DGV_BImp.RowHeadersVisible = False
+        Me.DGV_BImp.Size = New System.Drawing.Size(425, 227)
+        Me.DGV_BImp.TabIndex = 87
+        Me.DGV_BImp.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_BImp.ThemeStyle.AlternatingRowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_BImp.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.DGV_BImp.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BImp.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_BImp.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_BImp.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BImp.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.DGV_BImp.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DGV_BImp.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_BImp.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGV_BImp.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGV_BImp.ThemeStyle.HeaderStyle.Height = 20
+        Me.DGV_BImp.ThemeStyle.ReadOnly = True
+        Me.DGV_BImp.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_BImp.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGV_BImp.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_BImp.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_BImp.ThemeStyle.RowsStyle.Height = 22
+        Me.DGV_BImp.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BImp.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
         'B_Impuesto
         '
         Me.AcceptButton = Me.BTN_SelectImpuesto
@@ -329,6 +364,7 @@ Partial Class B_Impuesto
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarImpuesto
         Me.ClientSize = New System.Drawing.Size(713, 553)
+        Me.Controls.Add(Me.DGV_BImp)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.TXT_porcentaje)
@@ -337,7 +373,6 @@ Partial Class B_Impuesto
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_codigo)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.LSV_Impuesto)
         Me.Controls.Add(Me.BTN_RegresarImpuesto)
         Me.Controls.Add(Me.BTN_SelectImpuesto)
         Me.Controls.Add(Me.TXT_BuscarImp)
@@ -351,6 +386,7 @@ Partial Class B_Impuesto
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGV_BImp, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -363,10 +399,6 @@ Partial Class B_Impuesto
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents RDB_BuscarDesc As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents RDB_BuscarCodigo As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents LSV_Impuesto As ListView
-    Friend WithEvents ID As ColumnHeader
-    Friend WithEvents codigo As ColumnHeader
-    Friend WithEvents descripcion As ColumnHeader
     Friend WithEvents BTN_RegresarImpuesto As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_SelectImpuesto As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarImp As Guna.UI2.WinForms.Guna2TextBox
@@ -375,5 +407,5 @@ Partial Class B_Impuesto
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents TXT_porcentaje As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents porcentaje As ColumnHeader
+    Friend WithEvents DGV_BImp As Guna.UI2.WinForms.Guna2DataGridView
 End Class

@@ -24,6 +24,10 @@ Partial Class B_Proveedor
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(B_Proveedor))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TXT_Nombre = New Guna.UI2.WinForms.Guna2TextBox()
@@ -32,16 +36,14 @@ Partial Class B_Proveedor
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.RDB_BuscarNombre = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.RDB_BuscarCodigo = New Guna.UI2.WinForms.Guna2RadioButton()
-        Me.LSV_Prov = New System.Windows.Forms.ListView()
-        Me.ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.codigo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.nombre = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BTN_RegresarProv = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_SelectProv = New Guna.UI2.WinForms.Guna2Button()
         Me.TXT_BuscarProv = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.DGV_BProv = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGV_BProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -56,7 +58,7 @@ Partial Class B_Proveedor
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(487, 314)
+        Me.Label2.Location = New System.Drawing.Point(485, 332)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(81, 23)
         Me.Label2.TabIndex = 74
@@ -75,7 +77,7 @@ Partial Class B_Proveedor
         Me.TXT_Nombre.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_Nombre.ForeColor = System.Drawing.Color.Black
         Me.TXT_Nombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Nombre.Location = New System.Drawing.Point(478, 341)
+        Me.TXT_Nombre.Location = New System.Drawing.Point(476, 359)
         Me.TXT_Nombre.Name = "TXT_Nombre"
         Me.TXT_Nombre.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Nombre.PlaceholderText = ""
@@ -167,33 +169,6 @@ Partial Class B_Proveedor
         Me.RDB_BuscarCodigo.UncheckedState.FillColor = System.Drawing.Color.Transparent
         Me.RDB_BuscarCodigo.UncheckedState.InnerColor = System.Drawing.Color.Transparent
         '
-        'LSV_Prov
-        '
-        Me.LSV_Prov.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LSV_Prov.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.codigo, Me.nombre})
-        Me.LSV_Prov.FullRowSelect = True
-        Me.LSV_Prov.GridLines = True
-        Me.LSV_Prov.HideSelection = False
-        Me.LSV_Prov.Location = New System.Drawing.Point(34, 223)
-        Me.LSV_Prov.MultiSelect = False
-        Me.LSV_Prov.Name = "LSV_Prov"
-        Me.LSV_Prov.Size = New System.Drawing.Size(425, 206)
-        Me.LSV_Prov.TabIndex = 69
-        Me.LSV_Prov.UseCompatibleStateImageBehavior = False
-        Me.LSV_Prov.View = System.Windows.Forms.View.Details
-        '
-        'ID
-        '
-        Me.ID.Text = "ID"
-        '
-        'codigo
-        '
-        Me.codigo.Text = "Codigo"
-        '
-        'nombre
-        '
-        Me.nombre.Text = "Nombre"
-        '
         'BTN_RegresarProv
         '
         Me.BTN_RegresarProv.BorderColor = System.Drawing.Color.Red
@@ -268,6 +243,73 @@ Partial Class B_Proveedor
         Me.Guna2PictureBox2.TabIndex = 65
         Me.Guna2PictureBox2.TabStop = False
         '
+        'DGV_BProv
+        '
+        Me.DGV_BProv.AllowUserToAddRows = False
+        Me.DGV_BProv.AllowUserToDeleteRows = False
+        Me.DGV_BProv.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_BProv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_BProv.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGV_BProv.ColumnHeadersHeight = 20
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGV_BProv.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGV_BProv.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BProv.Location = New System.Drawing.Point(46, 221)
+        Me.DGV_BProv.MultiSelect = False
+        Me.DGV_BProv.Name = "DGV_BProv"
+        Me.DGV_BProv.ReadOnly = True
+        Me.DGV_BProv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_BProv.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.DGV_BProv.RowHeadersVisible = False
+        Me.DGV_BProv.Size = New System.Drawing.Size(412, 210)
+        Me.DGV_BProv.TabIndex = 89
+        Me.DGV_BProv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_BProv.ThemeStyle.AlternatingRowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_BProv.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.DGV_BProv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BProv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_BProv.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_BProv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BProv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.DGV_BProv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DGV_BProv.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_BProv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGV_BProv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGV_BProv.ThemeStyle.HeaderStyle.Height = 20
+        Me.DGV_BProv.ThemeStyle.ReadOnly = True
+        Me.DGV_BProv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_BProv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGV_BProv.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_BProv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_BProv.ThemeStyle.RowsStyle.Height = 22
+        Me.DGV_BProv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BProv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
         'B_Proveedor
         '
         Me.AcceptButton = Me.BTN_SelectProv
@@ -276,12 +318,12 @@ Partial Class B_Proveedor
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProv
         Me.ClientSize = New System.Drawing.Size(716, 532)
+        Me.Controls.Add(Me.DGV_BProv)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TXT_Nombre)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_codigo)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.LSV_Prov)
         Me.Controls.Add(Me.BTN_RegresarProv)
         Me.Controls.Add(Me.BTN_SelectProv)
         Me.Controls.Add(Me.TXT_BuscarProv)
@@ -295,6 +337,7 @@ Partial Class B_Proveedor
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGV_BProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -308,12 +351,9 @@ Partial Class B_Proveedor
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents RDB_BuscarNombre As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents RDB_BuscarCodigo As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents LSV_Prov As ListView
-    Friend WithEvents ID As ColumnHeader
-    Friend WithEvents codigo As ColumnHeader
-    Friend WithEvents nombre As ColumnHeader
     Friend WithEvents BTN_RegresarProv As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_SelectProv As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarProv As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
+    Friend WithEvents DGV_BProv As Guna.UI2.WinForms.Guna2DataGridView
 End Class

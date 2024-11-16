@@ -17,38 +17,31 @@ Public Class P_Usuarios
             Dim red As Integer
             Dim green As Integer
             Dim blue As Integer
-            LSV_Usuario.Items.Clear()
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
             T.Tables.Clear()
-            If TXT_BuscarUsuario.Text <> "" Then
-                If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT u.ID, u.codigo, u.usuario, u.clave, u.color FROM usuario u where u.codigo LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val( u.codigo) ASC;"
-                ElseIf RDB_BuscarNombre.Checked = True Then
-                    SQL = "SELECT u.ID, u.codigo, u.usuario, u.clave, u.color FROM usuario u where u.usuario LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val( u.codigo) ASC;"
-                End If
+
+            If RDB_BuscarCodigo.Checked = True Then
+                SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, u.color as [Color] FROM usuario u WHERE u.codigo LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
             Else
-                SQL = "SELECT u.ID, u.codigo, u.usuario, u.clave, u.color FROM usuario u ORDER BY Val( u.codigo) ASC;"
+                SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, u.color as [Color] FROM usuario u WHERE u.usuario LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
             End If
+
             Cargar_Tabla(T, SQL)
+            Dim bin As New BindingSource
+            bin.DataSource = T.Tables(0)
+            DGV_Cajero.DataSource = bin
+
+            ' Añadir el manejador del evento DataBindingComplete antes de cargar los datos
+            AddHandler DGV_Cajero.DataBindingComplete, AddressOf DGV_Cajero_DataBindingComplete
+
             If T.Tables(0).Rows.Count > 0 Then
-                For i As Integer = 0 To T.Tables(0).Rows.Count - 1
-                    Dim item As New ListViewItem(T.Tables(0).Rows(i).Item("ID").ToString())
-                    For j As Integer = 1 To 4
-                        Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
-                        item.SubItems.Add(subItem)
-                    Next
-                    LSV_Usuario.Items.Add(item)
-                    LSV_Usuario.Items(i).SubItems(4).BackColor = Color.FromArgb(red, green, blue)
-                Next
                 MNU_ELIMINAR.Visible = True
                 MNU_MODIFICAR.Visible = True
             End If
-            LSV_Usuario.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-            LSV_Usuario.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
-            LSV_Usuario.Columns(0).Width = 0
-            LSV_Usuario.Columns(3).Width = 0
+
             TXT_BuscarUsuario.Select()
+
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                 ' Mostrar un mensaje de error genérico
@@ -56,6 +49,50 @@ Public Class P_Usuarios
             End If
         End Try
     End Sub
+
+
+    Private Sub DGV_Cajero_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_Cajero.DataBindingComplete
+        Try
+            For i As Integer = 0 To DGV_Cajero.Columns.Count - 1
+                DGV_Cajero.Columns(i).ReadOnly = True
+                Select Case i
+                    Case 1
+                        DGV_Cajero.Columns(i).Width = 20
+                    Case 2
+                        DGV_Cajero.Columns(i).Width = 100
+                    Case 4
+                        DGV_Cajero.Columns(i).Width = 200
+                End Select
+            Next
+
+            For Each row As DataGridViewRow In DGV_Cajero.Rows
+                If row.Cells(4).Value IsNot Nothing Then
+                    Dim col As String() = row.Cells(4).Value.ToString().Split(","c)
+                    If col.Length = 3 Then
+                        ' Convertir los valores RGB a enteros
+                        Dim r As Integer = Convert.ToInt32(col(0).Trim())
+                        Dim g As Integer = Convert.ToInt32(col(1).Trim())
+                        Dim b As Integer = Convert.ToInt32(col(2).Trim())
+
+                        row.Cells(4).Style.BackColor = Color.FromArgb(r, g, b)
+                        row.Cells(4).Style.ForeColor = Color.FromArgb(r, g, b)
+                        row.Cells(4).Style.SelectionBackColor = Color.FromArgb(r, g, b)
+                        row.Cells(4).Style.SelectionForeColor = Color.FromArgb(r, g, b)
+                    End If
+                End If
+            Next
+
+            DGV_Cajero.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DGV_Cajero.GridColor = Color.DarkGray
+            DGV_Cajero.Columns(0).Visible = False
+            DGV_Cajero.Columns(3).Visible = False
+        Catch ex As Exception
+            ' Manejar el error si alguna columna no existe
+            Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
+        End Try
+    End Sub
+
+
 
     Private Sub BTN_RegresarUsu_Click(sender As Object, e As EventArgs) Handles BTN_RegresarUsu.Click
         M_Mantenimiento.Show()
@@ -68,57 +105,17 @@ Public Class P_Usuarios
     End Sub
 
     Private Sub TXT_BuscarUsuario_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarUsuario.TextChanged
-        If RDB_BuscarCodigo.Checked = True Then
-            Dim num As Integer
-            If Integer.TryParse(TXT_BuscarUsuario.Text, num) Then
-                REFRESCAR()
-            End If
-        End If
-    End Sub
-
-    Private Sub ListView1_DrawItem(sender As Object, e As DrawListViewItemEventArgs) Handles LSV_Usuario.DrawItem
-
-    End Sub
-
-    Private Sub ListView1_DrawSubItem(sender As Object, e As DrawListViewSubItemEventArgs) Handles LSV_Usuario.DrawSubItem
-        If e.ColumnIndex = 4 Then ' Cambia este índice según tus necesidades
-            ' Supongamos que has recuperado el string RGB de la base de datos
-            Dim rgbString As String = e.SubItem.Text ' El valor RGB está en el texto del subitem
-            Dim rgbValues() As String = rgbString.Split(",")
-
-            If rgbValues.Length = 3 Then
-                Dim red As Integer = Convert.ToInt32(rgbValues(0))
-                Dim green As Integer = Convert.ToInt32(rgbValues(1))
-                Dim blue As Integer = Convert.ToInt32(rgbValues(2))
-
-                ' Crea un color a partir de los valores RGB
-                Dim backColor As Color = Color.FromArgb(red, green, blue)
-
-                ' Dibuja el fondo de la celda con el color especificado
-                e.Graphics.FillRectangle(New SolidBrush(backColor), e.Bounds)
-
-                e.Graphics.DrawString(e.SubItem.Text, LSV_Usuario.Font, New SolidBrush(backColor), e.Bounds)
-            Else
-                e.DrawDefault = True
-            End If
-        Else
-            e.DrawDefault = True
-        End If
-    End Sub
-
-    Private Sub ListView1_DrawColumnHeader(sender As Object, e As DrawListViewColumnHeaderEventArgs) Handles LSV_Usuario.DrawColumnHeader
-        ' Establece el color del texto del encabezado
-        TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Font, e.Bounds, Color.Black, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
+        REFRESCAR()
     End Sub
 
     Private Sub MNU_ELIMINAR_Click(sender As Object, e As EventArgs) Handles MNU_ELIMINAR.Click
         T.Tables.Clear()
         T1.Tables.Clear()
         Try
-            If LSV_Usuario.SelectedItems.Count > 0 Then
+            If DGV_Cajero.SelectedRows.Count > 0 Then
                 ' Se pregunta una confirmación para eliminar el tema
-                If MsgBox("¿Desea eliminar el usuario: " & LSV_Usuario.SelectedItems(0).SubItems(2).Text & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
-                    Dim idSucEliminar As Integer = Convert.ToInt32(LSV_Usuario.SelectedItems(0).SubItems(0).Text)
+                If MsgBox("¿Desea eliminar el usuario: " & DGV_Cajero.SelectedRows(0).Cells(2).Value.ToString() & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
+                    Dim idSucEliminar As Integer = Convert.ToInt32(DGV_Cajero.SelectedRows(0).Cells(0).Value.ToString())
                     ' Verificar si hay categorías asociadas
                     SQL = "SELECT COUNT(ID) FROM usuario WHERE ID = " & idSucEliminar
                     Cargar_Tabla(T, SQL)
@@ -143,24 +140,24 @@ Public Class P_Usuarios
 
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
         Try
-            E_NuevoUsuario.idUsuario = LSV_Usuario.SelectedItems.Item(0).Text
-            E_NuevoUsuario.TXT_CodUsuario.Text = LSV_Usuario.SelectedItems(0).SubItems(1).Text
-            E_NuevoUsuario.TXT_NombreUsuario.Text = LSV_Usuario.SelectedItems(0).SubItems(2).Text
-            E_NuevoUsuario.TXT_ClaveUsuario.Text = LSV_Usuario.SelectedItems(0).SubItems(3).Text
-            Dim rgbValues() = LSV_Usuario.SelectedItems(0).SubItems(4).Text.Split(",")
+            E_NuevoUsuario.idUsuario = DGV_Cajero.SelectedRows(0).Cells(0).Value.ToString()
+            E_NuevoUsuario.TXT_CodUsuario.Text = DGV_Cajero.SelectedRows(0).Cells(1).Value.ToString()
+            E_NuevoUsuario.TXT_NombreUsuario.Text = DGV_Cajero.SelectedRows(0).Cells(2).Value.ToString()
+            E_NuevoUsuario.TXT_ClaveUsuario.Text = DGV_Cajero.SelectedRows(0).Cells(3).Value.ToString()
+            Dim rgbValues() = DGV_Cajero.SelectedRows(0).Cells(4).Value.ToString().Split(",")
             Dim red As Integer = Convert.ToInt32(rgbValues(0))
             Dim green As Integer = Convert.ToInt32(rgbValues(1))
             Dim blue As Integer = Convert.ToInt32(rgbValues(2))
             E_NuevoUsuario.BTN_Color.FillColor = Color.FromArgb(red, green, blue)
             E_NuevoUsuario.ColorDialog1.Color = Color.FromArgb(red, green, blue)
-            E_NuevoUsuario.ColorUsuario = LSV_Usuario.SelectedItems(0).SubItems(4).Text
-            If String.IsNullOrEmpty(LSV_Usuario.SelectedItems(0).SubItems(3).Text) Then
+            E_NuevoUsuario.ColorUsuario = DGV_Cajero.SelectedRows(0).Cells(3).Value.ToString()
+            If String.IsNullOrEmpty(DGV_Cajero.SelectedRows(0).Cells(3).Value.ToString()) Then
                 E_NuevoUsuario.CBK_NoClaveUsu.Checked = True
             Else
                 E_NuevoUsuario.CBK_NoClaveUsu.Checked = False
             End If
             E_NuevoUsuario.ModUsu = True
-            E_NuevoUsuario.CodigoPreMod = LSV_Usuario.SelectedItems(0).SubItems(1).Text
+            E_NuevoUsuario.CodigoPreMod = DGV_Cajero.SelectedRows(0).Cells(1).Value.ToString()
             E_NuevoUsuario.Show()
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")

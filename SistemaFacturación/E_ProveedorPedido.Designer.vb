@@ -24,6 +24,10 @@ Partial Class E_ProveedorPedido
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(E_ProveedorPedido))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MNU_CONTX = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.MNU_ELIMINAR = New System.Windows.Forms.ToolStripMenuItem()
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
@@ -31,14 +35,15 @@ Partial Class E_ProveedorPedido
         Me.CBX_RecibirPedido = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.CBX_DiaPedido = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.LSV_Pedido = New System.Windows.Forms.ListView()
-        Me.HacerPed = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.rebPed = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.LBL_Proveedor = New System.Windows.Forms.Label()
         Me.BTN_RegresarPed = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_NProv = New Guna.UI2.WinForms.Guna2Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.DGV_Pedido = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.HacerPed = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RebPed = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MNU_CONTX.SuspendLayout()
+        CType(Me.DGV_Pedido, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MNU_CONTX
@@ -129,32 +134,6 @@ Partial Class E_ProveedorPedido
         Me.CBX_DiaPedido.Size = New System.Drawing.Size(213, 36)
         Me.CBX_DiaPedido.TabIndex = 59
         '
-        'LSV_Pedido
-        '
-        Me.LSV_Pedido.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LSV_Pedido.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.HacerPed, Me.rebPed})
-        Me.LSV_Pedido.ContextMenuStrip = Me.MNU_CONTX
-        Me.LSV_Pedido.FullRowSelect = True
-        Me.LSV_Pedido.GridLines = True
-        Me.LSV_Pedido.HideSelection = False
-        Me.LSV_Pedido.Location = New System.Drawing.Point(32, 66)
-        Me.LSV_Pedido.MultiSelect = False
-        Me.LSV_Pedido.Name = "LSV_Pedido"
-        Me.LSV_Pedido.Size = New System.Drawing.Size(360, 259)
-        Me.LSV_Pedido.TabIndex = 63
-        Me.LSV_Pedido.UseCompatibleStateImageBehavior = False
-        Me.LSV_Pedido.View = System.Windows.Forms.View.Details
-        '
-        'HacerPed
-        '
-        Me.HacerPed.Text = "Hacer el pedido"
-        Me.HacerPed.Width = 179
-        '
-        'rebPed
-        '
-        Me.rebPed.Text = "Recibir el pedido"
-        Me.rebPed.Width = 176
-        '
         'LBL_Proveedor
         '
         Me.LBL_Proveedor.AutoSize = True
@@ -218,6 +197,87 @@ Partial Class E_ProveedorPedido
         Me.Label1.TabIndex = 67
         Me.Label1.Text = "Proveedor: "
         '
+        'DGV_Pedido
+        '
+        Me.DGV_Pedido.AllowUserToAddRows = False
+        Me.DGV_Pedido.AllowUserToDeleteRows = False
+        Me.DGV_Pedido.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_Pedido.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_Pedido.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGV_Pedido.ColumnHeadersHeight = 20
+        Me.DGV_Pedido.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.HacerPed, Me.RebPed})
+        Me.DGV_Pedido.ContextMenuStrip = Me.MNU_CONTX
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGV_Pedido.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGV_Pedido.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_Pedido.Location = New System.Drawing.Point(32, 66)
+        Me.DGV_Pedido.MultiSelect = False
+        Me.DGV_Pedido.Name = "DGV_Pedido"
+        Me.DGV_Pedido.ReadOnly = True
+        Me.DGV_Pedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_Pedido.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.DGV_Pedido.RowHeadersVisible = False
+        Me.DGV_Pedido.Size = New System.Drawing.Size(360, 259)
+        Me.DGV_Pedido.TabIndex = 77
+        Me.DGV_Pedido.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_Pedido.ThemeStyle.AlternatingRowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_Pedido.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.DGV_Pedido.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_Pedido.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_Pedido.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_Pedido.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_Pedido.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.DGV_Pedido.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DGV_Pedido.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_Pedido.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGV_Pedido.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGV_Pedido.ThemeStyle.HeaderStyle.Height = 20
+        Me.DGV_Pedido.ThemeStyle.ReadOnly = True
+        Me.DGV_Pedido.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_Pedido.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGV_Pedido.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_Pedido.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_Pedido.ThemeStyle.RowsStyle.Height = 22
+        Me.DGV_Pedido.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_Pedido.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
+        'HacerPed
+        '
+        Me.HacerPed.HeaderText = "Hacer Pedido"
+        Me.HacerPed.Name = "HacerPed"
+        Me.HacerPed.ReadOnly = True
+        '
+        'RebPed
+        '
+        Me.RebPed.HeaderText = "Recibir pedido"
+        Me.RebPed.Name = "RebPed"
+        Me.RebPed.ReadOnly = True
+        '
         'E_ProveedorPedido
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -225,11 +285,11 @@ Partial Class E_ProveedorPedido
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarPed
         Me.ClientSize = New System.Drawing.Size(766, 436)
+        Me.Controls.Add(Me.DGV_Pedido)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BTN_NProv)
         Me.Controls.Add(Me.BTN_RegresarPed)
         Me.Controls.Add(Me.LBL_Proveedor)
-        Me.Controls.Add(Me.LSV_Pedido)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.CBX_RecibirPedido)
         Me.Controls.Add(Me.Label5)
@@ -241,6 +301,7 @@ Partial Class E_ProveedorPedido
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Días de pedidos"
         Me.MNU_CONTX.ResumeLayout(False)
+        CType(Me.DGV_Pedido, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -254,10 +315,10 @@ Partial Class E_ProveedorPedido
     Friend WithEvents Label5 As Label
     Friend WithEvents CBX_DiaPedido As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents LBL_Proveedor As Label
-    Friend WithEvents LSV_Pedido As ListView
-    Friend WithEvents HacerPed As ColumnHeader
-    Friend WithEvents rebPed As ColumnHeader
     Friend WithEvents BTN_RegresarPed As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_NProv As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents DGV_Pedido As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents HacerPed As DataGridViewTextBoxColumn
+    Friend WithEvents RebPed As DataGridViewTextBoxColumn
 End Class

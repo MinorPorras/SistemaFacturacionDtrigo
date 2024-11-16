@@ -11,22 +11,25 @@ Module Md_INTERRACION_DB
             da.Fill(Tabla_Temporal)
             DESCONECTAR()
         Catch ex As Exception
-            MsgBox("Error al cargar la tabla desde la base de datos" & vbCrLf & ex.ToString(), vbOKOnly, "Error")
+            MsgBox("Error al cargar la tabla desde la base de datos" & vbCrLf & ex.Message, vbOKOnly, "Error")
             DESCONECTAR()
         End Try
     End Sub
 
 
     'Usar este cuando se utiliza cualquier otro tipo se instrucción en el query que no sea SELECT
-    Friend Sub EJECUTAR(ByVal Sql As String)
+    Friend Function EJECUTAR(ByVal Sql As String) As Boolean
         Try
             CONECTAR()
             Dim comando As New OleDb.OleDbCommand(Sql, Db)
             comando.ExecuteNonQuery()
             DESCONECTAR()
+            Return True
         Catch ex As Exception
-            MsgBox("Error al ejecutar la consulta desde la base de datos" & vbCrLf & ex.ToString(), vbOKOnly, "Error")
+            Console.WriteLine(ex.Message)
+            MsgBox("Error al ejecutar la consulta desde la base de datos" & vbCrLf & ex.Message, vbOKOnly, "Error")
             DESCONECTAR()
+            Return False
         End Try
-    End Sub
+    End Function
 End Module

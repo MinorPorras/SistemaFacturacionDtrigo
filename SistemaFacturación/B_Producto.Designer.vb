@@ -24,6 +24,10 @@ Partial Class B_Producto
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(B_Producto))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.LBL_IDProd = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -31,11 +35,6 @@ Partial Class B_Producto
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.RDB_BuscarNombre = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.RDB_BuscarCodigo = New Guna.UI2.WinForms.Guna2RadioButton()
-        Me.LSV_Producto = New System.Windows.Forms.ListView()
-        Me.ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.codigo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.nombre = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.precio_venta = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.BTN_RegresarPrd = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_SelectProd = New Guna.UI2.WinForms.Guna2Button()
         Me.TXT_BuscarProd = New Guna.UI2.WinForms.Guna2TextBox()
@@ -49,9 +48,10 @@ Partial Class B_Producto
         Me.TXT_CantProd = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTN_MenosCant = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.BTN_MasCant = New Guna.UI2.WinForms.Guna2CircleButton()
-        Me.variable = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.DGV_BProd = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.GroupBox1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGV_BProd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -155,41 +155,6 @@ Partial Class B_Producto
         Me.RDB_BuscarCodigo.UncheckedState.BorderThickness = 2
         Me.RDB_BuscarCodigo.UncheckedState.FillColor = System.Drawing.Color.Transparent
         Me.RDB_BuscarCodigo.UncheckedState.InnerColor = System.Drawing.Color.Transparent
-        '
-        'LSV_Producto
-        '
-        Me.LSV_Producto.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LSV_Producto.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.codigo, Me.nombre, Me.precio_venta, Me.variable})
-        Me.LSV_Producto.FullRowSelect = True
-        Me.LSV_Producto.GridLines = True
-        Me.LSV_Producto.HideSelection = False
-        Me.LSV_Producto.Location = New System.Drawing.Point(23, 212)
-        Me.LSV_Producto.MultiSelect = False
-        Me.LSV_Producto.Name = "LSV_Producto"
-        Me.LSV_Producto.Size = New System.Drawing.Size(485, 311)
-        Me.LSV_Producto.TabIndex = 90
-        Me.LSV_Producto.UseCompatibleStateImageBehavior = False
-        Me.LSV_Producto.View = System.Windows.Forms.View.Details
-        '
-        'ID
-        '
-        Me.ID.Text = "ID"
-        Me.ID.Width = 24
-        '
-        'codigo
-        '
-        Me.codigo.Text = "Codigo"
-        Me.codigo.Width = 64
-        '
-        'nombre
-        '
-        Me.nombre.Text = "Nombre"
-        Me.nombre.Width = 239
-        '
-        'precio_venta
-        '
-        Me.precio_venta.Text = "Precio de venta"
-        Me.precio_venta.Width = 99
         '
         'BTN_RegresarPrd
         '
@@ -429,9 +394,72 @@ Partial Class B_Producto
         Me.BTN_MasCant.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.BTN_MasCant.TextOffset = New System.Drawing.Point(-6, -5)
         '
-        'variable
+        'DGV_BProd
         '
-        Me.variable.Text = "Variable"
+        Me.DGV_BProd.AllowUserToAddRows = False
+        Me.DGV_BProd.AllowUserToDeleteRows = False
+        Me.DGV_BProd.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_BProd.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_BProd.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGV_BProd.ColumnHeadersHeight = 20
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGV_BProd.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGV_BProd.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BProd.Location = New System.Drawing.Point(23, 210)
+        Me.DGV_BProd.MultiSelect = False
+        Me.DGV_BProd.Name = "DGV_BProd"
+        Me.DGV_BProd.ReadOnly = True
+        Me.DGV_BProd.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_BProd.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.DGV_BProd.RowHeadersVisible = False
+        Me.DGV_BProd.Size = New System.Drawing.Size(493, 314)
+        Me.DGV_BProd.TabIndex = 106
+        Me.DGV_BProd.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_BProd.ThemeStyle.AlternatingRowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_BProd.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.DGV_BProd.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BProd.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_BProd.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_BProd.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BProd.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.DGV_BProd.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DGV_BProd.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_BProd.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGV_BProd.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGV_BProd.ThemeStyle.HeaderStyle.Height = 20
+        Me.DGV_BProd.ThemeStyle.ReadOnly = True
+        Me.DGV_BProd.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_BProd.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGV_BProd.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_BProd.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_BProd.ThemeStyle.RowsStyle.Height = 22
+        Me.DGV_BProd.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_BProd.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
         'B_Producto
         '
@@ -440,6 +468,7 @@ Partial Class B_Producto
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarPrd
         Me.ClientSize = New System.Drawing.Size(962, 614)
+        Me.Controls.Add(Me.DGV_BProd)
         Me.Controls.Add(Me.BTN_MasCant)
         Me.Controls.Add(Me.BTN_MenosCant)
         Me.Controls.Add(Me.TXT_CantProd)
@@ -453,7 +482,6 @@ Partial Class B_Producto
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_codigo)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.LSV_Producto)
         Me.Controls.Add(Me.BTN_RegresarPrd)
         Me.Controls.Add(Me.BTN_SelectProd)
         Me.Controls.Add(Me.TXT_BuscarProd)
@@ -467,6 +495,7 @@ Partial Class B_Producto
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGV_BProd, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -479,10 +508,6 @@ Partial Class B_Producto
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents RDB_BuscarNombre As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents RDB_BuscarCodigo As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents LSV_Producto As ListView
-    Friend WithEvents ID As ColumnHeader
-    Friend WithEvents codigo As ColumnHeader
-    Friend WithEvents nombre As ColumnHeader
     Friend WithEvents BTN_RegresarPrd As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_SelectProd As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarProd As Guna.UI2.WinForms.Guna2TextBox
@@ -491,11 +516,10 @@ Partial Class B_Producto
     Friend WithEvents TXT_Precio As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents TXT_Nombre As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents precio_venta As ColumnHeader
     Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents TXT_CantProd As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents BTN_MenosCant As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents BTN_MasCant As Guna.UI2.WinForms.Guna2CircleButton
-    Friend WithEvents variable As ColumnHeader
+    Friend WithEvents DGV_BProd As Guna.UI2.WinForms.Guna2DataGridView
 End Class

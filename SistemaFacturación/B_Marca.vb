@@ -2,31 +2,18 @@
     Friend caso As String
     Public Sub REFRESCAR()
         Try
-            LSV_Marca.Items.Clear()
             T.Tables.Clear()
-            If TXT_BuscarMarca.Text <> "" Then
-                If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT ID, codigo, nombre FROM marca where codigo LIKE '%" & TXT_BuscarMarca.Text & "%'"
-                ElseIf RDB_BuscarNombre.Checked = True Then
-                    SQL = "SELECT ID, codigo, nombre FROM marca where nombre LIKE '%" & TXT_BuscarMarca.Text & "%'"
-                End If
-            Else
-                SQL = "SELECT ID, codigo, nombre FROM marca"
+            If RDB_BuscarCodigo.Checked = True Then
+                SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM marca where codigo LIKE '%" & TXT_BuscarMarca.Text & "%'"
+            ElseIf RDB_BuscarNombre.Checked = True Then
+                SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM marca where nombre LIKE '%" & TXT_BuscarMarca.Text & "%'"
             End If
             Cargar_Tabla(T, SQL)
-            If T.Tables(0).Rows.Count > 0 Then
-                For i As Integer = 0 To T.Tables(0).Rows.Count - 1
-                    Dim item As New ListViewItem(T.Tables(0).Rows(i).Item("ID").ToString())
-                    For j As Integer = 1 To 2
-                        Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
-                        item.SubItems.Add(subItem)
-                    Next
-                    LSV_Marca.Items.Add(item)
-                Next
-            End If
-            LSV_Marca.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-            LSV_Marca.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
-            LSV_Marca.Columns(0).Width = 0
+            Dim bin As New BindingSource
+            bin.DataSource = T.Tables(0)
+            DGV_BMarca.DataSource = bin
+            ' Manejar el evento DataBindingComplete para ocultar las columnas
+            AddHandler DGV_BMarca.DataBindingComplete, AddressOf DGV_BMarca_DataBindingComplete
             TXT_BuscarMarca.Select()
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
@@ -36,6 +23,27 @@
         End Try
     End Sub
 
+    Private Sub DGV_BMarca_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)
+        Try
+            For i As Integer = 0 To DGV_BMarca.Columns.Count - 1
+                DGV_BMarca.Columns(i).ReadOnly = True
+                Select Case i
+                    Case 1
+                        DGV_BMarca.Columns(i).Width = 50
+                    Case 2
+                        DGV_BMarca.Columns(i).Width = 200
+                    Case 3
+                        DGV_BMarca.Columns(i).Width = 70
+                End Select
+            Next
+            DGV_BMarca.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DGV_BMarca.GridColor = Color.DarkGray
+            DGV_BMarca.Columns(0).Visible = False
+        Catch ex As Exception
+            ' Manejar el error si alguna columna no existe
+            Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
+        End Try
+    End Sub
 
     Private Sub BTN_RegresarMarca_Click(sender As Object, e As EventArgs) Handles BTN_RegresarMarca.Click
         REFRESCAR()
@@ -50,7 +58,7 @@
                     P_Productos.REFRESCAR()
                 Case "NProd"
                     E_NuevoProducto.TXT_Marca.Text = TXT_Nombre.Text
-                    E_NuevoProducto.LBL_IDMarca.Text = LSV_Marca.SelectedItems(0).SubItems(0).Text
+                    E_NuevoProducto.LBL_IDMarca.Text = DGV_BMarca.SelectedRows(0).Cells(0).Value.ToString()
 
             End Select
 
@@ -71,16 +79,6 @@
         REFRESCAR()
     End Sub
 
-    Private Sub LSV_Marca_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LSV_Marca.SelectedIndexChanged
-        Try
-            TXT_codigo.Text = LSV_Marca.SelectedItems(0).SubItems(1).Text
-            TXT_Nombre.Text = LSV_Marca.SelectedItems(0).SubItems(2).Text
-        Catch ex As Exception
-            TXT_codigo.Text = ""
-            TXT_Nombre.Text = ""
-        End Try
-    End Sub
-
     Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
         REFRESCAR()
         TXT_BuscarMarca.Focus()
@@ -89,5 +87,15 @@
     Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
         REFRESCAR()
         TXT_BuscarMarca.Focus()
+    End Sub
+
+    Private Sub DGV_BMarca_SelectionChanged(sender As Object, e As EventArgs) Handles DGV_BMarca.SelectionChanged
+        Try
+            TXT_codigo.Text = DGV_BMarca.SelectedRows(0).Cells(1).Value.ToString()
+            TXT_Nombre.Text = DGV_BMarca.SelectedRows(0).Cells(2).Value.ToString()
+        Catch ex As Exception
+            TXT_codigo.Text = ""
+            TXT_Nombre.Text = ""
+        End Try
     End Sub
 End Class

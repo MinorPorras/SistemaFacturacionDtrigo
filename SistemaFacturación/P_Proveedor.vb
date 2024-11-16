@@ -17,46 +17,32 @@
 
     Public Sub REFRESCAR()
         Try
-            LSV_Prov.Items.Clear()
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
             T.Tables.Clear()
-            If TXT_BuscarProv.Text <> "" Then
-                If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, t.telefono " +
-                        "FROM ((proveedor AS p " +
-                        "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +
-                        "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.codigo LIKE '%" & TXT_BuscarProv.Text & "%' ORDER BY Val(p.codigo) ASC;"
-                ElseIf RDB_BuscarNombre.Checked = True Then
-                    SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, t.telefono " +
+            If RDB_BuscarCodigo.Checked = True Then
+                SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], c.correo as [Correo], t.telefono as [Teléfono] " +
+                    "FROM ((proveedor AS p " +
+                    "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +
+                    "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.codigo LIKE '%" & TXT_BuscarProv.Text & "%' ORDER BY Val(p.codigo) ASC;"
+            ElseIf RDB_BuscarNombre.Checked = True Then
+                SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], c.correo as [Correo], t.telefono as [Teléfono] " +
                         "FROM ((proveedor AS p " +
                         "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +
                         "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.nombre LIKE '%" & TXT_BuscarProv.Text & "%' ORDER BY Val(p.codigo) ASC;"
-                End If
-            Else
-                SQL = "SELECT p.ID, p.codigo, p.nombre, c.correo, t.telefono " +
-                        "FROM ((proveedor AS p " +
-                        "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +
-                        "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) ORDER BY Val(p.codigo) ASC;"
-
             End If
+
             Cargar_Tabla(T, SQL)
+            Dim bin As New BindingSource
+            bin.DataSource = T.Tables(0)
+            DGV_Prov.DataSource = bin
             If T.Tables(0).Rows.Count > 0 Then
-                For i As Integer = 0 To T.Tables(0).Rows.Count - 1
-                    Dim item As New ListViewItem(T.Tables(0).Rows(i).Item(0).ToString())
-                    For j As Integer = 1 To 4
-                        Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
-                        item.SubItems.Add(subItem)
-                    Next
-                    LSV_Prov.Items.Add(item)
-                Next
                 MNU_ELIMINAR.Visible = True
                 MNU_MODIFICAR.Visible = True
             End If
-            LSV_Prov.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-            LSV_Prov.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
-            LSV_Prov.Columns(0).Width = 0
             TXT_BuscarProv.Select()
+            ' Manejar el evento DataBindingComplete para ocultar las columnas
+            AddHandler DGV_Prov.DataBindingComplete, AddressOf DGV_Prov_DataBindingComplete
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                 ' Mostrar un mensaje de error genérico
@@ -65,13 +51,35 @@
         End Try
     End Sub
 
+    ' Método para manejar el evento DataBindingComplete
+    Private Sub DGV_Prov_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_Prov.DataBindingComplete
+        Try
+            For i As Integer = 0 To DGV_Prov.Columns.Count - 1
+                DGV_Prov.Columns(i).ReadOnly = True
+                Select Case i
+                    Case 1
+                        DGV_Prov.Columns(i).Width = 50
+                    Case 2
+                        DGV_Prov.Columns(i).Width = 200
+                    Case 3
+                        DGV_Prov.Columns(i).Width = 270
+                    Case 4
+                        DGV_Prov.Columns(i).Width = 110
+
+                End Select
+            Next
+            DGV_Prov.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DGV_Prov.GridColor = Color.DarkGray
+            DGV_Prov.Columns(0).Visible = False
+
+        Catch ex As Exception
+            ' Manejar el error si alguna columna no existe
+            Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
+        End Try
+    End Sub
+
     Private Sub TXT_BuscarCat_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProv.TextChanged
-        If RDB_BuscarCodigo.Checked = True Then
-            Dim num As Integer
-            If Integer.TryParse(TXT_BuscarProv.Text, num) Then
-                REFRESCAR()
-            End If
-        End If
+        REFRESCAR()
     End Sub
 
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NProv.Click
@@ -81,27 +89,27 @@
 
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
         Try
-            E_NuevoProveedor.idProv = LSV_Prov.SelectedItems.Item(0).Text
-            E_NuevoProveedor.TXT_CodigoProv.Text = LSV_Prov.SelectedItems(0).SubItems(1).Text
-            E_NuevoProveedor.TXT_NombreProv.Text = LSV_Prov.SelectedItems(0).SubItems(2).Text
+            E_NuevoProveedor.idProv = DGV_Prov.SelectedRows(0).Cells(0).Value.ToString()
+            E_NuevoProveedor.TXT_CodigoProv.Text = DGV_Prov.SelectedRows(0).Cells(1).Value.ToString()
+            E_NuevoProveedor.TXT_NombreProv.Text = DGV_Prov.SelectedRows(0).Cells(2).Value.ToString()
 
-            If Not String.IsNullOrEmpty(LSV_Prov.SelectedItems(0).SubItems(3).Text) Then
-                E_NuevoProveedor.TXT_CorreoProv.Text = LSV_Prov.SelectedItems(0).SubItems(3).Text
+            If Not String.IsNullOrEmpty(DGV_Prov.SelectedRows(0).Cells(3).Value.ToString()) Then
+                E_NuevoProveedor.TXT_CorreoProv.Text = DGV_Prov.SelectedRows(0).Cells(3).Value.ToString()
             Else
                 E_NuevoProveedor.TXT_CorreoProv.Text = ""
             End If
 
-            If Not String.IsNullOrEmpty(LSV_Prov.SelectedItems(0).SubItems(4).Text) Then
-                E_NuevoProveedor.TXT_TelProv.Text = LSV_Prov.SelectedItems(0).SubItems(4).Text
+            If Not String.IsNullOrEmpty(DGV_Prov.SelectedRows(0).Cells(4).Value.ToString()) Then
+                E_NuevoProveedor.TXT_TelProv.Text = DGV_Prov.SelectedRows(0).Cells(4).Value.ToString()
             Else
                 E_NuevoProveedor.TXT_TelProv.Text = ""
             End If
 
             T.Tables.Clear()
-            SQL = "SELECT p.ID_Proveedor, p.dia_pedido FROM proveedor_diaPedido p WHERE p.ID_Proveedor = " & LSV_Prov.SelectedItems(0).SubItems(0).Text
+            SQL = "SELECT p.ID_Proveedor, p.dia_pedido FROM proveedor_diaPedido p WHERE p.ID_Proveedor = " & DGV_Prov.SelectedRows(0).Cells(0).Value.ToString()
             Cargar_Tabla(T, SQL)
             T1.Tables.Clear()
-            SQL = "SELECT r.ID_Proveedor, r.dia_recibido FROM proveedor_recibirPedido r WHERE r.ID_Proveedor = " & LSV_Prov.SelectedItems(0).SubItems(0).Text
+            SQL = "SELECT r.ID_Proveedor, r.dia_recibido FROM proveedor_recibirPedido r WHERE r.ID_Proveedor = " & DGV_Prov.SelectedRows(0).Cells(0).Value.ToString()
             Cargar_Tabla(T1, SQL)
             If T.Tables(0).Rows.Count > 0 Or T1.Tables(0).Rows.Count > 0 Then
                 Dim maxcont As Integer
@@ -117,7 +125,7 @@
             End If
 
             E_NuevoProveedor.ModProv = True
-            E_NuevoProveedor.CodigoPreMod = LSV_Prov.SelectedItems(0).SubItems(1).Text
+            E_NuevoProveedor.CodigoPreMod = DGV_Prov.SelectedRows(0).Cells(1).Value.ToString()
             E_NuevoProveedor.Show()
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
@@ -126,15 +134,11 @@
 
     Private Sub MNU_ELIMINAR_Click(sender As Object, e As EventArgs) Handles MNU_ELIMINAR.Click
         T.Tables.Clear()
-        T1.Tables.Clear()
-        T2.Tables.Clear()
-        T3.Tables.Clear()
-        T4.Tables.Clear()
         Try
-            If LSV_Prov.SelectedItems.Count > 0 Then
+            If DGV_Prov.SelectedRows.Count > 0 Then
                 ' Se pregunta una confirmación para eliminar el tema
-                If MsgBox("¿Desea eliminar el proveedor: " & LSV_Prov.SelectedItems(0).SubItems(2).Text & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
-                    Dim idSucEliminar As Integer = Convert.ToInt32(LSV_Prov.SelectedItems(0).SubItems(0).Text)
+                If MsgBox("¿Desea eliminar el proveedor: " & DGV_Prov.SelectedRows(0).Cells(2).Value.ToString() & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
+                    Dim idSucEliminar As Integer = Convert.ToInt32(DGV_Prov.SelectedRows(0).Cells(0).Value.ToString())
                     ' Verificar si hay categorías asociadas
                     SQL = "SELECT COUNT(ID) FROM proveedor WHERE ID = " & idSucEliminar
                     Cargar_Tabla(T, SQL)

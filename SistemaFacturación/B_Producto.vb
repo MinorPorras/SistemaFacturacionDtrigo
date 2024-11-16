@@ -9,39 +9,52 @@
 
     Public Sub REFRESCAR()
         Try
-            LSV_Producto.Items.Clear()
             T.Tables.Clear()
-            If TXT_BuscarProd.Text <> "" Then
-                If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT p.ID, p.codigo, p.nombre, v.precio_venta, p.variable FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                        " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%'"
-                ElseIf RDB_BuscarNombre.Checked = True Then
-                    SQL = "SELECT p.ID, p.codigo, p.nombre, v.precio_venta, p.variable FROM producto p p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+            If RDB_BuscarCodigo.Checked = True Then
+                SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
+                    " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+                    " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%'"
+            ElseIf RDB_BuscarNombre.Checked = True Then
+                SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
+                    " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
                         " where p.nombre LIKE '%" & TXT_BuscarProd.Text & "%'"
-                End If
-            Else
-                SQL = "SELECT p.ID, p.codigo, p.nombre, v.precio_venta, p.variable FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto"
             End If
             Cargar_Tabla(T, SQL)
-            If T.Tables(0).Rows.Count > 0 Then
-                For i As Integer = 0 To T.Tables(0).Rows.Count - 1
-                    Dim item As New ListViewItem(T.Tables(0).Rows(i).Item("ID").ToString())
-                    For j As Integer = 1 To 4
-                        Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
-                        item.SubItems.Add(subItem)
-                    Next
-                    LSV_Producto.Items.Add(item)
-                Next
-            End If
-            LSV_Producto.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-            LSV_Producto.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
-            LSV_Producto.Columns(0).Width = 0
+            Dim bin As New BindingSource
+            bin.DataSource = T.Tables(0)
+            DGV_BProd.DataSource = bin
+            ' Manejar el evento DataBindingComplete para ocultar las columnas
+            AddHandler DGV_BProd.DataBindingComplete, AddressOf DGV_BProd_DataBindingComplete
             TXT_BuscarProd.Select()
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                 ' Mostrar un mensaje de error genérico
                 MsgBox("Error al cargar la lista de clientes: " & ex.Message, vbCritical + vbOKOnly, "Error")
             End If
+        End Try
+    End Sub
+
+    Private Sub DGV_BProd_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)
+        Try
+            For i As Integer = 0 To DGV_BProd.Columns.Count - 1
+                DGV_BProd.Columns(i).ReadOnly = True
+                Select Case i
+                    Case 1
+                        DGV_BProd.Columns(i).Width = 50
+                    Case 2
+                        DGV_BProd.Columns(i).Width = 200
+                    Case 3
+                        DGV_BProd.Columns(i).Width = 70
+                    Case 4
+                        DGV_BProd.Columns(i).Width = 45
+                End Select
+            Next
+            DGV_BProd.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DGV_BProd.GridColor = Color.DarkGray
+            DGV_BProd.Columns(0).Visible = False
+        Catch ex As Exception
+            ' Manejar el error si alguna columna no existe
+            Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
         End Try
     End Sub
 
@@ -63,23 +76,6 @@
         TXT_BuscarProd.Focus()
     End Sub
 
-    Private Sub LSV_Producto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LSV_Producto.SelectedIndexChanged
-        Try
-            TXT_codigo.Text = LSV_Producto.SelectedItems(0).SubItems(1).Text
-            TXT_Nombre.Text = LSV_Producto.SelectedItems(0).SubItems(2).Text
-            If LSV_Producto.SelectedItems(0).SubItems(4).Text = 1 Then
-                TXT_Precio.Text = "Variable"
-            Else
-                TXT_Precio.Text = LSV_Producto.SelectedItems(0).SubItems(3).Text
-            End If
-            LBL_IDProd.Text = LSV_Producto.SelectedItems(0).SubItems(0).Text
-        Catch ex As Exception
-            TXT_codigo.Text = ""
-            TXT_Nombre.Text = ""
-            TXT_Precio.Text = ""
-        End Try
-    End Sub
-
     Private Sub BTN_SelectProd_Click(sender As Object, e As EventArgs) Handles BTN_SelectProd.Click
         If Integer.TryParse(TXT_CantProd.Text, cant) Then
             If Not ModProd Then
@@ -87,7 +83,7 @@
                 If TXT_Precio.Text = "Variable" Then
                     E_ProductoVariable.LBL_Cod.Text = TXT_codigo.Text
                     E_ProductoVariable.LBL_Producto.Text = TXT_Nombre.Text
-                    E_ProductoVariable.LBL_ID.Text = LSV_Producto.SelectedItems(0).SubItems(0).Text
+                    E_ProductoVariable.LBL_ID.Text = DGV_BProd.SelectedRows(0).Cells(0).Value.ToString()
                     E_ProductoVariable.Show()
                 Else
                     P_Caja.Buscar_DatosProd(TXT_codigo, True)
@@ -109,7 +105,7 @@
         Else
             E_ProductoVariable.LBL_Cod.Text = TXT_codigo.Text
             E_ProductoVariable.LBL_Producto.Text = TXT_Nombre.Text
-            E_ProductoVariable.LBL_ID.Text = LSV_Producto.SelectedItems(0).SubItems(0).Text
+            E_ProductoVariable.LBL_ID.Text = DGV_BProd.SelectedRows(0).Cells(0).Value.ToString()
             E_ProductoVariable.Show()
         End If
     End Sub
@@ -144,5 +140,22 @@
         TXT_Nombre.Clear()
         TXT_Precio.Clear()
 
+    End Sub
+
+    Private Sub DGV_BMarca_SelectionChanged(sender As Object, e As EventArgs) Handles DGV_BProd.SelectionChanged
+        Try
+            TXT_codigo.Text = DGV_BProd.SelectedRows(0).Cells(1).Value.ToString()
+            TXT_Nombre.Text = DGV_BProd.SelectedRows(0).Cells(2).Value.ToString()
+            If DGV_BProd.SelectedRows(0).Cells(4).Value.ToString() = 1 Then
+                TXT_Precio.Text = "Variable"
+            Else
+                TXT_Precio.Text = DGV_BProd.SelectedRows(0).Cells(3).Value.ToString()
+            End If
+            LBL_IDProd.Text = DGV_BProd.SelectedRows(0).Cells(0).Value.ToString()
+        Catch ex As Exception
+            TXT_codigo.Text = ""
+            TXT_Nombre.Text = ""
+            TXT_Precio.Text = ""
+        End Try
     End Sub
 End Class

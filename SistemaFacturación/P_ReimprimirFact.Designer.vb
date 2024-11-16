@@ -24,19 +24,11 @@ Partial Class P_ReimprimirFact
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(P_ReimprimirFact))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
-        Me.LSV_Factura = New System.Windows.Forms.ListView()
-        Me.ID = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.num_factura = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.fecha_emision = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.nCliente = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.nUsuario = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.comentario = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.total = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.entrega_cliente = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.vuelto = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.tipo_venta = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.cobrada = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MNU_CONTX = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.MNU_REIMPRIMIR = New System.Windows.Forms.ToolStripMenuItem()
         Me.BTN_RegresarFact = New Guna.UI2.WinForms.Guna2Button()
@@ -46,8 +38,10 @@ Partial Class P_ReimprimirFact
         Me.CerrarApp = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.PrintDocument = New System.Drawing.Printing.PrintDocument()
         Me.PrintDialog = New System.Windows.Forms.PrintDialog()
+        Me.DGV_ReimprimirFact = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGV_ReimprimirFact, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -57,71 +51,6 @@ Partial Class P_ReimprimirFact
         Me.Guna2BorderlessForm1.ContainerControl = Me
         Me.Guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6R
         Me.Guna2BorderlessForm1.TransparentWhileDrag = True
-        '
-        'LSV_Factura
-        '
-        Me.LSV_Factura.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LSV_Factura.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ID, Me.num_factura, Me.fecha_emision, Me.nCliente, Me.nUsuario, Me.comentario, Me.total, Me.entrega_cliente, Me.vuelto, Me.tipo_venta, Me.cobrada})
-        Me.LSV_Factura.ContextMenuStrip = Me.MNU_CONTX
-        Me.LSV_Factura.FullRowSelect = True
-        Me.LSV_Factura.GridLines = True
-        Me.LSV_Factura.HideSelection = False
-        Me.LSV_Factura.Location = New System.Drawing.Point(41, 259)
-        Me.LSV_Factura.MultiSelect = False
-        Me.LSV_Factura.Name = "LSV_Factura"
-        Me.LSV_Factura.Size = New System.Drawing.Size(1166, 387)
-        Me.LSV_Factura.TabIndex = 52
-        Me.LSV_Factura.UseCompatibleStateImageBehavior = False
-        Me.LSV_Factura.View = System.Windows.Forms.View.Details
-        '
-        'ID
-        '
-        Me.ID.Text = "ID"
-        '
-        'num_factura
-        '
-        Me.num_factura.Text = "# factura"
-        '
-        'fecha_emision
-        '
-        Me.fecha_emision.Text = "Fecha de emisión"
-        Me.fecha_emision.Width = 101
-        '
-        'nCliente
-        '
-        Me.nCliente.Text = "Cliente"
-        Me.nCliente.Width = 47
-        '
-        'nUsuario
-        '
-        Me.nUsuario.Text = "Usuario"
-        '
-        'comentario
-        '
-        Me.comentario.Text = "Comentario"
-        Me.comentario.Width = 73
-        '
-        'total
-        '
-        Me.total.Text = "Total"
-        '
-        'entrega_cliente
-        '
-        Me.entrega_cliente.Text = "Entrega cliente"
-        Me.entrega_cliente.Width = 94
-        '
-        'vuelto
-        '
-        Me.vuelto.Text = "Vuelto"
-        '
-        'tipo_venta
-        '
-        Me.tipo_venta.Text = "tipo_venta"
-        Me.tipo_venta.Width = 73
-        '
-        'cobrada
-        '
-        Me.cobrada.Text = "Cobrada"
         '
         'MNU_CONTX
         '
@@ -244,6 +173,74 @@ Partial Class P_ReimprimirFact
         '
         Me.PrintDialog.UseEXDialog = True
         '
+        'DGV_ReimprimirFact
+        '
+        Me.DGV_ReimprimirFact.AllowUserToAddRows = False
+        Me.DGV_ReimprimirFact.AllowUserToDeleteRows = False
+        Me.DGV_ReimprimirFact.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_ReimprimirFact.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_ReimprimirFact.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGV_ReimprimirFact.ColumnHeadersHeight = 20
+        Me.DGV_ReimprimirFact.ContextMenuStrip = Me.MNU_CONTX
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGV_ReimprimirFact.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGV_ReimprimirFact.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_ReimprimirFact.Location = New System.Drawing.Point(41, 264)
+        Me.DGV_ReimprimirFact.MultiSelect = False
+        Me.DGV_ReimprimirFact.Name = "DGV_ReimprimirFact"
+        Me.DGV_ReimprimirFact.ReadOnly = True
+        Me.DGV_ReimprimirFact.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_ReimprimirFact.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.DGV_ReimprimirFact.RowHeadersVisible = False
+        Me.DGV_ReimprimirFact.Size = New System.Drawing.Size(1166, 382)
+        Me.DGV_ReimprimirFact.TabIndex = 78
+        Me.DGV_ReimprimirFact.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_ReimprimirFact.ThemeStyle.AlternatingRowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_ReimprimirFact.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.DGV_ReimprimirFact.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_ReimprimirFact.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_ReimprimirFact.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_ReimprimirFact.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_ReimprimirFact.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.DGV_ReimprimirFact.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DGV_ReimprimirFact.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_ReimprimirFact.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGV_ReimprimirFact.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGV_ReimprimirFact.ThemeStyle.HeaderStyle.Height = 20
+        Me.DGV_ReimprimirFact.ThemeStyle.ReadOnly = True
+        Me.DGV_ReimprimirFact.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_ReimprimirFact.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGV_ReimprimirFact.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_ReimprimirFact.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_ReimprimirFact.ThemeStyle.RowsStyle.Height = 22
+        Me.DGV_ReimprimirFact.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_ReimprimirFact.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
         'P_ReimprimirFact
         '
         Me.AcceptButton = Me.BTN_ImpReciente
@@ -252,7 +249,7 @@ Partial Class P_ReimprimirFact
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarFact
         Me.ClientSize = New System.Drawing.Size(1219, 746)
-        Me.Controls.Add(Me.LSV_Factura)
+        Me.Controls.Add(Me.DGV_ReimprimirFact)
         Me.Controls.Add(Me.BTN_RegresarFact)
         Me.Controls.Add(Me.BTN_ImpReciente)
         Me.Controls.Add(Me.TXT_BuscarFact)
@@ -265,23 +262,12 @@ Partial Class P_ReimprimirFact
         Me.Text = "Reimprimir factura"
         Me.MNU_CONTX.ResumeLayout(False)
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGV_ReimprimirFact, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
-    Friend WithEvents LSV_Factura As ListView
-    Friend WithEvents ID As ColumnHeader
-    Friend WithEvents num_factura As ColumnHeader
-    Friend WithEvents fecha_emision As ColumnHeader
-    Friend WithEvents nCliente As ColumnHeader
-    Friend WithEvents nUsuario As ColumnHeader
-    Friend WithEvents comentario As ColumnHeader
-    Friend WithEvents total As ColumnHeader
-    Friend WithEvents entrega_cliente As ColumnHeader
-    Friend WithEvents vuelto As ColumnHeader
-    Friend WithEvents tipo_venta As ColumnHeader
-    Friend WithEvents cobrada As ColumnHeader
     Friend WithEvents BTN_RegresarFact As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_ImpReciente As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarFact As Guna.UI2.WinForms.Guna2TextBox
@@ -291,4 +277,5 @@ Partial Class P_ReimprimirFact
     Friend WithEvents MNU_REIMPRIMIR As ToolStripMenuItem
     Friend WithEvents PrintDocument As Printing.PrintDocument
     Friend WithEvents PrintDialog As PrintDialog
+    Friend WithEvents DGV_ReimprimirFact As Guna.UI2.WinForms.Guna2DataGridView
 End Class

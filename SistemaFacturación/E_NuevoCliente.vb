@@ -56,6 +56,8 @@
                                 Else
                                     GUARDAR_STR("cliente_cedula", "cedula", TXT_CedCliente.Text, "ID_Cliente", idCliente)
                                 End If
+                            Else
+                                GUARDAR_STR("cliente_cedula", "cedula", TXT_CedCliente.Text, "ID_Cliente", idCliente)
                             End If
 
                             If Not String.IsNullOrEmpty(TXT_CorreoCliente.Text) Then
@@ -67,6 +69,8 @@
                                 Else
                                     GUARDAR_STR("cliente_correo", "correo", TXT_CorreoCliente.Text, "ID_Cliente", idCliente)
                                 End If
+                            Else
+                                GUARDAR_STR("cliente_correo", "correo", TXT_CorreoCliente.Text, "ID_Cliente", idCliente)
                             End If
 
                             If Not String.IsNullOrEmpty(TXT_TelCliente.Text) Then
@@ -78,6 +82,8 @@
                                 Else
                                     GUARDAR_STR("cliente_telefono", "telefono", TXT_TelCliente.Text, "ID_Cliente", idCliente)
                                 End If
+                            Else
+                                GUARDAR_STR("cliente_telefono", "telefono", TXT_TelCliente.Text, "ID_Cliente", idCliente)
                             End If
 
                             LIMPIAR()

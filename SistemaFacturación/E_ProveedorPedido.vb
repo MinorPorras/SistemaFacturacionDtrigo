@@ -10,19 +10,14 @@
 
     Public Sub REFRESCAR()
         Try
-            LSV_Pedido.Items.Clear()
+            DGV_Pedido.Rows.Clear()
             MNU_ELIMINAR.Visible = False
             If E_NuevoProveedor.LHacerPed.Count > 0 Then
                 For i As Integer = 0 To E_NuevoProveedor.LHacerPed.Count - 1
-                    Dim item As New ListViewItem(E_NuevoProveedor.LHacerPed(i))
-                    Dim subItem As String = E_NuevoProveedor.LRebPed(i)
-                    item.SubItems.Add(subItem)
-                    LSV_Pedido.Items.Add(item)
+                    DGV_Pedido.Rows.Add(E_NuevoProveedor.LHacerPed(i), E_NuevoProveedor.LRebPed(i))
                 Next
                 MNU_ELIMINAR.Visible = True
             End If
-            LSV_Pedido.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-            LSV_Pedido.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                 ' Mostrar un mensaje de error genérico
@@ -63,13 +58,12 @@
     End Sub
 
     Private Sub MNU_ELIMINAR_Click(sender As Object, e As EventArgs) Handles MNU_ELIMINAR.Click
-        If LSV_Pedido.SelectedItems.Count > 0 Then
-            E_NuevoProveedor.LHacerPed.RemoveAt(LSV_Pedido.SelectedIndices(0))
-            E_NuevoProveedor.LRebPed.RemoveAt(LSV_Pedido.SelectedIndices(0))
+        If DGV_Pedido.SelectedRows.Count > 0 Then
+            E_NuevoProveedor.LHacerPed.RemoveAt(DGV_Pedido.SelectedRows(0).Index)
             REFRESCAR()
             VALIDAR()
         Else
-                MsgBox("Ninguna fila fue seleccionada", vbCritical + vbOKOnly, "Error")
+            MsgBox("Ninguna fila fue seleccionada", vbCritical + vbOKOnly, "Error")
         End If
 
     End Sub

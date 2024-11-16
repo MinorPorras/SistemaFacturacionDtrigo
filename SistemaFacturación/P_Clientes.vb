@@ -7,49 +7,63 @@
 
     Public Sub REFRESCAR()
         Try
-            LSV_Cliente.Items.Clear()
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
             T.Tables.Clear()
-            If TXT_BuscarCliente.Text <> "" Then
-                If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT c.ID, c.codigo, c.nombre, cc.cedula, ct.telefono, co.correo FROM (((clientes c" + " 
+            If RDB_BuscarCodigo.Checked = True Then
+                SQL = "SELECT c.ID, c.codigo as [Código], c.nombre as [Nombre], cc.cedula as [Cédula], ct.telefono as [Teléfono]," &
+                    " co.correo as [Correo] FROM (((clientes c" + " 
                         LEFT JOIN cliente_cedula cc ON cc.ID_Cliente = c.ID)" + "
                         LEFT JOIN cliente_correo co ON co.ID_Cliente = c.ID)" + "
                         LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) where c.codigo LIKE '%" & TXT_BuscarCliente.Text & "%' ORDER BY Val(c.codigo) ASC;"
-                ElseIf RDB_BuscarNombre.Checked = True Then
-                    SQL = "SELECT c.ID, c.codigo, c.nombre, cc.cedula, ct.telefono, co.correo FROM (((clientes c" + " 
+            Else
+                SQL = "SELECT c.ID, c.codigo as [Código], c.nombre as [Nombre], cc.cedula as [Cédula], ct.telefono as [Teléfono]," &
+                        " co.correo as [Correo] FROM (((clientes c" + " 
                         LEFT JOIN cliente_cedula cc ON cc.ID_Cliente = c.ID)" + "
                         LEFT JOIN cliente_correo co ON co.ID_Cliente = c.ID)" + "
                         LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) where c.nombre LIKE '%" & TXT_BuscarCliente.Text & "%' ORDER BY Val(c.codigo) ASC;"
-                End If
-            Else
-                SQL = "SELECT c.ID, c.codigo, c.nombre, cc.cedula, ct.telefono, co.correo FROM (((clientes c" + " 
-                        LEFT JOIN cliente_cedula cc ON cc.ID_Cliente = c.ID)" + "
-                        LEFT JOIN cliente_correo co ON co.ID_Cliente = c.ID)" + "
-                        LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) ORDER BY Val(c.codigo) ASC;"
             End If
             Cargar_Tabla(T, SQL)
+            Dim bin As New BindingSource
+            bin.DataSource = T.Tables(0)
+            DGV_Cliente.DataSource = bin
             If T.Tables(0).Rows.Count > 0 Then
-                For i As Integer = 0 To T.Tables(0).Rows.Count - 1
-                    Dim item As New ListViewItem(T.Tables(0).Rows(i).Item("ID").ToString())
-                    For j As Integer = 1 To 5
-                        Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
-                        item.SubItems.Add(subItem)
-                    Next
-                    LSV_Cliente.Items.Add(item)
-                Next
                 MNU_ELIMINAR.Visible = True
                 MNU_MODIFICAR.Visible = True
             End If
-            LSV_Cliente.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-            LSV_Cliente.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
-            LSV_Cliente.Columns(0).Width = 0
+            ' Manejar el evento DataBindingComplete para ocultar las columnas
+            AddHandler DGV_Cliente.DataBindingComplete, AddressOf DGV_Cliente_DataBindingComplete
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                 ' Mostrar un mensaje de error genérico
                 MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
             End If
+        End Try
+    End Sub
+
+    Private Sub DGV_Cliente_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)
+        Try
+            For i As Integer = 0 To DGV_Cliente.Columns.Count - 1
+                DGV_Cliente.Columns(i).ReadOnly = True
+                Select Case i
+                    Case 1
+                        DGV_Cliente.Columns(i).Width = 50
+                    Case 2
+                        DGV_Cliente.Columns(i).Width = 200
+                    Case 3
+                        DGV_Cliente.Columns(i).Width = 100
+                    Case 4
+                        DGV_Cliente.Columns(i).Width = 100
+                    Case 5
+                        DGV_Cliente.Columns(i).Width = 300
+                End Select
+            Next
+            DGV_Cliente.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DGV_Cliente.GridColor = Color.DarkGray
+            DGV_Cliente.Columns(0).Visible = False
+        Catch ex As Exception
+            ' Manejar el error si alguna columna no existe
+            Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
         End Try
     End Sub
 
@@ -64,37 +78,32 @@
     End Sub
 
     Private Sub TXT_BuscarCliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarCliente.TextChanged
-        If RDB_BuscarCodigo.Checked = True Then
-            Dim num As Integer
-            If Integer.TryParse(TXT_BuscarCliente.Text, num) Then
-                REFRESCAR()
-            End If
-        End If
+        REFRESCAR()
     End Sub
 
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
         Try
-            E_NuevoCliente.idCliente = LSV_Cliente.SelectedItems.Item(0).Text
-            E_NuevoCliente.TXT_CodCliente.Text = LSV_Cliente.SelectedItems(0).SubItems(1).Text
-            E_NuevoCliente.CodigoPreMod = LSV_Cliente.SelectedItems(0).SubItems(1).Text
-            E_NuevoCliente.txtNombreCliente.Text = LSV_Cliente.SelectedItems(0).SubItems(2).Text
+            E_NuevoCliente.idCliente = DGV_Cliente.SelectedRows(0).Cells(0).Value.ToString()
+            E_NuevoCliente.TXT_CodCliente.Text = DGV_Cliente.SelectedRows(0).Cells(1).Value.ToString()
+            E_NuevoCliente.CodigoPreMod = DGV_Cliente.SelectedRows(0).Cells(1).Value.ToString()
+            E_NuevoCliente.txtNombreCliente.Text = DGV_Cliente.SelectedRows(0).Cells(2).Value.ToString()
 
-            If String.IsNullOrEmpty(LSV_Cliente.SelectedItems(0).SubItems(3).Text) Then
+            If String.IsNullOrEmpty(DGV_Cliente.SelectedRows(0).Cells(3).Value.ToString()) Then
                 E_NuevoCliente.TXT_CedCliente.Text = ""
             Else
-                E_NuevoCliente.TXT_CedCliente.Text = LSV_Cliente.SelectedItems(0).SubItems(3).Text
+                E_NuevoCliente.TXT_CedCliente.Text = DGV_Cliente.SelectedRows(0).Cells(3).Value.ToString()
             End If
 
-            If String.IsNullOrEmpty(LSV_Cliente.SelectedItems(0).SubItems(4).Text) Then
+            If String.IsNullOrEmpty(DGV_Cliente.SelectedRows(0).Cells(4).Value.ToString()) Then
                 E_NuevoCliente.TXT_TelCliente.Text = ""
             Else
-                E_NuevoCliente.TXT_TelCliente.Text = LSV_Cliente.SelectedItems(0).SubItems(4).Text
+                E_NuevoCliente.TXT_TelCliente.Text = DGV_Cliente.SelectedRows(0).Cells(4).Value.ToString()
             End If
 
-            If String.IsNullOrEmpty(LSV_Cliente.SelectedItems(0).SubItems(5).Text) Then
+            If String.IsNullOrEmpty(DGV_Cliente.SelectedRows(0).Cells(5).Value.ToString()) Then
                 E_NuevoCliente.TXT_CorreoCliente.Text = ""
             Else
-                E_NuevoCliente.TXT_CorreoCliente.Text = LSV_Cliente.SelectedItems(0).SubItems(5).Text
+                E_NuevoCliente.TXT_CorreoCliente.Text = DGV_Cliente.SelectedRows(0).Cells(5).Value.ToString()
             End If
 
             E_NuevoCliente.ModCLi = True
@@ -108,10 +117,10 @@
         T.Tables.Clear()
         T1.Tables.Clear()
         Try
-            If LSV_Cliente.SelectedItems.Count > 0 Then
+            If DGV_Cliente.SelectedRows.Count > 0 Then
                 ' Se pregunta una confirmación para eliminar el tema
-                If MsgBox("¿Desea eliminar el cliente: " & LSV_Cliente.SelectedItems(0).SubItems(3).Text & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
-                    Dim idEliminar As Integer = Convert.ToInt32(LSV_Cliente.SelectedItems(0).SubItems(0).Text)
+                If MsgBox("¿Desea eliminar el cliente: " & DGV_Cliente.SelectedRows(0).Cells(3).Value.ToString() & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
+                    Dim idEliminar As Integer = Convert.ToInt32(DGV_Cliente.SelectedRows(0).Cells(0).Value.ToString())
                     ' Verificar si hay categorías asociadas
                     SQL = "SELECT COUNT(ID) FROM clientes WHERE ID = " & idEliminar
                     Cargar_Tabla(T, SQL)

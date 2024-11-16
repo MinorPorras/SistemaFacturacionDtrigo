@@ -1,4 +1,5 @@
-﻿Public Class P_Categoria
+﻿
+Public Class P_Categoria
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
         If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
             Application.Exit()
@@ -20,36 +21,25 @@
             Dim red As Integer
             Dim green As Integer
             Dim blue As Integer
-            LSV_Cat.Items.Clear()
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
             T.Tables.Clear()
-            If TXT_BuscarCat.Text <> "" Then
-                If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT ID, codigo, nombre, color FROM categoria where codigo LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
-                ElseIf RDB_BuscarNombre.Checked = True Then
-                    SQL = "SELECT ID, codigo, nombre, color FROM categoria where nombre LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
-                End If
-            Else
-                SQL = "SELECT ID, codigo, nombre, color FROM categoria ORDER BY Val(Codigo) ASC;"
+            If RDB_BuscarCodigo.Checked = True Then
+                SQL = "SELECT ID, codigo as [Código], nombre as [Nombre], color as [Color] FROM categoria where codigo LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
+            ElseIf RDB_BuscarNombre.Checked = True Then
+                SQL = "SELECT ID, codigo as [Código], nombre as [Nombre], color as [Color] FROM categoria where nombre LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
             End If
+
             Cargar_Tabla(T, SQL)
+            Dim bin As New BindingSource
+            bin.DataSource = T.Tables(0)
+            DGV_Categoria.DataSource = bin
             If T.Tables(0).Rows.Count > 0 Then
-                For i As Integer = 0 To T.Tables(0).Rows.Count - 1
-                    Dim item As New ListViewItem(T.Tables(0).Rows(i).Item("ID").ToString())
-                    For j As Integer = 1 To 3
-                        Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
-                        item.SubItems.Add(subItem)
-                    Next
-                    LSV_Cat.Items.Add(item)
-                    LSV_Cat.Items(i).SubItems(3).BackColor = Color.FromArgb(red, green, blue)
-                Next
                 MNU_ELIMINAR.Visible = True
                 MNU_MODIFICAR.Visible = True
             End If
-            LSV_Cat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-            LSV_Cat.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
-            LSV_Cat.Columns(0).Width = 0
+            ' Manejar el evento DataBindingComplete para ocultar las columnas
+            AddHandler DGV_Categoria.DataBindingComplete, AddressOf DGV_Marca_DataBindingComplete
             TXT_BuscarCat.Select()
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
@@ -59,47 +49,49 @@
         End Try
     End Sub
 
-    Private Sub ListView1_DrawItem(sender As Object, e As DrawListViewItemEventArgs) Handles LSV_Cat.DrawItem
+    Private Sub DGV_Marca_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)
+        Try
+            For i As Integer = 0 To DGV_Categoria.Columns.Count - 1
+                DGV_Categoria.Columns(i).ReadOnly = True
+                Select Case i
+                    Case 1
+                        DGV_Categoria.Columns(i).Width = 50
+                    Case 2
+                        DGV_Categoria.Columns(i).Width = 200
+                    Case 3
+                        DGV_Categoria.Columns(i).Width = 70
+                End Select
+            Next
 
-    End Sub
+            For i As Integer = 0 To DGV_Categoria.Rows.Count - 1
+                If DGV_Categoria.Rows(i).Cells(3).Value IsNot Nothing Then
+                    Dim col As String() = DGV_Categoria.Rows(i).Cells(3).Value.ToString().Split(","c)
+                    ' Convertir los valores RGB a enteros
+                    Dim r As Integer = Convert.ToInt32(col(0).Trim())
+                    Dim g As Integer = Convert.ToInt32(col(1).Trim())
+                    Dim b As Integer = Convert.ToInt32(col(2).Trim())
 
-    Private Sub ListView1_DrawSubItem(sender As Object, e As DrawListViewSubItemEventArgs) Handles LSV_Cat.DrawSubItem
-        If e.ColumnIndex = 3 Then ' Cambia este índice según tus necesidades
-            ' Supongamos que has recuperado el string RGB de la base de datos
-            Dim rgbString As String = e.SubItem.Text ' El valor RGB está en el texto del subitem
-            Dim rgbValues() As String = rgbString.Split(",")
+                    DGV_Categoria.Rows(i).Cells(3).Style.BackColor = Color.FromArgb(r, g, b)
+                    DGV_Categoria.Rows(i).Cells(3).Style.ForeColor = Color.FromArgb(r, g, b)
+                    DGV_Categoria.Rows(i).Cells(3).Style.SelectionBackColor = Color.FromArgb(r, g, b)
+                    DGV_Categoria.Rows(i).Cells(3).Style.SelectionForeColor = Color.FromArgb(r, g, b)
+                End If
+            Next
 
-            If rgbValues.Length = 3 Then
-                Dim red As Integer = Convert.ToInt32(rgbValues(0))
-                Dim green As Integer = Convert.ToInt32(rgbValues(1))
-                Dim blue As Integer = Convert.ToInt32(rgbValues(2))
 
-                ' Crea un color a partir de los valores RGB
-                Dim backColor As Color = Color.FromArgb(red, green, blue)
-
-                ' Dibuja el fondo de la celda con el color especificado
-                e.Graphics.FillRectangle(New SolidBrush(backColor), e.Bounds)
-                e.Graphics.DrawString(e.SubItem.Text, LSV_Cat.Font, New SolidBrush(backColor), e.Bounds)
-            Else
-                e.DrawDefault = True
-            End If
-        Else
-            e.DrawDefault = True
-        End If
-    End Sub
-
-    Private Sub ListView1_DrawColumnHeader(sender As Object, e As DrawListViewColumnHeaderEventArgs) Handles LSV_Cat.DrawColumnHeader
-        ' Establece el color del texto del encabezado
-        TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Font, e.Bounds, Color.Black, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
+            DGV_Categoria.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DGV_Categoria.GridColor = Color.DarkGray
+            DGV_Categoria.Columns(0).Visible = False
+        Catch ex As Exception
+            ' Manejar el error si alguna columna no existe
+            Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
+        End Try
     End Sub
 
     Private Sub TXT_BuscarCat_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarCat.TextChanged
-        If RDB_BuscarCodigo.Checked = True Then
-            Dim num As Integer
-            If Integer.TryParse(TXT_BuscarCat.Text, num) Then
-                REFRESCAR()
-            End If
-        End If
+
+        REFRESCAR()
+
     End Sub
 
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NCat.Click
@@ -110,17 +102,18 @@
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
         E_NuevaCategoria.ModCat = True
         Try
-            E_NuevaCategoria.CodigoPreMod = LSV_Cat.SelectedItems(0).SubItems(1).Text
-            E_NuevaCategoria.idCat = LSV_Cat.SelectedItems.Item(0).Text
-            E_NuevaCategoria.TXT_CodCat.Text = LSV_Cat.SelectedItems(0).SubItems(1).Text
-            E_NuevaCategoria.TXT_NombreCat.Text = LSV_Cat.SelectedItems(0).SubItems(2).Text
-            Dim rgbValues() = LSV_Cat.SelectedItems(0).SubItems(3).Text.Split(",")
+            E_NuevaCategoria.CodigoPreMod = DGV_Categoria.SelectedRows(0).Cells(1).Value.ToString()
+            E_NuevaCategoria.idCat = DGV_Categoria.SelectedRows(0).Cells(0).Value.ToString()
+            E_NuevaCategoria.TXT_CodCat.Text = DGV_Categoria.SelectedRows(0).Cells(1).Value.ToString()
+            E_NuevaCategoria.TXT_NombreCat.Text = DGV_Categoria.SelectedRows(0).Cells(2).Value.ToString()
+            Dim rgbValues() = DGV_Categoria.SelectedRows(0).Cells(3).Value.ToString().Split(",")
             Dim red As Integer = Convert.ToInt32(rgbValues(0))
             Dim green As Integer = Convert.ToInt32(rgbValues(1))
             Dim blue As Integer = Convert.ToInt32(rgbValues(2))
             E_NuevaCategoria.BTN_Color.FillColor = Color.FromArgb(red, green, blue)
             E_NuevaCategoria.ColorDialog1.Color = Color.FromArgb(red, green, blue)
-            E_NuevaCategoria.ColorCat = LSV_Cat.SelectedItems(0).SubItems(3).Text
+            E_NuevaCategoria.ColorCat = DGV_Categoria.SelectedRows(0).Cells(3).Value.ToString()
+            E_NuevaCategoria.ModCat = True
             E_NuevaCategoria.Show()
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
@@ -133,10 +126,10 @@
         T.Tables.Clear()
         T1.Tables.Clear()
         Try
-            If LSV_Cat.SelectedItems.Count > 0 Then
+            If DGV_Categoria.SelectedRows.Count > 0 Then
                 ' Se pregunta una confirmación para eliminar el tema
-                If MsgBox("¿Desea eliminar la categoria: " & LSV_Cat.SelectedItems(0).SubItems(2).Text & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
-                    Dim idSucEliminar As Integer = Convert.ToInt32(LSV_Cat.SelectedItems(0).SubItems(0).Text)
+                If MsgBox("¿Desea eliminar la categoria: " & DGV_Categoria.SelectedRows(0).Cells(2).Value.ToString() & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
+                    Dim idSucEliminar As Integer = Convert.ToInt32(DGV_Categoria.SelectedRows(0).Cells(0).Value.ToString())
                     ' Verificar si hay categorías asociadas
                     SQL = "SELECT COUNT(ID) FROM categoria WHERE ID = " & idSucEliminar
                     Cargar_Tabla(T, SQL)
@@ -144,9 +137,10 @@
                     If T.Tables(0).Rows(0).Item(0) <> 0 Then
                         'Se elimina
                         SQL = "DELETE FROM categoria WHERE ID = " & idSucEliminar
-                        EJECUTAR(SQL)
-                        REFRESCAR()
-                        MsgBox("La categoria fue eliminada satisfactoriamente.", vbInformation + vbOKOnly, "Eliminado")
+                        If EJECUTAR(SQL) Then
+                            REFRESCAR()
+                            MsgBox("La categoría fue eliminada satisfactoriamente.", vbInformation + vbOKOnly, "Eliminado")
+                        End If
                     Else
                         MsgBox("La categoria no existe", vbExclamation, "Error")
                     End If

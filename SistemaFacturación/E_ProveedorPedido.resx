@@ -245,10 +245,16 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOHT/H9HususNXKlZAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="HacerPed.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="RebPed.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="BTN_NProv.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAISlJREFUeF7t3Xm87XVZ6PHu69ZNEFGcMjNzQMwhy6xUbmpySc26OVTadR4zQVHU
+        vQAADr0BR/uQrQAAISlJREFUeF7t3Xm87XVZ6PHu69ZNEFGcMjNzQMwhy6xUbmpySc26OVTadR4zQVHU
         zAlxnsfUCi9pTqiJotJVEQWZRQGRUYWHUZDR59FU/tz3tU4riu/6nnP22WutvX97rff79fr8V5zt2d/v
         85w9rN/6uZ8DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

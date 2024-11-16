@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class P_Usuarios
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,31 +20,31 @@ Partial Class P_Usuarios
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(P_Usuarios))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.BTN_RegresarUsu = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_NUsuario = New Guna.UI2.WinForms.Guna2Button()
         Me.TXT_BuscarUsuario = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.CerrarApp = New Guna.UI2.WinForms.Guna2CircleButton()
-        Me.LSV_Usuario = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.usuario = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.clave = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.colorUsuario = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.MNU_CONTX = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.MNU_MODIFICAR = New System.Windows.Forms.ToolStripMenuItem()
         Me.MNU_ELIMINAR = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.RDB_BuscarNombre = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.RDB_BuscarCodigo = New Guna.UI2.WinForms.Guna2RadioButton()
+        Me.DGV_Cajero = New Guna.UI2.WinForms.Guna2DataGridView()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MNU_CONTX.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.DGV_Cajero, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -145,43 +145,6 @@ Partial Class P_Usuarios
         Me.CerrarApp.Size = New System.Drawing.Size(66, 66)
         Me.CerrarApp.TabIndex = 23
         '
-        'LSV_Usuario
-        '
-        Me.LSV_Usuario.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LSV_Usuario.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.usuario, Me.clave, Me.colorUsuario})
-        Me.LSV_Usuario.ContextMenuStrip = Me.MNU_CONTX
-        Me.LSV_Usuario.FullRowSelect = True
-        Me.LSV_Usuario.GridLines = True
-        Me.LSV_Usuario.HideSelection = False
-        Me.LSV_Usuario.Location = New System.Drawing.Point(46, 251)
-        Me.LSV_Usuario.MultiSelect = False
-        Me.LSV_Usuario.Name = "LSV_Usuario"
-        Me.LSV_Usuario.OwnerDraw = True
-        Me.LSV_Usuario.Size = New System.Drawing.Size(772, 324)
-        Me.LSV_Usuario.TabIndex = 29
-        Me.LSV_Usuario.UseCompatibleStateImageBehavior = False
-        Me.LSV_Usuario.View = System.Windows.Forms.View.Details
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "ID"
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Codigo"
-        '
-        'usuario
-        '
-        Me.usuario.Text = "Usuario"
-        '
-        'clave
-        '
-        Me.clave.Text = "Clave"
-        '
-        'colorUsuario
-        '
-        Me.colorUsuario.Text = "Color"
-        '
         'MNU_CONTX
         '
         Me.MNU_CONTX.ImageScalingSize = New System.Drawing.Size(20, 20)
@@ -262,6 +225,74 @@ Partial Class P_Usuarios
         Me.RDB_BuscarCodigo.UncheckedState.FillColor = System.Drawing.Color.Transparent
         Me.RDB_BuscarCodigo.UncheckedState.InnerColor = System.Drawing.Color.Transparent
         '
+        'DGV_Cajero
+        '
+        Me.DGV_Cajero.AllowUserToAddRows = False
+        Me.DGV_Cajero.AllowUserToDeleteRows = False
+        Me.DGV_Cajero.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_Cajero.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_Cajero.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGV_Cajero.ColumnHeadersHeight = 20
+        Me.DGV_Cajero.ContextMenuStrip = Me.MNU_CONTX
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGV_Cajero.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGV_Cajero.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_Cajero.Location = New System.Drawing.Point(46, 251)
+        Me.DGV_Cajero.MultiSelect = False
+        Me.DGV_Cajero.Name = "DGV_Cajero"
+        Me.DGV_Cajero.ReadOnly = True
+        Me.DGV_Cajero.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_Cajero.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.DGV_Cajero.RowHeadersVisible = False
+        Me.DGV_Cajero.Size = New System.Drawing.Size(772, 324)
+        Me.DGV_Cajero.TabIndex = 70
+        Me.DGV_Cajero.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_Cajero.ThemeStyle.AlternatingRowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_Cajero.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.DGV_Cajero.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_Cajero.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_Cajero.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_Cajero.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_Cajero.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.DGV_Cajero.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DGV_Cajero.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_Cajero.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.DGV_Cajero.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGV_Cajero.ThemeStyle.HeaderStyle.Height = 20
+        Me.DGV_Cajero.ThemeStyle.ReadOnly = True
+        Me.DGV_Cajero.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.DGV_Cajero.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGV_Cajero.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGV_Cajero.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.DGV_Cajero.ThemeStyle.RowsStyle.Height = 22
+        Me.DGV_Cajero.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DGV_Cajero.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
         'P_Usuarios
         '
         Me.AcceptButton = Me.BTN_NUsuario
@@ -270,8 +301,8 @@ Partial Class P_Usuarios
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarUsu
         Me.ClientSize = New System.Drawing.Size(865, 700)
+        Me.Controls.Add(Me.DGV_Cajero)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.LSV_Usuario)
         Me.Controls.Add(Me.BTN_RegresarUsu)
         Me.Controls.Add(Me.BTN_NUsuario)
         Me.Controls.Add(Me.TXT_BuscarUsuario)
@@ -287,6 +318,7 @@ Partial Class P_Usuarios
         Me.MNU_CONTX.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.DGV_Cajero, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -297,16 +329,11 @@ Partial Class P_Usuarios
     Friend WithEvents TXT_BuscarUsuario As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents CerrarApp As Guna.UI2.WinForms.Guna2CircleButton
-    Friend WithEvents LSV_Usuario As ListView
-    Friend WithEvents ColumnHeader1 As ColumnHeader
-    Friend WithEvents ColumnHeader2 As ColumnHeader
-    Friend WithEvents usuario As ColumnHeader
-    Friend WithEvents clave As ColumnHeader
-    Friend WithEvents colorUsuario As ColumnHeader
     Friend WithEvents MNU_CONTX As Guna.UI2.WinForms.Guna2ContextMenuStrip
     Friend WithEvents MNU_MODIFICAR As ToolStripMenuItem
     Friend WithEvents MNU_ELIMINAR As ToolStripMenuItem
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents RDB_BuscarNombre As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents RDB_BuscarCodigo As Guna.UI2.WinForms.Guna2RadioButton
+    Friend WithEvents DGV_Cajero As Guna.UI2.WinForms.Guna2DataGridView
 End Class

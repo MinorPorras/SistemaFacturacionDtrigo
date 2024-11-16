@@ -11,60 +11,36 @@ Public Class P_ReimprimirFact
 
     Friend Sub REFRESCAR()
         Try
-            LSV_Factura.Items.Clear()
             MNU_REIMPRIMIR.Visible = False
             T.Tables.Clear()
             If TXT_BuscarFact.Text <> "" Then
-                SQL = "SELECT f.ID, f.num_factura, f.fecha_emision, c.nombre, u.usuario, fc.comentario, f.total, f.entrega_cliente, f.vuelto, f.tipo_venta, f.cobrada " &
-                    " FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
-                    " LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
-                    " LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura LIKE '%" & TXT_BuscarFact.Text & "%' ORDER BY Val(f.num_factura) DESC;"
+                SQL = "SELECT f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Cliente], u.usuario as [Cajero], fc.comentario as [Comentario]" &
+                    ", f.total as [Total], f.entrega_cliente as [Pago cliente], f.vuelto as [Vuelto], " &
+                      "IIf(f.tipo_venta=0, 'Efectivo', IIf(f.tipo_venta=1, 'Tarjeta', IIf(f.tipo_venta=2, 'Sinpe', IIf(f.tipo_venta=3, 'Depósito', IIf(f.tipo_venta=4, 'Mixto'," &
+                      " 'Efectivo'))))) AS [Tipo venta], f.cobrada as [Cobrada] " &
+                      "FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
+                      "LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
+                      "LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura Like '%" & TXT_BuscarFact.Text & "%' ORDER BY Val(f.num_factura) DESC;"
             Else
-                SQL = "SELECT f.ID, f.num_factura, f.fecha_emision, c.nombre, u.usuario, fc.comentario, f.total, f.entrega_cliente, f.vuelto, f.tipo_venta, f.cobrada " &
-                    " FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
-                    " LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
-                    " LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) ORDER BY Val(f.num_factura) DESC;"
+                SQL = "SELECT f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Nombre], u.usuario as [Cajero], fc.comentario as [Comentario]" &
+                    ", f.total as [Total], f.entrega_cliente as [Pago cliente], f.vuelto as [Vuelto], " &
+                      "IIf(f.tipo_venta=0, 'Efectivo', IIf(f.tipo_venta=1, 'Tarjeta', IIf(f.tipo_venta=2, 'Sinpe', IIf(f.tipo_venta=3, 'Depósito', IIf(f.tipo_venta=4, 'Mixto'," &
+                      " 'Efectivo'))))) AS [Tipo venta], f.cobrada as [Cobrada] " &
+                      "FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
+                      "LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
+                      "LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) ORDER BY Val(f.num_factura) DESC;"
 
             End If
             Cargar_Tabla(T, SQL)
+            Dim bin As New BindingSource
+            bin.DataSource = T.Tables(0)
+            DGV_ReimprimirFact.DataSource = bin
             If T.Tables(0).Rows.Count > 0 Then
-                For i As Integer = 0 To T.Tables(0).Rows.Count - 1
-                    Dim item As New ListViewItem(T.Tables(0).Rows(i).Item(0).ToString())
-                    For j As Integer = 1 To 10
-                        Select Case j
-                            Case 1
-                                Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), " ", CInt(T.Tables(0).Rows(i).Item(j)).ToString("D15"))
-                                item.SubItems.Add(subItem)
-                            Case 9
-                                Dim tipoVenta As Integer = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), 1, Convert.ToInt32(T.Tables(0).Rows(i).Item(j)))
-                                Dim strVenta As String
-                                Select Case tipoVenta
-                                    Case 0
-                                        strVenta = "Efectivo"
-                                    Case 1
-                                        strVenta = "Tarjeta"
-                                    Case 2
-                                        strVenta = "Sinpe"
-                                    Case 3
-                                        strVenta = "Depósito"
-                                    Case 4
-                                        strVenta = "Mixto"
-                                    Case Else
-                                        strVenta = "Efectivo"
-                                End Select
-                                item.SubItems.Add(strVenta)
-                            Case Else
-                                Dim subItem As String = If(IsDBNull(T.Tables(0).Rows(i).Item(j)), "", T.Tables(0).Rows(i).Item(j).ToString())
-                                item.SubItems.Add(subItem)
-                        End Select
-                    Next
-                    LSV_Factura.Items.Add(item)
-                Next
                 MNU_REIMPRIMIR.Visible = True
             End If
-            LSV_Factura.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-            LSV_Factura.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
-            LSV_Factura.Columns(0).Width = 0
+            TXT_BuscarFact.Select()
+            ' Manejar el evento DataBindingComplete para ocultar las columnas
+            AddHandler DGV_ReimprimirFact.DataBindingComplete, AddressOf DGV_ReimprimirFact_DataBindingComplete
             TXT_BuscarFact.Select()
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
@@ -73,6 +49,52 @@ Public Class P_ReimprimirFact
             End If
         End Try
     End Sub
+
+    Private Sub DGV_ReimprimirFact_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_ReimprimirFact.DataBindingComplete
+        Try
+            For i As Integer = 0 To DGV_ReimprimirFact.Columns.Count - 1
+                DGV_ReimprimirFact.Columns(i).ReadOnly = True
+                Select Case i
+                    Case 1
+                        DGV_ReimprimirFact.Columns(i).Width = 60
+                    Case 2
+                        DGV_ReimprimirFact.Columns(i).Width = 60
+                    Case 3
+                        DGV_ReimprimirFact.Columns(i).Width = 70
+                    Case 4
+                        DGV_ReimprimirFact.Columns(i).Width = 70
+                    Case 5
+                        DGV_ReimprimirFact.Columns(i).Width = 100
+                    Case 6
+                        DGV_ReimprimirFact.Columns(i).Width = 40
+                    Case 7
+                        DGV_ReimprimirFact.Columns(i).Width = 40
+                    Case 8
+                        DGV_ReimprimirFact.Columns(i).Width = 30
+                    Case 9
+                        DGV_ReimprimirFact.Columns(i).Width = 40
+                    Case 10
+                        DGV_ReimprimirFact.Columns(i).Width = 50
+                End Select
+            Next
+
+            ' Formatear los números en la columna 1 a un número de 15 dígitos
+            For Each row As DataGridViewRow In DGV_ReimprimirFact.Rows
+                If row.Cells(1).Value IsNot Nothing Then
+                    Dim originalValue As Integer = Convert.ToInt32(row.Cells(1).Value)
+                    row.Cells(1).Value = originalValue.ToString("D15") ' Formato de 15 dígitos
+                End If
+            Next
+
+            DGV_ReimprimirFact.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DGV_ReimprimirFact.GridColor = Color.DarkGray
+            DGV_ReimprimirFact.Columns(0).Visible = False
+        Catch ex As Exception
+            ' Manejar el error si alguna columna no existe
+            Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
+        End Try
+    End Sub
+
 
     Private Sub BTN_ImpReciente_Click(sender As Object, e As EventArgs) Handles BTN_ImpReciente.Click
         encabezadoFactura = ""
@@ -169,7 +191,7 @@ Public Class P_ReimprimirFact
         Next
 
         finFactura = ""
-        CREAR_FACTURA(LSV_Factura.SelectedItems(0).SubItems(0).Text, encabezadoFactura, facturaContenido, finFactura, True)
+        CREAR_FACTURA(DGV_ReimprimirFact.SelectedRows(0).Cells(0).Value.ToString(), encabezadoFactura, facturaContenido, finFactura, True)
         ImprimirFactura()
     End Sub
 

@@ -1,3 +1,9 @@
+**Versión 1.1.0.0 (16 de noviembre de 2024)**
+- Se modifico el formato de todas las listas para que sean más agradables a la vista y además ahora son mucho más eficientes y ya se pueden acomodar de menor a mayor y viceversa por cada una de las columnas (Se pasaron todas y sus procesos relacionados de un List view a Data grid view)
+- Se removió el botón de cerrar la aplicación en la pestaña de mantenimiento de productos por problemas con los atajos del teclado
+- Se corrigieron varios errores relacionados con la busqueda de productos donde dependiendo de los filtros que se usaban no se mostraba la información
+- Se corrgió un error en las eliminaciones de proveedores donde estos no se podían eliminar correctamente si estaban relacionados con algún producto, ahora tiene el mismo proceso que con las marcas y las categorías, donde estas se, eliminan de los productos también
+
 **Versión 1.0.0.11 (14 de nomviembre de 2024)**
 - Ahora se pueden crear productos con precios variables, este tipo de productos al pasarlo por la caja muestran un pestaña en la cual además de mostrar la info del producto, te permite colocar el precio que desees para ese tipo de productos que se vende por kilo y demás. En este caso no se almacena níngun impuesto, ganancia o precio de venta, unicamente el precio base
 - Había un error en la pestaña de agregar productos en el que a la hora de buscar un impuesto el resultado que te daba luego de escoger uno era incorrecto y estaba relacionado con la categoría en vez de con el impuesto correcto

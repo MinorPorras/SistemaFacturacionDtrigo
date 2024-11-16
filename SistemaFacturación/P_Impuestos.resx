@@ -124,7 +124,7 @@
   <data name="BTN_NImpuesto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAISlJREFUeF7t3Xm87XVZ6PHu69ZNEFGcMjNzQMwhy6xUbmpySc26OVTadR4zQVHU
+        vQAADr0BR/uQrQAAISlJREFUeF7t3Xm87XVZ6PHu69ZNEFGcMjNzQMwhy6xUbmpySc26OVTadR4zQVHU
         zAlxnsfUCi9pTqiJotJVEQWZRQGRUYWHUZDR59FU/tz3tU4riu/6nnP22WutvX97rff79fr8V5zt2d/v
         85w9rN/6uZ8DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -272,7 +272,7 @@
   <data name="BTN_RegresarImpuesto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAGwhJREFUeF7t3Xvcd/lc7/H+HAajySGZUlMTNU41u8YmhCjSASGFdBQlJTo4ZUfq
+        vQAADr0BR/uQrQAAGwhJREFUeF7t3Xvcd/lc7/H+HAajySGZUlMTNU41u8YmhCjSASGFdBQlJTo4ZUfq
         UVFp73SihByik1Q7k9TD1lRTqWRCGmdyyHn8+dqPxarGxxzu+577uq7f4fl8POafe67rt9Z3/b7f7/ta
         a30Pn/RJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -390,6 +390,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOHT/H9HususNXKlZAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="MNU_CONTX.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>316, 16</value>
+  </metadata>
   <data name="CerrarApp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -586,13 +589,10 @@
         rkJggg==
 </value>
   </data>
-  <metadata name="MNU_CONTX.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>316, 16</value>
-  </metadata>
   <data name="Guna2PictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAQCtJREFUeF7tnQeYFdX5h6X33juydJbekd6ld9AYNSYWDFHEnih2gigoKKAiSBUR
+        vQAADr0BR/uQrQAAQCtJREFUeF7tnQeYFdX5h6X33juydJbekd6ld9AYNSYWDFHEnih2gigoKKAiSBUR
         FUU0iBJFgiJRQcWKxpheTKJJTGL+Sb7/883cs8yeM3fv3blb7t193+d5Hx/Zmbl9fjPnO+WUUwAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

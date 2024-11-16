@@ -116,37 +116,26 @@ Public Class M_Inicio
 
             'Se limpian los items del list view correspondiente
             If tabla = "proveedor_diaPedido" Then
-                LSV_RebPed.Items.Clear()
+                DGV_LHacerPed.Rows.Clear()
             ElseIf tabla = "proveedor_recibirPedido" Then
-                LSV_HacerPed.Items.Clear()
+                DGV_LRebPed.Rows.Clear()
             End If
 
             'Se añaden los items a list view corre
             For i As Integer = 0 To Arraymascont - 1
-                Dim item As New ListViewItem(If(LArray(i) Is Nothing, "", LArray(i)))
-                Dim subItem2 As String = (If(MArray(i) Is Nothing, "", MArray(i)))
-                Dim subItem3 As String = (If(XArray(i) Is Nothing, "", XArray(i)))
-                Dim subItem4 As String = (If(JArray(i) Is Nothing, "", JArray(i)))
-                Dim subItem5 As String = (If(VArray(i) Is Nothing, "", VArray(i)))
-                Dim subItem6 As String = (If(SArray(i) Is Nothing, "", SArray(i)))
-                Dim subItem7 As String = (If(DArray(i) Is Nothing, "", DArray(i)))
-                item.SubItems.Add(subItem2)
-                item.SubItems.Add(subItem3)
-                item.SubItems.Add(subItem4)
-                item.SubItems.Add(subItem5)
-                item.SubItems.Add(subItem6)
-                item.SubItems.Add(subItem7)
                 If tabla = "proveedor_diaPedido" Then
-                    LSV_RebPed.Items.Add(item)
+                    DGV_LHacerPed.Rows.Add(If(LArray(i) Is Nothing, "", LArray(i)), If(MArray(i) Is Nothing, "", MArray(i)),
+                                           If(XArray(i) Is Nothing, "", XArray(i)), If(JArray(i) Is Nothing, "", JArray(i)),
+                                           If(VArray(i) Is Nothing, "", VArray(i)), If(SArray(i) Is Nothing, "", SArray(i)),
+                                           If(DArray(i) Is Nothing, "", DArray(i)))
+
                 ElseIf tabla = "proveedor_recibirPedido" Then
-                    LSV_HacerPed.Items.Add(item)
+                    DGV_LRebPed.Rows.Add(If(LArray(i) Is Nothing, "", LArray(i)), If(MArray(i) Is Nothing, "", MArray(i)),
+                                         If(XArray(i) Is Nothing, "", XArray(i)), If(JArray(i) Is Nothing, "", JArray(i)),
+                                         If(VArray(i) Is Nothing, "", VArray(i)), If(SArray(i) Is Nothing, "", SArray(i)),
+                                         If(DArray(i) Is Nothing, "", DArray(i)))
                 End If
             Next
-
-            LSV_HacerPed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-            LSV_HacerPed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
-            LSV_RebPed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
-            LSV_RebPed.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
