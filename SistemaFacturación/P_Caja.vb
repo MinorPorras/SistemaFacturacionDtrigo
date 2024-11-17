@@ -110,7 +110,7 @@ Public Class P_Caja
 
     Private Sub BTN_RegresarCliente_Click(sender As Object, e As EventArgs) Handles BTN_RegresarCliente.Click
         Timer1.Stop()
-        P_SelectUsu.Show()
+        M_Inicio.Show()
         Me.Close()
     End Sub
 

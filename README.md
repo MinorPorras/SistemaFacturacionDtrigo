@@ -1,3 +1,7 @@
+**Versión 1.1.0.2 (17 de noviembre de 2024)**
+- Se revisó el funcionamiento de las configuraciones, ahora se necesita reiniciar la app para que los valores nuevos se carguen
+- Se quitó el botón de regresar en la pestaña de selección de usuarios ya que no debía de estar ahí y se agregó el de cerrar la app
+- Se modifico la ruta a la que iba el botón de regresar de la caja para que ahora vuelva correctamente al menu de inicio
 
 **Versión 1.1.0.1 (16 de noviembre de 2024)**
 - Ahora al crear cajeros se puede definir su rol, ya sea Administrador o cajero, el cajero tiene restringido el acceso a los reportes, al mantenimiento y a las configuraciones, mientras que el administrador puede acceder a todo el sistema, luego se añadirán más tipos de perfiles

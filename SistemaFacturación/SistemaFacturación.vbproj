@@ -29,8 +29,8 @@
     <ProductName>Sistema de Facturación</ProductName>
     <PublisherName>Minor Porras Varela</PublisherName>
     <SuiteName>Sistema Fact</SuiteName>
-    <ApplicationRevision>10</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>

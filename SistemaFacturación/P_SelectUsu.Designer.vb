@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class P_SelectUsu
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,13 +20,13 @@ Partial Class P_SelectUsu
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(P_SelectUsu))
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.BTN_RegresarLogin = New Guna.UI2.WinForms.Guna2Button()
+        Me.CerrarApp = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -39,39 +39,37 @@ Partial Class P_SelectUsu
         'FlowLayoutPanel1
         '
         Me.FlowLayoutPanel1.AutoScroll = True
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 56)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(760, 435)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(760, 462)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
-        'BTN_RegresarLogin
+        'CerrarApp
         '
-        Me.BTN_RegresarLogin.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarLogin.BorderRadius = 25
-        Me.BTN_RegresarLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.BTN_RegresarLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_RegresarLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_RegresarLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTN_RegresarLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTN_RegresarLogin.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.BTN_RegresarLogin.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
-        Me.BTN_RegresarLogin.ForeColor = System.Drawing.Color.White
-        Me.BTN_RegresarLogin.Image = CType(resources.GetObject("BTN_RegresarLogin.Image"), System.Drawing.Image)
-        Me.BTN_RegresarLogin.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarLogin.Location = New System.Drawing.Point(219, 453)
-        Me.BTN_RegresarLogin.Name = "BTN_RegresarLogin"
-        Me.BTN_RegresarLogin.Size = New System.Drawing.Size(337, 53)
-        Me.BTN_RegresarLogin.TabIndex = 110
-        Me.BTN_RegresarLogin.Text = "Regresar"
+        Me.CerrarApp.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.CerrarApp.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.CerrarApp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.CerrarApp.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.CerrarApp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.CerrarApp.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.CerrarApp.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.CerrarApp.ForeColor = System.Drawing.Color.White
+        Me.CerrarApp.Image = CType(resources.GetObject("CerrarApp.Image"), System.Drawing.Image)
+        Me.CerrarApp.ImageSize = New System.Drawing.Size(60, 60)
+        Me.CerrarApp.Location = New System.Drawing.Point(713, 3)
+        Me.CerrarApp.Name = "CerrarApp"
+        Me.CerrarApp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.CerrarApp.Size = New System.Drawing.Size(47, 47)
+        Me.CerrarApp.TabIndex = 11
         '
         'P_SelectUsu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.CancelButton = Me.BTN_RegresarLogin
         Me.ClientSize = New System.Drawing.Size(760, 518)
-        Me.Controls.Add(Me.BTN_RegresarLogin)
+        Me.Controls.Add(Me.CerrarApp)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -84,5 +82,5 @@ Partial Class P_SelectUsu
 
     Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
-    Friend WithEvents BTN_RegresarLogin As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents CerrarApp As Guna.UI2.WinForms.Guna2CircleButton
 End Class

@@ -46,10 +46,9 @@ Public Class P_SelectUsu
 
     End Sub
 
-
-    Private Sub BTN_RegresarLogin_Click(sender As Object, e As EventArgs) Handles BTN_RegresarLogin.Click
-        M_Inicio.Show()
-        M_Inicio.REFRESCAR()
-        Me.Close()
+    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
+        If MsgBox("¿Desea cerra la aplicación?", vbOKOnly + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
+            Application.Exit()
+        End If
     End Sub
 End Class

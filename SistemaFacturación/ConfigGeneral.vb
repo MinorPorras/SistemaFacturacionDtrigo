@@ -27,18 +27,10 @@ Public Class ConfigGeneral
                             Dim NuevaDB As String = OFD_ImportarDB.FileName
                             Md_BackupDB.importarDB(NuevaDB)
                             MsgBox("Se importó la base de datos correctamente", vbOKCancel + vbQuestion, "Importación completada")
-                            T.Tables.Clear()
-                            SQL = "SELECT nombre, telefono, email, logo FROM sucursal"
-                            Cargar_Tabla(T, SQL)
-                            If Not IsDBNull(T.Tables(0).Rows(0).Item(0)) Then
-                                If T.Tables(0).Rows.Count > 0 Then
-                                    ActConfig("Empresa", T.Tables(0).Rows(0).Item(0).ToString())
-                                    ActConfig("Telefono", T.Tables(0).Rows(0).Item(1).ToString())
-                                    ActConfig("Correo", T.Tables(0).Rows(0).Item(2).ToString())
-                                    ActConfig("Logo", T.Tables(0).Rows(0).Item(3).ToString())
-                                End If
+                            If MsgBox("Acción realizada exitosamente, para reflejar los cambios se debe de reiniciar la app, desea reiniciarla?", vbOKCancel + vbQuestion, "Confirmación") = MsgBoxResult.Ok Then
+                                Application.Restart()
                             End If
-                            End If
+                        End If
                     End If
                 End If
             End If
@@ -57,6 +49,9 @@ Public Class ConfigGeneral
 
             Md_Inicializacion.SetAppSetting("DirectorioRespaldo", folderPath)
             MessageBox.Show("Carpeta seleccionada: " & folderPath)
+            If MsgBox("Acción realizada exitosamente, para reflejar los cambios se debe de reiniciar la app, desea reiniciarla?", vbOKCancel + vbQuestion, "Confirmación") = MsgBoxResult.Ok Then
+                Application.Restart()
+            End If
         End If
     End Sub
 
@@ -72,16 +67,8 @@ Public Class ConfigGeneral
                         Dim folderPath As String = IO.Path.GetFullPath(OFD_ModDirDB.FileName)
                         Md_Inicializacion.SetConnectionString("DbConnectionString", "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & folderPath)
                         MessageBox.Show("Conexión actualizada: " & folderPath)
-                        T.Tables.Clear()
-                        SQL = "SELECT nombre, telefono, email, logo FROM sucursal"
-                        Cargar_Tabla(T, SQL)
-                        If Not IsDBNull(T.Tables(0).Rows(0).Item(0)) Then
-                            If T.Tables(0).Rows.Count > 0 Then
-                                ActConfig("Empresa", T.Tables(0).Rows(0).Item(0).ToString())
-                                ActConfig("Telefono", T.Tables(0).Rows(0).Item(1).ToString())
-                                ActConfig("Correo", T.Tables(0).Rows(0).Item(2).ToString())
-                                ActConfig("Logo", T.Tables(0).Rows(0).Item(3).ToString())
-                            End If
+                        If MsgBox("Acción realizada exitosamente, para reflejar los cambios se debe de reiniciar la app, desea reiniciarla?", vbOKCancel + vbQuestion, "Confirmación") = MsgBoxResult.Ok Then
+                            Application.Restart()
                         End If
                     End If
                 End If
