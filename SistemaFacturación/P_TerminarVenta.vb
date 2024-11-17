@@ -138,11 +138,14 @@ Public Class P_TerminarVenta
                 GUARDAR_DOUBLE("factura", "total", total, "ID", idFactura)
                 Dim eCliente As Double
                 If TipoPago = 4 Then
-                    eCliente = Convert.ToDouble(TXT_PagoEfectivo.Text) + Convert.ToDouble(TXT_PagoTarjeta.Text)
+                    GUARDAR_DOUBLE("factura", "efectivo_cliente", Convert.ToDouble(TXT_PagoEfectivo.Text), "ID", idFactura)
+                    GUARDAR_DOUBLE("factura", "tarjeta_cliente", Convert.ToDouble(TXT_PagoTarjeta.Text), "ID", idFactura)
                 Else
                     eCliente = Convert.ToDouble(txtEntregaCliente.Text)
+                    GUARDAR_DOUBLE("factura", "efectivo_cliente", eCliente, "ID", idFactura)
+                    GUARDAR_DOUBLE("factura", "tarjeta_cliente", 0, "ID", idFactura)
                 End If
-                GUARDAR_DOUBLE("factura", "entrega_cliente", eCliente, "ID", idFactura)
+
                 GUARDAR_DOUBLE("factura", "vuelto", vuelto, "ID", idFactura)
                 GUARDAR_INT("factura", "tipo_venta", TipoPago, "ID", idFactura)
                 GUARDAR_STR("factura", "cobrada", "Si", "ID", idFactura)
@@ -345,7 +348,6 @@ Public Class P_TerminarVenta
             TXT_PagoTarjeta.Text = 0
         End If
         Dim restante As Double
-        Dim eCLiente As Double
         Dim pEfectivo As Double = Convert.ToDouble(TXT_PagoEfectivo.Text)
         Dim pTarjeta As Double = Convert.ToDouble(TXT_PagoTarjeta.Text)
         If efectivo Then

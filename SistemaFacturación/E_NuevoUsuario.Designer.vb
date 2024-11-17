@@ -37,6 +37,8 @@ Partial Class E_NuevoUsuario
         Me.BTN_RegresarUsu = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_NUsuario = New Guna.UI2.WinForms.Guna2Button()
         Me.CBK_NoClaveUsu = New Guna.UI2.WinForms.Guna2CheckBox()
+        Me.CBX_tipoCuenta = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -166,7 +168,7 @@ Partial Class E_NuevoUsuario
         Me.BTN_Color.FillColor = System.Drawing.Color.DimGray
         Me.BTN_Color.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BTN_Color.ForeColor = System.Drawing.Color.White
-        Me.BTN_Color.Location = New System.Drawing.Point(132, 339)
+        Me.BTN_Color.Location = New System.Drawing.Point(136, 408)
         Me.BTN_Color.Name = "BTN_Color"
         Me.BTN_Color.Size = New System.Drawing.Size(180, 100)
         Me.BTN_Color.TabIndex = 25
@@ -186,7 +188,7 @@ Partial Class E_NuevoUsuario
         Me.BTN_RegresarUsu.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarUsu.Image = CType(resources.GetObject("BTN_RegresarUsu.Image"), System.Drawing.Image)
         Me.BTN_RegresarUsu.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarUsu.Location = New System.Drawing.Point(12, 456)
+        Me.BTN_RegresarUsu.Location = New System.Drawing.Point(11, 539)
         Me.BTN_RegresarUsu.Name = "BTN_RegresarUsu"
         Me.BTN_RegresarUsu.Size = New System.Drawing.Size(215, 57)
         Me.BTN_RegresarUsu.TabIndex = 30
@@ -205,7 +207,7 @@ Partial Class E_NuevoUsuario
         Me.BTN_NUsuario.ForeColor = System.Drawing.Color.White
         Me.BTN_NUsuario.Image = CType(resources.GetObject("BTN_NUsuario.Image"), System.Drawing.Image)
         Me.BTN_NUsuario.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NUsuario.Location = New System.Drawing.Point(233, 456)
+        Me.BTN_NUsuario.Location = New System.Drawing.Point(232, 539)
         Me.BTN_NUsuario.Name = "BTN_NUsuario"
         Me.BTN_NUsuario.Size = New System.Drawing.Size(213, 57)
         Me.BTN_NUsuario.TabIndex = 29
@@ -229,6 +231,35 @@ Partial Class E_NuevoUsuario
         Me.CBK_NoClaveUsu.UncheckedState.BorderThickness = 0
         Me.CBK_NoClaveUsu.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         '
+        'CBX_tipoCuenta
+        '
+        Me.CBX_tipoCuenta.AutoRoundedCorners = True
+        Me.CBX_tipoCuenta.BackColor = System.Drawing.Color.Transparent
+        Me.CBX_tipoCuenta.BorderRadius = 17
+        Me.CBX_tipoCuenta.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CBX_tipoCuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CBX_tipoCuenta.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CBX_tipoCuenta.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.CBX_tipoCuenta.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.CBX_tipoCuenta.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.CBX_tipoCuenta.ItemHeight = 30
+        Me.CBX_tipoCuenta.Items.AddRange(New Object() {"Cajero", "Administrador"})
+        Me.CBX_tipoCuenta.Location = New System.Drawing.Point(168, 351)
+        Me.CBX_tipoCuenta.Name = "CBX_tipoCuenta"
+        Me.CBX_tipoCuenta.Size = New System.Drawing.Size(262, 36)
+        Me.CBX_tipoCuenta.TabIndex = 32
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(12, 358)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(150, 23)
+        Me.Label4.TabIndex = 33
+        Me.Label4.Text = "Tipo de cuenta:"
+        '
         'E_NuevoUsuario
         '
         Me.AcceptButton = Me.BTN_NUsuario
@@ -236,7 +267,9 @@ Partial Class E_NuevoUsuario
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarUsu
-        Me.ClientSize = New System.Drawing.Size(458, 546)
+        Me.ClientSize = New System.Drawing.Size(458, 609)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.CBX_tipoCuenta)
         Me.Controls.Add(Me.CBK_NoClaveUsu)
         Me.Controls.Add(Me.BTN_RegresarUsu)
         Me.Controls.Add(Me.BTN_NUsuario)
@@ -273,4 +306,6 @@ Partial Class E_NuevoUsuario
     Friend WithEvents BTN_RegresarUsu As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_NUsuario As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents CBK_NoClaveUsu As Guna.UI2.WinForms.Guna2CheckBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents CBX_tipoCuenta As Guna.UI2.WinForms.Guna2ComboBox
 End Class

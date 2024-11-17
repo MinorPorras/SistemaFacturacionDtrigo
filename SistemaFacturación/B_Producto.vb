@@ -1,6 +1,7 @@
 ﻿Public Class B_Producto
     Friend ModProd As Boolean
     Dim cant As Integer
+    Friend idModProd As Integer
 
     Private Sub B_Producto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RDB_BuscarNombre.Checked = True
@@ -10,15 +11,22 @@
     Public Sub REFRESCAR()
         Try
             T.Tables.Clear()
-            If RDB_BuscarCodigo.Checked = True Then
+            If Not ModProd Then
+                If RDB_BuscarCodigo.Checked = True Then
+                    SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
+                        " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+                        " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%'"
+                Else
+                    SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
+                        " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+                            " where p.nombre LIKE '%" & TXT_BuscarProd.Text & "%'"
+                End If
+            Else
                 SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
                     " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                    " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%'"
-            ElseIf RDB_BuscarNombre.Checked = True Then
-                SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
-                    " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                        " where p.nombre LIKE '%" & TXT_BuscarProd.Text & "%'"
+                    " where p.ID = " & idModProd
             End If
+
             Cargar_Tabla(T, SQL)
             Dim bin As New BindingSource
             bin.DataSource = T.Tables(0)
@@ -93,9 +101,18 @@
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value = LBL_IDProd.Text
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(1).Value = TXT_codigo.Text
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(2).Value = TXT_Nombre.Text
-                P_Caja.DGV_Caja.SelectedRows(0).Cells(3).Value = TXT_Precio.Text
+                If Not TXT_Precio.Text = "Variable" Then
+                    P_Caja.DGV_Caja.SelectedRows(0).Cells(3).Value = TXT_Precio.Text
+                Else
+                    P_Caja.DGV_Caja.SelectedRows(0).Cells(3).Value = P_Caja.DGV_Caja.SelectedRows(0).Cells(3).Value
+                End If
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(4).Value = TXT_CantProd.Text
-                Dim subtotal As Double = Convert.ToDouble(TXT_CantProd.Text) * Convert.ToDouble(TXT_Precio.Text)
+                Dim subtotal As Double
+                If Not TXT_Precio.Text = "Variable" Then
+                    subtotal = Convert.ToDouble(TXT_CantProd.Text) * Convert.ToDouble(TXT_Precio.Text)
+                Else
+                    subtotal = Convert.ToDouble(TXT_CantProd.Text) * Convert.ToDouble(P_Caja.DGV_Caja.SelectedRows(0).Cells(3).Value)
+                End If
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(5).Value = subtotal.ToString()
             End If
             ModProd = False

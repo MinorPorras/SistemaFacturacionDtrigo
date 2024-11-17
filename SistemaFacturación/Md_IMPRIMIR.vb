@@ -11,6 +11,7 @@
     Dim comentario As String
     Dim total As String
     Dim eCliente As String
+    Dim tCliente As String
     Dim vuelto As String
     Dim tventa As String
 
@@ -18,7 +19,7 @@
 
 
         T.Tables.Clear()
-        SQL = "SELECT f.ID, f.fecha_emision, c.nombre, f.num_factura, f.total, f.entrega_cliente, f.vuelto, f.tipo_venta, u.usuario" &
+        SQL = "SELECT f.ID, f.fecha_emision, c.nombre, f.num_factura, f.total, f.efectivo_cliente, f.tarjeta_cliente, f.vuelto, f.tipo_venta, u.usuario" &
             " FROM (factura f LEFT JOIN clientes c ON c.ID =f.ID_Cliente) LEFT JOIN usuario u ON u.ID = f.ID_Usuario WHERE f.ID = " & id_factura
         Cargar_Tabla(T, SQL)
         fecha = If(IsDBNull(T.Tables(0).Rows(0).Item(1)), " ", T.Tables(0).Rows(0).Item(1))
@@ -26,8 +27,9 @@
         numFact = If(IsDBNull(T.Tables(0).Rows(0).Item(3)), " ", CInt(T.Tables(0).Rows(0).Item(3)).ToString("D15"))
         total = If(IsDBNull(T.Tables(0).Rows(0).Item(4)), " ", T.Tables(0).Rows(0).Item(4))
         eCliente = If(IsDBNull(T.Tables(0).Rows(0).Item(5)), " ", T.Tables(0).Rows(0).Item(5))
-        vuelto = If(IsDBNull(T.Tables(0).Rows(0).Item(6)), " ", T.Tables(0).Rows(0).Item(6))
-        tventa = If(IsDBNull(T.Tables(0).Rows(0).Item(7)), " ", T.Tables(0).Rows(0).Item(7))
+        tCliente = If(IsDBNull(T.Tables(0).Rows(0).Item(6)), " ", T.Tables(0).Rows(0).Item(6))
+        vuelto = If(IsDBNull(T.Tables(0).Rows(0).Item(7)), " ", T.Tables(0).Rows(0).Item(7))
+        tventa = If(IsDBNull(T.Tables(0).Rows(0).Item(8)), " ", T.Tables(0).Rows(0).Item(8))
         Dim strVenta As String
         Select Case tventa
             Case 0
@@ -43,7 +45,7 @@
             Case Else
                 strVenta = "Efectivo"
         End Select
-        nomCajero = If(IsDBNull(T.Tables(0).Rows(0).Item(8)), " ", T.Tables(0).Rows(0).Item(8))
+        nomCajero = If(IsDBNull(T.Tables(0).Rows(0).Item(9)), " ", T.Tables(0).Rows(0).Item(9))
 
 
         T1.Tables.Clear()
@@ -95,15 +97,28 @@
 
             P_TerminarVenta.finFactura = "-------------------------------------------" & vbCrLf &
                       "Total de la venta: ₡ " & total & vbCrLf &
+                      vbCrLf
+            If tventa <> 4 Then
+                P_TerminarVenta.finFactura += "Pago del cliente: ₡ " & eCliente & vbCrLf &
                       vbCrLf &
-                      "Efectivo cliente: ₡ " & eCliente & vbCrLf &
-                      vbCrLf &
-                      "Vueto: ₡ " & vuelto & vbCrLf &
+                      "Vuelto: ₡ " & vuelto & vbCrLf &
                       vbCrLf &
                       "Tipo de pago: " & strVenta & vbCrLf &
                       vbCrLf &
-                      "Comentario: " & comentario & vbCrLf &
-                      vbCrLf & vbCrLf & vbCrLf & vbCrLf
+                      "Comentario: " & comentario & vbCrLf & " " & vbCrLf &
+                      "-------------------------------------------" & vbCrLf
+
+            Else
+                P_TerminarVenta.finFactura += "Pago en efectivo: ₡ " & eCliente & vbCrLf &
+                     "Pago en tarjeta: ₡ " & tCliente & vbCrLf &
+                      vbCrLf &
+                      "Vuelto: ₡ " & vuelto & vbCrLf &
+                      vbCrLf &
+                      "Tipo de pago: " & strVenta & vbCrLf &
+                      vbCrLf &
+                      "Comentario: " & comentario & vbCrLf & " " & vbCrLf &
+                      "-------------------------------------------" & vbCrLf
+            End If
         Else
             ' Definir el contenido de la factura
             P_ReimprimirFact.encabezadoFactura = "-------------------------------------------" & vbCrLf &
@@ -128,8 +143,10 @@
 
             P_ReimprimirFact.finFactura = "-------------------------------------------" & vbCrLf &
                       "Total de la venta: ₡ " & total & vbCrLf &
-                      vbCrLf &
-                      "Pago del cliente: ₡ " & eCliente & vbCrLf &
+                      vbCrLf
+
+            If tventa <> 4 Then
+                P_ReimprimirFact.finFactura += "Pago del cliente: ₡ " & eCliente & vbCrLf &
                       vbCrLf &
                       "Vuelto: ₡ " & vuelto & vbCrLf &
                       vbCrLf &
@@ -137,6 +154,18 @@
                       vbCrLf &
                       "Comentario: " & comentario & vbCrLf & " " & vbCrLf &
                       "-------------------------------------------" & vbCrLf
+
+            Else
+                P_ReimprimirFact.finFactura += "Pago en efectivo: ₡ " & eCliente & vbCrLf &
+                     "Pago en tarjeta: ₡ " & tCliente & vbCrLf &
+                      vbCrLf &
+                      "Vuelto: ₡ " & vuelto & vbCrLf &
+                      vbCrLf &
+                      "Tipo de pago: " & strVenta & vbCrLf &
+                      vbCrLf &
+                      "Comentario: " & comentario & vbCrLf & " " & vbCrLf &
+                      "-------------------------------------------" & vbCrLf
+            End If
         End If
 
 

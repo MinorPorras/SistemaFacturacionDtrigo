@@ -5,7 +5,7 @@
             T.Tables.Clear()
             If RDB_BuscarCodigo.Checked = True Then
                 SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM marca where codigo LIKE '%" & TXT_BuscarMarca.Text & "%'"
-            ElseIf RDB_BuscarNombre.Checked = True Then
+            Else
                 SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM marca where nombre LIKE '%" & TXT_BuscarMarca.Text & "%'"
             End If
             Cargar_Tabla(T, SQL)

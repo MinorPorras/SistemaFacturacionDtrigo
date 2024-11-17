@@ -14,17 +14,18 @@ Public Class P_Usuarios
     End Sub
     Public Sub REFRESCAR()
         Try
-            Dim red As Integer
-            Dim green As Integer
-            Dim blue As Integer
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
             T.Tables.Clear()
 
             If RDB_BuscarCodigo.Checked = True Then
-                SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, u.color as [Color] FROM usuario u WHERE u.codigo LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
+                SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, " &
+                      "IIf(u.tipo=0, 'Cajero', IIf(u.tipo=1, 'Administrador', 'Desconocido')) AS [Tipo], u.color as [Color] " &
+                      "FROM usuario u WHERE u.codigo LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
             Else
-                SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, u.color as [Color] FROM usuario u WHERE u.usuario LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
+                SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, " &
+                      "IIf(u.tipo=0, 'Cajero', IIf(u.tipo=1, 'Administrador', 'Desconocido')) AS [Tipo], u.color as [Color] " &
+                      "FROM usuario u WHERE u.usuario LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
             End If
 
             Cargar_Tabla(T, SQL)
@@ -61,23 +62,25 @@ Public Class P_Usuarios
                     Case 2
                         DGV_Cajero.Columns(i).Width = 100
                     Case 4
+                        DGV_Cajero.Columns(i).Width = 100
+                    Case 5
                         DGV_Cajero.Columns(i).Width = 200
                 End Select
             Next
 
             For Each row As DataGridViewRow In DGV_Cajero.Rows
-                If row.Cells(4).Value IsNot Nothing Then
-                    Dim col As String() = row.Cells(4).Value.ToString().Split(","c)
+                If row.Cells(5).Value IsNot Nothing Then
+                    Dim col As String() = row.Cells(5).Value.ToString().Split(","c)
                     If col.Length = 3 Then
                         ' Convertir los valores RGB a enteros
                         Dim r As Integer = Convert.ToInt32(col(0).Trim())
                         Dim g As Integer = Convert.ToInt32(col(1).Trim())
                         Dim b As Integer = Convert.ToInt32(col(2).Trim())
 
-                        row.Cells(4).Style.BackColor = Color.FromArgb(r, g, b)
-                        row.Cells(4).Style.ForeColor = Color.FromArgb(r, g, b)
-                        row.Cells(4).Style.SelectionBackColor = Color.FromArgb(r, g, b)
-                        row.Cells(4).Style.SelectionForeColor = Color.FromArgb(r, g, b)
+                        row.Cells(5).Style.BackColor = Color.FromArgb(r, g, b)
+                        row.Cells(5).Style.ForeColor = Color.FromArgb(r, g, b)
+                        row.Cells(5).Style.SelectionBackColor = Color.FromArgb(r, g, b)
+                        row.Cells(5).Style.SelectionForeColor = Color.FromArgb(r, g, b)
                     End If
                 End If
             Next
@@ -144,7 +147,8 @@ Public Class P_Usuarios
             E_NuevoUsuario.TXT_CodUsuario.Text = DGV_Cajero.SelectedRows(0).Cells(1).Value.ToString()
             E_NuevoUsuario.TXT_NombreUsuario.Text = DGV_Cajero.SelectedRows(0).Cells(2).Value.ToString()
             E_NuevoUsuario.TXT_ClaveUsuario.Text = DGV_Cajero.SelectedRows(0).Cells(3).Value.ToString()
-            Dim rgbValues() = DGV_Cajero.SelectedRows(0).Cells(4).Value.ToString().Split(",")
+            E_NuevoUsuario.CBX_tipoCuenta.SelectedIndex = DGV_Cajero.SelectedRows(0).Cells(4).Value
+            Dim rgbValues() = DGV_Cajero.SelectedRows(0).Cells(5).Value.ToString().Split(",")
             Dim red As Integer = Convert.ToInt32(rgbValues(0))
             Dim green As Integer = Convert.ToInt32(rgbValues(1))
             Dim blue As Integer = Convert.ToInt32(rgbValues(2))

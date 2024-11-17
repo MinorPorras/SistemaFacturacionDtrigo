@@ -9,7 +9,7 @@
             T.Tables.Clear()
             If RDB_BuscarCodigo.Checked = True Then
                 SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM clientes where codigo LIKE '%" & TXT_BuscarCliente.Text & "%'"
-            ElseIf RDB_BuscarNombre.Checked = True Then
+            Else
                 SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM clientes where nombre LIKE '%" & TXT_BuscarCliente.Text & "%'"
             End If
 

@@ -124,6 +124,7 @@ Module Md_PROCESOS_BD
             End If
         Catch ex As Exception
             MsgBox("Error al cargar los datos desde la base de datos" & vbCrLf & ex.ToString(), vbOKOnly, "Error")
+            OBTENERPK = 1
         End Try
 
     End Function
@@ -152,6 +153,7 @@ Module Md_PROCESOS_BD
                 EXISTEPK = False
             End If
         Catch ex As Exception
+            EXISTEPK = False
             MsgBox("Error al cargar los datos desde la base de datos" & vbCrLf & ex.ToString(), vbOKOnly, "Error")
         End Try
     End Function
@@ -167,6 +169,7 @@ Module Md_PROCESOS_BD
                 Validar_Contenido_Tabla = False
             End If
         Catch ex As Exception
+            Validar_Contenido_Tabla = False
             MsgBox("Error al cargar los datos desde la base de datos" & vbCrLf & ex.ToString(), vbOKOnly, "Error")
         End Try
 

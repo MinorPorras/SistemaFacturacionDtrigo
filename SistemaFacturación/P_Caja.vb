@@ -39,6 +39,8 @@ Public Class P_Caja
         DGV_Caja.Columns(4).Width = 35
         DGV_Caja.Columns(5).Width = 60
 
+        idCliente = 1
+
         'Se coloca la imagen y los datos de la fecha y el día y se inicia el contador para que los vaya actualizando
         PIC_Logo.ImageLocation = ConfigurationManager.AppSettings("Logo").ToString()
         LBL_Hora.Text = DateTime.Now.ToString("hh:mm:ss tt")
@@ -331,8 +333,10 @@ Public Class P_Caja
 
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
         B_Producto.LBL_IDProd.Text = DGV_Caja.SelectedRows(0).Cells(0).Value
+        B_Producto.idModProd = DGV_Caja.SelectedRows(0).Cells(0).Value
         B_Producto.TXT_codigo.Text = DGV_Caja.SelectedRows(0).Cells(1).Value
         B_Producto.TXT_Nombre.Text = DGV_Caja.SelectedRows(0).Cells(2).Value
+        B_Producto.TXT_BuscarProd.Text = DGV_Caja.SelectedRows(0).Cells(2).Value
         B_Producto.TXT_Precio.Text = DGV_Caja.SelectedRows(0).Cells(3).Value
         B_Producto.TXT_CantProd.Text = DGV_Caja.SelectedRows(0).Cells(4).Value
         B_Producto.ModProd = True

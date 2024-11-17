@@ -29,7 +29,6 @@ Public Class M_Inicio
         LBL_Version.Text = "Ver. " + ConfigurationManager.AppSettings("AppVer").ToString()
         cargarCalProveedores("dia_pedido", "proveedor_diaPedido")
         cargarCalProveedores("dia_recibido", "proveedor_recibirPedido")
-
     End Sub
 
 
@@ -172,7 +171,17 @@ Public Class M_Inicio
     End Sub
 
     Private Sub BTN_CajaVenta_Click_1(sender As Object, e As EventArgs) Handles BTN_CajaVenta.Click
+        P_Caja.Show()
+        P_Caja.LBL_Usu.Text = LBL_Usu.Text
+        P_Caja.idUsu = LBL_IDCuenta.Text
+        Me.Close()
+    End Sub
+
+    Private Sub BTN_LogOut_Click(sender As Object, e As EventArgs) Handles BTN_LogOut.Click
+        LBL_IDCuenta.Text = "0"
+        LBL_Usu.Text = ""
         P_SelectUsu.Show()
         Me.Close()
+
     End Sub
 End Class

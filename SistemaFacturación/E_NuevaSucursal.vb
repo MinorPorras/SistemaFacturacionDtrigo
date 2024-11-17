@@ -110,6 +110,7 @@ Public Class E_NuevaSucursal
         TXT_CedJuridicaSucursal.Clear()
         TXT_CodSucursal.Clear()
         TXT_DireccionSucursal.Clear()
+        TXT_TelefonoSucursal.Clear()
         TXT_EmailSucursal.Clear()
         TXT_NombreSucursal.Clear()
     End Sub

@@ -95,6 +95,13 @@ Public Class E_NuevoUsuario
                             Else
                                 GUARDAR_STR("usuario", "color", ColorUsuario, "ID", idUsuario)
                             End If
+                            If CBX_tipoCuenta.SelectedIndex = 0 Then
+                                'Si es cajero
+                                GUARDAR_STR("usuario", "tipo", 0, "ID", idUsuario)
+                            Else
+                                'Si es admin
+                                GUARDAR_STR("usuario", "tipo", 1, "ID", idUsuario)
+                            End If
                             LIMPIAR()
                             MsgBox("Datos almacenados satisfactoriamente", vbInformation + vbOKOnly, "Transacción exitosa")
                             ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta

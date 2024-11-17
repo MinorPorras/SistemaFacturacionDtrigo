@@ -127,7 +127,6 @@ Public Class E_NuevoProducto
                                     precioV = Replace(TXT_PrecioVenta.Text, ",", ".")
                                 End If
                                 GUARDAR_DOUBLE("producto_precioVenta", "precio_venta", precioV, "ID_Producto", idProd)
-
                             End If
 
                             ActualizarProgressBar(10)
@@ -159,6 +158,9 @@ Public Class E_NuevoProducto
                                 Else
                                     GUARDAR_STR("producto_desc", "descripcion", TXT_Desc.Text, "ID_Producto", idProd)
                                 End If
+                            Else
+                                SQL = "DELETE FROM producto_desc WHERE ID_Producto = " & idProd
+                                EJECUTAR(SQL)
                             End If
 
                             If Not String.IsNullOrEmpty(LBL_IDCat.Text) And LBL_IDCat.Text <> "idCat" Then
@@ -175,6 +177,9 @@ Public Class E_NuevoProducto
                                 Else
                                     GUARDAR_STR("producto_categoria", "ID_Categoria", LBL_IDCat.Text, "ID_Producto", idProd)
                                 End If
+                            Else
+                                SQL = "DELETE FROM producto_categoria WHERE ID_Producto = " & idProd
+                                EJECUTAR(SQL)
                             End If
 
                             ActualizarProgressBar(10)
@@ -192,6 +197,7 @@ Public Class E_NuevoProducto
                                     End If
                                 Else
                                     GUARDAR_STR("producto_marca", "ID_Marca", LBL_IDMarca.Text, "ID_Producto", idProd)
+                                    EJECUTAR(SQL)
                                 End If
                             End If
 
@@ -209,6 +215,9 @@ Public Class E_NuevoProducto
                                 Else
                                     GUARDAR_STR("producto_proveedor", "ID_Proveedor", LBL_Prov.Text, "ID_Producto", idProd)
                                 End If
+                            Else
+                                SQL = "DELETE FROM producto_proveedor WHERE ID_Producto = " & idProd
+                                EJECUTAR(SQL)
                             End If
 
                             ActualizarProgressBar(20)
@@ -389,6 +398,24 @@ Public Class E_NuevoProducto
             TXT_PrecioVenta.Enabled = True
             TXT_Ganancia.Enabled = True
             TXT_Impuesto.Enabled = True
+        End If
+    End Sub
+
+    Private Sub TXT_Marca_TextChanged(sender As Object, e As EventArgs) Handles TXT_Marca.TextChanged
+        If String.IsNullOrEmpty(TXT_Marca.Text) Then
+            LBL_IDMarca.Text = ""
+        End If
+    End Sub
+
+    Private Sub TXT_Proveedor_TextChanged(sender As Object, e As EventArgs) Handles TXT_Proveedor.TextChanged
+        If String.IsNullOrEmpty(TXT_Proveedor.Text) Then
+            LBL_Prov.Text = ""
+        End If
+    End Sub
+
+    Private Sub TXT_Categoria_TextChanged(sender As Object, e As EventArgs) Handles TXT_Categoria.TextChanged
+        If String.IsNullOrEmpty(TXT_Categoria.Text) Then
+            LBL_IDCat.Text = ""
         End If
     End Sub
 End Class

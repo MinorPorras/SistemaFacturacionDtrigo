@@ -1,4 +1,16 @@
 <<<<<<< HEAD
+**Versión 1.1.0.1 (16 de noviembre de 2024)**
+- Ahora al crear cajeros se puede definir su rol, ya sea Administrador o cajero, el cajero tiene restringido el acceso a los reportes, al mantenimiento y a las configuraciones, mientras que el administrador puede acceder a todo el sistema, luego se añadirán más tipos de perfiles
+- Con el cambio anterior ahora al entrar a la aplicación se te pedira iniciar sesión con una cuenta y se te habilitarán las opciones dependiendo del rol que tenga asignado tu cuenta
+- Se cambió el nombre del botón de exportar base de datos por el de respaldar base de datos para que se entienda mejor su función
+- Se arregló un error donde en la caja de texto de telefono a la hora de guardar los cambios hechos a un proveedor este no se eliminaba y los datos se quedaban ahí
+- Se arregló un error donde al seguir una serie de pasos las listas se cargaban con un orden incorrecto en las pestañas de mantenimiento y de busqueda
+- Se corrigió un error que provocaba que no se pudiera eliminar un producto en la pestaña de mantenimiento
+- Se arreglaron errores a la hora de modificar productos, ya que antes en caso de querer quitar la descripción, marca, categoría o proveedor, estos no se quitaban correctamente en la base de datos
+- Se arreglaron ciertos errores que produjo el cambio de las listas a la hora de modificar los productos en la caja
+- Ahora al imprimir una factura si se pagó con el método de pago mixto en la factura se verá reflejado lo que pagó en efectivo y en tarjeta por aparte
+- Se volvieron a corregir errores en el botón de imprimir más reciente, ahora si de verdad debería de funcionar bien
+
 **Versión 1.1.0.0 (16 de noviembre de 2024)**
 - Se modifico el formato de todas las listas para que sean más agradables a la vista y además ahora son mucho más eficientes y ya se pueden acomodar de menor a mayor y viceversa por cada una de las columnas (Se pasaron todas y sus procesos relacionados de un List view a Data grid view)
 - Se removió el botón de cerrar la aplicación en la pestaña de mantenimiento de productos por problemas con los atajos del teclado

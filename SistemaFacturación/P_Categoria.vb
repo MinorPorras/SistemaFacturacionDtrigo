@@ -18,15 +18,12 @@ Public Class P_Categoria
 
     Public Sub REFRESCAR()
         Try
-            Dim red As Integer
-            Dim green As Integer
-            Dim blue As Integer
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
             T.Tables.Clear()
             If RDB_BuscarCodigo.Checked = True Then
                 SQL = "SELECT ID, codigo as [Código], nombre as [Nombre], color as [Color] FROM categoria where codigo LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
-            ElseIf RDB_BuscarNombre.Checked = True Then
+            Else
                 SQL = "SELECT ID, codigo as [Código], nombre as [Nombre], color as [Color] FROM categoria where nombre LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
             End If
 

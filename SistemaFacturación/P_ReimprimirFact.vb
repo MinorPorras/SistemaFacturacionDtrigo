@@ -15,7 +15,7 @@ Public Class P_ReimprimirFact
             T.Tables.Clear()
             If TXT_BuscarFact.Text <> "" Then
                 SQL = "SELECT f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Cliente], u.usuario as [Cajero], fc.comentario as [Comentario]" &
-                    ", f.total as [Total], f.entrega_cliente as [Pago cliente], f.vuelto as [Vuelto], " &
+                    ", f.total as [Total], f.efectivo_cliente as [Pago efectivo], f.tarjeta_cliente as [Pago tarjeta], f.vuelto as [Vuelto], " &
                       "IIf(f.tipo_venta=0, 'Efectivo', IIf(f.tipo_venta=1, 'Tarjeta', IIf(f.tipo_venta=2, 'Sinpe', IIf(f.tipo_venta=3, 'Depósito', IIf(f.tipo_venta=4, 'Mixto'," &
                       " 'Efectivo'))))) AS [Tipo venta], f.cobrada as [Cobrada] " &
                       "FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
@@ -23,7 +23,7 @@ Public Class P_ReimprimirFact
                       "LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura Like '%" & TXT_BuscarFact.Text & "%' ORDER BY Val(f.num_factura) DESC;"
             Else
                 SQL = "SELECT f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Nombre], u.usuario as [Cajero], fc.comentario as [Comentario]" &
-                    ", f.total as [Total], f.entrega_cliente as [Pago cliente], f.vuelto as [Vuelto], " &
+                    ", f.total as [Total], f.efectivo_cliente as [Pago efectivo], f.tarjeta_cliente as [Pago tarjeta], f.vuelto as [Vuelto], " &
                       "IIf(f.tipo_venta=0, 'Efectivo', IIf(f.tipo_venta=1, 'Tarjeta', IIf(f.tipo_venta=2, 'Sinpe', IIf(f.tipo_venta=3, 'Depósito', IIf(f.tipo_venta=4, 'Mixto'," &
                       " 'Efectivo'))))) AS [Tipo venta], f.cobrada as [Cobrada] " &
                       "FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
@@ -72,6 +72,8 @@ Public Class P_ReimprimirFact
                     Case 8
                         DGV_ReimprimirFact.Columns(i).Width = 30
                     Case 9
+                        DGV_ReimprimirFact.Columns(i).Width = 30
+                    Case 10
                         DGV_ReimprimirFact.Columns(i).Width = 40
                     Case 10
                         DGV_ReimprimirFact.Columns(i).Width = 50
@@ -87,6 +89,7 @@ Public Class P_ReimprimirFact
             Next
 
             DGV_ReimprimirFact.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DGV_ReimprimirFact.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells)
             DGV_ReimprimirFact.GridColor = Color.DarkGray
             DGV_ReimprimirFact.Columns(0).Visible = False
         Catch ex As Exception
@@ -104,7 +107,7 @@ Public Class P_ReimprimirFact
 
         finFactura = ""
         T.Tables.Clear()
-        SQL = "SELECT TOP 1 num_factura FROM factura ORDER BY Val(num_factura) DESC;"
+        SQL = "SELECT ID FROM factura ORDER BY Val(num_factura) DESC;"
         Cargar_Tabla(T, SQL)
         If T.Tables(0).Rows.Count() > 0 Then
             Dim idFact As String = T.Tables(0).Rows(0).Item(0).ToString()

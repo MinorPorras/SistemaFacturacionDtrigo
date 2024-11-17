@@ -25,7 +25,7 @@
                     "FROM ((proveedor AS p " +
                     "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +
                     "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.codigo LIKE '%" & TXT_BuscarProv.Text & "%' ORDER BY Val(p.codigo) ASC;"
-            ElseIf RDB_BuscarNombre.Checked = True Then
+            Else
                 SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], c.correo as [Correo], t.telefono as [Teléfono] " +
                         "FROM ((proveedor AS p " +
                         "LEFT JOIN proveedor_correo AS c ON c.ID_Proveedor = p.ID) " +

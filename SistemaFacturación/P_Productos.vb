@@ -257,8 +257,8 @@
         Try
             If DGV_Prods.SelectedRows.Count > 0 Then
                 ' Se pregunta una confirmación para eliminar el tema
-                If MsgBox("¿Desea eliminar el producto: " & DGV_Prods.SelectedRows(0).Cells(2).ToString() & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
-                    Dim idEliminar As Integer = Convert.ToInt32(DGV_Prods.SelectedRows(0).Cells(0).ToString())
+                If MsgBox("¿Desea eliminar el producto: " & DGV_Prods.SelectedRows(0).Cells(2).Value.ToString() & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
+                    Dim idEliminar As Integer = Convert.ToInt32(DGV_Prods.SelectedRows(0).Cells(0).Value.ToString())
                     ' Verificar si hay categorías asociadas
                     SQL = "SELECT COUNT(ID) FROM producto WHERE ID = " & idEliminar
                     Cargar_Tabla(T, SQL)
@@ -275,6 +275,10 @@
                         EJECUTAR(SQL)
 
                         SQL = "DELETE FROM producto_desc WHERE ID_Producto = " & idEliminar
+                        EJECUTAR(SQL)
+
+
+                        SQL = "DELETE FROM producto_precioVenta WHERE ID_Producto = " & idEliminar
                         EJECUTAR(SQL)
 
                         SQL = "DELETE FROM producto WHERE ID = " & idEliminar

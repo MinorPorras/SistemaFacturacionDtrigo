@@ -82,7 +82,7 @@ Partial Class ConfigGeneral
         Me.BTN_RspaldoDB.Name = "BTN_RspaldoDB"
         Me.BTN_RspaldoDB.Size = New System.Drawing.Size(341, 58)
         Me.BTN_RspaldoDB.TabIndex = 11
-        Me.BTN_RspaldoDB.Text = "Exportar base de datos"
+        Me.BTN_RspaldoDB.Text = "Respaldar base de datos"
         '
         'BTN_Importar
         '

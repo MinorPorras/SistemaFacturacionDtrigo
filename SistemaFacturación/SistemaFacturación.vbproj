@@ -207,10 +207,10 @@
     <Compile Include="P_Caja.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="P_LoginCaja.Designer.vb">
-      <DependentUpon>P_LoginCaja.vb</DependentUpon>
+    <Compile Include="P_Login.Designer.vb">
+      <DependentUpon>P_Login.vb</DependentUpon>
     </Compile>
-    <Compile Include="P_LoginCaja.vb">
+    <Compile Include="P_Login.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="P_ReimprimirFact.Designer.vb">
@@ -390,8 +390,8 @@
     <EmbeddedResource Include="P_Caja.resx">
       <DependentUpon>P_Caja.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="P_LoginCaja.resx">
-      <DependentUpon>P_LoginCaja.vb</DependentUpon>
+    <EmbeddedResource Include="P_Login.resx">
+      <DependentUpon>P_Login.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_ReimprimirFact.resx">
       <DependentUpon>P_ReimprimirFact.vb</DependentUpon>

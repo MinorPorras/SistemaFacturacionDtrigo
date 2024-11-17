@@ -7,7 +7,7 @@ Public Class B_Categoria
             T.Tables.Clear()
             If RDB_BuscarCodigo.Checked = True Then
                 SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM categoria where codigo LIKE '%" & TXT_BuscarCat.Text & "%'"
-            ElseIf RDB_BuscarNombre.Checked = True Then
+            Else
                 SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM categoria where nombre LIKE '%" & TXT_BuscarCat.Text & "%'"
             End If
             Cargar_Tabla(T, SQL)

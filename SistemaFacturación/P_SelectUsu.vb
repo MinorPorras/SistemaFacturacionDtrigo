@@ -38,10 +38,10 @@ Public Class P_SelectUsu
 
     Private Sub BotonUsu_Click(sender As Object, e As EventArgs)
         Dim botonClicado As Guna2Button = CType(sender, Guna2Button)
-        P_LoginCaja.LBL_Usu.Text = botonClicado.Text
-        P_LoginCaja.idUsu = Convert.ToInt32(botonClicado.Tag)
-        P_LoginCaja.TXT_Clave.Select()
-        P_LoginCaja.Show()
+        P_Login.LBL_Usu.Text = botonClicado.Text
+        P_Login.idUsu = Convert.ToInt32(botonClicado.Tag)
+        P_Login.TXT_Clave.Select()
+        P_Login.Show()
         Me.Hide()
 
     End Sub
