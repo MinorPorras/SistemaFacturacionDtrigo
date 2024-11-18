@@ -11,7 +11,6 @@
                 ActConfig("Telefono", T.Tables(0).Rows(0).Item(1).ToString())
                 ActConfig("Correo", T.Tables(0).Rows(0).Item(2).ToString())
                 ActConfig("Logo", T.Tables(0).Rows(0).Item(3).ToString())
-                M_Inicio.REFRESCAR()
             End If
         End If
         T.Tables.Clear()
@@ -19,16 +18,20 @@
         Cargar_Tabla(T, SQL)
         If T.Tables(0).Rows.Count > 0 Then
             If T.Tables(0).Rows(0).Item(0) = TXT_Clave.Text Then
-                M_Inicio.LBL_Usu.Text = LBL_Usu.Text
-                M_Inicio.LBL_IDCuenta.Text = idUsu
+                idUsuActual = idUsu
+                nomUsuActual = LBL_Usu.Text
+
                 If T.Tables(0).Rows(0).Item(1) = 0 Then
                     M_Inicio.BTN_Config.Enabled = False
                     M_Inicio.BTN_Mantenimiento.Enabled = False
                     M_Inicio.BTN_Reporte.Enabled = False
+                    CuentaAdmin = False
                 Else
                     M_Inicio.BTN_Config.Enabled = True
                     M_Inicio.BTN_Mantenimiento.Enabled = True
-                    M_Inicio.BTN_Reporte.Enabled = True
+                    'Se coloca en False ya que la función aún no esta implementada
+                    M_Inicio.BTN_Reporte.Enabled = False
+                    CuentaAdmin = True
                 End If
                 M_Inicio.Show()
                 P_SelectUsu.Close()

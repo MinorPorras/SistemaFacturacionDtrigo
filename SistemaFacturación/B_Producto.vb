@@ -6,27 +6,24 @@
     Private Sub B_Producto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RDB_BuscarNombre.Checked = True
         REFRESCAR()
+        LBL_IDProd.Text = P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value
+        idModProd = P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value
+        TXT_BuscarProd.Text = P_Caja.DGV_Caja.SelectedRows(0).Cells(2).Value
+
     End Sub
 
     Public Sub REFRESCAR()
         Try
             T.Tables.Clear()
-            If Not ModProd Then
-                If RDB_BuscarCodigo.Checked = True Then
-                    SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
-                        " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                        " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%'"
-                Else
-                    SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
-                        " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                            " where p.nombre LIKE '%" & TXT_BuscarProd.Text & "%'"
-                End If
-            Else
+            If RDB_BuscarCodigo.Checked = True Then
                 SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
                     " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                    " where p.ID = " & idModProd
+                    " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%'"
+            Else
+                SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
+                        " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+                            " where p.nombre LIKE '%" & TXT_BuscarProd.Text & "%'"
             End If
-
             Cargar_Tabla(T, SQL)
             Dim bin As New BindingSource
             bin.DataSource = T.Tables(0)

@@ -51,6 +51,13 @@ Module Md_PROCESOS_BD
         EJECUTAR(SQL)
     End Sub
 
+    Friend Sub GUARDAR_VarCompInt4(ByVal TABLA As String, ByVal CONTENIDO As Integer, ByVal CONTENIDO2 As Integer, ByVal CONTENIDO3 As Integer, ByVal CONTENIDO4 As Double)
+        SQL = "INSERT INTO " & TABLA & " VALUES " & "(" & CONTENIDO & ", " & CONTENIDO2 & ", " & CONTENIDO3 & ", " & CONTENIDO4 & ")"
+        'Actualiza en la tabla que se envió, en el atributo que se envió,
+        'el contenido dado donde la PK sea igual que la que se mandó
+        EJECUTAR(SQL)
+    End Sub
+
     Friend Sub GUARDAR_VarComp2Int(ByVal TABLA As String, ByVal CONTENIDO As Integer, ByVal CONTENIDO2 As Integer)
         CONTENIDO = Convert.ToInt32(CONTENIDO)
         CONTENIDO2 = Convert.ToInt32(CONTENIDO2)

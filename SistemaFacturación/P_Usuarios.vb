@@ -147,14 +147,19 @@ Public Class P_Usuarios
             E_NuevoUsuario.TXT_CodUsuario.Text = DGV_Cajero.SelectedRows(0).Cells(1).Value.ToString()
             E_NuevoUsuario.TXT_NombreUsuario.Text = DGV_Cajero.SelectedRows(0).Cells(2).Value.ToString()
             E_NuevoUsuario.TXT_ClaveUsuario.Text = DGV_Cajero.SelectedRows(0).Cells(3).Value.ToString()
-            E_NuevoUsuario.CBX_tipoCuenta.SelectedIndex = DGV_Cajero.SelectedRows(0).Cells(4).Value
+            If DGV_Cajero.SelectedRows(0).Cells(4).Value = "Administrador" Then
+                E_NuevoUsuario.CBX_tipoCuenta.SelectedIndex = 1
+            Else
+                E_NuevoUsuario.CBX_tipoCuenta.SelectedIndex = 0
+            End If
+
             Dim rgbValues() = DGV_Cajero.SelectedRows(0).Cells(5).Value.ToString().Split(",")
             Dim red As Integer = Convert.ToInt32(rgbValues(0))
             Dim green As Integer = Convert.ToInt32(rgbValues(1))
             Dim blue As Integer = Convert.ToInt32(rgbValues(2))
             E_NuevoUsuario.BTN_Color.FillColor = Color.FromArgb(red, green, blue)
             E_NuevoUsuario.ColorDialog1.Color = Color.FromArgb(red, green, blue)
-            E_NuevoUsuario.ColorUsuario = DGV_Cajero.SelectedRows(0).Cells(3).Value.ToString()
+            E_NuevoUsuario.ColorUsuario = DGV_Cajero.SelectedRows(0).Cells(5).Value.ToString()
             If String.IsNullOrEmpty(DGV_Cajero.SelectedRows(0).Cells(3).Value.ToString()) Then
                 E_NuevoUsuario.CBK_NoClaveUsu.Checked = True
             Else

@@ -150,7 +150,7 @@ Public Class P_TerminarVenta
                 GUARDAR_INT("factura", "tipo_venta", TipoPago, "ID", idFactura)
                 GUARDAR_STR("factura", "cobrada", "Si", "ID", idFactura)
                 For i As Integer = 0 To P_Caja.DGV_Caja.Rows.Count - 2
-                    GUARDAR_VarCompInt3("factura_producto", idFactura, P_Caja.DGV_Caja.Rows(i).Cells(0).Value.ToString(), P_Caja.DGV_Caja.Rows(i).Cells(4).Value.ToString())
+                    GUARDAR_VarCompInt4("factura_producto", idFactura, P_Caja.DGV_Caja.Rows(i).Cells(0).Value.ToString(), P_Caja.DGV_Caja.Rows(i).Cells(4).Value.ToString(), Convert.ToDouble(P_Caja.DGV_Caja.Rows(i).Cells(3).Value.ToString()))
                 Next
                 GUARDAR_VarCompuestas("factura_comentario", idFactura, TXT_Comentario.Text)
 

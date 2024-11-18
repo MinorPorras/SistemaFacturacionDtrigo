@@ -14,7 +14,7 @@ Public Class E_NuevoUsuario
 
     Private Sub VALIDAR()
         ' Si el texto no está vacío en el textbox habilita el botón de guardar/agregar
-        If TXT_CodUsuario.Text <> "" And TXT_NombreUsuario.Text <> "" And ColorUsuario <> "" Then
+        If TXT_CodUsuario.Text <> "" And TXT_NombreUsuario.Text <> "" And ColorUsuario <> "" And CBX_tipoCuenta.SelectedIndex <> -1 Then
             If TXT_ClaveUsuario.Text <> "" Or CBK_NoClaveUsu.Checked = True Then
                 BTN_NUsuario.Enabled = True
             End If
@@ -58,7 +58,7 @@ Public Class E_NuevoUsuario
     End Sub
 
     Private Sub BTN_NUsuario_Click(sender As Object, e As EventArgs) Handles BTN_NUsuario.Click
-        If Not String.IsNullOrEmpty(TXT_CodUsuario.Text) Or Not String.IsNullOrEmpty(TXT_NombreUsuario.Text) Then
+        If Not String.IsNullOrEmpty(TXT_CodUsuario.Text) Or Not String.IsNullOrEmpty(TXT_NombreUsuario.Text) AndAlso CBX_tipoCuenta.SelectedIndex <> -1 Then
             Try
                 T.Tables.Clear()
                 If ModUsu = False Then

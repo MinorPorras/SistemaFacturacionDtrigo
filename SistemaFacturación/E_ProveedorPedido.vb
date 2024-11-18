@@ -42,7 +42,7 @@
     End Sub
 
     Private Sub VALIDAR()
-        If CBX_DiaPedido.SelectedIndex <> -1 And CBX_RecibirPedido.SelectedIndex <> -1 And (Not String.IsNullOrEmpty(CBX_DiaPedido.Text) Or Not String.IsNullOrEmpty(CBX_RecibirPedido.Text)) Then
+        If Not String.IsNullOrEmpty(CBX_DiaPedido.Text) And Not String.IsNullOrEmpty(CBX_RecibirPedido.Text) Then
             BTN_NProv.Enabled = True
         Else
             BTN_NProv.Enabled = False
@@ -60,6 +60,7 @@
     Private Sub MNU_ELIMINAR_Click(sender As Object, e As EventArgs) Handles MNU_ELIMINAR.Click
         If DGV_Pedido.SelectedRows.Count > 0 Then
             E_NuevoProveedor.LHacerPed.RemoveAt(DGV_Pedido.SelectedRows(0).Index)
+            E_NuevoProveedor.LRebPed.RemoveAt(DGV_Pedido.SelectedRows(0).Index)
             REFRESCAR()
             VALIDAR()
         Else

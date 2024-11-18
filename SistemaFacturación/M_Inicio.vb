@@ -17,11 +17,20 @@ Public Class M_Inicio
     Dim Dcont As Integer
 
     Private Sub Inicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Md_Inicializacion.main()
         REFRESCAR()
     End Sub
 
     Friend Sub REFRESCAR()
+        If Not CuentaAdmin Then
+            BTN_Config.Enabled = False
+            BTN_Mantenimiento.Enabled = False
+            BTN_Reporte.Enabled = False
+        Else
+            BTN_Config.Enabled = True
+            BTN_Mantenimiento.Enabled = True
+            'Se coloca en False ya que la función aún no esta implementada
+            BTN_Reporte.Enabled = False
+        End If
         LBL_Sucursal.Text = "Sucursal: " + ConfigurationManager.AppSettings("Empresa").ToString()
         LBL_Telefono.Text = "Telefono: " + ConfigurationManager.AppSettings("Telefono").ToString()
         LBL_Email.Text = "Email: " + ConfigurationManager.AppSettings("Correo").ToString()
@@ -29,6 +38,7 @@ Public Class M_Inicio
         LBL_Version.Text = "Ver. " + ConfigurationManager.AppSettings("AppVer").ToString()
         cargarCalProveedores("dia_pedido", "proveedor_diaPedido")
         cargarCalProveedores("dia_recibido", "proveedor_recibirPedido")
+        LBL_Usu.Text = nomUsuActual
     End Sub
 
 
@@ -152,7 +162,7 @@ Public Class M_Inicio
     End Sub
 
     Private Sub BTN_Reporte_Click(sender As Object, e As EventArgs) Handles BTN_Reporte.Click
-
+        MsgBox("Los reportes´para esta versión no están implentados, espero a futuras versiones para poder visualizarlos", vbOKOnly, "Función no implementada")
     End Sub
 
     Private Sub Inicio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles MyBase.KeyPress
@@ -172,13 +182,12 @@ Public Class M_Inicio
 
     Private Sub BTN_CajaVenta_Click_1(sender As Object, e As EventArgs) Handles BTN_CajaVenta.Click
         P_Caja.Show()
-        P_Caja.LBL_Usu.Text = LBL_Usu.Text
-        P_Caja.idUsu = LBL_IDCuenta.Text
+        P_Caja.LBL_Usu.Text = nomUsuActual
+        P_Caja.idUsu = idUsuActual
         Me.Close()
     End Sub
 
     Private Sub BTN_LogOut_Click(sender As Object, e As EventArgs) Handles BTN_LogOut.Click
-        LBL_IDCuenta.Text = "0"
         LBL_Usu.Text = ""
         P_SelectUsu.Show()
         Me.Close()

@@ -87,7 +87,7 @@ Public Class P_Caja
     Friend Sub cargarNumFactura()
         Try
             T.Tables.Clear()
-            SQL = "SELECT TOP 1 num_factura FROM factura ORDER BY Val(num_factura) DESC;"
+            SQL = "SELECT num_factura FROM factura ORDER BY Val(num_factura) DESC;"
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
                 NumFactura = If(IsDBNull(T.Tables(0).Rows(0).Item(0)), 1, Convert.ToInt32(T.Tables(0).Rows(0).Item(0)))
@@ -152,7 +152,7 @@ Public Class P_Caja
     Friend Sub Buscar_DatosProd(txtCodProd As Guna.UI2.WinForms.Guna2TextBox, buscado As Boolean)
         Try
             T.Tables.Clear()
-            SQL = "SELECT p.ID, pnombre, pv.precio_venta, p.variable FROM producto p LEFT JOIN producto_precioVenta pv ON p.ID = pv.ID_Producto" +
+            SQL = "SELECT p.ID, p.nombre, pv.precio_venta FROM producto p LEFT JOIN producto_precioVenta pv ON p.ID = pv.ID_Producto" +
                 " WHERE p.codigo = '" & txtCodProd.Text & "'"
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
@@ -332,13 +332,6 @@ Public Class P_Caja
     End Sub
 
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
-        B_Producto.LBL_IDProd.Text = DGV_Caja.SelectedRows(0).Cells(0).Value
-        B_Producto.idModProd = DGV_Caja.SelectedRows(0).Cells(0).Value
-        B_Producto.TXT_codigo.Text = DGV_Caja.SelectedRows(0).Cells(1).Value
-        B_Producto.TXT_Nombre.Text = DGV_Caja.SelectedRows(0).Cells(2).Value
-        B_Producto.TXT_BuscarProd.Text = DGV_Caja.SelectedRows(0).Cells(2).Value
-        B_Producto.TXT_Precio.Text = DGV_Caja.SelectedRows(0).Cells(3).Value
-        B_Producto.TXT_CantProd.Text = DGV_Caja.SelectedRows(0).Cells(4).Value
         B_Producto.ModProd = True
         B_Producto.Show()
         validadListView()

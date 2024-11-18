@@ -110,6 +110,7 @@
 
             Else
                 P_TerminarVenta.finFactura += "Pago en efectivo: ₡ " & eCliente & vbCrLf &
+                    vbCrLf &
                      "Pago en tarjeta: ₡ " & tCliente & vbCrLf &
                       vbCrLf &
                       "Vuelto: ₡ " & vuelto & vbCrLf &
@@ -173,7 +174,7 @@
 
     Private Sub cargarProds(idfact As Integer, reimprimir As Boolean)
         T.Tables.Clear()
-        SQL = "SELECT f.cant, p.nombre, v.precio_venta FROM ((factura_producto f INNER JOIN producto p ON p.ID = f.ID_Producto)" &
+        SQL = "SELECT f.cant, p.nombre, f.precio_venta FROM ((factura_producto f INNER JOIN producto p ON p.ID = f.ID_Producto)" &
             " LEFT JOIN Producto_precioVenta v ON p.ID = v.ID_Producto) WHERE ID_Factura = " & idfact
         Cargar_Tabla(T, SQL)
         Dim prods As String

@@ -1,3 +1,17 @@
+**Versión 1.1.0.3 (18 de noviembre de 2024)**
+- Se arregló un error que sucedía al acceder a la caja y regresar a la pestaña de inicio causando que se perdiera el usuario en el camino
+- Se agregó un espacio que faltaba en la factura de pago mixto entre el pago en efectivo y el pago en tarjeta
+- Se disminuyó el tamaño del texto en el data grid view de fechas de pedidos de los proveedores en la pestaña principal
+- Se corrigió un error de guardado que impedía la modificación de los datos de los cajerosluego de crearlos
+- Se corregió un error en el que no se almacenaba correctamente el precio de un producto al crearse por primera vez
+- Se corrigió un error donde al modificar un producto y quitar la marca  la que pertenecía antes esta no se eliminaba al guardar los cambios
+- Ya se puede modificar correctamente los datos de los productos con precios variables, mas a estos no se les puede cambiar el precio al agregarlos, al menos no de momento
+- Se arregló un error que se producía al modificar productos en la versión anterior en el cual luego de entrar no se podía actualizar la tabla de busqueda
+- Se arregló un error donde al imprimir una factura que incluyera un producto variable el precio que se colocó de este no se reflejaba correctamente en esta factura
+- El botón del menu contextual en la pestaña de reimprimir factura que permite reimprimir la factura que se desee antes imprimía de vez en cuando los valores incorrectos, ya se corrigió el código para que simempre imprima correctamente
+- Se arregló un error que sucedía al eliminar una fila a la hora de agregar o modificar los dias de pedidos de los proveedores, si eliminaban una fila esta no se eliminaba correctamente y producía que uno de los 2 datos permaneciera haciendo que no se puedira volver a entrar a modificar el proveedor y que se rompiera las tablas de pedidos del menu de inicio
+
+
 **Versión 1.1.0.2 (17 de noviembre de 2024)**
 - Se revisó el funcionamiento de las configuraciones, ahora se necesita reiniciar la app para que los valores nuevos se carguen
 - Se quitó el botón de regresar en la pestaña de selección de usuarios ya que no debía de estar ahí y se agregó el de cerrar la app

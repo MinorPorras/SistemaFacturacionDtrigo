@@ -1,4 +1,5 @@
 ﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Globalization
 
 Public Class E_NuevoProducto
     Friend idProd As String
@@ -117,18 +118,16 @@ Public Class E_NuevoProducto
                             T.Tables.Clear()
                             SQL = "SELECT ID_Producto FROM producto_precioVenta WHERE ID_Producto = " + idProd
                             Cargar_Tabla(T, SQL)
+                            Dim precioV As Double
+                            ' Reemplazar la coma por punto
+                            Dim precioTexto As String = TXT_PrecioVenta.Text.Replace(",", ".")
+                            ' Usar InvariantCulture para asegurar que el punto se interprete como separador decimal
+                            precioV = Double.Parse(precioTexto, CultureInfo.InvariantCulture)
                             If T.Tables(0).Rows.Count <= 0 Then
-                                GUARDAR_VarCompuestasDouble("producto_precioVenta", idProd, 0R)
+                                GUARDAR_VarCompuestasDouble("producto_precioVenta", idProd, precioV)
                             Else
-                                Dim precioV As String
-                                If String.IsNullOrEmpty(TXT_PrecioVenta.Text) Then
-                                    precioV = 0
-                                Else
-                                    precioV = Replace(TXT_PrecioVenta.Text, ",", ".")
-                                End If
                                 GUARDAR_DOUBLE("producto_precioVenta", "precio_venta", precioV, "ID_Producto", idProd)
                             End If
-
                             ActualizarProgressBar(10)
 
                             If Not String.IsNullOrEmpty(TXT_Ganancia.Text) Then
@@ -199,6 +198,9 @@ Public Class E_NuevoProducto
                                     GUARDAR_STR("producto_marca", "ID_Marca", LBL_IDMarca.Text, "ID_Producto", idProd)
                                     EJECUTAR(SQL)
                                 End If
+                            Else
+                                SQL = "DELETE FROM producto_marca WHERE ID_Producto = " & idProd
+                                EJECUTAR(SQL)
                             End If
 
                             If Not String.IsNullOrEmpty(LBL_Prov.Text) And LBL_Prov.Text <> "idProv" Then

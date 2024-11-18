@@ -9,6 +9,9 @@ Module Md_VARIABLES_GLOBALES
     Public T3 As New DataSet
     Public T4 As New DataSet
     Public T5 As New DataSet
+    Public idUsuActual As Integer
+    Public nomUsuActual As String
+    Public CuentaAdmin As Boolean
 
     Public Sub ActConfig(key As String, value As String)
         ' Load the configuration file

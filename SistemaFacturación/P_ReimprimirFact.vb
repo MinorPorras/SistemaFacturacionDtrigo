@@ -109,10 +109,28 @@ Public Class P_ReimprimirFact
         T.Tables.Clear()
         SQL = "SELECT ID FROM factura ORDER BY Val(num_factura) DESC;"
         Cargar_Tabla(T, SQL)
-        If T.Tables(0).Rows.Count() > 0 Then
+        If T.Tables(0).Rows.Count > 0 Then
             Dim idFact As String = T.Tables(0).Rows(0).Item(0).ToString()
             CREAR_FACTURA(idFact, encabezadoFactura, facturaContenido, finFactura, True)
             ImprimirFactura()
+        End If
+    End Sub
+
+    Private Sub MNU_REIMPRIMIR_Click(sender As Object, e As EventArgs) Handles MNU_REIMPRIMIR.Click
+        encabezadoFactura = ""
+        'Se limpia la lista de productos
+        For Each line As Integer In facturaContenido
+            facturaContenido.Remove(line)
+        Next
+
+        finFactura = ""
+        CREAR_FACTURA(DGV_ReimprimirFact.SelectedRows(0).Cells(0).Value.ToString(), encabezadoFactura, facturaContenido, finFactura, True)
+        ImprimirFactura()
+    End Sub
+
+    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
+        If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
+            Application.Exit()
         End If
     End Sub
 
@@ -185,23 +203,6 @@ Public Class P_ReimprimirFact
     Private Sub BTN_RegresarFact_Click(sender As Object, e As EventArgs) Handles BTN_RegresarFact.Click
         P_Caja.Show()
         Me.Close()
-    End Sub
-
-    Private Sub MNU_REIMPRIMIR_Click(sender As Object, e As EventArgs) Handles MNU_REIMPRIMIR.Click
-        encabezadoFactura = ""
-        For Each line As Integer In facturaContenido
-            facturaContenido.Remove(line)
-        Next
-
-        finFactura = ""
-        CREAR_FACTURA(DGV_ReimprimirFact.SelectedRows(0).Cells(0).Value.ToString(), encabezadoFactura, facturaContenido, finFactura, True)
-        ImprimirFactura()
-    End Sub
-
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
-            Application.Exit()
-        End If
     End Sub
 
     Private Sub TXT_BuscarFact_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarFact.TextChanged
