@@ -36,14 +36,10 @@ Partial Class P_Clientes
         Me.TXT_BuscarCliente = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.CerrarApp = New Guna.UI2.WinForms.Guna2CircleButton()
-        Me.RDB_BuscarNombre = New Guna.UI2.WinForms.Guna2RadioButton()
-        Me.RDB_BuscarCodigo = New Guna.UI2.WinForms.Guna2RadioButton()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.BTN_NCliente = New Guna.UI2.WinForms.Guna2Button()
         Me.DGV_Cliente = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         CType(Me.DGV_Cliente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -124,7 +120,7 @@ Partial Class P_Clientes
         Me.TXT_BuscarCliente.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarCliente.PlaceholderText = "Buscar Cliente"
         Me.TXT_BuscarCliente.SelectedText = ""
-        Me.TXT_BuscarCliente.Size = New System.Drawing.Size(638, 42)
+        Me.TXT_BuscarCliente.Size = New System.Drawing.Size(772, 42)
         Me.TXT_BuscarCliente.TabIndex = 32
         '
         'Guna2PictureBox1
@@ -155,56 +151,6 @@ Partial Class P_Clientes
         Me.CerrarApp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
         Me.CerrarApp.Size = New System.Drawing.Size(66, 66)
         Me.CerrarApp.TabIndex = 30
-        '
-        'RDB_BuscarNombre
-        '
-        Me.RDB_BuscarNombre.AutoSize = True
-        Me.RDB_BuscarNombre.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarNombre.CheckedState.BorderThickness = 0
-        Me.RDB_BuscarNombre.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarNombre.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.RDB_BuscarNombre.CheckedState.InnerOffset = -4
-        Me.RDB_BuscarNombre.ForeColor = System.Drawing.Color.White
-        Me.RDB_BuscarNombre.Location = New System.Drawing.Point(29, 19)
-        Me.RDB_BuscarNombre.Name = "RDB_BuscarNombre"
-        Me.RDB_BuscarNombre.Size = New System.Drawing.Size(62, 17)
-        Me.RDB_BuscarNombre.TabIndex = 36
-        Me.RDB_BuscarNombre.Text = "Nombre"
-        Me.RDB_BuscarNombre.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.RDB_BuscarNombre.UncheckedState.BorderThickness = 2
-        Me.RDB_BuscarNombre.UncheckedState.FillColor = System.Drawing.Color.Transparent
-        Me.RDB_BuscarNombre.UncheckedState.InnerColor = System.Drawing.Color.Transparent
-        '
-        'RDB_BuscarCodigo
-        '
-        Me.RDB_BuscarCodigo.AutoSize = True
-        Me.RDB_BuscarCodigo.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarCodigo.CheckedState.BorderThickness = 0
-        Me.RDB_BuscarCodigo.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarCodigo.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.RDB_BuscarCodigo.CheckedState.InnerOffset = -4
-        Me.RDB_BuscarCodigo.ForeColor = System.Drawing.Color.White
-        Me.RDB_BuscarCodigo.Location = New System.Drawing.Point(29, 42)
-        Me.RDB_BuscarCodigo.Name = "RDB_BuscarCodigo"
-        Me.RDB_BuscarCodigo.Size = New System.Drawing.Size(58, 17)
-        Me.RDB_BuscarCodigo.TabIndex = 37
-        Me.RDB_BuscarCodigo.Text = "Codigo"
-        Me.RDB_BuscarCodigo.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.RDB_BuscarCodigo.UncheckedState.BorderThickness = 2
-        Me.RDB_BuscarCodigo.UncheckedState.FillColor = System.Drawing.Color.Transparent
-        Me.RDB_BuscarCodigo.UncheckedState.InnerColor = System.Drawing.Color.Transparent
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.RDB_BuscarNombre)
-        Me.GroupBox1.Controls.Add(Me.RDB_BuscarCodigo)
-        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.Control
-        Me.GroupBox1.Location = New System.Drawing.Point(680, 180)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(128, 63)
-        Me.GroupBox1.TabIndex = 38
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Filtros de busqueda"
         '
         'BTN_NCliente
         '
@@ -303,7 +249,6 @@ Partial Class P_Clientes
         Me.ClientSize = New System.Drawing.Size(850, 667)
         Me.Controls.Add(Me.DGV_Cliente)
         Me.Controls.Add(Me.BTN_NCliente)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.BTN_RegresarCliente)
         Me.Controls.Add(Me.TXT_BuscarCliente)
         Me.Controls.Add(Me.Guna2PictureBox1)
@@ -316,8 +261,6 @@ Partial Class P_Clientes
         Me.Text = "Clientes"
         Me.MNU_CONTX.ResumeLayout(False)
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         CType(Me.DGV_Cliente, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -331,9 +274,6 @@ Partial Class P_Clientes
     Friend WithEvents TXT_BuscarCliente As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents CerrarApp As Guna.UI2.WinForms.Guna2CircleButton
-    Friend WithEvents RDB_BuscarCodigo As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents RDB_BuscarNombre As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents BTN_NCliente As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents DGV_Cliente As Guna.UI2.WinForms.Guna2DataGridView
 End Class

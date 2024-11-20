@@ -4,26 +4,20 @@
     Friend idModProd As Integer
 
     Private Sub B_Producto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RDB_BuscarNombre.Checked = True
         REFRESCAR()
-        LBL_IDProd.Text = P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value
-        idModProd = P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value
-        TXT_BuscarProd.Text = P_Caja.DGV_Caja.SelectedRows(0).Cells(2).Value
-
+        If Not P_Caja.DGV_Caja.RowCount > 0 Then
+            LBL_IDProd.Text = P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value
+            idModProd = P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value
+            TXT_BuscarProd.Text = P_Caja.DGV_Caja.SelectedRows(0).Cells(2).Value
+        End If
     End Sub
 
     Public Sub REFRESCAR()
         Try
             T.Tables.Clear()
-            If RDB_BuscarCodigo.Checked = True Then
-                SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
+            SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
                     " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                    " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%'"
-            Else
-                SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
-                        " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                            " where p.nombre LIKE '%" & TXT_BuscarProd.Text & "%'"
-            End If
+                    " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%' OR p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' ORDER BY Val(p.codigo) ASC;"
             Cargar_Tabla(T, SQL)
             Dim bin As New BindingSource
             bin.DataSource = T.Tables(0)
@@ -50,8 +44,6 @@
                         DGV_BProd.Columns(i).Width = 200
                     Case 3
                         DGV_BProd.Columns(i).Width = 70
-                    Case 4
-                        DGV_BProd.Columns(i).Width = 45
                 End Select
             Next
             DGV_BProd.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
@@ -71,12 +63,12 @@
         Me.Close()
     End Sub
 
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
         REFRESCAR()
         TXT_BuscarProd.Focus()
     End Sub
 
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
         REFRESCAR()
         TXT_BuscarProd.Focus()
     End Sub

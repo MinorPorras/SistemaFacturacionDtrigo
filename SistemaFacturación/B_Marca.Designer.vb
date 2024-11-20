@@ -29,9 +29,6 @@ Partial Class B_Marca
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RDB_BuscarNombre = New Guna.UI2.WinForms.Guna2RadioButton()
-        Me.RDB_BuscarCodigo = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.BTN_RegresarMarca = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_SelectMarca = New Guna.UI2.WinForms.Guna2Button()
         Me.TXT_BuscarMarca = New Guna.UI2.WinForms.Guna2TextBox()
@@ -41,7 +38,6 @@ Partial Class B_Marca
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TXT_Nombre = New Guna.UI2.WinForms.Guna2TextBox()
         Me.DGV_BMarca = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.GroupBox1.SuspendLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_BMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -52,56 +48,6 @@ Partial Class B_Marca
         Me.Guna2BorderlessForm1.ContainerControl = Me
         Me.Guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6R
         Me.Guna2BorderlessForm1.TransparentWhileDrag = True
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.RDB_BuscarNombre)
-        Me.GroupBox1.Controls.Add(Me.RDB_BuscarCodigo)
-        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.Control
-        Me.GroupBox1.Location = New System.Drawing.Point(571, 141)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(128, 63)
-        Me.GroupBox1.TabIndex = 60
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Filtros de busqueda"
-        '
-        'RDB_BuscarNombre
-        '
-        Me.RDB_BuscarNombre.AutoSize = True
-        Me.RDB_BuscarNombre.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarNombre.CheckedState.BorderThickness = 0
-        Me.RDB_BuscarNombre.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarNombre.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.RDB_BuscarNombre.CheckedState.InnerOffset = -4
-        Me.RDB_BuscarNombre.ForeColor = System.Drawing.Color.White
-        Me.RDB_BuscarNombre.Location = New System.Drawing.Point(29, 19)
-        Me.RDB_BuscarNombre.Name = "RDB_BuscarNombre"
-        Me.RDB_BuscarNombre.Size = New System.Drawing.Size(62, 17)
-        Me.RDB_BuscarNombre.TabIndex = 36
-        Me.RDB_BuscarNombre.Text = "Nombre"
-        Me.RDB_BuscarNombre.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.RDB_BuscarNombre.UncheckedState.BorderThickness = 2
-        Me.RDB_BuscarNombre.UncheckedState.FillColor = System.Drawing.Color.Transparent
-        Me.RDB_BuscarNombre.UncheckedState.InnerColor = System.Drawing.Color.Transparent
-        '
-        'RDB_BuscarCodigo
-        '
-        Me.RDB_BuscarCodigo.AutoSize = True
-        Me.RDB_BuscarCodigo.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarCodigo.CheckedState.BorderThickness = 0
-        Me.RDB_BuscarCodigo.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarCodigo.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.RDB_BuscarCodigo.CheckedState.InnerOffset = -4
-        Me.RDB_BuscarCodigo.ForeColor = System.Drawing.Color.White
-        Me.RDB_BuscarCodigo.Location = New System.Drawing.Point(29, 42)
-        Me.RDB_BuscarCodigo.Name = "RDB_BuscarCodigo"
-        Me.RDB_BuscarCodigo.Size = New System.Drawing.Size(58, 17)
-        Me.RDB_BuscarCodigo.TabIndex = 37
-        Me.RDB_BuscarCodigo.Text = "Codigo"
-        Me.RDB_BuscarCodigo.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.RDB_BuscarCodigo.UncheckedState.BorderThickness = 2
-        Me.RDB_BuscarCodigo.UncheckedState.FillColor = System.Drawing.Color.Transparent
-        Me.RDB_BuscarCodigo.UncheckedState.InnerColor = System.Drawing.Color.Transparent
         '
         'BTN_RegresarMarca
         '
@@ -322,7 +268,6 @@ Partial Class B_Marca
         Me.Controls.Add(Me.TXT_Nombre)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_codigo)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.BTN_RegresarMarca)
         Me.Controls.Add(Me.BTN_SelectMarca)
         Me.Controls.Add(Me.TXT_BuscarMarca)
@@ -333,8 +278,6 @@ Partial Class B_Marca
         Me.Name = "B_Marca"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Buscar marcas"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_BMarca, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -344,9 +287,6 @@ Partial Class B_Marca
 
     Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
     Friend WithEvents TXT_codigo As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents RDB_BuscarNombre As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents RDB_BuscarCodigo As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents BTN_RegresarMarca As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_SelectMarca As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarMarca As Guna.UI2.WinForms.Guna2TextBox

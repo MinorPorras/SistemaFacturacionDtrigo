@@ -28,9 +28,6 @@ Partial Class P_Marca
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RDB_BuscarNombre = New Guna.UI2.WinForms.Guna2RadioButton()
-        Me.RDB_BuscarCodigo = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.MNU_CONTX = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.MNU_MODIFICAR = New System.Windows.Forms.ToolStripMenuItem()
         Me.MNU_ELIMINAR = New System.Windows.Forms.ToolStripMenuItem()
@@ -41,61 +38,10 @@ Partial Class P_Marca
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.DGV_Marca = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.GroupBox1.SuspendLayout()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_Marca, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.RDB_BuscarNombre)
-        Me.GroupBox1.Controls.Add(Me.RDB_BuscarCodigo)
-        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.Control
-        Me.GroupBox1.Location = New System.Drawing.Point(321, 130)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(128, 63)
-        Me.GroupBox1.TabIndex = 53
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Filtros de busqueda"
-        '
-        'RDB_BuscarNombre
-        '
-        Me.RDB_BuscarNombre.AutoSize = True
-        Me.RDB_BuscarNombre.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarNombre.CheckedState.BorderThickness = 0
-        Me.RDB_BuscarNombre.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarNombre.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.RDB_BuscarNombre.CheckedState.InnerOffset = -4
-        Me.RDB_BuscarNombre.ForeColor = System.Drawing.Color.White
-        Me.RDB_BuscarNombre.Location = New System.Drawing.Point(29, 19)
-        Me.RDB_BuscarNombre.Name = "RDB_BuscarNombre"
-        Me.RDB_BuscarNombre.Size = New System.Drawing.Size(62, 17)
-        Me.RDB_BuscarNombre.TabIndex = 36
-        Me.RDB_BuscarNombre.Text = "Nombre"
-        Me.RDB_BuscarNombre.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.RDB_BuscarNombre.UncheckedState.BorderThickness = 2
-        Me.RDB_BuscarNombre.UncheckedState.FillColor = System.Drawing.Color.Transparent
-        Me.RDB_BuscarNombre.UncheckedState.InnerColor = System.Drawing.Color.Transparent
-        '
-        'RDB_BuscarCodigo
-        '
-        Me.RDB_BuscarCodigo.AutoSize = True
-        Me.RDB_BuscarCodigo.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarCodigo.CheckedState.BorderThickness = 0
-        Me.RDB_BuscarCodigo.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarCodigo.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.RDB_BuscarCodigo.CheckedState.InnerOffset = -4
-        Me.RDB_BuscarCodigo.ForeColor = System.Drawing.Color.White
-        Me.RDB_BuscarCodigo.Location = New System.Drawing.Point(29, 42)
-        Me.RDB_BuscarCodigo.Name = "RDB_BuscarCodigo"
-        Me.RDB_BuscarCodigo.Size = New System.Drawing.Size(58, 17)
-        Me.RDB_BuscarCodigo.TabIndex = 37
-        Me.RDB_BuscarCodigo.Text = "Codigo"
-        Me.RDB_BuscarCodigo.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.RDB_BuscarCodigo.UncheckedState.BorderThickness = 2
-        Me.RDB_BuscarCodigo.UncheckedState.FillColor = System.Drawing.Color.Transparent
-        Me.RDB_BuscarCodigo.UncheckedState.InnerColor = System.Drawing.Color.Transparent
         '
         'MNU_CONTX
         '
@@ -186,7 +132,7 @@ Partial Class P_Marca
         Me.TXT_BuscarMarca.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarMarca.PlaceholderText = "Buscar marca"
         Me.TXT_BuscarMarca.SelectedText = ""
-        Me.TXT_BuscarMarca.Size = New System.Drawing.Size(291, 42)
+        Me.TXT_BuscarMarca.Size = New System.Drawing.Size(425, 42)
         Me.TXT_BuscarMarca.TabIndex = 49
         '
         'CerrarApp
@@ -303,7 +249,6 @@ Partial Class P_Marca
         Me.CancelButton = Me.BTN_RegresarMarca
         Me.ClientSize = New System.Drawing.Size(474, 495)
         Me.Controls.Add(Me.DGV_Marca)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.BTN_RegresarMarca)
         Me.Controls.Add(Me.BTN_NMarca)
         Me.Controls.Add(Me.TXT_BuscarMarca)
@@ -315,18 +260,12 @@ Partial Class P_Marca
         Me.Name = "P_Marca"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Marcas"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.MNU_CONTX.ResumeLayout(False)
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_Marca, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents RDB_BuscarNombre As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents RDB_BuscarCodigo As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents BTN_RegresarMarca As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_NMarca As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarMarca As Guna.UI2.WinForms.Guna2TextBox

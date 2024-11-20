@@ -3,11 +3,9 @@
     Public Sub REFRESCAR()
         Try
             T.Tables.Clear()
-            If RDB_BuscarCodigo.Checked = True Then
-                SQL = "SELECT ID, codigo as [Código], descripcion  as [Descripción], porcentaje  as [Porcentaje] FROM impuestos where codigo LIKE '%" & TXT_BuscarImp.Text & "%'"
-            Else
-                SQL = "SELECT ID, codigo as [Código], descripcion  as [Descripción], porcentaje  as [Porcentaje] FROM impuestos where descripcion LIKE '%" & TXT_BuscarImp.Text & "%'"
-            End If
+            SQL = "SELECT ID, codigo as [Código], descripcion  as [Descripción], porcentaje  as [Porcentaje]" &
+                " FROM impuestos where codigo LIKE '%" & TXT_BuscarImp.Text & "%' " &
+                "OR descripcion LIKE '%" & TXT_BuscarImp.Text & "%'"
             Cargar_Tabla(T, SQL)
             Dim bin As New BindingSource
             bin.DataSource = T.Tables(0)
@@ -66,17 +64,16 @@
     End Sub
 
     Private Sub B_Marca_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RDB_BuscarDesc.Checked = True
         REFRESCAR()
     End Sub
 
 
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarDesc.CheckedChanged
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
         REFRESCAR()
         TXT_BuscarImp.Focus()
     End Sub
 
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
         REFRESCAR()
         TXT_BuscarImp.Focus()
     End Sub

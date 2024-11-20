@@ -5,11 +5,10 @@ Public Class B_Categoria
     Public Sub REFRESCAR()
         Try
             T.Tables.Clear()
-            If RDB_BuscarCodigo.Checked = True Then
-                SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM categoria where codigo LIKE '%" & TXT_BuscarCat.Text & "%'"
-            Else
-                SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM categoria where nombre LIKE '%" & TXT_BuscarCat.Text & "%'"
-            End If
+            SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] " &
+                  "FROM categoria " &
+                  "WHERE codigo LIKE '%" & TXT_BuscarCat.Text & "%' " &
+                  "OR nombre LIKE '%" & TXT_BuscarCat.Text & "%'"
             Cargar_Tabla(T, SQL)
             Dim bin As New BindingSource
             bin.DataSource = T.Tables(0)
@@ -78,16 +77,15 @@ Public Class B_Categoria
     End Sub
 
     Private Sub B_Marca_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RDB_BuscarNombre.Checked = True
         REFRESCAR()
     End Sub
 
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
         REFRESCAR()
         TXT_BuscarCat.Focus()
     End Sub
 
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
         REFRESCAR()
         TXT_BuscarCat.Focus()
     End Sub

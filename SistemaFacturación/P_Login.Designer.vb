@@ -153,7 +153,7 @@ Partial Class P_Login
         Me.Guna2PictureBox1.TabIndex = 119
         Me.Guna2PictureBox1.TabStop = False
         '
-        'P_LoginCaja
+        'P_Login
         '
         Me.AcceptButton = Me.BTN_Login
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -171,7 +171,7 @@ Partial Class P_Login
         Me.ForeColor = System.Drawing.SystemColors.Control
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "P_LoginCaja"
+        Me.Name = "P_Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Inicio de sesión"
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()

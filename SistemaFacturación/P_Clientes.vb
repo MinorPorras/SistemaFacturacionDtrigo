@@ -10,19 +10,12 @@
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
             T.Tables.Clear()
-            If RDB_BuscarCodigo.Checked = True Then
-                SQL = "SELECT c.ID, c.codigo as [Código], c.nombre as [Nombre], cc.cedula as [Cédula], ct.telefono as [Teléfono]," &
+            SQL = "SELECT c.ID, c.codigo as [Código], c.nombre as [Nombre], cc.cedula as [Cédula], ct.telefono as [Teléfono]," &
                     " co.correo as [Correo] FROM (((clientes c" + " 
                         LEFT JOIN cliente_cedula cc ON cc.ID_Cliente = c.ID)" + "
                         LEFT JOIN cliente_correo co ON co.ID_Cliente = c.ID)" + "
-                        LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) where c.codigo LIKE '%" & TXT_BuscarCliente.Text & "%' ORDER BY Val(c.codigo) ASC;"
-            Else
-                SQL = "SELECT c.ID, c.codigo as [Código], c.nombre as [Nombre], cc.cedula as [Cédula], ct.telefono as [Teléfono]," &
-                        " co.correo as [Correo] FROM (((clientes c" + " 
-                        LEFT JOIN cliente_cedula cc ON cc.ID_Cliente = c.ID)" + "
-                        LEFT JOIN cliente_correo co ON co.ID_Cliente = c.ID)" + "
-                        LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) where c.nombre LIKE '%" & TXT_BuscarCliente.Text & "%' ORDER BY Val(c.codigo) ASC;"
-            End If
+                        LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) where c.codigo LIKE '%" & TXT_BuscarCliente.Text & "%' OR" &
+                        " c.nombre LIKE '%" & TXT_BuscarCliente.Text & "%' ORDER BY Val(c.codigo) ASC;"
             Cargar_Tabla(T, SQL)
             Dim bin As New BindingSource
             bin.DataSource = T.Tables(0)
@@ -73,7 +66,6 @@
     End Sub
 
     Private Sub P_Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RDB_BuscarNombre.Checked = True
         TXT_BuscarCliente.Focus()
     End Sub
 
@@ -164,12 +156,12 @@
         E_NuevoCliente.Show()
     End Sub
 
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
         REFRESCAR()
         TXT_BuscarCliente.Focus()
     End Sub
 
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
         REFRESCAR()
         TXT_BuscarCliente.Focus()
     End Sub

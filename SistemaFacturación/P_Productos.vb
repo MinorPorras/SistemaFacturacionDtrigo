@@ -21,7 +21,6 @@
     End Sub
 
     Friend Sub cargarPestaña()
-        RDB_BuscarNombre.Checked = True
         CKB_Categoria.Checked = False
         CKB_Marca.Checked = False
         CKB_Proveedor.Checked = False
@@ -33,89 +32,59 @@
 
     Public Sub REFRESCAR()
         Try
-
-            'Se vuelven invisibles el menu contextual en caso de que no haya nada en la tabla
+            ' Se vuelven invisibles el menú contextual en caso de que no haya nada en la tabla
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
 
-            'Se limpia todo en la tabla
+            ' Se limpia todo en la tabla
             T.Tables.Clear()
 
-            'Declaración de variables para busqueda con el query
-            Dim cat As String
-            Dim Prov As String
-            Dim Marca As String
+            ' Declaración de variables para búsqueda con el query
+            Dim cat As String = ""
+            Dim Prov As String = ""
+            Dim Marca As String = ""
 
-            'Se  verifica que el chec box de buscar por categoría este seleccionado
-            If CKB_Categoria.Checked = True Then
-                'Que la selección no se -1
-                If TXT_BuscarCat.Text <> "" Then
-                    'Verifica el estado del textbox
-                    cat = "AND cat.nombre Like '%" + TXT_BuscarCat.Text + "%' "
-                Else
-                    'Si se tiene seleccionado el -1
-                    cat = ""
-                End If
-            Else
-                'Si no se tiene seleccionado el check box de categoria
-                cat = ""
+            ' Se verifica que el checkbox de buscar por categoría esté seleccionado
+            If CKB_Categoria.Checked = True AndAlso TXT_BuscarCat.Text <> "" Then
+                cat = "AND cat.nombre LIKE '%" & TXT_BuscarCat.Text & "%' "
             End If
 
-            'Se  verifica que el chec box de buscar por marca este seleccionado
-            If CKB_Marca.Checked = True Then
-                'Que la selección no se -1
-                If TXT_BuscarMarca.Text <> "" Then
-                    Marca = "AND m.nombre Like '%" + TXT_BuscarMarca.Text + "%' "
-                Else
-                    'Si se tiene seleccionado el -1
-                    Marca = ""
-                End If
-            Else
-                'Si no se tiene seleccionado el check box de marca
-                Marca = ""
+            ' Se verifica que el checkbox de buscar por marca esté seleccionado
+            If CKB_Marca.Checked = True AndAlso TXT_BuscarMarca.Text <> "" Then
+                Marca = "AND m.nombre LIKE '%" & TXT_BuscarMarca.Text & "%' "
             End If
 
-            'Se  verifica que el chec box de buscar por proveedor este seleccionado
-            If CKB_Proveedor.Checked = True Then
-                'Que la selección no se -1
-                If TXT_BuscarProv.Text <> "" Then
-                    Prov = "AND pr.nombre Like '%" + TXT_BuscarProv.Text + "%' "
-                Else
-                    'Si se tiene seleccionado el -1
-                    Prov = ""
-                End If
-            Else
-                'Si no se tiene seleccionado el check box de proveedor
-                Prov = ""
+            ' Se verifica que el checkbox de buscar por proveedor esté seleccionado
+            If CKB_Proveedor.Checked = True AndAlso TXT_BuscarProv.Text <> "" Then
+                Prov = "AND pr.nombre LIKE '%" & TXT_BuscarProv.Text & "%' "
             End If
 
+            ' Construcción del query basado en si se busca por código o por nombre
+            SQL = stringConsultaBase + " WHERE (p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' OR p.codigo LIKE '%" & TXT_BuscarProd.Text & "%') " & cat & Marca & Prov & " ORDER BY Val(p.codigo) ASC;"
 
-            'Si el textbox tiene algo de texto
-            If RDB_BuscarCodigo.Checked = True Then
-                'Si busca por codigo hace este query
-                SQL = stringConsultaBase + " where p.codigo Like '%" & TXT_BuscarProd.Text & "%'" + cat + Marca + Prov + " ORDER BY Val(p.codigo) ASC;"
-            ElseIf RDB_BuscarNombre.Checked = True Then
-                'Si busca por nombre hace este query
-                SQL = stringConsultaBase + " where p.nombre LIKE '%" & TXT_BuscarProd.Text & "%'" + cat + Marca + Prov + " ORDER BY Val(p.codigo) ASC;"
-            End If
+            ' Cargar los datos en la tabla
             Cargar_Tabla(T, SQL)
             Dim bin As New BindingSource
             bin.DataSource = T.Tables(0)
             DGV_Prods.DataSource = bin
+
+            ' Si hay datos, mostrar los menús de eliminar y modificar
             If T.Tables(0).Rows.Count > 0 Then
                 MNU_ELIMINAR.Visible = True
                 MNU_MODIFICAR.Visible = True
             End If
+
             ' Manejar el evento DataBindingComplete para ocultar las columnas
             AddHandler DGV_Prods.DataBindingComplete, AddressOf DGV_Prods_DataBindingComplete
 
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                 ' Mostrar un mensaje de error genérico
-                MsgBox("Error al cargar la lista de de productos: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                MsgBox("Error al cargar la lista de productos: " & ex.Message, vbCritical + vbOKOnly, "Error")
             End If
         End Try
     End Sub
+
 
     ' Método para manejar el evento DataBindingComplete
     Private Sub DGV_Prods_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_Prods.DataBindingComplete
@@ -124,17 +93,13 @@
                 DGV_Prods.Columns(i).ReadOnly = True
                 Select Case i
                     Case 1
-                        DGV_Prods.Columns(i).Width = 50
+                        DGV_Prods.Columns(i).Width = 80
                     Case 2
                         DGV_Prods.Columns(i).Width = 200
                     Case 3
                         DGV_Prods.Columns(i).Width = 300
                     Case 4
                         DGV_Prods.Columns(i).Width = 80
-                    Case 5
-                        DGV_Prods.Columns(i).Width = 50
-                    Case 6
-                        DGV_Prods.Columns(i).Width = 60
                     Case 7
                         DGV_Prods.Columns(i).Width = 60
                     Case 8
@@ -150,8 +115,11 @@
                 End Select
             Next
             DGV_Prods.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DGV_Prods.AutoResizeColumn(DataGridViewAutoSizeColumnMode.DisplayedCells)
             DGV_Prods.GridColor = Color.DarkGray
             DGV_Prods.Columns(0).Visible = False
+            DGV_Prods.Columns(5).Visible = False
+            DGV_Prods.Columns(6).Visible = False
             DGV_Prods.Columns(9).Visible = False
             DGV_Prods.Columns(11).Visible = False
             DGV_Prods.Columns(13).Visible = False
@@ -298,32 +266,28 @@
         End Try
     End Sub
 
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
         TXT_BuscarProd.Select()
     End Sub
 
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
         TXT_BuscarProd.Select()
     End Sub
 
-    Private Sub BTN_Buscar_Click(sender As Object, e As EventArgs)
+    Private Sub TXT_BuscarProd_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProd.TextChanged
         REFRESCAR()
-        TXT_BuscarProd.Select()
-    End Sub
 
-    Private Sub TXT_BuscarMarca_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarMarca.TextChanged
-        REFRESCAR()
     End Sub
 
     Private Sub TXT_BuscarProv_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProv.TextChanged
         REFRESCAR()
     End Sub
 
-    Private Sub TXT_BuscarCat_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarCat.TextChanged
+    Private Sub TXT_BuscarMarca_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarMarca.TextChanged
         REFRESCAR()
     End Sub
 
-    Private Sub TXT_BuscarProd_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProd.TextChanged
+    Private Sub TXT_BuscarCat_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarCat.TextChanged
         REFRESCAR()
     End Sub
 End Class

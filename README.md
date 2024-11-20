@@ -1,3 +1,7 @@
+**Versión 1.1.0.4 (20 de noviembre de 2024)**
+- Se arregló un eror que se generaba al entrar a la pestaña de buscar productos en la caja si le dabas doble click a la caja de texto de buscar producto
+- Se Eliminió el filtro de busqueda por nombre y por código de todas las pestañas de busqueda y mantenimiento, ahora la misma caja de texto ahce ambos funciones, lo que aceleró un poco el proceso de busqueda de la app
+
 **Versión 1.1.0.3 (18 de noviembre de 2024)**
 - Se arregló un error que sucedía al acceder a la caja y regresar a la pestaña de inicio causando que se perdiera el usuario en el camino
 - Se agregó un espacio que faltaba en la factura de pago mixto entre el pago en efectivo y el pago en tarjeta

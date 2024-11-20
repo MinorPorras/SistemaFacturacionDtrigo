@@ -12,7 +12,6 @@ Public Class P_Categoria
     End Sub
 
     Private Sub P_Categoria_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RDB_BuscarNombre.Checked = True
         REFRESCAR()
     End Sub
 
@@ -20,13 +19,9 @@ Public Class P_Categoria
         Try
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
-            T.Tables.Clear()
-            If RDB_BuscarCodigo.Checked = True Then
-                SQL = "SELECT ID, codigo as [Código], nombre as [Nombre], color as [Color] FROM categoria where codigo LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
-            Else
-                SQL = "SELECT ID, codigo as [Código], nombre as [Nombre], color as [Color] FROM categoria where nombre LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
-            End If
-
+            SQL = "SELECT ID, codigo as [Código], nombre as [Nombre], color as [Color]" &
+                " FROM categoria where codigo LIKE '%" & TXT_BuscarCat.Text & "%' " &
+                "OR where nombre LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
             Cargar_Tabla(T, SQL)
             Dim bin As New BindingSource
             bin.DataSource = T.Tables(0)
@@ -150,12 +145,12 @@ Public Class P_Categoria
         End Try
     End Sub
 
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
+    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
         REFRESCAR()
         TXT_BuscarCat.Focus()
     End Sub
 
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
+    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
         REFRESCAR()
         TXT_BuscarCat.Focus()
     End Sub
