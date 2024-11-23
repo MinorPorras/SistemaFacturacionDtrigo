@@ -1,18 +1,23 @@
-﻿Imports System.Data.OleDb
+﻿Imports System.Configuration
+Imports System.Data.OleDb
 
 Module Md_INTERRACION_DB
     'Usar nada más este a la hora de ejecutar SELECT en la base de datos
     Friend Sub Cargar_Tabla(ByRef Tabla_Temporal As DataSet, ByVal Sql As String)
         Try
-            CONECTAR()
-            Dim consulta As New OleDbCommand(Sql, Db)
-            Dim da As New OleDbDataAdapter
-            da.SelectCommand = consulta
-            da.Fill(Tabla_Temporal)
-            DESCONECTAR()
+            ' Obtener la cadena de conexión desde app.config
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("DbConnectionString").ConnectionString
+            ' Usar Using para asegurar que la conexión se cierre correctamente
+            Using connection As New OleDbConnection(connectionString)
+                connection.Open()
+                Using consulta As New OleDbCommand(Sql, connection)
+                    Using da As New OleDbDataAdapter(consulta)
+                        da.Fill(Tabla_Temporal)
+                    End Using
+                End Using
+            End Using
         Catch ex As Exception
             MsgBox("Error al cargar la tabla desde la base de datos" & vbCrLf & ex.Message, vbOKOnly, "Error")
-            DESCONECTAR()
         End Try
     End Sub
 

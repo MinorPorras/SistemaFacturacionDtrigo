@@ -8,21 +8,26 @@ Module Md_CONEXION
     Friend Sub CONECTAR()
         Try
             inicializarDB()
-            Db.Open()
-            Exit Sub
+            If Db.State = ConnectionState.Closed Then
+                Db.Open()
+            End If
         Catch ex As Exception
             MsgBox("Error al conectarse a la base de datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
     End Sub
 
+
     'Se desconecta de la base de datos
     Friend Sub DESCONECTAR()
         Try
-            Db.Close()
+            If Db.State = ConnectionState.Open Then
+                Db.Close()
+            End If
         Catch ex As Exception
-            MsgBox("Error al desconectarse a la base de datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
+            MsgBox("Error al desconectarse de la base de datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
     End Sub
+
 
     Friend Sub inicializarDB()
         Dim Db As New OleDbConnection(conexionString)

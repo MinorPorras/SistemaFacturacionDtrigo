@@ -1,3 +1,7 @@
+**Versión 1.1.0.5 BETA (22 de noviembre de 2024)**
+- Se mejoró el proceso de carga de la tabla de productos para que sea mucho más rápida, por medio del uso de hilos y de un termporiador para que se actualize la tabla cuando termines de escribir
+- Existen varios errores aún por arreglar y esta versión no es estable en lo más mínimo, tan solo es una prueba
+
 **Versión 1.1.0.4 (20 de noviembre de 2024)**
 - Se arregló un eror que se generaba al entrar a la pestaña de buscar productos en la caja si le dabas doble click a la caja de texto de buscar producto
 - Se Eliminió el filtro de busqueda por nombre y por código de todas las pestañas de busqueda y mantenimiento, ahora la misma caja de texto ahce ambos funciones, lo que aceleró un poco el proceso de busqueda de la app
