@@ -1,3 +1,11 @@
+**Versión 1.1.1.5 (23 de noviembre de 2024)**
+- La caja de advertencia a la hora de confirmar que se quiere cerrar la app en la pestaña de selcción de usuario al iniciar la app ahora da la opción de cancelarlo y que no se cierre la app
+- Se mejoró el proceso de busqueda de todas las pestañas que lo ocupaban y de el de las tablas de los pedidos de los proveedores
+- Ahora al buscar marcas y luego de fallar una vez la contraseña en el login se va a mantener seleccionado la caja de texto en la que se estaba escribiendo
+- Se arregló un error con el query para cargar las categorías que impedía entrar a esta pestaña del mantenimiento luego de actualizar la app a la BETA
+- Se añadieron los atajos del teclado que faltaban, entre ellos los de la pestaña de terminar venta de f7 y f3
+- Se añadieron indices en la base de datos y un espacio para agregar el inventario disponible en la tabla en la que se guardan los productos mas aun no se va a implementar este sistema
+
 **Versión 1.1.0.5 BETA (22 de noviembre de 2024)**
 - Se mejoró el proceso de carga de la tabla de productos para que sea mucho más rápida, por medio del uso de hilos y de un termporiador para que se actualize la tabla cuando termines de escribir
 - Existen varios errores aún por arreglar y esta versión no es estable en lo más mínimo, tan solo es una prueba

@@ -1,4 +1,22 @@
-﻿Public Class P_Marca
+﻿Imports System.Threading.Tasks
+
+Public Class P_Marca
+    Private searchTimer As Timer
+
+    ' Método para inicializar el temporizador y otros componentes necesarios
+    Private Sub InicializarComponentes()
+        ' Inicializar el temporizador
+        searchTimer = New Timer()
+        searchTimer.Interval = 100
+        ' Medio segundo
+        AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
+    End Sub
+
+    Private Sub OnSearchTimerTick(sender As Object, e As EventArgs)
+        ' Detener el temporizador y ejecutar la búsqueda
+        searchTimer.Stop()
+        REFRESCAR()
+    End Sub
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
         If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
             Application.Exit()
@@ -11,34 +29,45 @@
     End Sub
 
     Private Sub P_Marca_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        InicializarComponentes()
         REFRESCAR()
     End Sub
 
     Public Sub REFRESCAR()
-        Try
-            MNU_ELIMINAR.Visible = False
-            MNU_MODIFICAR.Visible = False
-            T.Tables.Clear()
-            SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM marca where codigo " &
-                "LIKE '%" & TXT_BuscarMarca.Text & "%' OR nombre LIKE '%" & TXT_BuscarMarca.Text & "%'" &
-                " ORDER BY Val(codigo) ASC;"
-            Cargar_Tabla(T, SQL)
-            Dim bin As New BindingSource
-            bin.DataSource = T.Tables(0)
-            DGV_Marca.DataSource = bin
-            If T.Tables(0).Rows.Count > 0 Then
-                MNU_ELIMINAR.Visible = True
-                MNU_MODIFICAR.Visible = True
-            End If
-            ' Manejar el evento DataBindingComplete para ocultar las columnas
-            AddHandler DGV_Marca.DataBindingComplete, AddressOf DGV_Marca_DataBindingComplete
-            TXT_BuscarMarca.Select()
-        Catch ex As Exception
-            If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
-                ' Mostrar un mensaje de error genérico
-                MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
-            End If
-        End Try
+        Task.Run(Sub()
+                     Try
+                         MNU_ELIMINAR.Visible = False
+                         MNU_MODIFICAR.Visible = False
+                         T.Tables.Clear()
+                         SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM marca where codigo " &
+                             "LIKE '%" & TXT_BuscarMarca.Text & "%' OR nombre LIKE '%" & TXT_BuscarMarca.Text & "%'" &
+                             " ORDER BY Val(codigo) ASC;"
+                         Invoke(Sub()
+                                    Cargar_Tabla(T, SQL)
+                                    If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
+                                        Dim bin As New BindingSource
+                                        bin.DataSource = T.Tables(0)
+                                        DGV_Marca.DataSource = bin
+                                        If T.Tables(0).Rows.Count > 0 Then
+                                            MNU_ELIMINAR.Visible = True
+                                            MNU_MODIFICAR.Visible = True
+                                        End If
+                                    Else ' Limpiar la fuente de datos si no se cargaron datos
+                                        DGV_Marca.DataSource = Nothing
+                                    End If
+                                    TXT_BuscarMarca.Select()
+                                End Sub)
+                     Catch ex As Exception
+                         Invoke(Sub()
+                                    If DGV_Marca.IsHandleCreated Then
+                                        If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
+                                            ' Mostrar un mensaje de error genérico
+                                            MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                        End If
+                                    End If
+                                End Sub)
+                     End Try
+                 End Sub)
     End Sub
 
     ' Método para manejar el evento DataBindingComplete
@@ -63,9 +92,10 @@
     End Sub
 
     Private Sub TXT_BuscarCat_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarMarca.TextChanged
-
-        REFRESCAR()
-
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
     End Sub
 
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NMarca.Click
@@ -120,15 +150,5 @@
             Console.WriteLine(ex.Message)
             MsgBox("Error al eliminar la marca: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
-    End Sub
-
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
-        REFRESCAR()
-        TXT_BuscarMarca.Focus()
-    End Sub
-
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
-        REFRESCAR()
-        TXT_BuscarMarca.Focus()
     End Sub
 End Class

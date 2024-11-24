@@ -108,7 +108,7 @@ Partial Class B_Marca
         Me.TXT_BuscarMarca.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarMarca.PlaceholderText = "Buscar marca"
         Me.TXT_BuscarMarca.SelectedText = ""
-        Me.TXT_BuscarMarca.Size = New System.Drawing.Size(506, 42)
+        Me.TXT_BuscarMarca.Size = New System.Drawing.Size(654, 42)
         Me.TXT_BuscarMarca.TabIndex = 56
         '
         'Guna2PictureBox2

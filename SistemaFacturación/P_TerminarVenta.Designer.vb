@@ -59,6 +59,8 @@ Partial Class P_TerminarVenta
         Me.TXT_DTotal = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel12 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Mixto = New System.Windows.Forms.TabPage()
+        Me.BTN_RestanteEfectivo = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.BTN_RestanteTarjeta = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.TXT_PagoEfectivo = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2HtmlLabel16 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.TXT_MVuelto = New Guna.UI2.WinForms.Guna2TextBox()
@@ -73,8 +75,6 @@ Partial Class P_TerminarVenta
         Me.TXT_Comentario = New Guna.UI2.WinForms.Guna2TextBox()
         Me.PrintDocument = New System.Drawing.Printing.PrintDocument()
         Me.PrintDialog = New System.Windows.Forms.PrintDialog()
-        Me.BTN_RestanteTarjeta = New Guna.UI2.WinForms.Guna2CircleButton()
-        Me.BTN_RestanteEfectivo = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.TabControlTVenta.SuspendLayout()
         Me.Efectivo.SuspendLayout()
         Me.Tarjeta.SuspendLayout()
@@ -713,6 +713,42 @@ Partial Class P_TerminarVenta
         Me.Mixto.TabIndex = 4
         Me.Mixto.Text = "Mixto"
         '
+        'BTN_RestanteEfectivo
+        '
+        Me.BTN_RestanteEfectivo.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_RestanteEfectivo.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_RestanteEfectivo.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_RestanteEfectivo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RestanteEfectivo.FillColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BTN_RestanteEfectivo.Font = New System.Drawing.Font("Segoe UI", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_RestanteEfectivo.ForeColor = System.Drawing.Color.White
+        Me.BTN_RestanteEfectivo.ImageSize = New System.Drawing.Size(90, 90)
+        Me.BTN_RestanteEfectivo.Location = New System.Drawing.Point(556, 137)
+        Me.BTN_RestanteEfectivo.Name = "BTN_RestanteEfectivo"
+        Me.BTN_RestanteEfectivo.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_RestanteEfectivo.Size = New System.Drawing.Size(44, 44)
+        Me.BTN_RestanteEfectivo.TabIndex = 130
+        Me.BTN_RestanteEfectivo.Text = "R"
+        Me.BTN_RestanteEfectivo.TextOffset = New System.Drawing.Point(2, -2)
+        '
+        'BTN_RestanteTarjeta
+        '
+        Me.BTN_RestanteTarjeta.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_RestanteTarjeta.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_RestanteTarjeta.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_RestanteTarjeta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RestanteTarjeta.FillColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BTN_RestanteTarjeta.Font = New System.Drawing.Font("Segoe UI", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_RestanteTarjeta.ForeColor = System.Drawing.Color.White
+        Me.BTN_RestanteTarjeta.ImageSize = New System.Drawing.Size(90, 90)
+        Me.BTN_RestanteTarjeta.Location = New System.Drawing.Point(556, 232)
+        Me.BTN_RestanteTarjeta.Name = "BTN_RestanteTarjeta"
+        Me.BTN_RestanteTarjeta.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_RestanteTarjeta.Size = New System.Drawing.Size(44, 44)
+        Me.BTN_RestanteTarjeta.TabIndex = 129
+        Me.BTN_RestanteTarjeta.Text = "R"
+        Me.BTN_RestanteTarjeta.TextOffset = New System.Drawing.Point(2, -2)
+        '
         'TXT_PagoEfectivo
         '
         Me.TXT_PagoEfectivo.BorderRadius = 20
@@ -931,42 +967,6 @@ Partial Class P_TerminarVenta
         'PrintDialog
         '
         Me.PrintDialog.UseEXDialog = True
-        '
-        'BTN_RestanteTarjeta
-        '
-        Me.BTN_RestanteTarjeta.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_RestanteTarjeta.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_RestanteTarjeta.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTN_RestanteTarjeta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTN_RestanteTarjeta.FillColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BTN_RestanteTarjeta.Font = New System.Drawing.Font("Segoe UI", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_RestanteTarjeta.ForeColor = System.Drawing.Color.White
-        Me.BTN_RestanteTarjeta.ImageSize = New System.Drawing.Size(90, 90)
-        Me.BTN_RestanteTarjeta.Location = New System.Drawing.Point(556, 232)
-        Me.BTN_RestanteTarjeta.Name = "BTN_RestanteTarjeta"
-        Me.BTN_RestanteTarjeta.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.BTN_RestanteTarjeta.Size = New System.Drawing.Size(44, 44)
-        Me.BTN_RestanteTarjeta.TabIndex = 129
-        Me.BTN_RestanteTarjeta.Text = "R"
-        Me.BTN_RestanteTarjeta.TextOffset = New System.Drawing.Point(2, -2)
-        '
-        'BTN_RestanteEfectivo
-        '
-        Me.BTN_RestanteEfectivo.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_RestanteEfectivo.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_RestanteEfectivo.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTN_RestanteEfectivo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTN_RestanteEfectivo.FillColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BTN_RestanteEfectivo.Font = New System.Drawing.Font("Segoe UI", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_RestanteEfectivo.ForeColor = System.Drawing.Color.White
-        Me.BTN_RestanteEfectivo.ImageSize = New System.Drawing.Size(90, 90)
-        Me.BTN_RestanteEfectivo.Location = New System.Drawing.Point(556, 137)
-        Me.BTN_RestanteEfectivo.Name = "BTN_RestanteEfectivo"
-        Me.BTN_RestanteEfectivo.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.BTN_RestanteEfectivo.Size = New System.Drawing.Size(44, 44)
-        Me.BTN_RestanteEfectivo.TabIndex = 130
-        Me.BTN_RestanteEfectivo.Text = "R"
-        Me.BTN_RestanteEfectivo.TextOffset = New System.Drawing.Point(2, -2)
         '
         'P_TerminarVenta
         '

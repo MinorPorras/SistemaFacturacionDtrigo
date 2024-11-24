@@ -1,9 +1,28 @@
-﻿Public Class B_Producto
+﻿Imports System.Threading.Tasks
+
+Public Class B_Producto
     Friend ModProd As Boolean
     Dim cant As Integer
     Friend idModProd As Integer
+    Private searchTimer As Timer
+
+    ' Método para inicializar el temporizador y otros componentes necesarios
+    Private Sub InicializarComponentes()
+        ' Inicializar el temporizador
+        searchTimer = New Timer()
+        searchTimer.Interval = 100
+        ' Medio segundo
+        AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
+    End Sub
+
+    Private Sub OnSearchTimerTick(sender As Object, e As EventArgs)
+        ' Detener el temporizador y ejecutar la búsqueda
+        searchTimer.Stop()
+        REFRESCAR()
+    End Sub
 
     Private Sub B_Producto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        InicializarComponentes()
         REFRESCAR()
         If Not P_Caja.DGV_Caja.RowCount > 0 Then
             LBL_IDProd.Text = P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value
@@ -13,27 +32,37 @@
     End Sub
 
     Public Sub REFRESCAR()
-        Try
-            T.Tables.Clear()
-            SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
-                    " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                    " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%' OR p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' ORDER BY Val(p.codigo) ASC;"
-            Cargar_Tabla(T, SQL)
-            Dim bin As New BindingSource
-            bin.DataSource = T.Tables(0)
-            DGV_BProd.DataSource = bin
-            ' Manejar el evento DataBindingComplete para ocultar las columnas
-            AddHandler DGV_BProd.DataBindingComplete, AddressOf DGV_BProd_DataBindingComplete
-            TXT_BuscarProd.Select()
-        Catch ex As Exception
-            If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
-                ' Mostrar un mensaje de error genérico
-                MsgBox("Error al cargar la lista de clientes: " & ex.Message, vbCritical + vbOKOnly, "Error")
-            End If
-        End Try
+        Task.Run(Sub()
+                     Try
+                         T.Tables.Clear()
+                         SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
+                                 " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+                                 " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%' OR p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' ORDER BY Val(p.codigo) ASC;"
+                         Invoke(Sub()
+                                    Cargar_Tabla(T, SQL)
+                                    If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
+                                        Dim bin As New BindingSource
+                                        bin.DataSource = T.Tables(0)
+                                        DGV_BProd.DataSource = bin
+                                    Else ' Limpiar la fuente de datos si no se cargaron datos
+                                        DGV_BProd.DataSource = Nothing
+                                    End If
+                                    TXT_BuscarProd.Select()
+                                End Sub)
+                     Catch ex As Exception
+                         Invoke(Sub()
+                                    If DGV_BProd.IsHandleCreated Then
+                                        If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
+                                            ' Mostrar un mensaje de error genérico
+                                            MsgBox("Error al cargar la lista de clientes: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                        End If
+                                    End If
+                                End Sub)
+                     End Try
+                 End Sub)
     End Sub
 
-    Private Sub DGV_BProd_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)
+    Private Sub DGV_BProd_DataBindingComplete_1(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_BProd.DataBindingComplete
         Try
             For i As Integer = 0 To DGV_BProd.Columns.Count - 1
                 DGV_BProd.Columns(i).ReadOnly = True
@@ -56,21 +85,14 @@
     End Sub
 
     Private Sub TXT_BuscarProd_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProd.TextChanged
-        REFRESCAR()
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
     End Sub
 
     Private Sub BTN_RegresarPrd_Click(sender As Object, e As EventArgs) Handles BTN_RegresarPrd.Click
         Me.Close()
-    End Sub
-
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
-        REFRESCAR()
-        TXT_BuscarProd.Focus()
-    End Sub
-
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
-        REFRESCAR()
-        TXT_BuscarProd.Focus()
     End Sub
 
     Private Sub BTN_SelectProd_Click(sender As Object, e As EventArgs) Handles BTN_SelectProd.Click

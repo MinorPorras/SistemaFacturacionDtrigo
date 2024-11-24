@@ -37,13 +37,9 @@ Partial Class P_Usuarios
         Me.MNU_CONTX = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.MNU_MODIFICAR = New System.Windows.Forms.ToolStripMenuItem()
         Me.MNU_ELIMINAR = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RDB_BuscarNombre = New Guna.UI2.WinForms.Guna2RadioButton()
-        Me.RDB_BuscarCodigo = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.DGV_Cajero = New Guna.UI2.WinForms.Guna2DataGridView()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MNU_CONTX.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
         CType(Me.DGV_Cajero, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -113,7 +109,7 @@ Partial Class P_Usuarios
         Me.TXT_BuscarUsuario.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarUsuario.PlaceholderText = "Buscar cajeros"
         Me.TXT_BuscarUsuario.SelectedText = ""
-        Me.TXT_BuscarUsuario.Size = New System.Drawing.Size(638, 42)
+        Me.TXT_BuscarUsuario.Size = New System.Drawing.Size(772, 42)
         Me.TXT_BuscarUsuario.TabIndex = 25
         '
         'Guna2PictureBox1
@@ -174,56 +170,6 @@ Partial Class P_Usuarios
         Me.MNU_ELIMINAR.Size = New System.Drawing.Size(125, 22)
         Me.MNU_ELIMINAR.Text = "Eliminar"
         Me.MNU_ELIMINAR.Visible = False
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.RDB_BuscarNombre)
-        Me.GroupBox1.Controls.Add(Me.RDB_BuscarCodigo)
-        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.Control
-        Me.GroupBox1.Location = New System.Drawing.Point(690, 182)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(128, 63)
-        Me.GroupBox1.TabIndex = 39
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Filtros de busqueda"
-        '
-        'RDB_BuscarNombre
-        '
-        Me.RDB_BuscarNombre.AutoSize = True
-        Me.RDB_BuscarNombre.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarNombre.CheckedState.BorderThickness = 0
-        Me.RDB_BuscarNombre.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarNombre.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.RDB_BuscarNombre.CheckedState.InnerOffset = -4
-        Me.RDB_BuscarNombre.ForeColor = System.Drawing.Color.White
-        Me.RDB_BuscarNombre.Location = New System.Drawing.Point(29, 19)
-        Me.RDB_BuscarNombre.Name = "RDB_BuscarNombre"
-        Me.RDB_BuscarNombre.Size = New System.Drawing.Size(62, 17)
-        Me.RDB_BuscarNombre.TabIndex = 36
-        Me.RDB_BuscarNombre.Text = "Nombre"
-        Me.RDB_BuscarNombre.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.RDB_BuscarNombre.UncheckedState.BorderThickness = 2
-        Me.RDB_BuscarNombre.UncheckedState.FillColor = System.Drawing.Color.Transparent
-        Me.RDB_BuscarNombre.UncheckedState.InnerColor = System.Drawing.Color.Transparent
-        '
-        'RDB_BuscarCodigo
-        '
-        Me.RDB_BuscarCodigo.AutoSize = True
-        Me.RDB_BuscarCodigo.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarCodigo.CheckedState.BorderThickness = 0
-        Me.RDB_BuscarCodigo.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.RDB_BuscarCodigo.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.RDB_BuscarCodigo.CheckedState.InnerOffset = -4
-        Me.RDB_BuscarCodigo.ForeColor = System.Drawing.Color.White
-        Me.RDB_BuscarCodigo.Location = New System.Drawing.Point(29, 42)
-        Me.RDB_BuscarCodigo.Name = "RDB_BuscarCodigo"
-        Me.RDB_BuscarCodigo.Size = New System.Drawing.Size(58, 17)
-        Me.RDB_BuscarCodigo.TabIndex = 37
-        Me.RDB_BuscarCodigo.Text = "Codigo"
-        Me.RDB_BuscarCodigo.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.RDB_BuscarCodigo.UncheckedState.BorderThickness = 2
-        Me.RDB_BuscarCodigo.UncheckedState.FillColor = System.Drawing.Color.Transparent
-        Me.RDB_BuscarCodigo.UncheckedState.InnerColor = System.Drawing.Color.Transparent
         '
         'DGV_Cajero
         '
@@ -302,7 +248,6 @@ Partial Class P_Usuarios
         Me.CancelButton = Me.BTN_RegresarUsu
         Me.ClientSize = New System.Drawing.Size(865, 700)
         Me.Controls.Add(Me.DGV_Cajero)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.BTN_RegresarUsu)
         Me.Controls.Add(Me.BTN_NUsuario)
         Me.Controls.Add(Me.TXT_BuscarUsuario)
@@ -316,8 +261,6 @@ Partial Class P_Usuarios
         Me.Text = "Cajeros"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MNU_CONTX.ResumeLayout(False)
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         CType(Me.DGV_Cajero, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -332,8 +275,5 @@ Partial Class P_Usuarios
     Friend WithEvents MNU_CONTX As Guna.UI2.WinForms.Guna2ContextMenuStrip
     Friend WithEvents MNU_MODIFICAR As ToolStripMenuItem
     Friend WithEvents MNU_ELIMINAR As ToolStripMenuItem
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents RDB_BuscarNombre As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents RDB_BuscarCodigo As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents DGV_Cajero As Guna.UI2.WinForms.Guna2DataGridView
 End Class

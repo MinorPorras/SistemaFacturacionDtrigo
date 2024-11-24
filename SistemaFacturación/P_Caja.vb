@@ -30,6 +30,8 @@ Public Class P_Caja
         TXT_BuscarCliente.Text = "0001"
         DGV_Caja.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 128, 0)
         DGV_Caja.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 120, 30)
+        DGV_Caja.Columns(3).DefaultCellStyle.Format = "#,##"
+        DGV_Caja.Columns(5).DefaultCellStyle.Format = "#,##"
         DGV_Caja.Font = New Font("Arial", 12)
         DGV_Caja.ColumnHeadersHeight = 25
         DGV_Caja.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True
@@ -160,6 +162,8 @@ Public Class P_Caja
                     cantProd = 1
                 End If
                 agregarProd(T.Tables(0).Rows(0).Item(0).ToString(), txtCodProd.Text, T.Tables(0).Rows(0).Item(1).ToString(), T.Tables(0).Rows(0).Item(2).ToString(), cantProd)
+                DGV_Caja.Columns(3).DefaultCellStyle.Format = "#,##"
+                DGV_Caja.Columns(5).DefaultCellStyle.Format = "#,##"
                 cantProd = 1
             Else
                 MsgBox("El código que colocó está mal escrito o no existe", vbCritical + vbOKOnly, "Código incorrecto")

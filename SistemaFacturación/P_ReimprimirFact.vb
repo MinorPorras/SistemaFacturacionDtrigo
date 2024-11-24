@@ -1,53 +1,72 @@
 ﻿Imports System.Drawing.Printing
+Imports System.Threading.Tasks
+
 
 Public Class P_ReimprimirFact
     Friend encabezadoFactura As String
     Friend encabezadoProds As String
     Friend facturaContenido As List(Of String) = New List(Of String)()
     Friend finFactura As String
+    Private searchTimer As Timer
+
+    ' Método para inicializar el temporizador y otros componentes necesarios
+    Private Sub InicializarComponentes()
+        ' Inicializar el temporizador
+        searchTimer = New Timer()
+        searchTimer.Interval = 100
+        ' Medio segundo
+        AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
+    End Sub
+
+    Private Sub OnSearchTimerTick(sender As Object, e As EventArgs)
+        ' Detener el temporizador y ejecutar la búsqueda
+        searchTimer.Stop()
+        REFRESCAR()
+    End Sub
+
     Private Sub P_ReimprimirFact_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        InicializarComponentes()
         REFRESCAR()
     End Sub
 
     Friend Sub REFRESCAR()
-        Try
-            MNU_REIMPRIMIR.Visible = False
-            T.Tables.Clear()
-            If TXT_BuscarFact.Text <> "" Then
-                SQL = "SELECT f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Cliente], u.usuario as [Cajero], fc.comentario as [Comentario]" &
-                    ", f.total as [Total], f.efectivo_cliente as [Pago efectivo], f.tarjeta_cliente as [Pago tarjeta], f.vuelto as [Vuelto], " &
-                      "IIf(f.tipo_venta=0, 'Efectivo', IIf(f.tipo_venta=1, 'Tarjeta', IIf(f.tipo_venta=2, 'Sinpe', IIf(f.tipo_venta=3, 'Depósito', IIf(f.tipo_venta=4, 'Mixto'," &
-                      " 'Efectivo'))))) AS [Tipo venta], f.cobrada as [Cobrada] " &
-                      "FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
-                      "LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
-                      "LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura Like '%" & TXT_BuscarFact.Text & "%' ORDER BY Val(f.num_factura) DESC;"
-            Else
-                SQL = "SELECT f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Nombre], u.usuario as [Cajero], fc.comentario as [Comentario]" &
-                    ", f.total as [Total], f.efectivo_cliente as [Pago efectivo], f.tarjeta_cliente as [Pago tarjeta], f.vuelto as [Vuelto], " &
-                      "IIf(f.tipo_venta=0, 'Efectivo', IIf(f.tipo_venta=1, 'Tarjeta', IIf(f.tipo_venta=2, 'Sinpe', IIf(f.tipo_venta=3, 'Depósito', IIf(f.tipo_venta=4, 'Mixto'," &
-                      " 'Efectivo'))))) AS [Tipo venta], f.cobrada as [Cobrada] " &
-                      "FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
-                      "LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
-                      "LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) ORDER BY Val(f.num_factura) DESC;"
+        Task.Run(Sub()
+                     Try
+                         MNU_REIMPRIMIR.Visible = False
+                         T.Tables.Clear()
+                         SQL = "SELECT f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Cliente], u.usuario as [Cajero], fc.comentario as [Comentario]" &
+                             ", f.total as [Total], f.efectivo_cliente as [Pago efectivo], f.tarjeta_cliente as [Pago tarjeta], f.vuelto as [Vuelto], " &
+                               "IIf(f.tipo_venta=0, 'Efectivo', IIf(f.tipo_venta=1, 'Tarjeta', IIf(f.tipo_venta=2, 'Sinpe', IIf(f.tipo_venta=3, 'Depósito', IIf(f.tipo_venta=4, 'Mixto'," &
+                               " 'Efectivo'))))) AS [Tipo venta], f.cobrada as [Cobrada] " &
+                               "FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
+                               "LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
+                               "LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura Like '%" & TXT_BuscarFact.Text & "%' ORDER BY Val(f.num_factura) DESC;"
+                         Invoke(Sub()
+                                    Cargar_Tabla(T, SQL)
+                                    If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
+                                        Dim bin As New BindingSource
+                                        bin.DataSource = T.Tables(0)
+                                        DGV_ReimprimirFact.DataSource = bin
+                                        If T.Tables(0).Rows.Count > 0 Then
+                                            MNU_REIMPRIMIR.Visible = True
+                                        End If
+                                    Else ' Limpiar la fuente de datos si no se cargaron datos
+                                        DGV_ReimprimirFact.DataSource = Nothing
+                                    End If
+                                    TXT_BuscarFact.Select()
+                                End Sub)
+                     Catch ex As Exception
+                         Invoke(Sub()
+                                    If DGV_ReimprimirFact.IsHandleCreated Then
+                                        If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
+                                            ' Mostrar un mensaje de error genérico
+                                            MsgBox("Error al cargar la lista de facturas: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                        End If
+                                    End If
 
-            End If
-            Cargar_Tabla(T, SQL)
-            Dim bin As New BindingSource
-            bin.DataSource = T.Tables(0)
-            DGV_ReimprimirFact.DataSource = bin
-            If T.Tables(0).Rows.Count > 0 Then
-                MNU_REIMPRIMIR.Visible = True
-            End If
-            TXT_BuscarFact.Select()
-            ' Manejar el evento DataBindingComplete para ocultar las columnas
-            AddHandler DGV_ReimprimirFact.DataBindingComplete, AddressOf DGV_ReimprimirFact_DataBindingComplete
-            TXT_BuscarFact.Select()
-        Catch ex As Exception
-            If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
-                ' Mostrar un mensaje de error genérico
-                MsgBox("Error al cargar la lista de facturas: " & ex.Message, vbCritical + vbOKOnly, "Error")
-            End If
-        End Try
+                                End Sub)
+                     End Try
+                 End Sub)
     End Sub
 
     Private Sub DGV_ReimprimirFact_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_ReimprimirFact.DataBindingComplete
@@ -75,7 +94,7 @@ Public Class P_ReimprimirFact
                         DGV_ReimprimirFact.Columns(i).Width = 30
                     Case 10
                         DGV_ReimprimirFact.Columns(i).Width = 40
-                    Case 10
+                    Case 11
                         DGV_ReimprimirFact.Columns(i).Width = 50
                 End Select
             Next
@@ -206,6 +225,9 @@ Public Class P_ReimprimirFact
     End Sub
 
     Private Sub TXT_BuscarFact_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarFact.TextChanged
-        REFRESCAR()
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
     End Sub
 End Class

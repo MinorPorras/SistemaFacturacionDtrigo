@@ -38,6 +38,7 @@
                 Me.Close()
             Else
                 MsgBox("Usuario o contraseña incorrecta", vbCritical + vbOKOnly, "Error")
+                TXT_Clave.Select()
             End If
         End If
     End Sub

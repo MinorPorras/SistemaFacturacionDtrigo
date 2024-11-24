@@ -1,7 +1,6 @@
 ﻿Public Class M_Mantenimiento
     Private Sub Guna2Button9_Click(sender As Object, e As EventArgs) Handles BTN_RegresarMant.Click
         M_Inicio.Show()
-        M_Inicio.REFRESCAR()
         Me.Close()
     End Sub
 

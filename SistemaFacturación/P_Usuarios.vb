@@ -1,9 +1,26 @@
 ﻿
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Threading.Tasks
 
 Public Class P_Usuarios
+    Private searchTimer As Timer
+
+    ' Método para inicializar el temporizador y otros componentes necesarios
+    Private Sub InicializarComponentes()
+        ' Inicializar el temporizador
+        searchTimer = New Timer()
+        searchTimer.Interval = 100
+        ' Medio segundo
+        AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
+    End Sub
+
+    Private Sub OnSearchTimerTick(sender As Object, e As EventArgs)
+        ' Detener el temporizador y ejecutar la búsqueda
+        searchTimer.Stop()
+        REFRESCAR()
+    End Sub
     Private Sub P_Usuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RDB_BuscarNombre.Checked = True
+        InicializarComponentes()
         REFRESCAR()
     End Sub
 
@@ -13,42 +30,43 @@ Public Class P_Usuarios
         End If
     End Sub
     Public Sub REFRESCAR()
-        Try
-            MNU_ELIMINAR.Visible = False
-            MNU_MODIFICAR.Visible = False
-            T.Tables.Clear()
+        Task.Run(Sub()
+                     Try
+                         MNU_ELIMINAR.Visible = False
+                         MNU_MODIFICAR.Visible = False
+                         T.Tables.Clear()
 
-            If RDB_BuscarCodigo.Checked = True Then
-                SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, " &
-                      "IIf(u.tipo=0, 'Cajero', IIf(u.tipo=1, 'Administrador', 'Desconocido')) AS [Tipo], u.color as [Color] " &
-                      "FROM usuario u WHERE u.codigo LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
-            Else
-                SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, " &
-                      "IIf(u.tipo=0, 'Cajero', IIf(u.tipo=1, 'Administrador', 'Desconocido')) AS [Tipo], u.color as [Color] " &
-                      "FROM usuario u WHERE u.usuario LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
-            End If
+                         SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, " &
+                               "IIf(u.tipo=0, 'Cajero', IIf(u.tipo=1, 'Administrador', 'Desconocido')) AS [Tipo], u.color as [Color] " &
+                               "FROM usuario u WHERE u.codigo LIKE '%" & TXT_BuscarUsuario.Text & "%' OR u.usuario LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
+                         Invoke(Sub()
+                                    Cargar_Tabla(T, SQL)
+                                    If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
+                                        Dim bin As New BindingSource
+                                        bin.DataSource = T.Tables(0)
+                                        DGV_Cajero.DataSource = bin
 
-            Cargar_Tabla(T, SQL)
-            Dim bin As New BindingSource
-            bin.DataSource = T.Tables(0)
-            DGV_Cajero.DataSource = bin
+                                        If T.Tables(0).Rows.Count > 0 Then
+                                            MNU_ELIMINAR.Visible = True
+                                            MNU_MODIFICAR.Visible = True
+                                        End If
+                                    Else ' Limpiar la fuente de datos si no se cargaron datos
+                                        DGV_Cajero.DataSource = Nothing
+                                    End If
+                                    TXT_BuscarUsuario.Select()
+                                End Sub)
+                     Catch ex As Exception
+                         Invoke(Sub()
+                                    If DGV_Cajero.IsHandleCreated Then
+                                        If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
+                                            ' Mostrar un mensaje de error genérico
+                                            MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                        End If
+                                    End If
 
-            ' Añadir el manejador del evento DataBindingComplete antes de cargar los datos
-            AddHandler DGV_Cajero.DataBindingComplete, AddressOf DGV_Cajero_DataBindingComplete
-
-            If T.Tables(0).Rows.Count > 0 Then
-                MNU_ELIMINAR.Visible = True
-                MNU_MODIFICAR.Visible = True
-            End If
-
-            TXT_BuscarUsuario.Select()
-
-        Catch ex As Exception
-            If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
-                ' Mostrar un mensaje de error genérico
-                MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
-            End If
-        End Try
+                                End Sub)
+                     End Try
+                 End Sub)
     End Sub
 
 
@@ -108,7 +126,10 @@ Public Class P_Usuarios
     End Sub
 
     Private Sub TXT_BuscarUsuario_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarUsuario.TextChanged
-        REFRESCAR()
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
     End Sub
 
     Private Sub MNU_ELIMINAR_Click(sender As Object, e As EventArgs) Handles MNU_ELIMINAR.Click
@@ -171,15 +192,5 @@ Public Class P_Usuarios
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
-    End Sub
-
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarNombre.CheckedChanged
-        REFRESCAR()
-        TXT_BuscarUsuario.Focus()
-    End Sub
-
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_BuscarCodigo.CheckedChanged
-        REFRESCAR()
-        TXT_BuscarUsuario.Focus()
     End Sub
 End Class

@@ -559,6 +559,7 @@ Partial Class E_NuevoProducto
         '
         'E_NuevoProducto
         '
+        Me.AcceptButton = Me.BTN_NProv
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))

@@ -1,32 +1,67 @@
 ﻿Imports System.Net.Mime.MediaTypeNames
+Imports System.Threading.Tasks
+
 
 Public Class B_Categoria
     Friend caso As String
-    Public Sub REFRESCAR()
-        Try
-            T.Tables.Clear()
-            SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] " &
-                  "FROM categoria " &
-                  "WHERE codigo LIKE '%" & TXT_BuscarCat.Text & "%' " &
-                  "OR nombre LIKE '%" & TXT_BuscarCat.Text & "%'"
-            Cargar_Tabla(T, SQL)
-            Dim bin As New BindingSource
-            bin.DataSource = T.Tables(0)
-            DGV_BCat.DataSource = bin
-            ' Manejar el evento DataBindingComplete para ocultar las columnas
-            AddHandler DGV_BCat.DataBindingComplete, AddressOf DGV_BCat_DataBindingComplete
-            TXT_BuscarCat.Select()
-        Catch ex As Exception
-            If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
-                ' Mostrar un mensaje de error genérico
-                MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
-            End If
-        End Try
+    Private searchTimer As Timer
+
+    ' Método para inicializar el temporizador y otros componentes necesarios
+    Private Sub InicializarComponentes()
+        ' Inicializar el temporizador
+        searchTimer = New Timer()
+        searchTimer.Interval = 100
+        ' Medio segundo
+        AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
     End Sub
 
+    Private Sub OnSearchTimerTick(sender As Object, e As EventArgs)
+        ' Detener el temporizador y ejecutar la búsqueda
+        searchTimer.Stop()
+        REFRESCAR()
+    End Sub
+    Public Sub REFRESCAR()
+        Task.Run(Sub()
+                     Try
+                         T.Tables.Clear()
+                         SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] " &
+                               "FROM categoria " &
+                               "WHERE codigo LIKE '%" & TXT_BuscarCat.Text & "%' " &
+                               "OR nombre LIKE '%" & TXT_BuscarCat.Text & "%'"
+                         Invoke(Sub()
+                                    Cargar_Tabla(T, SQL)
+                                    If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
+                                        DGV_BCat.Columns.Clear()
+                                        Dim bin As New BindingSource
+                                        bin.DataSource = T.Tables(0)
+                                        DGV_BCat.DataSource = bin
+                                    Else ' Limpiar la fuente de datos si no se cargaron datos
+                                        DGV_BCat.DataSource = Nothing
+                                    End If
+                                    TXT_BuscarCat.Select()
+                                End Sub)
+                     Catch ex As Exception
+                         If DGV_BCat.IsHandleCreated Then
+                             Invoke(Sub()
+                                        If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
+                                            ' Mostrar un mensaje de error genérico
+                                            MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                        End If
+                                    End Sub)
+                         End If
+                     End Try
+                 End Sub)
+    End Sub
+
+
     ' Método para manejar el evento DataBindingComplete
-    Private Sub DGV_BCat_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)
+    Private Sub DGV_BCat_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_BCat.DataBindingComplete
         Try
+            ' Mover la celda activa a otra columna visible antes de ocultar columnas 
+            If DGV_BCat.CurrentCell IsNot Nothing AndAlso DGV_BCat.CurrentCell.ColumnIndex = 0 Then
+                DGV_BCat.CurrentCell = DGV_BCat.Rows(0).Cells(1)
+                ' Mueve la celda activa a la columna 1 o cualquier otra columna visible
+            End If
             For i As Integer = 0 To DGV_BCat.Columns.Count - 1
                 DGV_BCat.Columns(i).ReadOnly = True
                 Select Case i
@@ -34,8 +69,6 @@ Public Class B_Categoria
                         DGV_BCat.Columns(i).Width = 50
                     Case 2
                         DGV_BCat.Columns(i).Width = 200
-                    Case 3
-                        DGV_BCat.Columns(i).Width = 70
                 End Select
             Next
             DGV_BCat.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
@@ -47,9 +80,7 @@ Public Class B_Categoria
         End Try
     End Sub
 
-
     Private Sub BTN_RegresarMarca_Click(sender As Object, e As EventArgs) Handles BTN_RegresarCat.Click
-        REFRESCAR()
         Me.Close()
     End Sub
 
@@ -73,20 +104,30 @@ Public Class B_Categoria
     End Sub
 
     Private Sub TXT_BuscarMarca_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarCat.TextChanged
-        REFRESCAR()
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
     End Sub
 
     Private Sub B_Marca_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        InicializarComponentes()
         REFRESCAR()
     End Sub
 
     Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
-        REFRESCAR()
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
         TXT_BuscarCat.Focus()
     End Sub
 
     Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
-        REFRESCAR()
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
         TXT_BuscarCat.Focus()
     End Sub
 
@@ -99,4 +140,5 @@ Public Class B_Categoria
             TXT_Nombre.Text = ""
         End Try
     End Sub
+
 End Class

@@ -1,4 +1,5 @@
 ﻿Imports System.Configuration
+Imports System.Threading.Tasks
 Public Class M_Inicio
     Dim LArray As String()
     Dim MArray As String()
@@ -36,119 +37,142 @@ Public Class M_Inicio
         LBL_Email.Text = "Email: " + ConfigurationManager.AppSettings("Correo").ToString()
         PIC_Logo.Image = Image.FromFile(ConfigurationManager.AppSettings("Logo").ToString())
         LBL_Version.Text = "Ver. " + ConfigurationManager.AppSettings("AppVer").ToString()
-        cargarCalProveedores("dia_pedido", "proveedor_diaPedido")
-        cargarCalProveedores("dia_recibido", "proveedor_recibirPedido")
+        Task.Run(Sub()
+                     cargarCalProveedores("dia_pedido", "proveedor_diaPedido")
+                 End Sub)
+        Task.Run(Sub()
+                     cargarCalProveedores("dia_recibido", "proveedor_recibirPedido")
+                 End Sub)
         LBL_Usu.Text = nomUsuActual
     End Sub
 
-
     Friend Sub cargarCalProveedores(tipoPed As String, tabla As String)
-        Try
+        Task.Run(Sub()
+                     Try
+                         ' Crear una nueva DataTable independiente para cada hilo
+                         Dim T_Hilo As New DataSet
 
-            T.Tables.Clear()
-            SQL = "SELECT p.ID, p.nombre, d." & tipoPed & " FROM proveedor p INNER JOIN " & tabla & " d ON p.ID = d.ID_Proveedor;"
-            Cargar_Tabla(T, SQL)
+                         ' Construir la consulta SQL
+                         SQL = "SELECT p.ID, p.nombre, d." & tipoPed & " FROM proveedor p INNER JOIN " & tabla & " d ON p.ID = d.ID_Proveedor;"
+                         Cargar_Tabla(T_Hilo, SQL)
 
-            'Se actualizan los campos de los array para ser del tamaño máximo posible
-            ReDim LArray(0)
-            ReDim MArray(0)
-            ReDim XArray(0)
-            ReDim JArray(0)
-            ReDim VArray(0)
-            ReDim SArray(0)
-            ReDim DArray(0)
+                         ' Se eliminan todos los datos de los arrays
+                         ReDim LArray(0)
+                         ReDim MArray(0)
+                         ReDim XArray(0)
+                         ReDim JArray(0)
+                         ReDim VArray(0)
+                         ReDim SArray(0)
+                         ReDim DArray(0)
 
-            'Se ponen todos los contadores a 0
-            Lcont = 0
-            Mcont = 0
-            Xcont = 0
-            Jcont = 0
-            Vcont = 0
-            Scont = 0
-            Dcont = 0
-            'Dependiendo del tamaño de la tabla obtenida se hace un ciclo for
-            'En este por cada fila se obtiene el día en la fila 2 y dependiendo del que sea se agrega al array respectivo
-            For i As Integer = 0 To T.Tables(0).Rows().Count - 1
-                Dim dia As String = T.Tables(0).Rows(i).Item(2).ToString()
+                         ' Se ponen todos los contadores a 0
+                         Lcont = 0
+                         Mcont = 0
+                         Xcont = 0
+                         Jcont = 0
+                         Vcont = 0
+                         Scont = 0
+                         Dcont = 0
 
-                Select Case dia
-                    Case "Lunes"
-                        ReDim Preserve LArray(Lcont)
-                        LArray(Lcont) = T.Tables(0).Rows(i).Item(1).ToString()
-                        Lcont += 1
-                    Case "Martes"
-                        ReDim Preserve MArray(Mcont)
-                        MArray(Mcont) = T.Tables(0).Rows(i).Item(1).ToString()
-                        Mcont += 1
-                    Case "Miércoles"
-                        ReDim Preserve XArray(Xcont)
-                        XArray(Xcont) = T.Tables(0).Rows(i).Item(1).ToString()
-                        Xcont += 1
-                    Case "Jueves"
-                        ReDim Preserve JArray(Jcont)
-                        JArray(Jcont) = T.Tables(0).Rows(i).Item(1).ToString()
-                        Jcont += 1
-                    Case "Viernes"
-                        ReDim Preserve VArray(Vcont)
-                        VArray(Vcont) = T.Tables(0).Rows(i).Item(1).ToString()
-                        Vcont += 1
-                    Case "Sábado"
-                        ReDim Preserve SArray(Scont)
-                        SArray(Scont) = T.Tables(0).Rows(i).Item(1).ToString()
-                        Scont += 1
-                    Case "Domingo"
-                        ReDim Preserve DArray(Dcont)
-                        DArray(Dcont) = T.Tables(0).Rows(i).Item(1).ToString()
-                        Dcont += 1
-                End Select
-            Next
+                         ' Llenar los arrays con nuevos datos
+                         For i As Integer = 0 To T_Hilo.Tables(0).Rows().Count - 1
+                             Dim dia As String = T_Hilo.Tables(0).Rows(i).Item(2).ToString()
+                             Select Case dia
+                                 Case "Lunes"
+                                     ReDim Preserve LArray(Lcont)
+                                     LArray(Lcont) = T_Hilo.Tables(0).Rows(i).Item(1).ToString()
+                                     Lcont += 1
+                                 Case "Martes"
+                                     ReDim Preserve MArray(Mcont)
+                                     MArray(Mcont) = T_Hilo.Tables(0).Rows(i).Item(1).ToString()
+                                     Mcont += 1
+                                 Case "Miércoles"
+                                     ReDim Preserve XArray(Xcont)
+                                     XArray(Xcont) = T_Hilo.Tables(0).Rows(i).Item(1).ToString()
+                                     Xcont += 1
+                                 Case "Jueves"
+                                     ReDim Preserve JArray(Jcont)
+                                     JArray(Jcont) = T_Hilo.Tables(0).Rows(i).Item(1).ToString()
+                                     Jcont += 1
+                                 Case "Viernes"
+                                     ReDim Preserve VArray(Vcont)
+                                     VArray(Vcont) = T_Hilo.Tables(0).Rows(i).Item(1).ToString()
+                                     Vcont += 1
+                                 Case "Sábado"
+                                     ReDim Preserve SArray(Scont)
+                                     SArray(Scont) = T_Hilo.Tables(0).Rows(i).Item(1).ToString()
+                                     Scont += 1
+                                 Case "Domingo"
+                                     ReDim Preserve DArray(Dcont)
+                                     DArray(Dcont) = T_Hilo.Tables(0).Rows(i).Item(1).ToString()
+                                     Dcont += 1
+                             End Select
+                         Next
 
-            'Se encuentra el array más largo de los 7
-            Dim arraymas As String()
-            Dim Arraymascont As Integer = 0
+                         ' Se encuentra el array más largo de los 7
+                         Dim arraymas As String()
+                         Dim Arraymascont As Integer = 0
 
-            For Each arr As String() In {LArray, MArray, XArray, JArray, VArray, SArray, DArray}
-                If arr.Length > Arraymascont Then
-                    arraymas = arr
-                    Arraymascont = arr.Length
-                End If
-            Next
+                         For Each arr As String() In {LArray, MArray, XArray, JArray, VArray, SArray, DArray}
+                             If arr.Length > Arraymascont Then
+                                 arraymas = arr
+                                 Arraymascont = arr.Length
+                             End If
+                         Next
 
-            'Se redimensionan todos los array al del mas grande para que tengan el mismo lenght
-            ReDim Preserve LArray(Arraymascont - 1)
-            ReDim Preserve MArray(Arraymascont - 1)
-            ReDim Preserve XArray(Arraymascont - 1)
-            ReDim Preserve JArray(Arraymascont - 1)
-            ReDim Preserve VArray(Arraymascont - 1)
-            ReDim Preserve SArray(Arraymascont - 1)
-            ReDim Preserve DArray(Arraymascont - 1)
+                         ' Se redimensionan todos los arrays al del más grande para que tengan el mismo tamaño
+                         ReDim Preserve LArray(Arraymascont - 1)
+                         ReDim Preserve MArray(Arraymascont - 1)
+                         ReDim Preserve XArray(Arraymascont - 1)
+                         ReDim Preserve JArray(Arraymascont - 1)
+                         ReDim Preserve VArray(Arraymascont - 1)
+                         ReDim Preserve SArray(Arraymascont - 1)
+                         ReDim Preserve DArray(Arraymascont - 1)
 
-            'Se limpian los items del list view correspondiente
-            If tabla = "proveedor_diaPedido" Then
-                DGV_LHacerPed.Rows.Clear()
-            ElseIf tabla = "proveedor_recibirPedido" Then
-                DGV_LRebPed.Rows.Clear()
-            End If
+                         ' Limpiar los ítems del DataGridView correspondiente
+                         Invoke(Sub()
+                                    If tabla = "proveedor_diaPedido" Then
+                                        DGV_LHacerPed.Rows.Clear()
+                                    ElseIf tabla = "proveedor_recibirPedido" Then
+                                        DGV_LRebPed.Rows.Clear()
+                                    End If
+                                End Sub)
 
-            'Se añaden los items a list view corre
-            For i As Integer = 0 To Arraymascont - 1
-                If tabla = "proveedor_diaPedido" Then
-                    DGV_LHacerPed.Rows.Add(If(LArray(i) Is Nothing, "", LArray(i)), If(MArray(i) Is Nothing, "", MArray(i)),
-                                           If(XArray(i) Is Nothing, "", XArray(i)), If(JArray(i) Is Nothing, "", JArray(i)),
-                                           If(VArray(i) Is Nothing, "", VArray(i)), If(SArray(i) Is Nothing, "", SArray(i)),
-                                           If(DArray(i) Is Nothing, "", DArray(i)))
-
-                ElseIf tabla = "proveedor_recibirPedido" Then
-                    DGV_LRebPed.Rows.Add(If(LArray(i) Is Nothing, "", LArray(i)), If(MArray(i) Is Nothing, "", MArray(i)),
-                                         If(XArray(i) Is Nothing, "", XArray(i)), If(JArray(i) Is Nothing, "", JArray(i)),
-                                         If(VArray(i) Is Nothing, "", VArray(i)), If(SArray(i) Is Nothing, "", SArray(i)),
-                                         If(DArray(i) Is Nothing, "", DArray(i)))
-                End If
-            Next
-        Catch ex As Exception
-            MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
-        End Try
+                         ' Añadir los ítems al DataGridView correspondiente
+                         Invoke(Sub()
+                                    For i As Integer = 0 To Arraymascont - 1
+                                        ' Verificar que el índice está dentro del rango antes de acceder a los arrays
+                                        If i < LArray.Length OrElse i < MArray.Length OrElse i < XArray.Length OrElse i < JArray.Length OrElse i < VArray.Length OrElse i < SArray.Length OrElse i < DArray.Length Then
+                                            If tabla = "proveedor_diaPedido" Then
+                                                DGV_LHacerPed.Rows.Add(If(i < LArray.Length, LArray(i), ""),
+                                                                   If(i < MArray.Length, MArray(i), ""),
+                                                                   If(i < XArray.Length, XArray(i), ""),
+                                                                   If(i < JArray.Length, JArray(i), ""),
+                                                                   If(i < VArray.Length, VArray(i), ""),
+                                                                   If(i < SArray.Length, SArray(i), ""),
+                                                                   If(i < DArray.Length, DArray(i), ""))
+                                            ElseIf tabla = "proveedor_recibirPedido" Then
+                                                DGV_LRebPed.Rows.Add(If(i < LArray.Length, LArray(i), ""),
+                                                                 If(i < MArray.Length, MArray(i), ""),
+                                                                 If(i < XArray.Length, XArray(i), ""),
+                                                                 If(i < JArray.Length, JArray(i), ""),
+                                                                 If(i < VArray.Length, VArray(i), ""),
+                                                                 If(i < SArray.Length, SArray(i), ""),
+                                                                 If(i < DArray.Length, DArray(i), ""))
+                                            End If
+                                        End If
+                                    Next
+                                End Sub)
+                     Catch ex As Exception
+                         Invoke(Sub()
+                                    MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                End Sub)
+                     End Try
+                 End Sub)
     End Sub
+
+
+
 
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
         If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
@@ -191,6 +215,5 @@ Public Class M_Inicio
         LBL_Usu.Text = ""
         P_SelectUsu.Show()
         Me.Close()
-
     End Sub
 End Class

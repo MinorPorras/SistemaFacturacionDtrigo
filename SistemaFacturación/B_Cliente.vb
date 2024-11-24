@@ -1,30 +1,63 @@
-﻿Public Class B_Cliente
+﻿Imports System.Threading.Tasks
+
+Public Class B_Cliente
+
+    Private searchTimer As Timer
+
+    ' Método para inicializar el temporizador y otros componentes necesarios
+    Private Sub InicializarComponentes()
+        ' Inicializar el temporizador
+        searchTimer = New Timer()
+        searchTimer.Interval = 100
+        ' Medio segundo
+        AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
+    End Sub
+
+    Private Sub OnSearchTimerTick(sender As Object, e As EventArgs)
+        ' Detener el temporizador y ejecutar la búsqueda
+        searchTimer.Stop()
+        REFRESCAR()
+    End Sub
     Private Sub B_Cliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        InicializarComponentes()
         REFRESCAR()
     End Sub
 
     Public Sub REFRESCAR()
-        Try
-            T.Tables.Clear()
-            SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] " &
-                "FROM clientes where codigo LIKE '%" & TXT_BuscarCliente.Text & "%'" &
-                " OR nombre LIKE '%" & TXT_BuscarCliente.Text & "%'"
-            Cargar_Tabla(T, SQL)
-            Dim bin As New BindingSource
-            bin.DataSource = T.Tables(0)
-            DGV_BCliente.DataSource = bin
-            ' Manejar el evento DataBindingComplete para ocultar las columnas
-            AddHandler DGV_BCliente.DataBindingComplete, AddressOf DGV_BCliente_DataBindingComplete
-            TXT_BuscarCliente.Select()
-        Catch ex As Exception
-            If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
-                ' Mostrar un mensaje de error genérico
-                MsgBox("Error al cargar la lista de clientes: " & ex.Message, vbCritical + vbOKOnly, "Error")
-            End If
-        End Try
+        Task.Run(Sub()
+                     Try
+                         T.Tables.Clear()
+                         SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] " &
+                             "FROM clientes where codigo LIKE '%" & TXT_BuscarCliente.Text & "%'" &
+                             " OR nombre LIKE '%" & TXT_BuscarCliente.Text & "%'"
+                         Invoke(Sub()
+                                    Cargar_Tabla(T, SQL)
+                                    If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
+                                        Dim bin As New BindingSource
+                                        bin.DataSource = T.Tables(0)
+                                        DGV_BCliente.DataSource = bin
+                                    Else ' Limpiar la fuente de datos si no se cargaron datos
+                                        DGV_BCliente.DataSource = Nothing
+
+                                    End If
+                                    TXT_BuscarCliente.Select()
+
+                                End Sub)
+                     Catch ex As Exception
+                         If DGV_BCliente.IsHandleCreated Then
+                             Invoke(Sub()
+                                        If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
+                                            ' Mostrar un mensaje de error genérico
+                                            MsgBox("Error al cargar la lista de clientes: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                        End If
+                                    End Sub)
+                         End If
+                     End Try
+                 End Sub)
+
     End Sub
 
-    Private Sub DGV_BCliente_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)
+    Private Sub DGV_BCliente_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_BCliente.DataBindingComplete
         Try
             For i As Integer = 0 To DGV_BCliente.Columns.Count - 1
                 DGV_BCliente.Columns(i).ReadOnly = True
@@ -58,17 +91,10 @@
     End Sub
 
     Private Sub TXT_BuscarCliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarCliente.TextChanged
-        REFRESCAR()
-    End Sub
-
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
-        REFRESCAR()
-        TXT_BuscarCliente.Focus()
-    End Sub
-
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
-        REFRESCAR()
-        TXT_BuscarCliente.Focus()
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
     End Sub
 
     Private Sub DGV_BCliente_SelectionChanged(sender As Object, e As EventArgs) Handles DGV_BCliente.SelectionChanged

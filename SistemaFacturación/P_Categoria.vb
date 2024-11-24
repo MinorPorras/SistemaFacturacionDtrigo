@@ -1,5 +1,22 @@
-﻿
+﻿Imports System.Threading.Tasks
+
 Public Class P_Categoria
+    Private searchTimer As Timer
+
+    ' Método para inicializar el temporizador y otros componentes necesarios
+    Private Sub InicializarComponentes()
+        ' Inicializar el temporizador
+        searchTimer = New Timer()
+        searchTimer.Interval = 100
+        ' Medio segundo
+        AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
+    End Sub
+
+    Private Sub OnSearchTimerTick(sender As Object, e As EventArgs)
+        ' Detener el temporizador y ejecutar la búsqueda
+        searchTimer.Stop()
+        REFRESCAR()
+    End Sub
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
         If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
             Application.Exit()
@@ -12,36 +29,54 @@ Public Class P_Categoria
     End Sub
 
     Private Sub P_Categoria_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        InicializarComponentes()
         REFRESCAR()
     End Sub
 
     Public Sub REFRESCAR()
-        Try
-            MNU_ELIMINAR.Visible = False
-            MNU_MODIFICAR.Visible = False
-            SQL = "SELECT ID, codigo as [Código], nombre as [Nombre], color as [Color]" &
-                " FROM categoria where codigo LIKE '%" & TXT_BuscarCat.Text & "%' " &
-                "OR where nombre LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(Codigo) ASC;"
-            Cargar_Tabla(T, SQL)
-            Dim bin As New BindingSource
-            bin.DataSource = T.Tables(0)
-            DGV_Categoria.DataSource = bin
-            If T.Tables(0).Rows.Count > 0 Then
-                MNU_ELIMINAR.Visible = True
-                MNU_MODIFICAR.Visible = True
-            End If
-            ' Manejar el evento DataBindingComplete para ocultar las columnas
-            AddHandler DGV_Categoria.DataBindingComplete, AddressOf DGV_Marca_DataBindingComplete
-            TXT_BuscarCat.Select()
-        Catch ex As Exception
-            If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
-                ' Mostrar un mensaje de error genérico
-                MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
-            End If
-        End Try
+        Task.Run(Sub()
+                     Try
+                         T.Tables.Clear()
+                         MNU_ELIMINAR.Visible = False
+                         MNU_MODIFICAR.Visible = False
+                         SQL = "SELECT ID, codigo AS [Código], nombre AS [Nombre], color AS [Color] " &
+                                  "FROM categoria " &
+                                  "WHERE codigo LIKE '%" & TXT_BuscarCat.Text & "%' " &
+                                  "OR nombre LIKE '%" & TXT_BuscarCat.Text & "%' " &
+                                  ";"
+                         Invoke(Sub()
+                                    Cargar_Tabla(T, SQL)
+                                    If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
+                                        DGV_Categoria.Columns.Clear()
+                                        Dim bin As New BindingSource
+                                        bin.DataSource = T.Tables(0)
+                                        DGV_Categoria.DataSource = bin
+                                        If T.Tables(0).Rows.Count > 0 Then
+                                            MNU_ELIMINAR.Visible = True
+                                            MNU_MODIFICAR.Visible = True
+                                        End If
+                                    Else ' Limpiar la fuente de datos si no se cargaron datos
+                                        DGV_Categoria.DataSource = Nothing
+                                    End If
+                                    AddHandler DGV_Categoria.DataBindingComplete, AddressOf DGV_Categoria_DataBindingComplete
+                                    TXT_BuscarCat.Select()
+                                End Sub)
+                     Catch ex As Exception
+                         Invoke(Sub()
+                                    If DGV_Categoria.IsHandleCreated Then
+                                        If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
+                                            ' Mostrar un mensaje de error genérico
+                                            MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                        End If
+                                    End If
+                                End Sub)
+
+                     End Try
+                 End Sub)
     End Sub
 
-    Private Sub DGV_Marca_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)
+
+    Private Sub DGV_Categoria_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_Categoria.DataBindingComplete
         Try
             For i As Integer = 0 To DGV_Categoria.Columns.Count - 1
                 DGV_Categoria.Columns(i).ReadOnly = True
@@ -81,9 +116,10 @@ Public Class P_Categoria
     End Sub
 
     Private Sub TXT_BuscarCat_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarCat.TextChanged
-
-        REFRESCAR()
-
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
     End Sub
 
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NCat.Click
@@ -143,15 +179,5 @@ Public Class P_Categoria
         Catch ex As Exception
             MsgBox("Error al eliminar la categoria: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
-    End Sub
-
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
-        REFRESCAR()
-        TXT_BuscarCat.Focus()
-    End Sub
-
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
-        REFRESCAR()
-        TXT_BuscarCat.Focus()
     End Sub
 End Class

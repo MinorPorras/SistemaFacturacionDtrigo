@@ -152,8 +152,9 @@ Public Class P_TerminarVenta
                 For i As Integer = 0 To P_Caja.DGV_Caja.Rows.Count - 2
                     GUARDAR_VarCompInt4("factura_producto", idFactura, P_Caja.DGV_Caja.Rows(i).Cells(0).Value.ToString(), P_Caja.DGV_Caja.Rows(i).Cells(4).Value.ToString(), Convert.ToDouble(P_Caja.DGV_Caja.Rows(i).Cells(3).Value.ToString()))
                 Next
-                GUARDAR_VarCompuestas("factura_comentario", idFactura, TXT_Comentario.Text)
-
+                If String.IsNullOrEmpty(TXT_Comentario.Text) Then
+                    GUARDAR_VarCompuestas("factura_comentario", idFactura, TXT_Comentario.Text)
+                End If
                 If MessageBox.Show("Venta realizada con exito." + vbCrLf + "¿Desea imprimir la factura correspondiente?", "Venta existosa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                     CREAR_FACTURA(idFactura, encabezadoFactura, facturaContenido, finFactura, False)
                     ImprimirFactura()
@@ -374,5 +375,14 @@ Public Class P_TerminarVenta
     Private Sub BTN_RestanteEfectivo_Click(sender As Object, e As EventArgs) Handles BTN_RestanteEfectivo.Click
         TXT_PagoTarjeta.Text = cargarRestante(False)
         calcVuelto(TXT_DCliente, TXT_MVuelto)
+    End Sub
+
+    Private Sub P_TerminarVenta_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        Select Case e.KeyCode
+            Case Keys.F3
+                BTN_RegresarVenta.PerformClick()
+            Case Keys.F7
+                BTN_TVenta.PerformClick()
+        End Select
     End Sub
 End Class

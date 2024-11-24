@@ -180,9 +180,11 @@ Partial Class E_ProductoVariable
         '
         'E_ProductoVariable
         '
+        Me.AcceptButton = Me.BTN_SelectProd
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
+        Me.CancelButton = Me.BTN_RegresarPrd
         Me.ClientSize = New System.Drawing.Size(400, 290)
         Me.Controls.Add(Me.LBL_ID)
         Me.Controls.Add(Me.BTN_RegresarPrd)

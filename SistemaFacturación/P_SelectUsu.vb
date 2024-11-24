@@ -47,7 +47,7 @@ Public Class P_SelectUsu
     End Sub
 
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        If MsgBox("¿Desea cerra la aplicación?", vbOKOnly + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
+        If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
             Application.Exit()
         End If
     End Sub

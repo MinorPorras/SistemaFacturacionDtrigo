@@ -6,7 +6,7 @@ Public Class P_Productos
                           "IIf(p.variable=1, 'Si', 'No') AS [Variable], " &
                           "c.ID_Categoria AS [ID_cat], cat.nombre AS [Categoría], " &
                           "pm.ID_Marca AS [ID_Marca], m.Nombre AS [Marca], pp.ID_Proveedor AS [ID_Prov], " &
-                          "pr.nombre AS [Proveedor], p.favorito AS [Favorito] " &
+                          "pr.nombre AS [Proveedor], p.favorito AS [Fav] " &
                           "FROM ((((((((producto p " &
                           "LEFT JOIN producto_categoria c ON p.ID = c.ID_Producto) " &
                           "LEFT JOIN categoria cat ON c.ID_Categoria = cat.ID) " &
@@ -22,7 +22,7 @@ Public Class P_Productos
     Private Sub InicializarComponentes()
         ' Inicializar el temporizador
         searchTimer = New Timer()
-        searchTimer.Interval = 50
+        searchTimer.Interval = 300
         ' Medio segundo
         AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
     End Sub
@@ -124,9 +124,9 @@ Public Class P_Productos
                     Case 2
                         DGV_Prods.Columns(i).Width = 200
                     Case 3
-                        DGV_Prods.Columns(i).Width = 300
+                        DGV_Prods.Columns(i).Width = 350
                     Case 4
-                        DGV_Prods.Columns(i).Width = 80
+                        DGV_Prods.Columns(i).Width = 60
                     Case 7
                         DGV_Prods.Columns(i).Width = 60
                     Case 8
@@ -138,11 +138,13 @@ Public Class P_Productos
                     Case 14
                         DGV_Prods.Columns(i).Width = 70
                     Case 15
-                        DGV_Prods.Columns(i).Width = 50
+                        DGV_Prods.Columns(i).Width = 30
                 End Select
             Next
             DGV_Prods.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
             DGV_Prods.AutoResizeColumn(DataGridViewAutoSizeColumnMode.DisplayedCells)
+            DGV_Prods.Columns(4).DefaultCellStyle.Format = "#,##"
+            DGV_Prods.Columns(7).DefaultCellStyle.Format = "#,##"
             DGV_Prods.GridColor = Color.DarkGray
             DGV_Prods.Columns(0).Visible = False
             DGV_Prods.Columns(5).Visible = False
