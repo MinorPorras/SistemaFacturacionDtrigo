@@ -36,8 +36,10 @@ Public Class P_Proveedor
     Public Sub REFRESCAR()
         Task.Run(Sub()
                      Try
-                         MNU_ELIMINAR.Visible = False
-                         MNU_MODIFICAR.Visible = False
+                         Dim selectedRowIndex As Integer = -1
+                         If DGV_Prov.SelectedRows.Count > 0 Then
+                             selectedRowIndex = DGV_Prov.SelectedRows(0).Index
+                         End If
                          T.Tables.Clear()
                          SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], c.correo as [Correo], t.telefono as [Teléfono] " +
                              "FROM ((proveedor AS p " +
@@ -45,11 +47,17 @@ Public Class P_Proveedor
                              "LEFT JOIN proveedor_telefono AS t ON t.ID_Proveedor = p.ID) where p.codigo LIKE '%" & TXT_BuscarProv.Text & "%'" &
                              " OR p.nombre LIKE '%" & TXT_BuscarProv.Text & "%' ORDER BY Val(p.codigo) ASC;"
                          Invoke(Sub()
+                                    MNU_ELIMINAR.Visible = False
+                                    MNU_MODIFICAR.Visible = False
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
                                         Dim bin As New BindingSource
                                         bin.DataSource = T.Tables(0)
                                         DGV_Prov.DataSource = bin
+                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Prov.Rows.Count Then
+                                            DGV_Prov.Rows(selectedRowIndex).Selected = True
+                                            DGV_Prov.FirstDisplayedScrollingRowIndex = selectedRowIndex
+                                        End If
                                         If T.Tables(0).Rows.Count > 0 Then
                                             MNU_ELIMINAR.Visible = True
                                             MNU_MODIFICAR.Visible = True
@@ -199,5 +207,6 @@ Public Class P_Proveedor
         Catch ex As Exception
             MsgBox("Error al eliminar el proveedor: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
+        TXT_BuscarProv.SelectAll()
     End Sub
 End Class

@@ -51,6 +51,10 @@ Public Class P_Productos
     Public Sub REFRESCAR()
         Task.Run(Sub()
                      Try
+                         Dim selectedRowIndex As Integer = -1
+                         If DGV_Prods.SelectedRows.Count > 0 Then
+                             selectedRowIndex = DGV_Prods.SelectedRows(0).Index
+                         End If
                          ' Se vuelven invisibles el menú contextual en caso de que no haya nada en la tabla
                          Invoke(Sub()
                                     MNU_ELIMINAR.Visible = False
@@ -91,6 +95,10 @@ Public Class P_Productos
                                         Dim bin As New BindingSource
                                         bin.DataSource = T.Tables(0)
                                         DGV_Prods.DataSource = bin
+                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Prods.Rows.Count Then
+                                            DGV_Prods.Rows(selectedRowIndex).Selected = True
+                                            DGV_Prods.FirstDisplayedScrollingRowIndex = selectedRowIndex
+                                        End If
                                         If T.Tables(0).Rows.Count > 0 Then
                                             MNU_ELIMINAR.Visible = True
                                             MNU_MODIFICAR.Visible = True
@@ -99,6 +107,7 @@ Public Class P_Productos
                                     Else ' Limpiar la fuente de datos si no se cargaron datos
                                         DGV_Prods.DataSource = Nothing
                                     End If
+                                    TXT_BuscarProd.Select()
                                 End Sub)
                      Catch ex As Exception
                          If DGV_Prods.IsHandleCreated Then
@@ -293,14 +302,7 @@ Public Class P_Productos
         Catch ex As Exception
             MsgBox("Error al eliminar el producto: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
-    End Sub
-
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
-        TXT_BuscarProd.Select()
-    End Sub
-
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
-        TXT_BuscarProd.Select()
+        TXT_BuscarProd.SelectAll()
     End Sub
 
     Private Sub TXT_BuscarProd_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProd.TextChanged

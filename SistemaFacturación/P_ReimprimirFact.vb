@@ -26,13 +26,22 @@ Public Class P_ReimprimirFact
 
     Private Sub P_ReimprimirFact_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InicializarComponentes()
+    End Sub
+
+    Private Async Sub P_ReimprimirFact_Async_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Esperar un pequeño retraso para asegurarse de que el formulario está completamente cargado
+        Await Task.Delay(100)
+        Me.Select()
         REFRESCAR()
     End Sub
 
     Friend Sub REFRESCAR()
         Task.Run(Sub()
                      Try
-                         MNU_REIMPRIMIR.Visible = False
+                         Dim selectedRowIndex As Integer = -1
+                         If DGV_ReimprimirFact.SelectedRows.Count > 0 Then
+                             selectedRowIndex = DGV_ReimprimirFact.SelectedRows(0).Index
+                         End If
                          T.Tables.Clear()
                          SQL = "SELECT f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Cliente], u.usuario as [Cajero], fc.comentario as [Comentario]" &
                              ", f.total as [Total], f.efectivo_cliente as [Pago efectivo], f.tarjeta_cliente as [Pago tarjeta], f.vuelto as [Vuelto], " &
@@ -42,11 +51,16 @@ Public Class P_ReimprimirFact
                                "LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
                                "LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura Like '%" & TXT_BuscarFact.Text & "%' ORDER BY Val(f.num_factura) DESC;"
                          Invoke(Sub()
+                                    MNU_REIMPRIMIR.Visible = False
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
                                         Dim bin As New BindingSource
                                         bin.DataSource = T.Tables(0)
                                         DGV_ReimprimirFact.DataSource = bin
+                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_ReimprimirFact.Rows.Count Then
+                                            DGV_ReimprimirFact.Rows(selectedRowIndex).Selected = True
+                                            DGV_ReimprimirFact.FirstDisplayedScrollingRowIndex = selectedRowIndex
+                                        End If
                                         If T.Tables(0).Rows.Count > 0 Then
                                             MNU_REIMPRIMIR.Visible = True
                                         End If
@@ -221,6 +235,8 @@ Public Class P_ReimprimirFact
 
     Private Sub BTN_RegresarFact_Click(sender As Object, e As EventArgs) Handles BTN_RegresarFact.Click
         P_Caja.Show()
+        P_Caja.TXT_BuscarProducto.Select()
+        P_Caja.TXT_BuscarProducto.SelectAll()
         Me.Close()
     End Sub
 

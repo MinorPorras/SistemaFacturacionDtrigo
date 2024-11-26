@@ -27,6 +27,7 @@ Public Class E_NuevoUsuario
         P_Usuarios.Show()
         P_Usuarios.REFRESCAR()
         Me.Close()
+        P_Usuarios.TXT_BuscarUsuario.SelectAll()
     End Sub
 
     Private Sub TXT_CodUsuario_TextChanged(sender As Object, e As EventArgs) Handles TXT_CodUsuario.TextChanged
@@ -108,12 +109,14 @@ Public Class E_NuevoUsuario
                             P_Usuarios.Show()
                             P_Usuarios.REFRESCAR()
                             Me.Close()
+                            P_Usuarios.TXT_BuscarUsuario.SelectAll()
                         Catch ex As Exception
                             MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
                         End Try
                     End If
                 Else
                     MsgBox("El código " + TXT_CodUsuario.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
+                    TXT_CodUsuario.SelectAll()
                 End If
             Catch ex As Exception
                 MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")

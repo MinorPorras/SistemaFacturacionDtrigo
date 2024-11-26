@@ -36,18 +36,26 @@ Public Class P_Marca
     Public Sub REFRESCAR()
         Task.Run(Sub()
                      Try
-                         MNU_ELIMINAR.Visible = False
-                         MNU_MODIFICAR.Visible = False
+                         Dim selectedRowIndex As Integer = -1
+                         If DGV_Marca.SelectedRows.Count > 0 Then
+                             selectedRowIndex = DGV_Marca.SelectedRows(0).Index
+                         End If
                          T.Tables.Clear()
                          SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM marca where codigo " &
                              "LIKE '%" & TXT_BuscarMarca.Text & "%' OR nombre LIKE '%" & TXT_BuscarMarca.Text & "%'" &
                              " ORDER BY Val(codigo) ASC;"
                          Invoke(Sub()
+                                    MNU_ELIMINAR.Visible = False
+                                    MNU_MODIFICAR.Visible = False
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
                                         Dim bin As New BindingSource
                                         bin.DataSource = T.Tables(0)
                                         DGV_Marca.DataSource = bin
+                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Marca.Rows.Count Then
+                                            DGV_Marca.Rows(selectedRowIndex).Selected = True
+                                            DGV_Marca.FirstDisplayedScrollingRowIndex = selectedRowIndex
+                                        End If
                                         If T.Tables(0).Rows.Count > 0 Then
                                             MNU_ELIMINAR.Visible = True
                                             MNU_MODIFICAR.Visible = True
@@ -150,5 +158,6 @@ Public Class P_Marca
             Console.WriteLine(ex.Message)
             MsgBox("Error al eliminar la marca: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
+        TXT_BuscarMarca.SelectAll()
     End Sub
 End Class

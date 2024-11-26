@@ -93,6 +93,8 @@ Public Class B_Producto
 
     Private Sub BTN_RegresarPrd_Click(sender As Object, e As EventArgs) Handles BTN_RegresarPrd.Click
         Me.Close()
+        P_Caja.TXT_BuscarProducto.Select()
+        P_Caja.TXT_BuscarProducto.SelectAll()
     End Sub
 
     Private Sub BTN_SelectProd_Click(sender As Object, e As EventArgs) Handles BTN_SelectProd.Click
@@ -130,6 +132,8 @@ Public Class B_Producto
             LIMPIAR()
             P_Caja.cargarTotal()
             Me.Close()
+            P_Caja.TXT_BuscarProducto.Select()
+            P_Caja.TXT_BuscarProducto.SelectAll()
         Else
             E_ProductoVariable.LBL_Cod.Text = TXT_codigo.Text
             E_ProductoVariable.LBL_Producto.Text = TXT_Nombre.Text

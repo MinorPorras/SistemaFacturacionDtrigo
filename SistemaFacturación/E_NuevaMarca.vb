@@ -22,6 +22,7 @@
 
     Private Sub BTN_RegresarNCat_Click(sender As Object, e As EventArgs) Handles BTN_RegresarMarca.Click
         Me.Close()
+        P_Marca.TXT_BuscarMarca.SelectAll()
     End Sub
 
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NMarca.Click
@@ -56,6 +57,7 @@
                         ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
                         P_Marca.Show()
                         P_Marca.REFRESCAR()
+                        P_Marca.TXT_BuscarMarca.SelectAll()
                         Me.Close()
                     Catch ex As Exception
                         MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
@@ -63,6 +65,7 @@
                 End If
             Else
                 MsgBox("El código " + TXT_CodMarca.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
+                TXT_CodMarca.SelectAll()
             End If
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")

@@ -91,6 +91,7 @@
                             ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
                             P_Clientes.Show()
                             P_Clientes.REFRESCAR()
+                            P_Clientes.TXT_BuscarCliente.SelectAll()
                             Me.Close()
                         Catch ex As Exception
                             MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
@@ -98,6 +99,7 @@
                     End If
                 Else
                     MsgBox("El código " + TXT_CodCliente.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
+                    TXT_CodCliente.SelectAll()
                 End If
             Catch ex As Exception
                 MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
@@ -116,6 +118,7 @@
     Private Sub BTN_RegresarCliente_Click(sender As Object, e As EventArgs) Handles BTN_RegresarCliente.Click
         P_Clientes.REFRESCAR()
         Me.Close()
+        P_Clientes.TXT_BuscarCliente.SelectAll()
     End Sub
 
     Private Sub TXT_CodCliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_CodCliente.TextChanged

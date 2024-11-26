@@ -1,3 +1,16 @@
+**Versión 1.1.0.6 (25 de noviembre de 2024)**
+- Al entrar en la caja se mantiene seleccionado la caja de texto de buscar producto
+- Al fallar la contraseña ahora se mantiene la selección de de la caja de texto para escribir la contraseña
+- Las facturas ya deberían de mostrar correctamente toda la dirección de la sucursal
+- Se arregló un error que hacia que al cancelar los cambios al modificar cualquier cosa en la app mostraba el error como si el producto fuera nuevo
+- Ya funciona la tecla de esc en la pestaña de nuevo producto
+- En todas las pestañas de agregar, modificar y de buscar ahora si se equivocan escribiendo un código que ya existe, lo selecciona todo para escribirlo de nuevo
+- Se arregló un error con los hilos de la app que hacía que a la hora de hacer ciertas acciones en específicas no cargaba correctamente el menu contextual con los botones de eliminar y modificar en las pestañas de mantenimiento
+- Se aseguró que todas las listas se cargaran ordenadas por código
+- Mejoras de la calidad de vida general de la app
+- Ahora al terminar cualquier proceso se mantiene el objeto seleccionado anteriormente en la tabla, funciona en todos menos en las pestañas de busqueda
+
+
 **Versión 1.1.1.5 (23 de noviembre de 2024)**
 - La caja de advertencia a la hora de confirmar que se quiere cerrar la app en la pestaña de selcción de usuario al iniciar la app ahora da la opción de cancelarlo y que no se cierre la app
 - Se mejoró el proceso de busqueda de todas las pestañas que lo ocupaban y de el de las tablas de los pedidos de los proveedores

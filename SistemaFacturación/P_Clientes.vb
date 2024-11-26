@@ -26,8 +26,10 @@ Public Class P_Clientes
     Public Sub REFRESCAR()
         Task.Run(Sub()
                      Try
-                         MNU_ELIMINAR.Visible = False
-                         MNU_MODIFICAR.Visible = False
+                         Dim selectedRowIndex As Integer = -1
+                         If DGV_Cliente.SelectedRows.Count > 0 Then
+                             selectedRowIndex = DGV_Cliente.SelectedRows(0).Index
+                         End If
                          T.Tables.Clear()
                          SQL = "SELECT c.ID, c.codigo as [Código], c.nombre as [Nombre], cc.cedula as [Cédula], ct.telefono as [Teléfono]," &
                                  " co.correo as [Correo] FROM (((clientes c" + " 
@@ -36,11 +38,18 @@ Public Class P_Clientes
                         LEFT JOIN cliente_telefono ct ON CT.ID_Cliente = C.ID) where c.codigo LIKE '%" & TXT_BuscarCliente.Text & "%' OR" &
                                      " c.nombre LIKE '%" & TXT_BuscarCliente.Text & "%' ORDER BY Val(c.codigo) ASC;"
                          Invoke(Sub()
+                                    MNU_ELIMINAR.Visible = False
+                                    MNU_MODIFICAR.Visible = False
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
                                         Dim bin As New BindingSource
                                         bin.DataSource = T.Tables(0)
                                         DGV_Cliente.DataSource = bin
+                                        ' Restaurar la selección
+                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Cliente.Rows.Count Then
+                                            DGV_Cliente.Rows(selectedRowIndex).Selected = True
+                                            DGV_Cliente.FirstDisplayedScrollingRowIndex = selectedRowIndex
+                                        End If
                                         If T.Tables(0).Rows.Count > 0 Then
                                             MNU_ELIMINAR.Visible = True
                                             MNU_MODIFICAR.Visible = True
@@ -48,7 +57,6 @@ Public Class P_Clientes
                                     Else ' Limpiar la fuente de datos si no se cargaron datos
                                         DGV_Cliente.DataSource = Nothing
                                     End If
-                                    TXT_BuscarCliente.Select()
                                 End Sub)
                      Catch ex As Exception
                          Invoke(Sub()
@@ -95,7 +103,7 @@ Public Class P_Clientes
 
     Private Sub P_Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InicializarComponentes()
-        TXT_BuscarCliente.Focus()
+        TXT_BuscarCliente.Select()
         REFRESCAR()
     End Sub
 
@@ -176,6 +184,7 @@ Public Class P_Clientes
         Catch ex As Exception
             MsgBox("Error al eliminar el cliente: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
+        TXT_BuscarCliente.SelectAll()
     End Sub
 
     Private Sub P_Clientes_KeyPress(sender As Object, e As KeyPressEventArgs) Handles MyBase.KeyPress

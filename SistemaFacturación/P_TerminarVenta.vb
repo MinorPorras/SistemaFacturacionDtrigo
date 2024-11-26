@@ -166,6 +166,8 @@ Public Class P_TerminarVenta
                 P_Caja.LIMPIAR()
                 P_Caja.cargarNumFactura()
                 P_Caja.Show()
+                P_Caja.TXT_BuscarProducto.Select()
+                P_Caja.TXT_BuscarProducto.SelectAll()
                 Me.Close()
             Catch ex As Exception
                 MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
@@ -245,6 +247,8 @@ Public Class P_TerminarVenta
 
     Private Sub BTN_RegresarVenta_Click(sender As Object, e As EventArgs) Handles BTN_RegresarVenta.Click
         Me.Close()
+        P_Caja.TXT_BuscarProducto.Select()
+        P_Caja.TXT_BuscarProducto.SelectAll()
     End Sub
 
     Private Sub TabControlTVenta_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControlTVenta.SelectedIndexChanged
@@ -264,6 +268,8 @@ Public Class P_TerminarVenta
                 TXT_PagoEfectivo.Text = "0"
                 TXT_PagoTarjeta.Text = "0"
                 TXT_MVuelto.Text = "0"
+                TXT_ECliente.Select()
+                TXT_ECliente.SelectAll()
             Case 1 'Tarjeta
                 'Efectivo
                 TXT_EVuelto.Text = "0"
@@ -278,6 +284,8 @@ Public Class P_TerminarVenta
                 TXT_PagoEfectivo.Text = "0"
                 TXT_PagoTarjeta.Text = "0"
                 TXT_MVuelto.Text = "0"
+                TXT_TCliente.Select()
+                TXT_TCliente.SelectAll()
             Case 2 'Sinpe
                 'Efectivo
                 TXT_EVuelto.Text = "0"
@@ -292,6 +300,8 @@ Public Class P_TerminarVenta
                 TXT_PagoEfectivo.Text = "0"
                 TXT_PagoTarjeta.Text = "0"
                 TXT_MVuelto.Text = "0"
+                TXT_SCliente.Select()
+                TXT_SCliente.SelectAll()
             Case 3 'Depósito
                 'Efectivo
                 TXT_EVuelto.Text = "0"
@@ -306,6 +316,8 @@ Public Class P_TerminarVenta
                 TXT_PagoEfectivo.Text = "0"
                 TXT_PagoTarjeta.Text = "0"
                 TXT_MVuelto.Text = "0"
+                TXT_DCliente.Select()
+                TXT_DCliente.SelectAll()
             Case 4 'Mixto
                 'Efectivo
                 TXT_EVuelto.Text = "0"
@@ -319,6 +331,10 @@ Public Class P_TerminarVenta
                 'Depósito
                 TXT_DCliente.Text = "0"
                 TXT_DVuelto.Text = "0"
+                TXT_PagoEfectivo.Select()
+                TXT_PagoEfectivo.SelectAll()
+                TXT_PagoTarjeta.Select()
+                TXT_PagoTarjeta.SelectAll()
         End Select
     End Sub
 

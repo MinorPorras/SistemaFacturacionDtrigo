@@ -32,20 +32,27 @@ Public Class P_Usuarios
     Public Sub REFRESCAR()
         Task.Run(Sub()
                      Try
-                         MNU_ELIMINAR.Visible = False
-                         MNU_MODIFICAR.Visible = False
+                         Dim selectedRowIndex As Integer = -1
+                         If DGV_Cajero.SelectedRows.Count > 0 Then
+                             selectedRowIndex = DGV_Cajero.SelectedRows(0).Index
+                         End If
                          T.Tables.Clear()
 
                          SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, " &
                                "IIf(u.tipo=0, 'Cajero', IIf(u.tipo=1, 'Administrador', 'Desconocido')) AS [Tipo], u.color as [Color] " &
                                "FROM usuario u WHERE u.codigo LIKE '%" & TXT_BuscarUsuario.Text & "%' OR u.usuario LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
                          Invoke(Sub()
+                                    MNU_ELIMINAR.Visible = False
+                                    MNU_MODIFICAR.Visible = False
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
                                         Dim bin As New BindingSource
                                         bin.DataSource = T.Tables(0)
                                         DGV_Cajero.DataSource = bin
-
+                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Cajero.Rows.Count Then
+                                            DGV_Cajero.Rows(selectedRowIndex).Selected = True
+                                            DGV_Cajero.FirstDisplayedScrollingRowIndex = selectedRowIndex
+                                        End If
                                         If T.Tables(0).Rows.Count > 0 Then
                                             MNU_ELIMINAR.Visible = True
                                             MNU_MODIFICAR.Visible = True
@@ -160,6 +167,7 @@ Public Class P_Usuarios
         Catch ex As Exception
             MsgBox("Error al eliminar El usuario: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
+        TXT_BuscarUsuario.SelectAll()
     End Sub
 
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click

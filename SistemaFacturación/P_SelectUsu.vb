@@ -1,7 +1,9 @@
 ﻿Imports Guna.UI2.WinForms
+Imports System.Deployment.Application
 Public Class P_SelectUsu
 
     Private Sub P_LoginCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CheckForUpdates()
         T.Tables.Clear()
         SQL = "SELECT ID, usuario, color FROM usuario"
         Cargar_Tabla(T, SQL)
@@ -51,4 +53,32 @@ Public Class P_SelectUsu
             Application.Exit()
         End If
     End Sub
+
+    Public Sub CheckForUpdates()
+        If ApplicationDeployment.IsNetworkDeployed Then
+            Dim ad As ApplicationDeployment = ApplicationDeployment.CurrentDeployment
+            Try
+                Dim info As UpdateCheckInfo = ad.CheckForDetailedUpdate()
+                If info.UpdateAvailable Then
+                    Dim doUpdate As Boolean = True
+                    If Not info.IsUpdateRequired Then
+                        Dim dr As DialogResult = MessageBox.Show("Hay una actualización disponible. ¿Deseas instalarla ahora?", "Actualización Disponible", MessageBoxButtons.YesNo)
+                        doUpdate = (dr = DialogResult.Yes)
+                        If doUpdate Then
+                            MessageBox.Show("La aplicación se actualizará. Por favor, reiníciala para aplicar los cambios.")
+                            Application.Restart()
+                            ad.Update()
+                        End If
+                    End If
+                End If
+            Catch dde As DeploymentDownloadException
+                MessageBox.Show("La nueva versión de la aplicación no puede ser descargada en este momento. Por favor, verifica tu conexión de red o inténtalo más tarde. Error: " & dde.Message)
+            Catch ide As InvalidDeploymentException
+                MessageBox.Show("No se puede comprobar una nueva versión de la aplicación. El despliegue ClickOnce está corrupto. Por favor, vuelve a desplegar la aplicación e inténtalo de nuevo. Error: " & ide.Message)
+            Catch ioe As InvalidOperationException
+                MessageBox.Show("Esta aplicación no puede ser actualizada. Probablemente no es una aplicación ClickOnce. Error: " & ioe.Message)
+            End Try
+        End If
+    End Sub
+
 End Class

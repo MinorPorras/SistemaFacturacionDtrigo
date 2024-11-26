@@ -36,6 +36,8 @@
 
     Private Sub BTN_RegresarNCat_Click(sender As Object, e As EventArgs) Handles BTN_RegresarCat.Click
         Me.Close()
+        P_Categoria.TXT_BuscarCat.Select()
+        P_Categoria.TXT_BuscarCat.SelectAll()
     End Sub
 
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NCat.Click
@@ -76,6 +78,8 @@
                         ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
                         P_Categoria.Show()
                         P_Categoria.REFRESCAR()
+                        P_Categoria.TXT_BuscarCat.Select()
+                        P_Categoria.TXT_BuscarCat.SelectAll()
                         Me.Close()
                     Catch ex As Exception
                         MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
@@ -83,6 +87,8 @@
                 End If
             Else
                 MsgBox("El código " + TXT_CodCat.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
+                TXT_CodCat.Select()
+                TXT_CodCat.SelectAll()
             End If
         End If
     End Sub
@@ -93,5 +99,4 @@
         BTN_Color.BackColor = Color.White
         ColorDialog1.Color = Color.White
     End Sub
-
 End Class

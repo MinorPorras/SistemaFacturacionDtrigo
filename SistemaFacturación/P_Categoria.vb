@@ -36,21 +36,31 @@ Public Class P_Categoria
     Public Sub REFRESCAR()
         Task.Run(Sub()
                      Try
+                         Dim selectedRowIndex As Integer = -1
+                         If DGV_Categoria.SelectedRows.Count > 0 Then
+                             selectedRowIndex = DGV_Categoria.SelectedRows(0).Index
+                         End If
+
                          T.Tables.Clear()
-                         MNU_ELIMINAR.Visible = False
-                         MNU_MODIFICAR.Visible = False
                          SQL = "SELECT ID, codigo AS [Código], nombre AS [Nombre], color AS [Color] " &
                                   "FROM categoria " &
                                   "WHERE codigo LIKE '%" & TXT_BuscarCat.Text & "%' " &
                                   "OR nombre LIKE '%" & TXT_BuscarCat.Text & "%' " &
-                                  ";"
+                                  "ORDER BY Val(codigo) ASC;"
                          Invoke(Sub()
+                                    MNU_ELIMINAR.Visible = False
+                                    MNU_MODIFICAR.Visible = False
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
                                         DGV_Categoria.Columns.Clear()
                                         Dim bin As New BindingSource
                                         bin.DataSource = T.Tables(0)
                                         DGV_Categoria.DataSource = bin
+                                        ' Restaurar la selección
+                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Categoria.Rows.Count Then
+                                            DGV_Categoria.Rows(selectedRowIndex).Selected = True
+                                            DGV_Categoria.FirstDisplayedScrollingRowIndex = selectedRowIndex
+                                        End If
                                         If T.Tables(0).Rows.Count > 0 Then
                                             MNU_ELIMINAR.Visible = True
                                             MNU_MODIFICAR.Visible = True
@@ -151,6 +161,7 @@ Public Class P_Categoria
     End Sub
 
     Private Sub MNU_ELIMINAR_Click(sender As Object, e As EventArgs) Handles MNU_ELIMINAR.Click
+
         T.Tables.Clear()
         T1.Tables.Clear()
         Try
@@ -160,14 +171,15 @@ Public Class P_Categoria
                     Dim idSucEliminar As Integer = Convert.ToInt32(DGV_Categoria.SelectedRows(0).Cells(0).Value.ToString())
                     ' Verificar si hay categorías asociadas
                     SQL = "SELECT COUNT(ID) FROM categoria WHERE ID = " & idSucEliminar
+
                     Cargar_Tabla(T, SQL)
 
                     If T.Tables(0).Rows(0).Item(0) <> 0 Then
                         'Se elimina
                         SQL = "DELETE FROM categoria WHERE ID = " & idSucEliminar
                         If EJECUTAR(SQL) Then
-                            REFRESCAR()
                             MsgBox("La categoría fue eliminada satisfactoriamente.", vbInformation + vbOKOnly, "Eliminado")
+                            searchTimer.Start()
                         End If
                     Else
                         MsgBox("La categoria no existe", vbExclamation, "Error")
@@ -179,5 +191,6 @@ Public Class P_Categoria
         Catch ex As Exception
             MsgBox("Error al eliminar la categoria: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
+        TXT_BuscarCat.SelectAll()
     End Sub
 End Class

@@ -24,7 +24,7 @@ Public Class B_Marca
                          T.Tables.Clear()
                          SQL = "SELECT ID, codigo as [Código], nombre as [Nombre]" &
                              " FROM marca where codigo LIKE '%" & TXT_BuscarMarca.Text & "%'" &
-                             " OR nombre LIKE '%" & TXT_BuscarMarca.Text & "%'"
+                             " OR nombre LIKE '%" & TXT_BuscarMarca.Text & "%' ORDER BY Val(codigo) ASC"
                          Invoke(Sub()
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then

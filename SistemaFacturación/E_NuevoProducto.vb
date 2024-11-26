@@ -15,6 +15,7 @@ Public Class E_NuevoProducto
     Private Sub BTN_RegresarProv_Click(sender As Object, e As EventArgs) Handles BTN_RegresarProv.Click
         ModProd = False
         Me.Close()
+        P_Productos.TXT_BuscarProd.SelectAll()
     End Sub
 
     Private Sub E_NuevoProducto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -37,16 +38,19 @@ Public Class E_NuevoProducto
 
     Private Sub TXT_Marca_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles TXT_Marca.MouseDoubleClick
         B_Marca.caso = "NProd"
+        B_Marca.TXT_BuscarMarca.Text = TXT_Marca.Text
         B_Marca.Show()
     End Sub
 
     Private Sub TXT_Proveedor_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles TXT_Proveedor.MouseDoubleClick
         B_Proveedor.caso = "NProd"
+        B_Proveedor.TXT_BuscarProv.Text = TXT_Proveedor.Text
         B_Proveedor.Show()
     End Sub
 
     Private Sub TXT_Categoria_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles TXT_Categoria.MouseDoubleClick
         B_Categoria.caso = "NProd"
+        B_Categoria.TXT_BuscarCat.Text = TXT_Categoria.Text
         B_Categoria.Show()
     End Sub
 
@@ -229,20 +233,23 @@ Public Class E_NuevoProducto
                             ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
                             P_Productos.Show()
                             P_Productos.REFRESCAR()
+                            P_Productos.TXT_BuscarProd.Select()
+                            P_Productos.TXT_BuscarProd.SelectAll()
                             pBar_guardar.Value = 100
                             Me.Close()
+                            ModProd = False
                         Catch ex As Exception
                             MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
                         End Try
                     End If
                 Else
                     MsgBox("El código " + TXT_Cod.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
+                    TXT_Cod.SelectAll()
                 End If
             Catch ex As Exception
                 MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
             End Try
             pBar_guardar.Value = 0
-            ModProd = False
         End If
     End Sub
     Private Sub ActualizarProgressBar(paso As Integer)

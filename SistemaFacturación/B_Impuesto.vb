@@ -25,7 +25,7 @@ Public Class B_Impuesto
                          T.Tables.Clear()
                          SQL = "SELECT ID, codigo as [Código], descripcion  as [Descripción], porcentaje  as [Porcentaje]" &
                              " FROM impuestos where codigo LIKE '%" & TXT_BuscarImp.Text & "%' " &
-                             "OR descripcion LIKE '%" & TXT_BuscarImp.Text & "%'"
+                             "OR descripcion LIKE '%" & TXT_BuscarImp.Text & "%' ORDER BY Val(codigo) ASC"
                          Invoke(Sub()
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then

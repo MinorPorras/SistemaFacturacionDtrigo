@@ -48,7 +48,21 @@ Public Class P_Caja
         LBL_Hora.Text = DateTime.Now.ToString("hh:mm:ss tt")
         LBL_Fecha.Text = DateTime.Now.ToString("dd/MM/yyyy")
         Timer1.Start()
+        Me.Select()
+        TXT_BuscarProducto.Select()
+        TXT_BuscarProducto.SelectAll()
+
     End Sub
+
+    Private Async Sub P_Caja_Async_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Esperar un pequeño retraso para asegurarse de que el formulario está completamente cargado
+        Await Task.Delay(100)
+        Me.Select()
+        ' Seleccionar todo el texto en el TextBox
+        TXT_BuscarProducto.Select()
+        TXT_BuscarProducto.SelectAll()
+    End Sub
+
 
     Private Sub cargarBTNFav()
         T.Tables.Clear()
@@ -165,6 +179,7 @@ Public Class P_Caja
                 DGV_Caja.Columns(3).DefaultCellStyle.Format = "#,##"
                 DGV_Caja.Columns(5).DefaultCellStyle.Format = "#,##"
                 cantProd = 1
+                TXT_BuscarProducto.SelectAll()
             Else
                 MsgBox("El código que colocó está mal escrito o no existe", vbCritical + vbOKOnly, "Código incorrecto")
             End If
@@ -297,6 +312,8 @@ Public Class P_Caja
             P_TerminarVenta.NumFactura = NumFactura
             P_TerminarVenta.idCLiente = idCliente
             P_TerminarVenta.Show()
+            P_TerminarVenta.TXT_ECliente.Select()
+            P_TerminarVenta.TXT_ECliente.SelectAll()
         End If
     End Sub
 
@@ -381,5 +398,11 @@ Public Class P_Caja
             DGV_Caja.SelectedRows(0).Cells(5).Value = precioVenta * cant
         End If
         cargarTotal()
+    End Sub
+
+    Private Sub P_Caja_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        Me.Select()
+        TXT_BuscarProducto.Select()
+        TXT_BuscarProducto.SelectAll()
     End Sub
 End Class

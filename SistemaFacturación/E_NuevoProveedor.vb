@@ -29,6 +29,7 @@
 
     Private Sub BTN_RegresarNCat_Click(sender As Object, e As EventArgs) Handles BTN_RegresarProv.Click
         Me.Close()
+        P_Proveedor.TXT_BuscarProv.SelectAll()
     End Sub
 
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NProv.Click
@@ -116,12 +117,14 @@
                             P_Proveedor.Show()
                             P_Proveedor.REFRESCAR()
                             Me.Close()
+                            P_Proveedor.TXT_BuscarProv.SelectAll()
                         Catch ex As Exception
                             MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
                         End Try
                     End If
                 Else
                     MsgBox("El código " + TXT_CodigoProv.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
+                    TXT_CodigoProv.SelectAll()
                 End If
             Catch ex As Exception
                 MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")

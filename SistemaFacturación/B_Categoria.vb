@@ -27,7 +27,7 @@ Public Class B_Categoria
                          SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] " &
                                "FROM categoria " &
                                "WHERE codigo LIKE '%" & TXT_BuscarCat.Text & "%' " &
-                               "OR nombre LIKE '%" & TXT_BuscarCat.Text & "%'"
+                               "OR nombre LIKE '%" & TXT_BuscarCat.Text & "%' ORDER BY Val(codigo) ASC"
                          Invoke(Sub()
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
@@ -113,22 +113,6 @@ Public Class B_Categoria
     Private Sub B_Marca_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InicializarComponentes()
         REFRESCAR()
-    End Sub
-
-    Private Sub RDB_BuscarNombre_CheckedChanged(sender As Object, e As EventArgs)
-        If searchTimer IsNot Nothing Then
-            searchTimer.Stop()
-            searchTimer.Start()
-        End If
-        TXT_BuscarCat.Focus()
-    End Sub
-
-    Private Sub RDB_BuscarCodigo_CheckedChanged(sender As Object, e As EventArgs)
-        If searchTimer IsNot Nothing Then
-            searchTimer.Stop()
-            searchTimer.Start()
-        End If
-        TXT_BuscarCat.Focus()
     End Sub
 
     Private Sub DGV_BCat_SelectionChanged(sender As Object, e As EventArgs) Handles DGV_BCat.SelectionChanged

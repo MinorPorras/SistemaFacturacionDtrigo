@@ -49,8 +49,8 @@ Public Class E_NuevoImpuesto
                         End Try
                     End If
                 Else
-
                     MsgBox("El código " + TXT_CodImpuesto.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
+                    TXT_CodImpuesto.SelectAll()
                 End If
             Catch ex As Exception
                 MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")

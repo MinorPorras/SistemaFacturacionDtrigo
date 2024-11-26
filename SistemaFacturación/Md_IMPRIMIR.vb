@@ -66,10 +66,10 @@
         Dim direccionsplit() As String = direccion.Split(","c)
         direccion = ""
         For i As Integer = 0 To direccionsplit.Length - 1
-            If i <> 2 Then
-                direccion = direccion + direccionsplit(i) + ","
+            If i <> 1 Then
+                direccion = direccion & direccionsplit(i) & ","
             Else
-                direccion = direccion + vbCrLf + direccionsplit(i)
+                direccion = direccion & vbCrLf & direccionsplit(i)
             End If
         Next
 

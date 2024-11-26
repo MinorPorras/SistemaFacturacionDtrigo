@@ -6,6 +6,10 @@
 
     Public Sub REFRESCAR()
         Try
+            Dim selectedRowIndex As Integer = -1
+            If DGV_Imp.SelectedRows.Count > 0 Then
+                selectedRowIndex = DGV_Imp.SelectedRows(0).Index
+            End If
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
             T.Tables.Clear()
@@ -14,6 +18,10 @@
             Dim bin As New BindingSource
             bin.DataSource = T.Tables(0)
             DGV_Imp.DataSource = bin
+            ' Restaurar la selección
+            If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Imp.Rows.Count Then
+                DGV_Imp.Rows(selectedRowIndex).Selected = True
+            End If
             If T.Tables(0).Rows.Count > 0 Then
                 MNU_ELIMINAR.Visible = True
                 MNU_MODIFICAR.Visible = True
