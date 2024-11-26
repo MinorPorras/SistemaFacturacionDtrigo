@@ -119,6 +119,8 @@ Public Class E_NuevoProducto
                                 GUARDAR_INT("producto", "variable", 0, "ID", idProd)
                             End If
 
+                            GUARDAR_INT("producto", "inventario", NUD_Inv.Value, "ID", idProd)
+
                             T.Tables.Clear()
                             SQL = "SELECT ID_Producto FROM producto_precioVenta WHERE ID_Producto = " + idProd
                             Cargar_Tabla(T, SQL)

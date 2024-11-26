@@ -122,7 +122,6 @@ Public Class P_TerminarVenta
     End Sub
 
     Private Sub guardarFactura(txtTotal As Guna.UI2.WinForms.Guna2TextBox, txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox, txtVuelto As Guna.UI2.WinForms.Guna2TextBox)
-        T.Tables.Clear()
         If MessageBox.Show("¿Desea terminar la venta?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             Try
                 ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
@@ -149,12 +148,21 @@ Public Class P_TerminarVenta
                 GUARDAR_DOUBLE("factura", "vuelto", vuelto, "ID", idFactura)
                 GUARDAR_INT("factura", "tipo_venta", TipoPago, "ID", idFactura)
                 GUARDAR_STR("factura", "cobrada", "Si", "ID", idFactura)
+                Dim NInv As Integer
                 For i As Integer = 0 To P_Caja.DGV_Caja.Rows.Count - 2
                     GUARDAR_VarCompInt4("factura_producto", idFactura, P_Caja.DGV_Caja.Rows(i).Cells(0).Value.ToString(), P_Caja.DGV_Caja.Rows(i).Cells(4).Value.ToString(), Convert.ToDouble(P_Caja.DGV_Caja.Rows(i).Cells(3).Value.ToString()))
+                    T1.Tables.Clear()
+                    SQL = "SELECT inventario FROM producto WHERE ID = " & P_Caja.DGV_Caja.Rows(i).Cells(0).Value.ToString()
+                    Cargar_Tabla(T1, SQL)
+                    If T1.Tables(0).Rows.Count > 0 Then
+                        NInv = Convert.ToInt32(T1.Tables(0).Rows(0).Item(0)) - Convert.ToInt32(P_Caja.DGV_Caja.Rows(i).Cells(4).Value)
+                        GUARDAR_INT("producto", "inventario", NInv, "ID", P_Caja.DGV_Caja.Rows(i).Cells(0).Value)
+                    End If
                 Next
                 If String.IsNullOrEmpty(TXT_Comentario.Text) Then
                     GUARDAR_VarCompuestas("factura_comentario", idFactura, TXT_Comentario.Text)
                 End If
+
                 If MessageBox.Show("Venta realizada con exito." + vbCrLf + "¿Desea imprimir la factura correspondiente?", "Venta existosa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                     CREAR_FACTURA(idFactura, encabezadoFactura, facturaContenido, finFactura, False)
                     ImprimirFactura()
@@ -166,7 +174,6 @@ Public Class P_TerminarVenta
                 P_Caja.LIMPIAR()
                 P_Caja.cargarNumFactura()
                 P_Caja.Show()
-                P_Caja.TXT_BuscarProducto.Select()
                 P_Caja.TXT_BuscarProducto.SelectAll()
                 Me.Close()
             Catch ex As Exception

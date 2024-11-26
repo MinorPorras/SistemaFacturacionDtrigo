@@ -66,12 +66,16 @@ Partial Class P_ReimprimirFact
         Me.MNU_CONTX.RenderStyle.SelectionForeColor = System.Drawing.Color.White
         Me.MNU_CONTX.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.MNU_CONTX.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.MNU_CONTX.Size = New System.Drawing.Size(134, 26)
+        Me.MNU_CONTX.Size = New System.Drawing.Size(185, 52)
         '
         'MNU_REIMPRIMIR
         '
+        Me.MNU_REIMPRIMIR.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.MNU_REIMPRIMIR.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MNU_REIMPRIMIR.ForeColor = System.Drawing.SystemColors.Control
+        Me.MNU_REIMPRIMIR.Image = CType(resources.GetObject("MNU_REIMPRIMIR.Image"), System.Drawing.Image)
         Me.MNU_REIMPRIMIR.Name = "MNU_REIMPRIMIR"
-        Me.MNU_REIMPRIMIR.Size = New System.Drawing.Size(133, 22)
+        Me.MNU_REIMPRIMIR.Size = New System.Drawing.Size(184, 26)
         Me.MNU_REIMPRIMIR.Text = "Reimprimir"
         Me.MNU_REIMPRIMIR.Visible = False
         '

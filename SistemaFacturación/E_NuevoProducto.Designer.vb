@@ -57,7 +57,10 @@ Partial Class E_NuevoProducto
         Me.CKB_variable = New Guna.UI2.WinForms.Guna2CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.LBL_IDImp = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.NUD_Inv = New Guna.UI2.WinForms.Guna2NumericUpDown()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NUD_Inv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -182,7 +185,7 @@ Partial Class E_NuevoProducto
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(711, 189)
+        Me.Label6.Location = New System.Drawing.Point(722, 189)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(72, 23)
         Me.Label6.TabIndex = 72
@@ -193,7 +196,7 @@ Partial Class E_NuevoProducto
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(674, 239)
+        Me.Label5.Location = New System.Drawing.Point(685, 239)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(109, 23)
         Me.Label5.TabIndex = 74
@@ -204,7 +207,7 @@ Partial Class E_NuevoProducto
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(678, 286)
+        Me.Label7.Location = New System.Drawing.Point(689, 286)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(105, 23)
         Me.Label7.TabIndex = 76
@@ -215,7 +218,7 @@ Partial Class E_NuevoProducto
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(678, 331)
+        Me.Label8.Location = New System.Drawing.Point(553, 185)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(90, 23)
         Me.Label8.TabIndex = 77
@@ -228,7 +231,7 @@ Partial Class E_NuevoProducto
         Me.CKB_Fav.CheckedState.BorderRadius = 0
         Me.CKB_Fav.CheckedState.BorderThickness = 0
         Me.CKB_Fav.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_Fav.Location = New System.Drawing.Point(774, 336)
+        Me.CKB_Fav.Location = New System.Drawing.Point(649, 190)
         Me.CKB_Fav.Name = "CKB_Fav"
         Me.CKB_Fav.Size = New System.Drawing.Size(15, 14)
         Me.CKB_Fav.TabIndex = 78
@@ -317,7 +320,7 @@ Partial Class E_NuevoProducto
         Me.TXT_Marca.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_Marca.ForeColor = System.Drawing.Color.Black
         Me.TXT_Marca.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Marca.Location = New System.Drawing.Point(789, 185)
+        Me.TXT_Marca.Location = New System.Drawing.Point(800, 185)
         Me.TXT_Marca.Name = "TXT_Marca"
         Me.TXT_Marca.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Marca.PlaceholderText = ""
@@ -339,7 +342,7 @@ Partial Class E_NuevoProducto
         Me.TXT_Proveedor.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_Proveedor.ForeColor = System.Drawing.Color.Black
         Me.TXT_Proveedor.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Proveedor.Location = New System.Drawing.Point(789, 235)
+        Me.TXT_Proveedor.Location = New System.Drawing.Point(800, 235)
         Me.TXT_Proveedor.Name = "TXT_Proveedor"
         Me.TXT_Proveedor.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Proveedor.PlaceholderText = ""
@@ -361,7 +364,7 @@ Partial Class E_NuevoProducto
         Me.TXT_Categoria.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_Categoria.ForeColor = System.Drawing.Color.Black
         Me.TXT_Categoria.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_Categoria.Location = New System.Drawing.Point(789, 282)
+        Me.TXT_Categoria.Location = New System.Drawing.Point(800, 282)
         Me.TXT_Categoria.Name = "TXT_Categoria"
         Me.TXT_Categoria.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Categoria.PlaceholderText = ""
@@ -449,7 +452,7 @@ Partial Class E_NuevoProducto
         Me.BTN_RegresarProv.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarProv.Image = CType(resources.GetObject("BTN_RegresarProv.Image"), System.Drawing.Image)
         Me.BTN_RegresarProv.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarProv.Location = New System.Drawing.Point(724, 443)
+        Me.BTN_RegresarProv.Location = New System.Drawing.Point(703, 454)
         Me.BTN_RegresarProv.Name = "BTN_RegresarProv"
         Me.BTN_RegresarProv.Size = New System.Drawing.Size(285, 70)
         Me.BTN_RegresarProv.TabIndex = 91
@@ -469,7 +472,7 @@ Partial Class E_NuevoProducto
         Me.BTN_NProv.ForeColor = System.Drawing.Color.White
         Me.BTN_NProv.Image = CType(resources.GetObject("BTN_NProv.Image"), System.Drawing.Image)
         Me.BTN_NProv.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NProv.Location = New System.Drawing.Point(724, 366)
+        Me.BTN_NProv.Location = New System.Drawing.Point(703, 377)
         Me.BTN_NProv.Name = "BTN_NProv"
         Me.BTN_NProv.Size = New System.Drawing.Size(285, 71)
         Me.BTN_NProv.TabIndex = 90
@@ -515,7 +518,7 @@ Partial Class E_NuevoProducto
         Me.pBar_guardar.FillColor = System.Drawing.Color.Transparent
         Me.pBar_guardar.Location = New System.Drawing.Point(12, 545)
         Me.pBar_guardar.Name = "pBar_guardar"
-        Me.pBar_guardar.Size = New System.Drawing.Size(981, 30)
+        Me.pBar_guardar.Size = New System.Drawing.Size(999, 30)
         Me.pBar_guardar.TabIndex = 95
         Me.pBar_guardar.Text = "Guna2ProgressBar1"
         Me.pBar_guardar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
@@ -558,6 +561,32 @@ Partial Class E_NuevoProducto
         Me.LBL_IDImp.Text = "idCat"
         Me.LBL_IDImp.Visible = False
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.White
+        Me.Label13.Location = New System.Drawing.Point(675, 331)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(119, 23)
+        Me.Label13.TabIndex = 99
+        Me.Label13.Text = "Existencias:"
+        '
+        'NUD_Inv
+        '
+        Me.NUD_Inv.AutoRoundedCorners = True
+        Me.NUD_Inv.BackColor = System.Drawing.Color.Transparent
+        Me.NUD_Inv.BorderRadius = 14
+        Me.NUD_Inv.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.NUD_Inv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.NUD_Inv.Location = New System.Drawing.Point(800, 327)
+        Me.NUD_Inv.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
+        Me.NUD_Inv.Minimum = New Decimal(New Integer() {1000, 0, 0, -2147483648})
+        Me.NUD_Inv.Name = "NUD_Inv"
+        Me.NUD_Inv.Size = New System.Drawing.Size(204, 31)
+        Me.NUD_Inv.TabIndex = 100
+        Me.NUD_Inv.UpDownButtonFillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        '
         'E_NuevoProducto
         '
         Me.AcceptButton = Me.BTN_NProv
@@ -565,7 +594,9 @@ Partial Class E_NuevoProducto
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProv
-        Me.ClientSize = New System.Drawing.Size(1025, 587)
+        Me.ClientSize = New System.Drawing.Size(1025, 596)
+        Me.Controls.Add(Me.NUD_Inv)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.LBL_IDImp)
         Me.Controls.Add(Me.CKB_variable)
         Me.Controls.Add(Me.Label2)
@@ -605,6 +636,7 @@ Partial Class E_NuevoProducto
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Producto"
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NUD_Inv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -643,4 +675,6 @@ Partial Class E_NuevoProducto
     Friend WithEvents CKB_variable As Guna.UI2.WinForms.Guna2CheckBox
     Friend WithEvents Label2 As Label
     Friend WithEvents LBL_IDImp As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents NUD_Inv As Guna.UI2.WinForms.Guna2NumericUpDown
 End Class

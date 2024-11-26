@@ -3,10 +3,10 @@ Public Class P_Productos
     Private stringConsultaBase As String = "SELECT p.ID AS [ID], p.codigo AS [Código], p.nombre AS [Producto], d.descripcion AS [Descripción], " &
                           "p.precio_base AS [Precio base], p.porc_impuesto AS [Impuesto], p.ganancia AS [Ganancia], " &
                           "pv.precio_venta AS [P Venta], " &
-                          "IIf(p.variable=1, 'Si', 'No') AS [Variable], " &
+                          "IIf(p.variable=1, 'Si', 'No') AS [Var], " &
                           "c.ID_Categoria AS [ID_cat], cat.nombre AS [Categoría], " &
                           "pm.ID_Marca AS [ID_Marca], m.Nombre AS [Marca], pp.ID_Proveedor AS [ID_Prov], " &
-                          "pr.nombre AS [Proveedor], p.favorito AS [Fav] " &
+                          "pr.nombre AS [Proveedor], p.inventario as [Existencias], p.favorito AS [Fav] " &
                           "FROM ((((((((producto p " &
                           "LEFT JOIN producto_categoria c ON p.ID = c.ID_Producto) " &
                           "LEFT JOIN categoria cat ON c.ID_Categoria = cat.ID) " &
@@ -136,8 +136,8 @@ Public Class P_Productos
                         DGV_Prods.Columns(i).Width = 350
                     Case 4
                         DGV_Prods.Columns(i).Width = 60
-                    Case 7
-                        DGV_Prods.Columns(i).Width = 60
+                    Case 6
+                        DGV_Prods.Columns(i).Width = 30
                     Case 8
                         DGV_Prods.Columns(i).Width = 45
                     Case 10
@@ -147,6 +147,8 @@ Public Class P_Productos
                     Case 14
                         DGV_Prods.Columns(i).Width = 70
                     Case 15
+                        DGV_Prods.Columns(i).Width = 70
+                    Case 16
                         DGV_Prods.Columns(i).Width = 30
                 End Select
             Next
@@ -243,10 +245,15 @@ Public Class P_Productos
             E_NuevoProducto.TXT_Marca.Text = DGV_Prods.SelectedRows(0).Cells(12).Value.ToString()
             E_NuevoProducto.LBL_Prov.Text = DGV_Prods.SelectedRows(0).Cells(13).Value.ToString()
             E_NuevoProducto.TXT_Proveedor.Text = DGV_Prods.SelectedRows(0).Cells(14).Value.ToString()
-            If DGV_Prods.SelectedRows(0).Cells(15).Value.ToString() = "Si" Then
+            If DGV_Prods.SelectedRows(0).Cells(16).Value.ToString() = "Si" Then
                 E_NuevoProducto.CKB_Fav.Checked = True
             Else
                 E_NuevoProducto.CKB_Fav.Checked = False
+            End If
+            If Not String.IsNullOrEmpty(DGV_Prods.SelectedRows(0).Cells(15).Value.ToString()) Then
+                E_NuevoProducto.NUD_Inv.Value = DGV_Prods.SelectedRows(0).Cells(15).Value.ToString()
+            Else
+                E_NuevoProducto.NUD_Inv.Value = 0
             End If
             E_NuevoProducto.ModProd = True
             E_NuevoProducto.CodigoPreMod = DGV_Prods.SelectedRows(0).Cells(1).Value.ToString()
@@ -305,6 +312,10 @@ Public Class P_Productos
         TXT_BuscarProd.SelectAll()
     End Sub
 
+    Private Sub MNU_HABLADOR_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
     Private Sub TXT_BuscarProd_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProd.TextChanged
         If searchTimer IsNot Nothing Then
             ' Reiniciar el temporizador cada vez que se cambia el texto
@@ -335,5 +346,11 @@ Public Class P_Productos
             searchTimer.Stop()
             searchTimer.Start()
         End If
+    End Sub
+
+    Private Sub BTN_Hablador_Click(sender As Object, e As EventArgs) Handles BTN_Hablador.Click
+        P_Hablador.Show()
+        P_Hablador.Select()
+        Me.Close()
     End Sub
 End Class

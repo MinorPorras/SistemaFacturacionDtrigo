@@ -1,3 +1,9 @@
+**Version 1.2.0.0 26 de noviembre de 2024**
+- Ya se pueen agregar existencias de cada producto en la pestaña de mantenimiento, al terminar una venta se resta a estas existencias la cantidad que se vendio, las existencias pueden ser negativas en caso de que se venda más de lo que se tiene registrado y va desde un rango de -1000 hasta 1000000 unidades
+- Se pueden crear habladores en la pestaña de mantenimiento de productos, unicamente se debe de seleccionar los productos que se quieran imprimir, la cantidad de habladores por producto y presionarl el botón de imprimir}
+- Se añadieron iconos y se cambio el formato levemente de los menus contextuales de las pestañas de mantenimiento  para qeu sean más visibles
+- La caja de texto que muestra el total de la venta en la caja ahora es mas grande y está en negrita para que sea más visible en pantallas pequeñas  
+
 **Versión 1.1.0.6 (25 de noviembre de 2024)**
 - Al entrar en la caja se mantiene seleccionado la caja de texto de buscar producto
 - Al fallar la contraseña ahora se mantiene la selección de de la caja de texto para escribir la contraseña
@@ -11,7 +17,7 @@
 - Ahora al terminar cualquier proceso se mantiene el objeto seleccionado anteriormente en la tabla, funciona en todos menos en las pestañas de busqueda
 
 
-**Versión 1.1.1.5 (23 de noviembre de 2024)**
+**Versión 1.1.0.5 (23 de noviembre de 2024)**
 - La caja de advertencia a la hora de confirmar que se quiere cerrar la app en la pestaña de selcción de usuario al iniciar la app ahora da la opción de cancelarlo y que no se cierre la app
 - Se mejoró el proceso de busqueda de todas las pestañas que lo ocupaban y de el de las tablas de los pedidos de los proveedores
 - Ahora al buscar marcas y luego de fallar una vez la contraseña en el login se va a mantener seleccionado la caja de texto en la que se estaba escribiendo

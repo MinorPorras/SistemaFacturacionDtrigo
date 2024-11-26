@@ -45,6 +45,7 @@ Partial Class P_Productos
         Me.TXT_BuscarProv = New Guna.UI2.WinForms.Guna2TextBox()
         Me.TXT_BuscarCat = New Guna.UI2.WinForms.Guna2TextBox()
         Me.DGV_Prods = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.BTN_Hablador = New Guna.UI2.WinForms.Guna2Button()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.DGV_Prods, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -63,9 +64,9 @@ Partial Class P_Productos
         Me.BTN_NProd.ForeColor = System.Drawing.Color.White
         Me.BTN_NProd.Image = CType(resources.GetObject("BTN_NProd.Image"), System.Drawing.Image)
         Me.BTN_NProd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NProd.Location = New System.Drawing.Point(771, 584)
+        Me.BTN_NProd.Location = New System.Drawing.Point(858, 584)
         Me.BTN_NProd.Name = "BTN_NProd"
-        Me.BTN_NProd.Size = New System.Drawing.Size(464, 57)
+        Me.BTN_NProd.Size = New System.Drawing.Size(405, 57)
         Me.BTN_NProd.TabIndex = 51
         Me.BTN_NProd.Text = "Agregar"
         '
@@ -83,19 +84,23 @@ Partial Class P_Productos
         Me.MNU_CONTX.RenderStyle.SelectionForeColor = System.Drawing.Color.White
         Me.MNU_CONTX.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.MNU_CONTX.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.MNU_CONTX.Size = New System.Drawing.Size(126, 48)
+        Me.MNU_CONTX.Size = New System.Drawing.Size(185, 78)
         '
         'MNU_MODIFICAR
         '
+        Me.MNU_MODIFICAR.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MNU_MODIFICAR.Image = CType(resources.GetObject("MNU_MODIFICAR.Image"), System.Drawing.Image)
         Me.MNU_MODIFICAR.Name = "MNU_MODIFICAR"
-        Me.MNU_MODIFICAR.Size = New System.Drawing.Size(125, 22)
+        Me.MNU_MODIFICAR.Size = New System.Drawing.Size(184, 26)
         Me.MNU_MODIFICAR.Text = "Modificar"
         Me.MNU_MODIFICAR.Visible = False
         '
         'MNU_ELIMINAR
         '
+        Me.MNU_ELIMINAR.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MNU_ELIMINAR.Image = CType(resources.GetObject("MNU_ELIMINAR.Image"), System.Drawing.Image)
         Me.MNU_ELIMINAR.Name = "MNU_ELIMINAR"
-        Me.MNU_ELIMINAR.Size = New System.Drawing.Size(125, 22)
+        Me.MNU_ELIMINAR.Size = New System.Drawing.Size(184, 26)
         Me.MNU_ELIMINAR.Text = "Eliminar"
         Me.MNU_ELIMINAR.Visible = False
         '
@@ -113,9 +118,9 @@ Partial Class P_Productos
         Me.BTN_RegresarProd.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarProd.Image = CType(resources.GetObject("BTN_RegresarProd.Image"), System.Drawing.Image)
         Me.BTN_RegresarProd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarProd.Location = New System.Drawing.Point(42, 584)
+        Me.BTN_RegresarProd.Location = New System.Drawing.Point(12, 584)
         Me.BTN_RegresarProd.Name = "BTN_RegresarProd"
-        Me.BTN_RegresarProd.Size = New System.Drawing.Size(458, 57)
+        Me.BTN_RegresarProd.Size = New System.Drawing.Size(376, 57)
         Me.BTN_RegresarProd.TabIndex = 48
         Me.BTN_RegresarProd.Text = "Regresar"
         '
@@ -366,6 +371,26 @@ Partial Class P_Productos
         Me.DGV_Prods.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV_Prods.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'BTN_Hablador
+        '
+        Me.BTN_Hablador.BorderColor = System.Drawing.Color.Red
+        Me.BTN_Hablador.BorderRadius = 25
+        Me.BTN_Hablador.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BTN_Hablador.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_Hablador.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_Hablador.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_Hablador.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_Hablador.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BTN_Hablador.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
+        Me.BTN_Hablador.ForeColor = System.Drawing.Color.White
+        Me.BTN_Hablador.Image = CType(resources.GetObject("BTN_Hablador.Image"), System.Drawing.Image)
+        Me.BTN_Hablador.ImageSize = New System.Drawing.Size(50, 50)
+        Me.BTN_Hablador.Location = New System.Drawing.Point(419, 584)
+        Me.BTN_Hablador.Name = "BTN_Hablador"
+        Me.BTN_Hablador.Size = New System.Drawing.Size(405, 57)
+        Me.BTN_Hablador.TabIndex = 69
+        Me.BTN_Hablador.Text = "Crear hablador"
+        '
         'P_Productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -373,6 +398,7 @@ Partial Class P_Productos
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProd
         Me.ClientSize = New System.Drawing.Size(1280, 665)
+        Me.Controls.Add(Me.BTN_Hablador)
         Me.Controls.Add(Me.DGV_Prods)
         Me.Controls.Add(Me.TXT_BuscarCat)
         Me.Controls.Add(Me.TXT_BuscarProv)
@@ -416,4 +442,5 @@ Partial Class P_Productos
     Friend WithEvents TXT_BuscarCat As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents TXT_BuscarProv As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents DGV_Prods As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents BTN_Hablador As Guna.UI2.WinForms.Guna2Button
 End Class

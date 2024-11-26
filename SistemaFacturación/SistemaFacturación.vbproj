@@ -29,8 +29,8 @@
     <ProductName>Sistema de Facturación</ProductName>
     <PublisherName>Minor Porras Varela</PublisherName>
     <SuiteName>Sistema Fact</SuiteName>
-    <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -205,6 +205,12 @@
       <DependentUpon>P_Caja.vb</DependentUpon>
     </Compile>
     <Compile Include="P_Caja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Hablador.Designer.vb">
+      <DependentUpon>P_Hablador.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Hablador.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="P_Login.Designer.vb">
@@ -390,6 +396,9 @@
     <EmbeddedResource Include="P_Caja.resx">
       <DependentUpon>P_Caja.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_Hablador.resx">
+      <DependentUpon>P_Hablador.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_Login.resx">
       <DependentUpon>P_Login.vb</DependentUpon>
     </EmbeddedResource>
@@ -505,6 +514,9 @@
     <Content Include="recursos\ICO_Config.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="recursos\ICO_Eliminar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="recursos\ICO_exportar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -536,6 +548,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="recursos\ICO_Menos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\ICO_Mod.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="recursos\ICO_modificar.png">
@@ -584,6 +599,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="recursos\TituloConfigGeneral.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="recursos\TituloImprimirHablador.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="recursos\TituloImpuesto.png">
