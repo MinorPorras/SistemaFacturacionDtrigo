@@ -30,7 +30,7 @@ Public Class P_ReimprimirFact
 
     Private Async Sub P_ReimprimirFact_Async_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Esperar un pequeño retraso para asegurarse de que el formulario está completamente cargado
-        Await Task.Delay(100)
+        Await Task.Delay(65)
         Me.Select()
         REFRESCAR()
     End Sub
@@ -43,7 +43,17 @@ Public Class P_ReimprimirFact
                              selectedRowIndex = DGV_ReimprimirFact.SelectedRows(0).Index
                          End If
                          T.Tables.Clear()
-                         SQL = "SELECT f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Cliente], u.usuario as [Cajero], fc.comentario as [Comentario]" &
+                         Dim cant As String = ""
+                         If RDB_200.Checked = True Then
+                             cant = "top " & 200
+                         ElseIf RDB_100.Checked = True Then
+                             cant = "top " & 100
+                         ElseIf RDB_All.Checked = True Then
+                             cant = ""
+                         Else
+                             cant = "top " & 50
+                         End If
+                         SQL = "SELECT " & cant & " f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Cliente], u.usuario as [Cajero], fc.comentario as [Comentario]" &
                              ", f.total as [Total], f.efectivo_cliente as [Pago efectivo], f.tarjeta_cliente as [Pago tarjeta], f.vuelto as [Vuelto], " &
                                "IIf(f.tipo_venta=0, 'Efectivo', IIf(f.tipo_venta=1, 'Tarjeta', IIf(f.tipo_venta=2, 'Sinpe', IIf(f.tipo_venta=3, 'Depósito', IIf(f.tipo_venta=4, 'Mixto'," &
                                " 'Efectivo'))))) AS [Tipo venta], f.cobrada as [Cobrada] " &
@@ -241,6 +251,34 @@ Public Class P_ReimprimirFact
     End Sub
 
     Private Sub TXT_BuscarFact_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarFact.TextChanged
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
+    End Sub
+
+    Private Sub RDB_50_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_50.CheckedChanged
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
+    End Sub
+
+    Private Sub RDB_100_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_100.CheckedChanged
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
+    End Sub
+
+    Private Sub RDB_200_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_200.CheckedChanged
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
+    End Sub
+
+    Private Sub RDB_All_CheckedChanged(sender As Object, e As EventArgs) Handles RDB_All.CheckedChanged
         If searchTimer IsNot Nothing Then
             searchTimer.Stop()
             searchTimer.Start()

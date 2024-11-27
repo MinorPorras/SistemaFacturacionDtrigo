@@ -1,3 +1,11 @@
+**Versión 1.2.0.1 27 de noviembre de 2024**
+- Ahora se puede filtrar las facturas a reimprimir para que muestre solo, la últimas 50 (por defecto activado para que cargue más rápido), las ultimas 100 o 200 o que las muestre todas
+- Se arregló un error que sucedía cuando despues de seleccionar un producto con precio variable no se cargaba correctamente la pestaña para agregar su precio
+- Se agregó el nuevo estilo de los menús contextuales ala pestaa de agregar o modificar pedidos en el apartado de mantenimiento de proveedores cuando se agrega o se modifica un proveedor
+- Se arregló un error en la pestaña de productos en la cual al escribir en los filtro se seleccionaba actuamticamente la caja de texto de buscar principal cada vez que se escribía una letra
+- Se arregló un error a la hora de almacenar los comentarios de la facturaen la base de datos ya que este se guardaba solo si estaba vacía la caja de texto en vez de lo contrario
+- Mejoras en la calidad de vida de la app
+
 **Version 1.2.0.0 26 de noviembre de 2024**
 - Ya se pueen agregar existencias de cada producto en la pestaña de mantenimiento, al terminar una venta se resta a estas existencias la cantidad que se vendio, las existencias pueden ser negativas en caso de que se venda más de lo que se tiene registrado y va desde un rango de -1000 hasta 1000000 unidades
 - Se pueden crear habladores en la pestaña de mantenimiento de productos, unicamente se debe de seleccionar los productos que se quieran imprimir, la cantidad de habladores por producto y presionarl el botón de imprimir}

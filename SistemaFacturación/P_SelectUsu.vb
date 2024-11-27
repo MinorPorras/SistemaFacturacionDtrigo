@@ -3,7 +3,6 @@ Imports System.Deployment.Application
 Public Class P_SelectUsu
 
     Private Sub P_LoginCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CheckForUpdates()
         T.Tables.Clear()
         SQL = "SELECT ID, usuario, color FROM usuario"
         Cargar_Tabla(T, SQL)
@@ -45,7 +44,7 @@ Public Class P_SelectUsu
         P_Login.TXT_Clave.Select()
         P_Login.Show()
         Me.Hide()
-
+        P_Login.Select()
     End Sub
 
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click

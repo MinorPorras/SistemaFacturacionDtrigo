@@ -14,6 +14,7 @@ Public Class P_TerminarVenta
     Friend finFactura As String
     Private Sub P_TerminarVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         idFactura = OBTENERPK("factura", "ID")
+        VALIDAR(TXT_ECliente, TXT_ECliente, total, False)
     End Sub
 
     Private Sub TXT_ECliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_ECliente.TextChanged
@@ -159,7 +160,7 @@ Public Class P_TerminarVenta
                         GUARDAR_INT("producto", "inventario", NInv, "ID", P_Caja.DGV_Caja.Rows(i).Cells(0).Value)
                     End If
                 Next
-                If String.IsNullOrEmpty(TXT_Comentario.Text) Then
+                If Not String.IsNullOrEmpty(TXT_Comentario.Text) Then
                     GUARDAR_VarCompuestas("factura_comentario", idFactura, TXT_Comentario.Text)
                 End If
 

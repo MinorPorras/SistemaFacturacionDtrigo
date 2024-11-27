@@ -51,7 +51,9 @@
         T1.Tables.Clear()
         SQL = "SELECT comentario FROM factura_comentario WHERE ID_Factura = " & id_factura
         Cargar_Tabla(T1, SQL)
-        comentario = If(IsDBNull(T1.Tables(0).Rows(0).Item(0)), " ", T1.Tables(0).Rows(0).Item(0))
+        If T1.Tables(0).Rows.Count > 0 Then
+            comentario = If(IsDBNull(T1.Tables(0).Rows(0).Item(0)), " ", T1.Tables(0).Rows(0).Item(0))
+        End If
 
 
         T2.Tables.Clear()

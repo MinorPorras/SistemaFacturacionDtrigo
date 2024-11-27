@@ -141,8 +141,9 @@ Public Class P_Caja
     End Sub
 
     Private Sub TXT_BuscarProducto_DoubleClick(sender As Object, e As EventArgs) Handles TXT_BuscarProducto.DoubleClick
-        B_Producto.LIMPIAR()
         B_Producto.Show()
+        B_Producto.Select()
+        B_Producto.LIMPIAR()
     End Sub
 
     Private Sub BTN_NProd_Click(sender As Object, e As EventArgs) Handles BTN_NProd.Click
@@ -232,10 +233,6 @@ Public Class P_Caja
         End If
     End Sub
 
-    Private Sub agregarProdVariable()
-
-    End Sub
-
     Private Sub BTN_Fav1_Click(sender As Object, e As EventArgs) Handles BTN_Fav1.Click
         agregarProdFav(BTN_Fav1)
     End Sub
@@ -312,6 +309,7 @@ Public Class P_Caja
             P_TerminarVenta.NumFactura = NumFactura
             P_TerminarVenta.idCLiente = idCliente
             P_TerminarVenta.Show()
+            P_TerminarVenta.Select()
             P_TerminarVenta.TXT_ECliente.Select()
             P_TerminarVenta.TXT_ECliente.SelectAll()
         End If

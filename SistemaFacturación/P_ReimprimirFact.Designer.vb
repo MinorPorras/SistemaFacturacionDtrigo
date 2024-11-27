@@ -39,9 +39,15 @@ Partial Class P_ReimprimirFact
         Me.PrintDocument = New System.Drawing.Printing.PrintDocument()
         Me.PrintDialog = New System.Windows.Forms.PrintDialog()
         Me.DGV_ReimprimirFact = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.RDB_50 = New Guna.UI2.WinForms.Guna2RadioButton()
+        Me.GRB_Filtro = New System.Windows.Forms.GroupBox()
+        Me.RDB_All = New Guna.UI2.WinForms.Guna2RadioButton()
+        Me.RDB_200 = New Guna.UI2.WinForms.Guna2RadioButton()
+        Me.RDB_100 = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_ReimprimirFact, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GRB_Filtro.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -66,7 +72,7 @@ Partial Class P_ReimprimirFact
         Me.MNU_CONTX.RenderStyle.SelectionForeColor = System.Drawing.Color.White
         Me.MNU_CONTX.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.MNU_CONTX.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.MNU_CONTX.Size = New System.Drawing.Size(185, 52)
+        Me.MNU_CONTX.Size = New System.Drawing.Size(146, 30)
         '
         'MNU_REIMPRIMIR
         '
@@ -75,7 +81,7 @@ Partial Class P_ReimprimirFact
         Me.MNU_REIMPRIMIR.ForeColor = System.Drawing.SystemColors.Control
         Me.MNU_REIMPRIMIR.Image = CType(resources.GetObject("MNU_REIMPRIMIR.Image"), System.Drawing.Image)
         Me.MNU_REIMPRIMIR.Name = "MNU_REIMPRIMIR"
-        Me.MNU_REIMPRIMIR.Size = New System.Drawing.Size(184, 26)
+        Me.MNU_REIMPRIMIR.Size = New System.Drawing.Size(145, 26)
         Me.MNU_REIMPRIMIR.Text = "Reimprimir"
         Me.MNU_REIMPRIMIR.Visible = False
         '
@@ -93,7 +99,7 @@ Partial Class P_ReimprimirFact
         Me.BTN_RegresarFact.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarFact.Image = CType(resources.GetObject("BTN_RegresarFact.Image"), System.Drawing.Image)
         Me.BTN_RegresarFact.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarFact.Location = New System.Drawing.Point(78, 665)
+        Me.BTN_RegresarFact.Location = New System.Drawing.Point(72, 622)
         Me.BTN_RegresarFact.Name = "BTN_RegresarFact"
         Me.BTN_RegresarFact.Size = New System.Drawing.Size(473, 57)
         Me.BTN_RegresarFact.TabIndex = 51
@@ -112,7 +118,7 @@ Partial Class P_ReimprimirFact
         Me.BTN_ImpReciente.ForeColor = System.Drawing.Color.White
         Me.BTN_ImpReciente.Image = CType(resources.GetObject("BTN_ImpReciente.Image"), System.Drawing.Image)
         Me.BTN_ImpReciente.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_ImpReciente.Location = New System.Drawing.Point(670, 665)
+        Me.BTN_ImpReciente.Location = New System.Drawing.Point(664, 622)
         Me.BTN_ImpReciente.Name = "BTN_ImpReciente"
         Me.BTN_ImpReciente.Size = New System.Drawing.Size(475, 57)
         Me.BTN_ImpReciente.TabIndex = 50
@@ -133,21 +139,21 @@ Partial Class P_ReimprimirFact
         Me.TXT_BuscarFact.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarFact.IconRight = CType(resources.GetObject("TXT_BuscarFact.IconRight"), System.Drawing.Image)
         Me.TXT_BuscarFact.IconRightSize = New System.Drawing.Size(40, 40)
-        Me.TXT_BuscarFact.Location = New System.Drawing.Point(41, 199)
+        Me.TXT_BuscarFact.Location = New System.Drawing.Point(26, 172)
         Me.TXT_BuscarFact.Name = "TXT_BuscarFact"
         Me.TXT_BuscarFact.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarFact.PlaceholderText = "Buscar número de factura"
         Me.TXT_BuscarFact.SelectedText = ""
-        Me.TXT_BuscarFact.Size = New System.Drawing.Size(1166, 42)
+        Me.TXT_BuscarFact.Size = New System.Drawing.Size(957, 42)
         Me.TXT_BuscarFact.TabIndex = 49
         '
         'Guna2PictureBox1
         '
         Me.Guna2PictureBox1.Image = CType(resources.GetObject("Guna2PictureBox1.Image"), System.Drawing.Image)
         Me.Guna2PictureBox1.ImageRotate = 0!
-        Me.Guna2PictureBox1.Location = New System.Drawing.Point(346, -124)
+        Me.Guna2PictureBox1.Location = New System.Drawing.Point(394, -102)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.Size = New System.Drawing.Size(539, 442)
+        Me.Guna2PictureBox1.Size = New System.Drawing.Size(478, 377)
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Guna2PictureBox1.TabIndex = 48
         Me.Guna2PictureBox1.TabStop = False
@@ -207,7 +213,7 @@ Partial Class P_ReimprimirFact
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DGV_ReimprimirFact.DefaultCellStyle = DataGridViewCellStyle3
         Me.DGV_ReimprimirFact.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DGV_ReimprimirFact.Location = New System.Drawing.Point(41, 264)
+        Me.DGV_ReimprimirFact.Location = New System.Drawing.Point(26, 232)
         Me.DGV_ReimprimirFact.MultiSelect = False
         Me.DGV_ReimprimirFact.Name = "DGV_ReimprimirFact"
         Me.DGV_ReimprimirFact.ReadOnly = True
@@ -221,7 +227,7 @@ Partial Class P_ReimprimirFact
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DGV_ReimprimirFact.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.DGV_ReimprimirFact.RowHeadersVisible = False
-        Me.DGV_ReimprimirFact.Size = New System.Drawing.Size(1166, 382)
+        Me.DGV_ReimprimirFact.Size = New System.Drawing.Size(1166, 370)
         Me.DGV_ReimprimirFact.TabIndex = 78
         Me.DGV_ReimprimirFact.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
         Me.DGV_ReimprimirFact.ThemeStyle.AlternatingRowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -245,6 +251,102 @@ Partial Class P_ReimprimirFact
         Me.DGV_ReimprimirFact.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV_ReimprimirFact.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'RDB_50
+        '
+        Me.RDB_50.AutoSize = True
+        Me.RDB_50.Checked = True
+        Me.RDB_50.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.RDB_50.CheckedState.BorderThickness = 0
+        Me.RDB_50.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.RDB_50.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.RDB_50.CheckedState.InnerOffset = -4
+        Me.RDB_50.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.RDB_50.ForeColor = System.Drawing.SystemColors.Control
+        Me.RDB_50.Location = New System.Drawing.Point(23, 21)
+        Me.RDB_50.Name = "RDB_50"
+        Me.RDB_50.Size = New System.Drawing.Size(81, 17)
+        Me.RDB_50.TabIndex = 83
+        Me.RDB_50.TabStop = True
+        Me.RDB_50.Text = "50 Facturas"
+        Me.RDB_50.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.RDB_50.UncheckedState.BorderThickness = 2
+        Me.RDB_50.UncheckedState.FillColor = System.Drawing.Color.Transparent
+        Me.RDB_50.UncheckedState.InnerColor = System.Drawing.Color.Transparent
+        '
+        'GRB_Filtro
+        '
+        Me.GRB_Filtro.Controls.Add(Me.RDB_All)
+        Me.GRB_Filtro.Controls.Add(Me.RDB_200)
+        Me.GRB_Filtro.Controls.Add(Me.RDB_100)
+        Me.GRB_Filtro.Controls.Add(Me.RDB_50)
+        Me.GRB_Filtro.ForeColor = System.Drawing.SystemColors.Control
+        Me.GRB_Filtro.Location = New System.Drawing.Point(989, 150)
+        Me.GRB_Filtro.Name = "GRB_Filtro"
+        Me.GRB_Filtro.Size = New System.Drawing.Size(203, 64)
+        Me.GRB_Filtro.TabIndex = 84
+        Me.GRB_Filtro.TabStop = False
+        Me.GRB_Filtro.Text = "Filtros"
+        '
+        'RDB_All
+        '
+        Me.RDB_All.AutoSize = True
+        Me.RDB_All.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.RDB_All.CheckedState.BorderThickness = 0
+        Me.RDB_All.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.RDB_All.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.RDB_All.CheckedState.InnerOffset = -4
+        Me.RDB_All.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.RDB_All.ForeColor = System.Drawing.SystemColors.Control
+        Me.RDB_All.Location = New System.Drawing.Point(110, 41)
+        Me.RDB_All.Name = "RDB_All"
+        Me.RDB_All.Size = New System.Drawing.Size(55, 17)
+        Me.RDB_All.TabIndex = 86
+        Me.RDB_All.Text = "Todas"
+        Me.RDB_All.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.RDB_All.UncheckedState.BorderThickness = 2
+        Me.RDB_All.UncheckedState.FillColor = System.Drawing.Color.Transparent
+        Me.RDB_All.UncheckedState.InnerColor = System.Drawing.Color.Transparent
+        '
+        'RDB_200
+        '
+        Me.RDB_200.AutoSize = True
+        Me.RDB_200.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.RDB_200.CheckedState.BorderThickness = 0
+        Me.RDB_200.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.RDB_200.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.RDB_200.CheckedState.InnerOffset = -4
+        Me.RDB_200.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.RDB_200.ForeColor = System.Drawing.SystemColors.Control
+        Me.RDB_200.Location = New System.Drawing.Point(110, 21)
+        Me.RDB_200.Name = "RDB_200"
+        Me.RDB_200.Size = New System.Drawing.Size(87, 17)
+        Me.RDB_200.TabIndex = 85
+        Me.RDB_200.Text = "200 Facturas"
+        Me.RDB_200.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.RDB_200.UncheckedState.BorderThickness = 2
+        Me.RDB_200.UncheckedState.FillColor = System.Drawing.Color.Transparent
+        Me.RDB_200.UncheckedState.InnerColor = System.Drawing.Color.Transparent
+        '
+        'RDB_100
+        '
+        Me.RDB_100.AutoSize = True
+        Me.RDB_100.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.RDB_100.CheckedState.BorderThickness = 0
+        Me.RDB_100.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.RDB_100.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.RDB_100.CheckedState.InnerOffset = -4
+        Me.RDB_100.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.RDB_100.ForeColor = System.Drawing.SystemColors.Control
+        Me.RDB_100.Location = New System.Drawing.Point(23, 41)
+        Me.RDB_100.Name = "RDB_100"
+        Me.RDB_100.Size = New System.Drawing.Size(87, 17)
+        Me.RDB_100.TabIndex = 84
+        Me.RDB_100.Text = "100 Facturas"
+        Me.RDB_100.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.RDB_100.UncheckedState.BorderThickness = 2
+        Me.RDB_100.UncheckedState.FillColor = System.Drawing.Color.Transparent
+        Me.RDB_100.UncheckedState.InnerColor = System.Drawing.Color.Transparent
+        '
         'P_ReimprimirFact
         '
         Me.AcceptButton = Me.BTN_ImpReciente
@@ -252,7 +354,8 @@ Partial Class P_ReimprimirFact
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarFact
-        Me.ClientSize = New System.Drawing.Size(1219, 746)
+        Me.ClientSize = New System.Drawing.Size(1219, 700)
+        Me.Controls.Add(Me.GRB_Filtro)
         Me.Controls.Add(Me.DGV_ReimprimirFact)
         Me.Controls.Add(Me.BTN_RegresarFact)
         Me.Controls.Add(Me.BTN_ImpReciente)
@@ -267,6 +370,8 @@ Partial Class P_ReimprimirFact
         Me.MNU_CONTX.ResumeLayout(False)
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_ReimprimirFact, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GRB_Filtro.ResumeLayout(False)
+        Me.GRB_Filtro.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -282,4 +387,9 @@ Partial Class P_ReimprimirFact
     Friend WithEvents PrintDocument As Printing.PrintDocument
     Friend WithEvents PrintDialog As PrintDialog
     Friend WithEvents DGV_ReimprimirFact As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents GRB_Filtro As GroupBox
+    Friend WithEvents RDB_100 As Guna.UI2.WinForms.Guna2RadioButton
+    Friend WithEvents RDB_50 As Guna.UI2.WinForms.Guna2RadioButton
+    Friend WithEvents RDB_All As Guna.UI2.WinForms.Guna2RadioButton
+    Friend WithEvents RDB_200 As Guna.UI2.WinForms.Guna2RadioButton
 End Class

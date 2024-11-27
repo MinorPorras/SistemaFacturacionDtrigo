@@ -36,31 +36,38 @@ Public Class B_Producto
                      Try
                          T.Tables.Clear()
                          SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
-                                 " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                                 " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%' OR p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' ORDER BY Val(p.codigo) ASC;"
-                         Invoke(Sub()
-                                    Cargar_Tabla(T, SQL)
-                                    If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
-                                        Dim bin As New BindingSource
-                                        bin.DataSource = T.Tables(0)
-                                        DGV_BProd.DataSource = bin
-                                    Else ' Limpiar la fuente de datos si no se cargaron datos
-                                        DGV_BProd.DataSource = Nothing
-                                    End If
-                                    TXT_BuscarProd.Select()
-                                End Sub)
+                           " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
+                           " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%' OR p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' ORDER BY Val(p.codigo) ASC;"
+                         ' Asegúrate de que el control tiene un identificador de ventana antes de invocar
+                         If DGV_BProd.IsHandleCreated Then
+                             Invoke(Sub()
+                                        Cargar_Tabla(T, SQL)
+                                        If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
+                                            Dim bin As New BindingSource
+                                            bin.DataSource = T.Tables(0)
+                                            DGV_BProd.DataSource = bin
+                                        Else ' Limpiar la fuente de datos si no se cargaron datos
+                                            DGV_BProd.DataSource = Nothing
+                                        End If
+                                        TXT_BuscarProd.Select()
+                                    End Sub)
+                         Else
+                             ' Espera hasta que el control esté listo
+                             Me.BeginInvoke(Sub() REFRESCAR())
+                         End If
                      Catch ex As Exception
-                         Invoke(Sub()
-                                    If DGV_BProd.IsHandleCreated Then
+                         If DGV_BProd.IsHandleCreated Then
+                             Invoke(Sub()
                                         If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                                             ' Mostrar un mensaje de error genérico
                                             MsgBox("Error al cargar la lista de clientes: " & ex.Message, vbCritical + vbOKOnly, "Error")
                                         End If
-                                    End If
-                                End Sub)
+                                    End Sub)
+                         End If
                      End Try
                  End Sub)
     End Sub
+
 
     Private Sub DGV_BProd_DataBindingComplete_1(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_BProd.DataBindingComplete
         Try
@@ -132,6 +139,7 @@ Public Class B_Producto
             LIMPIAR()
             P_Caja.cargarTotal()
             Me.Close()
+            P_Caja.Show()
             P_Caja.TXT_BuscarProducto.Select()
             P_Caja.TXT_BuscarProducto.SelectAll()
         Else
@@ -171,7 +179,6 @@ Public Class B_Producto
         TXT_codigo.Clear()
         TXT_Nombre.Clear()
         TXT_Precio.Clear()
-
     End Sub
 
     Private Sub DGV_BMarca_SelectionChanged(sender As Object, e As EventArgs) Handles DGV_BProd.SelectionChanged

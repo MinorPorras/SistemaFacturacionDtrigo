@@ -46,6 +46,7 @@ Public Class P_Productos
         TXT_BuscarCat.Enabled = False
         TXT_BuscarProv.Enabled = False
         REFRESCAR()
+        TXT_BuscarProd.Select()
     End Sub
 
     Public Sub REFRESCAR()
@@ -107,7 +108,6 @@ Public Class P_Productos
                                     Else ' Limpiar la fuente de datos si no se cargaron datos
                                         DGV_Prods.DataSource = Nothing
                                     End If
-                                    TXT_BuscarProd.Select()
                                 End Sub)
                      Catch ex As Exception
                          If DGV_Prods.IsHandleCreated Then
@@ -310,10 +310,6 @@ Public Class P_Productos
             MsgBox("Error al eliminar el producto: " & ex.Message, vbCritical + vbOKOnly, "Error")
         End Try
         TXT_BuscarProd.SelectAll()
-    End Sub
-
-    Private Sub MNU_HABLADOR_Click(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub TXT_BuscarProd_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProd.TextChanged
