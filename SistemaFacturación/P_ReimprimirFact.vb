@@ -162,7 +162,7 @@ Public Class P_ReimprimirFact
     Private Sub MNU_REIMPRIMIR_Click(sender As Object, e As EventArgs) Handles MNU_REIMPRIMIR.Click
         encabezadoFactura = ""
         'Se limpia la lista de productos
-        For Each line As Integer In facturaContenido
+        For Each line As String In facturaContenido.ToList()
             facturaContenido.Remove(line)
         Next
 
@@ -170,6 +170,7 @@ Public Class P_ReimprimirFact
         CREAR_FACTURA(DGV_ReimprimirFact.SelectedRows(0).Cells(0).Value.ToString(), encabezadoFactura, facturaContenido, finFactura, True)
         ImprimirFactura()
     End Sub
+
 
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
         If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
