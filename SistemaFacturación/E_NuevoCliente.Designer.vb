@@ -38,6 +38,7 @@ Partial Class E_NuevoCliente
         Me.TXT_TelCliente = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TXT_CorreoCliente = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -128,7 +129,7 @@ Partial Class E_NuevoCliente
         Me.TXT_CodCliente.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_CodCliente.PlaceholderText = ""
         Me.TXT_CodCliente.SelectedText = ""
-        Me.TXT_CodCliente.Size = New System.Drawing.Size(398, 31)
+        Me.TXT_CodCliente.Size = New System.Drawing.Size(276, 31)
         Me.TXT_CodCliente.TabIndex = 38
         '
         'Label2
@@ -263,6 +264,24 @@ Partial Class E_NuevoCliente
         Me.TXT_CorreoCliente.Size = New System.Drawing.Size(398, 31)
         Me.TXT_CorreoCliente.TabIndex = 46
         '
+        'BTN_AutoCod
+        '
+        Me.BTN_AutoCod.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_AutoCod.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_AutoCod.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_AutoCod.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_AutoCod.FillColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BTN_AutoCod.Font = New System.Drawing.Font("Snap ITC", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_AutoCod.ForeColor = System.Drawing.Color.White
+        Me.BTN_AutoCod.ImageSize = New System.Drawing.Size(90, 90)
+        Me.BTN_AutoCod.Location = New System.Drawing.Point(390, 166)
+        Me.BTN_AutoCod.Name = "BTN_AutoCod"
+        Me.BTN_AutoCod.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_AutoCod.Size = New System.Drawing.Size(44, 44)
+        Me.BTN_AutoCod.TabIndex = 113
+        Me.BTN_AutoCod.Text = "+"
+        Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
+        '
         'E_NuevoCliente
         '
         Me.AcceptButton = Me.BTN_NCliente
@@ -271,6 +290,7 @@ Partial Class E_NuevoCliente
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarCliente
         Me.ClientSize = New System.Drawing.Size(524, 459)
+        Me.Controls.Add(Me.BTN_AutoCod)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.TXT_CorreoCliente)
         Me.Controls.Add(Me.Label4)
@@ -310,4 +330,5 @@ Partial Class E_NuevoCliente
     Friend WithEvents TXT_TelCliente As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents txtNombreCliente As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
 End Class

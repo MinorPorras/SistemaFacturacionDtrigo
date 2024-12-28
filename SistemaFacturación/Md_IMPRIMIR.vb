@@ -15,7 +15,7 @@
     Dim vuelto As String
     Dim tventa As String
 
-    Public Sub CREAR_FACTURA(id_factura As Integer, encabezadoFactura As String, facturaContenido As List(Of String), finFact As String, reimprimir As Boolean)
+    Public Sub CREAR_FACTURA(id_factura As Integer, reimprimir As Boolean)
 
 
         T.Tables.Clear()
@@ -140,7 +140,7 @@
                                 "-------------------------------------------" & vbCrLf &
                                 "Descripción de Productos" & vbCrLf &
                                 "-------------------------------------------" & vbCrLf
-            P_ReimprimirFact.encabezadoProds = "Cant     Descripción        Precio       Total" & vbCrLf &
+            P_ReimprimirFact.encabezadoProds = "Cant  Descripción            Precio       Total" & vbCrLf &
                                                      "--------------------------------------------------" & vbCrLf
             cargarProds(id_factura, reimprimir)
 
@@ -171,12 +171,12 @@
             End If
         End If
 
-
+        comentario = String.Empty
     End Sub
 
-    Private Sub cargarProds(idfact As Integer, reimprimir As Boolean)
+    Private Sub CargarProds(idfact As Integer, reimprimir As Boolean)
         T.Tables.Clear()
-        SQL = "SELECT f.cant, p.nombre, f.precio_venta FROM ((factura_producto f INNER JOIN producto p ON p.ID = f.ID_Producto)" &
+        SQL = "SELECT f.cant, p.nombre, f.precio_venta FROM ((factura_producto f LEFT JOIN producto p ON p.ID = f.ID_Producto)" &
             " LEFT JOIN Producto_precioVenta v ON p.ID = v.ID_Producto) WHERE ID_Factura = " & idfact
         Cargar_Tabla(T, SQL)
         Dim prods As String

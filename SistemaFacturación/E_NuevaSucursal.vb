@@ -6,18 +6,21 @@ Public Class E_NuevaSucursal
     Friend ModSuc As Boolean = False
 
     Private Sub BTN_RegresarSuc_Click(sender As Object, e As EventArgs) Handles BTN_RegresarNSuc.Click
-        Me.Close()
         P_Sucursal.Show()
+        P_Sucursal.Select()
+        Me.Close()
     End Sub
 
-    Private Sub VALIDAR()
+    Private Function VALIDAR()
         ' Si el texto no está vacío en el textbox habilita el botón de guardar/agregar
         If TXT_CodSucursal.Text <> "" And TXT_CedJuridicaSucursal.Text <> "" And TXT_NombreSucursal.Text <> "" And TXT_EmailSucursal.Text <> "" And TXT_TelefonoSucursal.Text <> "" And TXT_DireccionSucursal.Text <> "" And RutaLogo <> "" Then
             BTN_GuardarNSucursal.Enabled = True
+            Return True
         Else
             BTN_GuardarNSucursal.Enabled = False
+            Return True
         End If
-    End Sub
+    End Function
 
     Private Sub BTN_LogoSucursal_Click(sender As Object, e As EventArgs) Handles BTN_LogoSucursal.Click
         Try
@@ -27,7 +30,7 @@ Public Class E_NuevaSucursal
                 VALIDAR()
             End If
         Catch ex As Exception
-            MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+            msgError("Error: " & ex.Message)
         End Try
     End Sub
 
@@ -60,10 +63,10 @@ Public Class E_NuevaSucursal
     End Sub
 
     Private Sub BTN_GuardarNSucursal_Click(sender As Object, e As EventArgs) Handles BTN_GuardarNSucursal.Click
-        If TXT_CodSucursal.Text <> "" And TXT_CedJuridicaSucursal.Text <> "" And TXT_NombreSucursal.Text <> "" And TXT_EmailSucursal.Text <> "" And TXT_TelefonoSucursal.Text <> "" And TXT_DireccionSucursal.Text <> "" And RutaLogo <> "" Then
+        If VALIDAR() Then
             Try
                 ' Comprobación de que se quiere modificar la información en la base de datos por parte del usuario
-                If MessageBox.Show("¿Desea guardar los cambios?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                If msgGuardar() Then
                     Try
                         If ModSuc = False Then
                             ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
@@ -73,29 +76,30 @@ Public Class E_NuevaSucursal
                             End If
                         End If
                         ' Actualizar los campos en la base de datos
-                        GUARDAR_STR("sucursal", "codigo", Convert.ToInt32(TXT_CodSucursal.Text), "ID", idSucursal)
-                        GUARDAR_STR("sucursal", "nombre", TXT_NombreSucursal.Text, "ID", idSucursal)
+                        GUARDAR_TEXT("sucursal", "codigo", Convert.ToInt32(TXT_CodSucursal.Text), "ID", idSucursal)
+                        GUARDAR_TEXT("sucursal", "nombre", TXT_NombreSucursal.Text, "ID", idSucursal)
                         ActConfig("Empresa", TXT_NombreSucursal.Text)
-                        GUARDAR_STR("sucursal", "direccion", TXT_DireccionSucursal.Text, "ID", idSucursal)
-                        GUARDAR_STR("sucursal", "ced_juridica", TXT_CedJuridicaSucursal.Text, "ID", idSucursal)
-                        GUARDAR_STR("sucursal", "telefono", TXT_TelefonoSucursal.Text, "ID", idSucursal)
+                        GUARDAR_TEXT("sucursal", "direccion", TXT_DireccionSucursal.Text, "ID", idSucursal)
+                        GUARDAR_TEXT("sucursal", "ced_juridica", TXT_CedJuridicaSucursal.Text, "ID", idSucursal)
+                        GUARDAR_TEXT("sucursal", "telefono", TXT_TelefonoSucursal.Text, "ID", idSucursal)
                         ActConfig("Telefono", TXT_TelefonoSucursal.Text)
-                        GUARDAR_STR("sucursal", "email", TXT_EmailSucursal.Text, "ID", idSucursal)
+                        GUARDAR_TEXT("sucursal", "email", TXT_EmailSucursal.Text, "ID", idSucursal)
                         ActConfig("Correo", TXT_EmailSucursal.Text)
-                        GUARDAR_STR("sucursal", "logo", RutaLogo, "ID", idSucursal)
+                        GUARDAR_TEXT("sucursal", "logo", RutaLogo, "ID", idSucursal)
                         ActConfig("Logo", RutaLogo)
                         LIMPIAR()
-                        MsgBox("Datos almacenados satisfactoriamente", vbInformation + vbOKOnly, "Transacción exitosa")
+                        msgDatoAlm()
                         ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
                         P_Sucursal.Show()
+                        P_Sucursal.Select()
                         P_Sucursal.REFRESCAR()
                         Me.Close()
                     Catch ex As Exception
-                        MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                        msgError("Error al actualizar los datos: " & ex.Message)
                     End Try
                 End If
             Catch ex As Exception
-                MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                msgError("Error: " & ex.Message)
             End Try
         End If
     End Sub

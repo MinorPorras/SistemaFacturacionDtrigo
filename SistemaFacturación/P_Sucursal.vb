@@ -14,14 +14,15 @@
             E_NuevaSucursal.TXT_DireccionSucursal.Text = TXT_DireccionSucursal.Text
             E_NuevaSucursal.TXT_TelefonoSucursal.Text = TXT_TelefonoSucursal.Text
             E_NuevaSucursal.TXT_EmailSucursal.Text = TXT_EmailSucursal.Text
-            E_NuevaSucursal.OFD_LogoSucursal.FileName = TXT_CodSucursal.Text
+            E_NuevaSucursal.OFD_LogoSucursal.FileName = logo
             E_NuevaSucursal.BTN_LogoSucursal.Image = Image.FromFile(logo)
             E_NuevaSucursal.RutaLogo = logo
             E_NuevaSucursal.ModSuc = True
             E_NuevaSucursal.Show()
+            E_NuevaSucursal.Select()
             Me.Close()
         Catch ex As Exception
-            MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+            msgError("Error: " & ex.Message)
         End Try
     End Sub
 
@@ -40,18 +41,17 @@
             logo = T.Tables(0).Rows(0).Item(7)
             PIC_Logo.Image = Image.FromFile(logo)
         Catch ex As Exception
-            MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+            msgError("Error: " & ex.Message)
         End Try
     End Sub
 
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
-            Application.Exit()
-        End If
+        msgCerrarApp()
     End Sub
 
     Private Sub BTN_RegresarNSuc_Click(sender As Object, e As EventArgs) Handles BTN_RegresarNSuc.Click
         M_Mantenimiento.Show()
+        M_Mantenimiento.Select()
         Me.Close()
     End Sub
 End Class

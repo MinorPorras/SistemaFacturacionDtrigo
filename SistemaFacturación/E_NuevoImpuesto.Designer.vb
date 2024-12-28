@@ -34,6 +34,7 @@ Partial Class E_NuevoImpuesto
         Me.NUD_Porc = New Guna.UI2.WinForms.Guna2NumericUpDown()
         Me.BTN_RegresarImp = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_NImpuesto = New Guna.UI2.WinForms.Guna2Button()
+        Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NUD_Porc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -185,6 +186,24 @@ Partial Class E_NuevoImpuesto
         Me.BTN_NImpuesto.TabIndex = 33
         Me.BTN_NImpuesto.Text = "Guardar"
         '
+        'BTN_AutoCod
+        '
+        Me.BTN_AutoCod.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_AutoCod.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_AutoCod.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_AutoCod.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_AutoCod.FillColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BTN_AutoCod.Font = New System.Drawing.Font("Snap ITC", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_AutoCod.ForeColor = System.Drawing.Color.White
+        Me.BTN_AutoCod.ImageSize = New System.Drawing.Size(90, 90)
+        Me.BTN_AutoCod.Location = New System.Drawing.Point(331, 141)
+        Me.BTN_AutoCod.Name = "BTN_AutoCod"
+        Me.BTN_AutoCod.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_AutoCod.Size = New System.Drawing.Size(44, 44)
+        Me.BTN_AutoCod.TabIndex = 113
+        Me.BTN_AutoCod.Text = "+"
+        Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
+        '
         'E_NuevoImpuesto
         '
         Me.AcceptButton = Me.BTN_NImpuesto
@@ -193,6 +212,7 @@ Partial Class E_NuevoImpuesto
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarImp
         Me.ClientSize = New System.Drawing.Size(430, 383)
+        Me.Controls.Add(Me.BTN_AutoCod)
         Me.Controls.Add(Me.BTN_RegresarImp)
         Me.Controls.Add(Me.BTN_NImpuesto)
         Me.Controls.Add(Me.NUD_Porc)
@@ -225,4 +245,5 @@ Partial Class E_NuevoImpuesto
     Friend WithEvents Label3 As Label
     Friend WithEvents BTN_RegresarImp As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_NImpuesto As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
 End Class

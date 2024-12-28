@@ -22,9 +22,18 @@ Public Class B_Proveedor
         Task.Run(Sub()
                      Try
                          T.Tables.Clear()
-                         SQL = "SELECT ID, codigo as [Código], nombre as [Nombre]" &
-                             " FROM proveedor where codigo LIKE '%" & TXT_BuscarProv.Text & "%' " &
-                             "OR nombre LIKE '%" & TXT_BuscarProv.Text & "%' ORDER BY Val(codigo) ASC"
+                         Dim busqueda As String = TXT_BuscarProv.Text.Trim()
+                         Dim condicionBusqueda As String
+                         If busqueda = "" Then
+                             condicionBusqueda = "1=1" ' Esto siempre será verdadero, mostrando todos los registros
+                         Else
+                             condicionBusqueda = $"codigo LIKE '%{busqueda}%' OR nombre LIKE '%{busqueda}%'"
+                         End If
+                         SQL = "SELECT ID, codigo AS 'Código', nombre AS 'Nombre' " &
+                                  "FROM proveedor " &
+                                  "WHERE " & condicionBusqueda &
+                                  " ORDER BY codigo ASC;"
+
                          Invoke(Sub()
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
@@ -42,7 +51,7 @@ Public Class B_Proveedor
                                     If DGV_BProv.IsHandleCreated Then
                                         If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                                             ' Mostrar un mensaje de error genérico
-                                            MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                            msgError("Error al cargar la lista de categorías: " & ex.Message)
                                         End If
                                     End If
                                 End Sub)
@@ -53,6 +62,14 @@ Public Class B_Proveedor
 
 
     Private Sub BTN_RegresarMarca_Click(sender As Object, e As EventArgs) Handles BTN_RegresarProv.Click
+        Select Case caso
+            Case "Prod"
+                P_Productos.Show()
+                P_Productos.Select()
+            Case "NProd"
+                E_NuevoProducto.Show()
+                E_NuevoProducto.Select()
+        End Select
         Me.Close()
     End Sub
 
@@ -85,14 +102,16 @@ Public Class B_Proveedor
                 Case "Prod"
                     P_Productos.TXT_BuscarProv.Text = TXT_Nombre.Text
                     P_Productos.REFRESCAR()
+                    P_Productos.Show()
+                    P_Productos.Select()
                 Case "NProd"
                     E_NuevoProducto.TXT_Proveedor.Text = TXT_Nombre.Text
                     E_NuevoProducto.LBL_Prov.Text = DGV_BProv.SelectedRows(0).Cells(0).Value.ToString()
+                    E_NuevoProducto.Show()
+                    E_NuevoProducto.Select()
             End Select
             Me.Close()
         Catch ex As Exception
-            P_Productos.TXT_BuscarProv.Text = ""
-            P_Productos.REFRESCAR()
             Me.Close()
         End Try
 

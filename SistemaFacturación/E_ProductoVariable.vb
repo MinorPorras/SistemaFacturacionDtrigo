@@ -6,12 +6,16 @@
     End Sub
 
     Private Sub BTN_RegresarPrd_Click(sender As Object, e As EventArgs) Handles BTN_RegresarPrd.Click
+        P_Caja.Show()
+        P_Caja.Select()
         Me.Close()
     End Sub
 
     Private Sub BTN_SelectProd_Click(sender As Object, e As EventArgs) Handles BTN_SelectProd.Click
         P_Caja.agregarProd(LBL_ID.Text, LBL_Cod.Text, LBL_Producto.Text, TXT_PrecioVenta.Text, 1)
         TXT_PrecioVenta.Clear()
+        P_Caja.Show()
+        P_Caja.Select()
         Me.Close()
     End Sub
 

@@ -5,9 +5,10 @@
     Friend CodigoPreMod As String
     Friend LHacerPed As New List(Of String)()
     Friend LRebPed As New List(Of String)()
+    Dim Correcto As Boolean
+
 
     Private Sub E_NuevaCat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TXT_CodigoProv.Focus()
         TXT_CodigoProv.Select()
         If ModProv = False Then
             idProv = OBTENERPK("proveedor", "ID")
@@ -15,40 +16,46 @@
         VALIDAR()
     End Sub
 
-    Private Sub VALIDAR()
+    Private Function VALIDAR()
         ' Si el texto no está vacío en el textbox habilita el botón de guardar/agregar
         If TXT_CodigoProv.Text <> "" And TXT_NombreProv.Text <> "" Then
             BTN_NProv.Enabled = True
             BTN_Pedidos.Enabled = True
+            Return True
         Else
             BTN_NProv.Enabled = False
             BTN_Pedidos.Enabled = False
+            Return False
         End If
-
-    End Sub
+    End Function
 
     Private Sub BTN_RegresarNCat_Click(sender As Object, e As EventArgs) Handles BTN_RegresarProv.Click
-        Me.Close()
+        P_Proveedor.Show()
+        P_Proveedor.Select()
         P_Proveedor.TXT_BuscarProv.SelectAll()
+        Me.Close()
     End Sub
 
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NProv.Click
-        If TXT_CodigoProv.Text <> "" And TXT_NombreProv.Text <> "" Then
+        If VALIDAR() Then
             Try
-                T.Tables.Clear()
+                Dim codigo As String = TXT_CodigoProv.Text
                 If ModProv = False Then
-                    SQL = "SELECT codigo FROM proveedor WHERE codigo = '" + TXT_CodigoProv.Text + "'"
-                Else
-                    If TXT_CodigoProv.Text = CodigoPreMod Then
-                        SQL = "SELECT ID FROM proveedor WHERE ID = 0"
+                    If Not EXISTECOD("proveedor", "codigo", codigo) Then ' Si no se ha guardado la categoría
+                        Correcto = True
                     Else
-                        SQL = "SELECT codigo FROM proveedor WHERE codigo = '" + TXT_CodigoProv.Text + "'"
+                        Correcto = False
+                    End If
+                Else
+                    If codigo = CodigoPreMod Or Not EXISTECOD("proveedor", "codigo", codigo) Then
+                        Correcto = True
+                    Else
+                        Correcto = False
                     End If
                 End If
-                Cargar_Tabla(T, SQL)
-                If T.Tables(0).Rows.Count = 0 Then
+                If Correcto Then
                     ' Comprobación de que se quiere modificar la información en la base de datos por parte del usuario
-                    If MessageBox.Show("¿Desea guardar los cambios?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    If msgGuardar() Then
                         Try
                             If ModProv = False Then
                                 ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
@@ -58,8 +65,8 @@
                                 End If
                             End If
                             ' Actualizar los campos en la base de datos
-                            GUARDAR_STR("proveedor", "codigo", TXT_CodigoProv.Text, "ID", idProv)
-                            GUARDAR_STR("proveedor", "nombre", TXT_NombreProv.Text, "ID", idProv)
+                            GUARDAR_TEXT("proveedor", "codigo", TXT_CodigoProv.Text, "ID", idProv)
+                            GUARDAR_TEXT("proveedor", "nombre", TXT_NombreProv.Text, "ID", idProv)
 
                             If Not String.IsNullOrEmpty(TXT_CorreoProv.Text) Then
                                 T.Tables.Clear()
@@ -68,11 +75,10 @@
                                 If T.Tables(0).Rows.Count <= 0 Then
                                     GUARDAR_VarCompuestas("proveedor_correo", idProv, TXT_CorreoProv.Text)
                                 Else
-                                    GUARDAR_STR("proveedor_correo", "correo", TXT_CorreoProv.Text, "ID_Proveedor", idProv)
+                                    GUARDAR_TEXT("proveedor_correo", "correo", TXT_CorreoProv.Text, "ID_Proveedor", idProv)
                                 End If
                             Else
-                                SQL = "DELETE * FROM proveedor_correo WHERE ID_Proveedor = " + idProv
-                                EJECUTAR(SQL)
+                                ELIMINAR("proveedor_correo", "ID_Proveedor", idProv)
                             End If
 
                             If Not String.IsNullOrEmpty(TXT_TelProv.Text) Then
@@ -82,19 +88,17 @@
                                 If T.Tables(0).Rows.Count <= 0 Then
                                     GUARDAR_VarCompuestas("proveedor_telefono", idProv, TXT_TelProv.Text)
                                 Else
-                                    GUARDAR_STR("proveedor_telefono", "telefono", TXT_TelProv.Text, "ID_Proveedor", idProv)
+                                    GUARDAR_TEXT("proveedor_telefono", "telefono", TXT_TelProv.Text, "ID_Proveedor", idProv)
                                 End If
                             Else
-                                SQL = "DELETE * FROM proveedor_telefono WHERE ID_Proveedor = " + idProv
-                                EJECUTAR(SQL)
+                                ELIMINAR("proveedor_telefono", "ID_Proveedor", idProv)
                             End If
 
                             T.Tables.Clear()
                             SQL = "SELECT p.ID_Proveedor, p.dia_pedido FROM proveedor_diaPedido p WHERE p.ID_Proveedor = " & idProv
                             Cargar_Tabla(T, SQL)
                             If T.Tables(0).Rows.Count > 0 Then
-                                SQL = "DELETE * FROM proveedor_diaPedido WHERE ID_Proveedor = " & idProv
-                                EJECUTAR(SQL)
+                                ELIMINAR("proveedor_diaPedido", "ID_Proveedor", idProv)
                             End If
                             For i As Integer = 0 To LHacerPed.Count - 1
                                 GUARDAR_VarCompuestas("proveedor_diaPedido", idProv, LHacerPed(i))
@@ -104,30 +108,30 @@
                             SQL = "SELECT r.ID_Proveedor, r.dia_recibido FROM proveedor_recibirPedido r WHERE r.ID_Proveedor = " & idProv
                             Cargar_Tabla(T, SQL)
                             If T.Tables(0).Rows.Count > 0 Then
-                                SQL = "DELETE * FROM proveedor_recibirPedido WHERE ID_Proveedor = " & idProv
-                                EJECUTAR(SQL)
+                                ELIMINAR("proveedor_recibirPedido", "ID_Proveedor", idProv)
                             End If
                             For i As Integer = 0 To LRebPed.Count - 1
                                 GUARDAR_VarCompuestas("proveedor_recibirPedido", idProv, LRebPed(i))
                             Next
 
                             LIMPIAR()
-                            MsgBox("Datos almacenados satisfactoriamente", vbInformation + vbOKOnly, "Transacción exitosa")
+                            msgDatoAlm()
                             ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
                             P_Proveedor.Show()
+                            P_Proveedor.Select()
                             P_Proveedor.REFRESCAR()
-                            Me.Close()
                             P_Proveedor.TXT_BuscarProv.SelectAll()
+                            Me.Close()
                         Catch ex As Exception
-                            MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                            msgError("Error al actualizar los datos: " & ex.Message)
                         End Try
                     End If
                 Else
-                    MsgBox("El código " + TXT_CodigoProv.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
+                    msgError("El código " + TXT_CodigoProv.Text + " ya existe, coloque un código distinto")
                     TXT_CodigoProv.SelectAll()
                 End If
             Catch ex As Exception
-                MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                msgError("Error: " & ex.Message)
             End Try
         End If
     End Sub
@@ -148,6 +152,30 @@
     Private Sub BTN_Pedidos_Click(sender As Object, e As EventArgs) Handles BTN_Pedidos.Click
         E_ProveedorPedido.LBL_Proveedor.Text = TXT_NombreProv.Text
         E_ProveedorPedido.Show()
+        E_ProveedorPedido.Select()
+    End Sub
 
+    Private Sub BTN_AutoCod_Click(sender As Object, e As EventArgs) Handles BTN_AutoCod.Click
+        ' Obtener todos los códigos existentes
+        Dim codigosExistentes As List(Of Integer) = ObtenerCodigosExistentes("proveedor", "codigo")
+        ' Ordenarlos
+        codigosExistentes.Sort()
+
+        ' Número de dígitos según configuración
+        Dim numConfig As Integer = Integer.Parse(Md_Inicializacion.GetAppSetting("AutoCodProv"))
+
+        ' Encontrar el primer número que no esté en uso
+        Dim codigoDisponible As Integer = 1
+        For Each codigo In codigosExistentes
+            If codigo = codigoDisponible Then
+                codigoDisponible += 1
+            ElseIf codigo > codigoDisponible Then
+                Exit For
+            End If
+        Next
+
+        ' Formatear el código disponible con ceros a la izquierda según numConfig
+        Dim CodActual As String = codigoDisponible.ToString("D" & numConfig)
+        TXT_CodigoProv.Text = CodActual
     End Sub
 End Class

@@ -36,9 +36,11 @@ Partial Class E_NuevoUsuario
         Me.BTN_Color = New Guna.UI2.WinForms.Guna2TileButton()
         Me.BTN_RegresarUsu = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_NUsuario = New Guna.UI2.WinForms.Guna2Button()
-        Me.CBK_NoClaveUsu = New Guna.UI2.WinForms.Guna2CheckBox()
         Me.CBX_tipoCuenta = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.SWT_SinClave = New Guna.UI2.WinForms.Guna2ToggleSwitch()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -168,7 +170,7 @@ Partial Class E_NuevoUsuario
         Me.BTN_Color.FillColor = System.Drawing.Color.DimGray
         Me.BTN_Color.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BTN_Color.ForeColor = System.Drawing.Color.White
-        Me.BTN_Color.Location = New System.Drawing.Point(136, 408)
+        Me.BTN_Color.Location = New System.Drawing.Point(136, 418)
         Me.BTN_Color.Name = "BTN_Color"
         Me.BTN_Color.Size = New System.Drawing.Size(180, 100)
         Me.BTN_Color.TabIndex = 25
@@ -213,24 +215,6 @@ Partial Class E_NuevoUsuario
         Me.BTN_NUsuario.TabIndex = 29
         Me.BTN_NUsuario.Text = "Guardar"
         '
-        'CBK_NoClaveUsu
-        '
-        Me.CBK_NoClaveUsu.AutoSize = True
-        Me.CBK_NoClaveUsu.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CBK_NoClaveUsu.CheckedState.BorderRadius = 0
-        Me.CBK_NoClaveUsu.CheckedState.BorderThickness = 0
-        Me.CBK_NoClaveUsu.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CBK_NoClaveUsu.ForeColor = System.Drawing.SystemColors.Control
-        Me.CBK_NoClaveUsu.Location = New System.Drawing.Point(333, 328)
-        Me.CBK_NoClaveUsu.Name = "CBK_NoClaveUsu"
-        Me.CBK_NoClaveUsu.Size = New System.Drawing.Size(97, 17)
-        Me.CBK_NoClaveUsu.TabIndex = 31
-        Me.CBK_NoClaveUsu.Text = "Sin contraseña"
-        Me.CBK_NoClaveUsu.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.CBK_NoClaveUsu.UncheckedState.BorderRadius = 0
-        Me.CBK_NoClaveUsu.UncheckedState.BorderThickness = 0
-        Me.CBK_NoClaveUsu.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        '
         'CBX_tipoCuenta
         '
         Me.CBX_tipoCuenta.AutoRoundedCorners = True
@@ -244,7 +228,7 @@ Partial Class E_NuevoUsuario
         Me.CBX_tipoCuenta.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.CBX_tipoCuenta.ItemHeight = 30
         Me.CBX_tipoCuenta.Items.AddRange(New Object() {"Cajero", "Administrador"})
-        Me.CBX_tipoCuenta.Location = New System.Drawing.Point(168, 351)
+        Me.CBX_tipoCuenta.Location = New System.Drawing.Point(168, 361)
         Me.CBX_tipoCuenta.Name = "CBX_tipoCuenta"
         Me.CBX_tipoCuenta.Size = New System.Drawing.Size(262, 36)
         Me.CBX_tipoCuenta.TabIndex = 32
@@ -254,11 +238,56 @@ Partial Class E_NuevoUsuario
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(12, 358)
+        Me.Label4.Location = New System.Drawing.Point(12, 368)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(150, 23)
         Me.Label4.TabIndex = 33
         Me.Label4.Text = "Tipo de cuenta:"
+        '
+        'SWT_SinClave
+        '
+        Me.SWT_SinClave.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_SinClave.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_SinClave.CheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_SinClave.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.SWT_SinClave.Location = New System.Drawing.Point(286, 328)
+        Me.SWT_SinClave.Name = "SWT_SinClave"
+        Me.SWT_SinClave.Size = New System.Drawing.Size(35, 20)
+        Me.SWT_SinClave.TabIndex = 34
+        Me.SWT_SinClave.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_SinClave.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_SinClave.UncheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_SinClave.UncheckedState.InnerColor = System.Drawing.Color.White
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Britannic Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(327, 329)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(103, 16)
+        Me.Label5.TabIndex = 35
+        Me.Label5.Text = "Sin contraseña"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'BTN_AutoCod
+        '
+        Me.BTN_AutoCod.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_AutoCod.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_AutoCod.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_AutoCod.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_AutoCod.FillColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BTN_AutoCod.Font = New System.Drawing.Font("Snap ITC", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_AutoCod.ForeColor = System.Drawing.Color.White
+        Me.BTN_AutoCod.ImageSize = New System.Drawing.Size(90, 90)
+        Me.BTN_AutoCod.Location = New System.Drawing.Point(302, 195)
+        Me.BTN_AutoCod.Name = "BTN_AutoCod"
+        Me.BTN_AutoCod.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_AutoCod.Size = New System.Drawing.Size(44, 44)
+        Me.BTN_AutoCod.TabIndex = 113
+        Me.BTN_AutoCod.Text = "+"
+        Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
         '
         'E_NuevoUsuario
         '
@@ -268,9 +297,11 @@ Partial Class E_NuevoUsuario
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarUsu
         Me.ClientSize = New System.Drawing.Size(458, 609)
+        Me.Controls.Add(Me.BTN_AutoCod)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.SWT_SinClave)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.CBX_tipoCuenta)
-        Me.Controls.Add(Me.CBK_NoClaveUsu)
         Me.Controls.Add(Me.BTN_RegresarUsu)
         Me.Controls.Add(Me.BTN_NUsuario)
         Me.Controls.Add(Me.BTN_Color)
@@ -305,7 +336,9 @@ Partial Class E_NuevoUsuario
     Friend WithEvents BTN_Color As Guna.UI2.WinForms.Guna2TileButton
     Friend WithEvents BTN_RegresarUsu As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_NUsuario As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents CBK_NoClaveUsu As Guna.UI2.WinForms.Guna2CheckBox
     Friend WithEvents Label4 As Label
     Friend WithEvents CBX_tipoCuenta As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents SWT_SinClave As Guna.UI2.WinForms.Guna2ToggleSwitch
+    Friend WithEvents Label5 As Label
+    Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
 End Class

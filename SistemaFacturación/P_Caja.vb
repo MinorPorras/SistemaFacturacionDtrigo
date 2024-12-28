@@ -14,8 +14,6 @@ Public Class P_Caja
     Private Sub P_Caja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Se desabilitan los botones con funciones que aún no se van a utlizar
         BTN_Conteo.Enabled = False
-        BTN_CuentaCobrar.Enabled = False
-        BTN_GuardarCuenta.Enabled = False
 
         'Se desabilitann botones que tiene activaciones condicionales
         BTN_TVenta.Enabled = False
@@ -49,9 +47,7 @@ Public Class P_Caja
         LBL_Fecha.Text = DateTime.Now.ToString("dd/MM/yyyy")
         Timer1.Start()
         Me.Select()
-        TXT_BuscarProducto.Select()
         TXT_BuscarProducto.SelectAll()
-
     End Sub
 
     Private Async Sub P_Caja_Async_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -64,7 +60,7 @@ Public Class P_Caja
     End Sub
 
 
-    Private Sub cargarBTNFav()
+    Private Sub CargarBTNFav()
         T.Tables.Clear()
         SQL = "SELECT ID, nombre FROM producto WHERE favorito = 'Si'"
         Cargar_Tabla(T, SQL)
@@ -100,10 +96,10 @@ Public Class P_Caja
         End If
     End Sub
 
-    Friend Sub cargarNumFactura()
+    Friend Sub CargarNumFactura()
         Try
             T.Tables.Clear()
-            SQL = "SELECT num_factura FROM factura ORDER BY Val(num_factura) DESC;"
+            SQL = "SELECT num_factura FROM factura ORDER BY CAST(num_factura AS INTEGER) DESC;"
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
                 NumFactura = If(IsDBNull(T.Tables(0).Rows(0).Item(0)), 1, Convert.ToInt32(T.Tables(0).Rows(0).Item(0)))
@@ -111,7 +107,7 @@ Public Class P_Caja
                 StrNumFactura = NumFactura.ToString("D15")
             End If
         Catch ex As Exception
-            MsgBox("Error al cargar el número de factura." + vbCrLf + "Error: " + ex.Message, vbOK + vbQuestion, "Cerrar sistema")
+            msgError("Error al cargar el número de factura." + vbCrLf + "Error: " + ex.Message)
         End Try
     End Sub
 
@@ -127,17 +123,18 @@ Public Class P_Caja
     Private Sub BTN_RegresarCliente_Click(sender As Object, e As EventArgs) Handles BTN_RegresarCliente.Click
         Timer1.Stop()
         M_Inicio.Show()
+        M_Inicio.Select()
         Me.Close()
     End Sub
 
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
-            Application.Exit()
-        End If
+        msgCerrarApp()
     End Sub
 
     Private Sub TXT_BuscarCliente_DoubleClick(sender As Object, e As EventArgs) Handles TXT_BuscarCliente.DoubleClick
         B_Cliente.Show()
+        B_Cliente.Select()
+        B_Cliente.LIMPIAR()
     End Sub
 
     Private Sub TXT_BuscarProducto_DoubleClick(sender As Object, e As EventArgs) Handles TXT_BuscarProducto.DoubleClick
@@ -162,7 +159,7 @@ Public Class P_Caja
             End If
 
         Else
-            MsgBox("El código que colocó está mal escrito o no existe", vbCritical + vbOKOnly, "Código incorrecto")
+            msgError("El código que colocó está mal escrito o no existe")
         End If
     End Sub
 
@@ -182,28 +179,27 @@ Public Class P_Caja
                 cantProd = 1
                 TXT_BuscarProducto.SelectAll()
             Else
-                MsgBox("El código que colocó está mal escrito o no existe", vbCritical + vbOKOnly, "Código incorrecto")
+                msgError("El código que colocó está mal escrito o no existe")
             End If
 
         Catch ex As Exception
-            MsgBox("El código que colocó está mal escrito o no existe" + ex.Message, vbCritical + vbOKOnly, "Código incorrecto")
+            msgError("El código que colocó está mal escrito o no existe" + ex.Message)
         End Try
     End Sub
 
 
-    Friend Sub agregarProd(ID As String, codigo As String, nombre As String, precioVenta As String, cant As String)
+    Friend Sub AgregarProd(ID As String, codigo As String, nombre As String, precioVenta As String, cant As String)
         Dim Subtotal As Double = cant * Convert.ToInt32(precioVenta)
         Dim row As String() = {ID, codigo, nombre, precioVenta, cant, Subtotal}
         DGV_Caja.Columns(0).Visible = False
         DGV_Caja.Rows.Add(row)
         TXT_BuscarProducto.Clear()
-        validadListView()
+        ValidarListView()
         TXT_BuscarProducto.Focus()
-        cargarTotal()
-
+        CargarTotal()
     End Sub
 
-    Friend Sub cargarTotal()
+    Friend Sub CargarTotal()
         Dim total As Double = 0
         For i As Integer = 0 To DGV_Caja.Rows.Count - 2
             total += Convert.ToDouble(DGV_Caja.Rows(i).Cells(5).Value)
@@ -211,7 +207,7 @@ Public Class P_Caja
         TXT_Total.Text = "₡ " + total.ToString()
     End Sub
 
-    Private Sub agregarProdFav(btnFav As Guna.UI2.WinForms.Guna2Button)
+    Private Sub AgregarProdFav(btnFav As Guna.UI2.WinForms.Guna2Button)
         If Not String.IsNullOrWhiteSpace(btnFav.Tag) Then
             T.Tables.Clear()
             SQL = "SELECT p.codigo, p.variable, v.precio_venta FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
@@ -228,7 +224,7 @@ Public Class P_Caja
                 End If
 
             Else
-                MsgBox("El código que colocó está mal escrito o no existe", vbCritical + vbOKOnly, "Código incorrecto")
+                msgError("El código que colocó está mal escrito o no existe")
             End If
         End If
     End Sub
@@ -268,7 +264,8 @@ Public Class P_Caja
     Private Sub BTN_DelFactura_Click(sender As Object, e As EventArgs) Handles BTN_DelFactura.Click
         DGV_Caja.Rows.Clear()
         TXT_BuscarProducto.Clear()
-        validadListView()
+        TXT_BuscarProducto.SelectAll()
+        ValidarListView()
         cargarTotal()
     End Sub
 
@@ -281,25 +278,9 @@ Public Class P_Caja
     End Sub
 
     Private Sub BTN_TVenta_Click(sender As Object, e As EventArgs) Handles BTN_TVenta.Click
-        P_TerminarVenta.TXT_ECliente.Text = "0"
-        P_TerminarVenta.TXT_EVuelto.Text = "0"
-
-        P_TerminarVenta.TXT_TCliente.Text = "0"
-        P_TerminarVenta.TXT_TVuelto.Text = "0"
-
-        P_TerminarVenta.TXT_SCliente.Text = "0"
-        P_TerminarVenta.TXT_SVuelto.Text = "0"
-
-        P_TerminarVenta.TXT_DCliente.Text = "0"
-        P_TerminarVenta.TXT_DVuelto.Text = "0"
-
-        P_TerminarVenta.TXT_PagoEfectivo.Text = "0"
-        P_TerminarVenta.TXT_PagoTarjeta.Text = "0"
-        P_TerminarVenta.TXT_MVuelto.Text = "0"
-
+        P_TerminarVenta.LIMPIAR()
         Dim precio As String() = TXT_Total.Text.Split(" "c)
         If DGV_Caja.Rows.Count > 1 Then
-
             P_TerminarVenta.total = If(Double.TryParse(precio(1), P_TerminarVenta.total), Convert.ToDouble(precio(1)), Convert.ToDouble(0))
             P_TerminarVenta.TXT_ETotal.Text = TXT_Total.Text
             P_TerminarVenta.TXT_TTotal.Text = TXT_Total.Text
@@ -310,12 +291,11 @@ Public Class P_Caja
             P_TerminarVenta.idCLiente = idCliente
             P_TerminarVenta.Show()
             P_TerminarVenta.Select()
-            P_TerminarVenta.TXT_ECliente.Select()
             P_TerminarVenta.TXT_ECliente.SelectAll()
         End If
     End Sub
 
-    Friend Sub validadListView()
+    Friend Sub ValidarListView()
         itemCount = DGV_Caja.Rows.Count
         If itemCount > 1 Then
             BTN_TVenta.Enabled = True
@@ -325,7 +305,6 @@ Public Class P_Caja
             MNU_ELIMINAR.Visible = False
             MNU_MODIFICAR.Visible = False
             BTN_TVenta.Enabled = False
-
         End If
     End Sub
 
@@ -353,20 +332,21 @@ Public Class P_Caja
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
         B_Producto.ModProd = True
         B_Producto.Show()
-        validadListView()
+        B_Producto.Select()
+        ValidarListView()
         cargarTotal()
 
     End Sub
 
     Private Sub MNU_ELIMINAR_Click(sender As Object, e As EventArgs) Handles MNU_ELIMINAR.Click
         DGV_Caja.Rows.RemoveAt(DGV_Caja.SelectedRows(0).Index)
-        validadListView()
+        ValidarListView()
         cargarTotal()
-
     End Sub
 
     Private Sub BTN_Reprint_Click(sender As Object, e As EventArgs) Handles BTN_Reprint.Click
         P_ReimprimirFact.Show()
+        P_ReimprimirFact.Select()
         Me.Hide()
     End Sub
 
@@ -402,5 +382,17 @@ Public Class P_Caja
         Me.Select()
         TXT_BuscarProducto.Select()
         TXT_BuscarProducto.SelectAll()
+    End Sub
+
+    Private Sub BTN_CuentaCobrar_Click(sender As Object, e As EventArgs) Handles BTN_CuentaCobrar.Click
+
+    End Sub
+
+    Private Sub BTN_GuardarCuenta_Click(sender As Object, e As EventArgs) Handles BTN_GuardarCuenta.Click
+
+    End Sub
+
+    Private Sub BTN_Conteo_Click(sender As Object, e As EventArgs) Handles BTN_Conteo.Click
+
     End Sub
 End Class

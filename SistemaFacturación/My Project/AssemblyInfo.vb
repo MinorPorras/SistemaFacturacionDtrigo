@@ -8,9 +8,9 @@ Imports System.Runtime.InteropServices
 
 ' Revisar los valores de los atributos del ensamblado
 
-<Assembly: AssemblyTitle("SistemaFacturación")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyTitle("Sistema Facturación Common")>
+<Assembly: AssemblyDescription("Sistema de facturación para supermercados y tiendas")>
+<Assembly: AssemblyCompany("Minor Porras Varela")>
 <Assembly: AssemblyProduct("SistemaFacturación")>
 <Assembly: AssemblyCopyright("Copyright ©  2024")>
 <Assembly: AssemblyTrademark("")>
@@ -28,5 +28,5 @@ Imports System.Runtime.InteropServices
 '      Revisión
 '
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("2.0.0.3")>
+<Assembly: AssemblyFileVersion("2.0.0.3")>

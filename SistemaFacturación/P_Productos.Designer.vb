@@ -38,14 +38,17 @@ Partial Class P_Productos
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.CKB_Marca = New Guna.UI2.WinForms.Guna2CheckBox()
-        Me.CKB_Proveedor = New Guna.UI2.WinForms.Guna2CheckBox()
-        Me.CKB_Categoria = New Guna.UI2.WinForms.Guna2CheckBox()
         Me.TXT_BuscarMarca = New Guna.UI2.WinForms.Guna2TextBox()
         Me.TXT_BuscarProv = New Guna.UI2.WinForms.Guna2TextBox()
         Me.TXT_BuscarCat = New Guna.UI2.WinForms.Guna2TextBox()
         Me.DGV_Prods = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.BTN_Hablador = New Guna.UI2.WinForms.Guna2Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.SWT_Marca = New Guna.UI2.WinForms.Guna2ToggleSwitch()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.SWT_Prov = New Guna.UI2.WinForms.Guna2ToggleSwitch()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.SWT_Cat = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.DGV_Prods, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -84,14 +87,14 @@ Partial Class P_Productos
         Me.MNU_CONTX.RenderStyle.SelectionForeColor = System.Drawing.Color.White
         Me.MNU_CONTX.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.MNU_CONTX.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.MNU_CONTX.Size = New System.Drawing.Size(185, 78)
+        Me.MNU_CONTX.Size = New System.Drawing.Size(136, 56)
         '
         'MNU_MODIFICAR
         '
         Me.MNU_MODIFICAR.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MNU_MODIFICAR.Image = CType(resources.GetObject("MNU_MODIFICAR.Image"), System.Drawing.Image)
         Me.MNU_MODIFICAR.Name = "MNU_MODIFICAR"
-        Me.MNU_MODIFICAR.Size = New System.Drawing.Size(184, 26)
+        Me.MNU_MODIFICAR.Size = New System.Drawing.Size(135, 26)
         Me.MNU_MODIFICAR.Text = "Modificar"
         Me.MNU_MODIFICAR.Visible = False
         '
@@ -100,7 +103,7 @@ Partial Class P_Productos
         Me.MNU_ELIMINAR.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MNU_ELIMINAR.Image = CType(resources.GetObject("MNU_ELIMINAR.Image"), System.Drawing.Image)
         Me.MNU_ELIMINAR.Name = "MNU_ELIMINAR"
-        Me.MNU_ELIMINAR.Size = New System.Drawing.Size(184, 26)
+        Me.MNU_ELIMINAR.Size = New System.Drawing.Size(135, 26)
         Me.MNU_ELIMINAR.Text = "Eliminar"
         Me.MNU_ELIMINAR.Visible = False
         '
@@ -180,65 +183,11 @@ Partial Class P_Productos
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(854, 88)
+        Me.Label3.Location = New System.Drawing.Point(839, 88)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(105, 23)
         Me.Label3.TabIndex = 61
         Me.Label3.Text = "Categoría:"
-        '
-        'CKB_Marca
-        '
-        Me.CKB_Marca.AutoSize = True
-        Me.CKB_Marca.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_Marca.CheckedState.BorderRadius = 0
-        Me.CKB_Marca.CheckedState.BorderThickness = 0
-        Me.CKB_Marca.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_Marca.ForeColor = System.Drawing.Color.White
-        Me.CKB_Marca.Location = New System.Drawing.Point(129, 128)
-        Me.CKB_Marca.Name = "CKB_Marca"
-        Me.CKB_Marca.Size = New System.Drawing.Size(159, 17)
-        Me.CKB_Marca.TabIndex = 62
-        Me.CKB_Marca.Text = "Activar busqueda por marca"
-        Me.CKB_Marca.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.CKB_Marca.UncheckedState.BorderRadius = 0
-        Me.CKB_Marca.UncheckedState.BorderThickness = 0
-        Me.CKB_Marca.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        '
-        'CKB_Proveedor
-        '
-        Me.CKB_Proveedor.AutoSize = True
-        Me.CKB_Proveedor.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_Proveedor.CheckedState.BorderRadius = 0
-        Me.CKB_Proveedor.CheckedState.BorderThickness = 0
-        Me.CKB_Proveedor.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_Proveedor.ForeColor = System.Drawing.Color.White
-        Me.CKB_Proveedor.Location = New System.Drawing.Point(551, 128)
-        Me.CKB_Proveedor.Name = "CKB_Proveedor"
-        Me.CKB_Proveedor.Size = New System.Drawing.Size(178, 17)
-        Me.CKB_Proveedor.TabIndex = 63
-        Me.CKB_Proveedor.Text = "Activar busqueda por proveedor"
-        Me.CKB_Proveedor.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.CKB_Proveedor.UncheckedState.BorderRadius = 0
-        Me.CKB_Proveedor.UncheckedState.BorderThickness = 0
-        Me.CKB_Proveedor.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        '
-        'CKB_Categoria
-        '
-        Me.CKB_Categoria.AutoSize = True
-        Me.CKB_Categoria.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_Categoria.CheckedState.BorderRadius = 0
-        Me.CKB_Categoria.CheckedState.BorderThickness = 0
-        Me.CKB_Categoria.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_Categoria.ForeColor = System.Drawing.Color.White
-        Me.CKB_Categoria.Location = New System.Drawing.Point(983, 128)
-        Me.CKB_Categoria.Name = "CKB_Categoria"
-        Me.CKB_Categoria.Size = New System.Drawing.Size(176, 17)
-        Me.CKB_Categoria.TabIndex = 64
-        Me.CKB_Categoria.Text = "Activar busqueda por categoría"
-        Me.CKB_Categoria.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.CKB_Categoria.UncheckedState.BorderRadius = 0
-        Me.CKB_Categoria.UncheckedState.BorderThickness = 0
-        Me.CKB_Categoria.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         '
         'TXT_BuscarMarca
         '
@@ -256,9 +205,9 @@ Partial Class P_Productos
         Me.TXT_BuscarMarca.Location = New System.Drawing.Point(116, 80)
         Me.TXT_BuscarMarca.Name = "TXT_BuscarMarca"
         Me.TXT_BuscarMarca.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_BuscarMarca.PlaceholderText = "Buscar marca"
+        Me.TXT_BuscarMarca.PlaceholderText = "Doble click para buscar"
         Me.TXT_BuscarMarca.SelectedText = ""
-        Me.TXT_BuscarMarca.Size = New System.Drawing.Size(257, 42)
+        Me.TXT_BuscarMarca.Size = New System.Drawing.Size(256, 42)
         Me.TXT_BuscarMarca.TabIndex = 65
         '
         'TXT_BuscarProv
@@ -277,7 +226,7 @@ Partial Class P_Productos
         Me.TXT_BuscarProv.Location = New System.Drawing.Point(540, 80)
         Me.TXT_BuscarProv.Name = "TXT_BuscarProv"
         Me.TXT_BuscarProv.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_BuscarProv.PlaceholderText = "Buscar proveedor"
+        Me.TXT_BuscarProv.PlaceholderText = "Doble click para buscar"
         Me.TXT_BuscarProv.SelectedText = ""
         Me.TXT_BuscarProv.Size = New System.Drawing.Size(256, 42)
         Me.TXT_BuscarProv.TabIndex = 66
@@ -295,12 +244,12 @@ Partial Class P_Productos
         Me.TXT_BuscarCat.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarCat.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarCat.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_BuscarCat.Location = New System.Drawing.Point(965, 80)
+        Me.TXT_BuscarCat.Location = New System.Drawing.Point(946, 80)
         Me.TXT_BuscarCat.Name = "TXT_BuscarCat"
         Me.TXT_BuscarCat.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_BuscarCat.PlaceholderText = "Buscar categoría"
+        Me.TXT_BuscarCat.PlaceholderText = "Doble click para buscar"
         Me.TXT_BuscarCat.SelectedText = ""
-        Me.TXT_BuscarCat.Size = New System.Drawing.Size(234, 42)
+        Me.TXT_BuscarCat.Size = New System.Drawing.Size(256, 42)
         Me.TXT_BuscarCat.TabIndex = 67
         '
         'DGV_Prods
@@ -314,6 +263,7 @@ Partial Class P_Productos
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.DGV_Prods.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.DGV_Prods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -391,6 +341,87 @@ Partial Class P_Productos
         Me.BTN_Hablador.TabIndex = 69
         Me.BTN_Hablador.Text = "Crear hablador"
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Britannic Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(157, 129)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(191, 16)
+        Me.Label5.TabIndex = 71
+        Me.Label5.Text = "Activar busqueda por marca"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'SWT_Marca
+        '
+        Me.SWT_Marca.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Marca.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Marca.CheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Marca.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.SWT_Marca.Location = New System.Drawing.Point(116, 128)
+        Me.SWT_Marca.Name = "SWT_Marca"
+        Me.SWT_Marca.Size = New System.Drawing.Size(35, 20)
+        Me.SWT_Marca.TabIndex = 70
+        Me.SWT_Marca.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Marca.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Marca.UncheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Marca.UncheckedState.InnerColor = System.Drawing.Color.White
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Britannic Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(581, 128)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(215, 16)
+        Me.Label4.TabIndex = 73
+        Me.Label4.Text = "Activar busqueda por proveedor"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'SWT_Prov
+        '
+        Me.SWT_Prov.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Prov.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Prov.CheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Prov.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.SWT_Prov.Location = New System.Drawing.Point(540, 127)
+        Me.SWT_Prov.Name = "SWT_Prov"
+        Me.SWT_Prov.Size = New System.Drawing.Size(35, 20)
+        Me.SWT_Prov.TabIndex = 72
+        Me.SWT_Prov.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Prov.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Prov.UncheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Prov.UncheckedState.InnerColor = System.Drawing.Color.White
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Britannic Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.Location = New System.Drawing.Point(987, 128)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(212, 16)
+        Me.Label6.TabIndex = 75
+        Me.Label6.Text = "Activar busqueda por categoría"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'SWT_Cat
+        '
+        Me.SWT_Cat.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Cat.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Cat.CheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Cat.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.SWT_Cat.Location = New System.Drawing.Point(946, 127)
+        Me.SWT_Cat.Name = "SWT_Cat"
+        Me.SWT_Cat.Size = New System.Drawing.Size(35, 20)
+        Me.SWT_Cat.TabIndex = 74
+        Me.SWT_Cat.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Cat.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Cat.UncheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Cat.UncheckedState.InnerColor = System.Drawing.Color.White
+        '
         'P_Productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -398,14 +429,17 @@ Partial Class P_Productos
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProd
         Me.ClientSize = New System.Drawing.Size(1280, 665)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.SWT_Cat)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.SWT_Prov)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.SWT_Marca)
         Me.Controls.Add(Me.BTN_Hablador)
         Me.Controls.Add(Me.DGV_Prods)
         Me.Controls.Add(Me.TXT_BuscarCat)
         Me.Controls.Add(Me.TXT_BuscarProv)
         Me.Controls.Add(Me.TXT_BuscarMarca)
-        Me.Controls.Add(Me.CKB_Categoria)
-        Me.Controls.Add(Me.CKB_Proveedor)
-        Me.Controls.Add(Me.CKB_Marca)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -435,12 +469,15 @@ Partial Class P_Productos
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents CKB_Categoria As Guna.UI2.WinForms.Guna2CheckBox
-    Friend WithEvents CKB_Proveedor As Guna.UI2.WinForms.Guna2CheckBox
-    Friend WithEvents CKB_Marca As Guna.UI2.WinForms.Guna2CheckBox
     Friend WithEvents TXT_BuscarMarca As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents TXT_BuscarCat As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents TXT_BuscarProv As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents DGV_Prods As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents BTN_Hablador As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Label6 As Label
+    Friend WithEvents SWT_Cat As Guna.UI2.WinForms.Guna2ToggleSwitch
+    Friend WithEvents Label4 As Label
+    Friend WithEvents SWT_Prov As Guna.UI2.WinForms.Guna2ToggleSwitch
+    Friend WithEvents Label5 As Label
+    Friend WithEvents SWT_Marca As Guna.UI2.WinForms.Guna2ToggleSwitch
 End Class

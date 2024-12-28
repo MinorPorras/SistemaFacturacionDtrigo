@@ -27,48 +27,54 @@
     End Sub
 
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
-            Application.Exit()
-        End If
+        msgCerrarApp()
     End Sub
 
     Private Sub BTN_Sucursal_Click(sender As Object, e As EventArgs) Handles BTN_Sucursal.Click
         P_Sucursal.Show()
+        P_Sucursal.Select()
         Me.Close()
     End Sub
 
     Private Sub BTN_Usuario_Click(sender As Object, e As EventArgs) Handles BTN_Usuario.Click
         P_Usuarios.Show()
+        P_Usuarios.Select()
         Me.Close()
     End Sub
 
     Private Sub BTN_Cliente_Click(sender As Object, e As EventArgs) Handles BTN_Cliente.Click
         P_Clientes.Show()
+        P_Clientes.Select()
         Me.Close()
     End Sub
 
     Private Sub BTN_Proveedor_Click(sender As Object, e As EventArgs) Handles BTN_Proveedor.Click
         P_Proveedor.Show()
+        P_Proveedor.Select()
         Me.Close()
     End Sub
 
     Private Sub BTN_Impuesto_Click(sender As Object, e As EventArgs) Handles BTN_Impuesto.Click
         P_Impuestos.Show()
+        P_Impuestos.Select()
         Me.Close()
     End Sub
 
     Private Sub BTN_Categoria_Click(sender As Object, e As EventArgs) Handles BTN_Categoria.Click
         P_Categoria.Show()
+        P_Categoria.Select()
         Me.Close()
     End Sub
 
     Private Sub BTN_Marca_Click(sender As Object, e As EventArgs) Handles BTN_Marca.Click
         P_Marca.Show()
+        P_Marca.Select()
         Me.Close()
     End Sub
 
     Private Sub BTN_Producto_Click(sender As Object, e As EventArgs) Handles BTN_Producto.Click
         P_Productos.Show()
+        P_Productos.Select()
         Me.Close()
     End Sub
 

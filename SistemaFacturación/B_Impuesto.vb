@@ -23,9 +23,18 @@ Public Class B_Impuesto
         Task.Run(Sub()
                      Try
                          T.Tables.Clear()
-                         SQL = "SELECT ID, codigo as [Código], descripcion  as [Descripción], porcentaje  as [Porcentaje]" &
-                             " FROM impuestos where codigo LIKE '%" & TXT_BuscarImp.Text & "%' " &
-                             "OR descripcion LIKE '%" & TXT_BuscarImp.Text & "%' ORDER BY Val(codigo) ASC"
+                         Dim busqueda As String = TXT_BuscarImp.Text.Trim()
+                         Dim condicionBusqueda As String
+                         If busqueda = "" Then
+                             condicionBusqueda = "1=1" ' Esto siempre será verdadero, mostrando todos los registros
+                         Else
+                             condicionBusqueda = $"codigo LIKE '%{busqueda}%' OR descripcion LIKE '%{busqueda}%')"
+                         End If
+                         SQL = "SELECT ID, codigo AS 'Código', descripcion AS 'Descripción', porcentaje AS 'Porcentaje' " &
+                                  "FROM impuestos " &
+                                  "WHERE " & condicionBusqueda &
+                                  " ORDER BY codigo ASC;"
+
                          Invoke(Sub()
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
@@ -42,7 +51,7 @@ Public Class B_Impuesto
                                     If DGV_BImp.IsHandleCreated Then
                                         If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                                             ' Mostrar un mensaje de error genérico
-                                            MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                            msgError("Error al cargar la lista de categorías: " & ex.Message)
                                         End If
                                     End If
                                 End Sub)
@@ -73,6 +82,8 @@ Public Class B_Impuesto
 
 
     Private Sub BTN_RegresarMarca_Click(sender As Object, e As EventArgs) Handles BTN_RegresarImpuesto.Click
+        E_NuevoProducto.Show()
+        E_NuevoProducto.Select()
         Me.Close()
     End Sub
 
@@ -80,6 +91,8 @@ Public Class B_Impuesto
         Try
             E_NuevoProducto.TXT_Impuesto.Text = TXT_porcentaje.Text
             E_NuevoProducto.LBL_IDImp.Text = DGV_BImp.SelectedRows(0).Cells(0).Value.ToString()
+            E_NuevoProducto.Show()
+            E_NuevoProducto.Select()
             Me.Close()
         Catch ex As Exception
             Me.Close()

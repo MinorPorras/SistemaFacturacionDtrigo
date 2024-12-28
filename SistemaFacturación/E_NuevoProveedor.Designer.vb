@@ -37,6 +37,7 @@ Partial Class E_NuevoProveedor
         Me.BTN_RegresarProv = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_NProv = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_Pedidos = New Guna.UI2.WinForms.Guna2Button()
+        Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -72,12 +73,12 @@ Partial Class E_NuevoProveedor
         Me.TXT_NombreProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_NombreProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_NombreProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_NombreProv.Location = New System.Drawing.Point(349, 181)
+        Me.TXT_NombreProv.Location = New System.Drawing.Point(405, 181)
         Me.TXT_NombreProv.Name = "TXT_NombreProv"
         Me.TXT_NombreProv.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_NombreProv.PlaceholderText = ""
         Me.TXT_NombreProv.SelectedText = ""
-        Me.TXT_NombreProv.Size = New System.Drawing.Size(334, 31)
+        Me.TXT_NombreProv.Size = New System.Drawing.Size(278, 31)
         Me.TXT_NombreProv.TabIndex = 48
         '
         'Label2
@@ -85,7 +86,7 @@ Partial Class E_NuevoProveedor
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(256, 185)
+        Me.Label2.Location = New System.Drawing.Point(312, 185)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(87, 23)
         Me.Label2.TabIndex = 47
@@ -250,6 +251,24 @@ Partial Class E_NuevoProveedor
         Me.BTN_Pedidos.Text = "Pedidos"
         Me.BTN_Pedidos.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         '
+        'BTN_AutoCod
+        '
+        Me.BTN_AutoCod.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_AutoCod.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_AutoCod.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_AutoCod.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_AutoCod.FillColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BTN_AutoCod.Font = New System.Drawing.Font("Snap ITC", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_AutoCod.ForeColor = System.Drawing.Color.White
+        Me.BTN_AutoCod.ImageSize = New System.Drawing.Size(90, 90)
+        Me.BTN_AutoCod.Location = New System.Drawing.Point(237, 175)
+        Me.BTN_AutoCod.Name = "BTN_AutoCod"
+        Me.BTN_AutoCod.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_AutoCod.Size = New System.Drawing.Size(44, 44)
+        Me.BTN_AutoCod.TabIndex = 113
+        Me.BTN_AutoCod.Text = "+"
+        Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
+        '
         'E_NuevoProveedor
         '
         Me.AcceptButton = Me.BTN_NProv
@@ -258,6 +277,7 @@ Partial Class E_NuevoProveedor
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProv
         Me.ClientSize = New System.Drawing.Size(713, 433)
+        Me.Controls.Add(Me.BTN_AutoCod)
         Me.Controls.Add(Me.BTN_Pedidos)
         Me.Controls.Add(Me.BTN_RegresarProv)
         Me.Controls.Add(Me.BTN_NProv)
@@ -295,4 +315,5 @@ Partial Class E_NuevoProveedor
     Friend WithEvents BTN_RegresarProv As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_NProv As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_Pedidos As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
 End Class

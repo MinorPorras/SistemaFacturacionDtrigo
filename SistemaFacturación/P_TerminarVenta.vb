@@ -10,7 +10,7 @@ Public Class P_TerminarVenta
 
     Friend encabezadoFactura As String
     Friend encabezadoProds As String
-    Friend facturaContenido As List(Of String) = New List(Of String)()
+    Friend facturaContenido As New List(Of String)()
     Friend finFactura As String
     Private Sub P_TerminarVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         idFactura = OBTENERPK("factura", "ID")
@@ -52,7 +52,7 @@ Public Class P_TerminarVenta
 
     End Sub
 
-    Private Sub calcVuelto(txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox, txtVuelto As Guna.UI2.WinForms.Guna2TextBox)
+    Private Sub CalcVuelto(txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox, txtVuelto As Guna.UI2.WinForms.Guna2TextBox)
         Dim eCliente As Double
         Dim eCliente2 As Double
         If Not TabControlTVenta.SelectedIndex = 4 Then
@@ -90,15 +90,19 @@ Public Class P_TerminarVenta
 
                 If Convert.ToDouble(txtEntregaCliente.Text) + Convert.ToDouble(txtEntregaCliente2.Text) >= Total Then
                     BTN_TVenta.Enabled = True
+                    BTN_TVentaImp.Enabled = True
                 Else
                     BTN_TVenta.Enabled = False
+                    BTN_TVentaImp.Enabled = False
                 End If
             Else
 
                 If Convert.ToDouble(txtEntregaCliente.Text) >= Total Then
                     BTN_TVenta.Enabled = True
+                    BTN_TVentaImp.Enabled = True
                 Else
                     BTN_TVenta.Enabled = False
+                    BTN_TVentaImp.Enabled = False
                 End If
             End If
         Catch ex As Exception
@@ -110,45 +114,50 @@ Public Class P_TerminarVenta
         TipoPago = TabControlTVenta.SelectedIndex
         Select Case TipoPago
             Case 0 'Efectivo
-                guardarFactura(TXT_ETotal, TXT_ECliente, TXT_EVuelto)
+                guardarFactura(TXT_ETotal, TXT_ECliente, TXT_EVuelto, False)
             Case 1 'Tarjeta
-                guardarFactura(TXT_TTotal, TXT_TCliente, TXT_TVuelto)
+                guardarFactura(TXT_TTotal, TXT_TCliente, TXT_TVuelto, False)
             Case 2 'Sinpe
-                guardarFactura(TXT_STotal, TXT_SCliente, TXT_SVuelto)
+                guardarFactura(TXT_STotal, TXT_SCliente, TXT_SVuelto, False)
             Case 3 'Depósito
-                guardarFactura(TXT_DTotal, TXT_DCliente, TXT_DVuelto)
+                guardarFactura(TXT_DTotal, TXT_DCliente, TXT_DVuelto, False)
             Case 4 'Mixto
-                guardarFactura(TXT_MTotal, TXT_ECliente, TXT_MVuelto)
+                guardarFactura(TXT_MTotal, TXT_ECliente, TXT_MVuelto, False)
+        End Select
+    End Sub
+    Private Sub BTN_TVentaImp_Click_1(sender As Object, e As EventArgs) Handles BTN_TVentaImp.Click
+        TipoPago = TabControlTVenta.SelectedIndex
+        Select Case TipoPago
+            Case 0 'Efectivo
+                guardarFactura(TXT_ETotal, TXT_ECliente, TXT_EVuelto, True)
+            Case 1 'Tarjeta
+                guardarFactura(TXT_TTotal, TXT_TCliente, TXT_TVuelto, True)
+            Case 2 'Sinpe
+                guardarFactura(TXT_STotal, TXT_SCliente, TXT_SVuelto, True)
+            Case 3 'Depósito
+                guardarFactura(TXT_DTotal, TXT_DCliente, TXT_DVuelto, True)
+            Case 4 'Mixto
+                GuardarFactura(TXT_MTotal, TXT_ECliente, TXT_MVuelto, True)
         End Select
     End Sub
 
-    Private Sub guardarFactura(txtTotal As Guna.UI2.WinForms.Guna2TextBox, txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox, txtVuelto As Guna.UI2.WinForms.Guna2TextBox)
-        If MessageBox.Show("¿Desea terminar la venta?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+    Private Sub GuardarFactura(txtTotal As Guna.UI2.WinForms.Guna2TextBox, txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox, txtVuelto As Guna.UI2.WinForms.Guna2TextBox, imprimir As Boolean)
+        If MsgBox("¿Desea terminar la venta?", vbOKCancel + vbDefaultButton1, "Confirmar") = MsgBoxResult.Ok Then
             Try
+                Dim tarjeta As Double
+                Dim efectivo As Double
                 ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
                 If EXISTEPK("factura", "ID", idFactura) = False Then ' Si no se ha guardado la categoría
-                    ' Guarda la PK almacenada en IdCat dentro de la Base de datos en la tabla y PK indicado
-                    GUARDAR_PK("factura", "ID", idFactura)
+                    If TipoPago = 4 Then
+                        efectivo = Convert.ToDouble(TXT_PagoEfectivo.Text)
+                        tarjeta = Convert.ToDouble(TXT_PagoTarjeta.Text)
+                    Else
+                        efectivo = Convert.ToDouble(txtEntregaCliente.Text)
+                        tarjeta = 0
+                    End If
+                    Dim insert As String = $"{idFactura}, {NumFactura}, '{Date.Now:yyyy-MM-dd HH:mm:ss}', {idCLiente}, {P_Caja.idUsu}, {total}, {efectivo}, {tarjeta}, {vuelto}, {TipoPago}, {1}"
+                    GUARDAR_FACT("factura", insert)
                 End If
-                ' Actualizar los campos en la base de datos
-                GUARDAR_TIMEACTUAL("factura", "fecha_emision", "ID", idFactura)
-                GUARDAR_INT("factura", "ID_Cliente", idCLiente, "ID", idFactura)
-                GUARDAR_INT("factura", "ID_Usuario", P_Caja.idUsu, "ID", idFactura)
-                GUARDAR_STR("factura", "num_factura", NumFactura, "ID", idFactura)
-                GUARDAR_DOUBLE("factura", "total", total, "ID", idFactura)
-                Dim eCliente As Double
-                If TipoPago = 4 Then
-                    GUARDAR_DOUBLE("factura", "efectivo_cliente", Convert.ToDouble(TXT_PagoEfectivo.Text), "ID", idFactura)
-                    GUARDAR_DOUBLE("factura", "tarjeta_cliente", Convert.ToDouble(TXT_PagoTarjeta.Text), "ID", idFactura)
-                Else
-                    eCliente = Convert.ToDouble(txtEntregaCliente.Text)
-                    GUARDAR_DOUBLE("factura", "efectivo_cliente", eCliente, "ID", idFactura)
-                    GUARDAR_DOUBLE("factura", "tarjeta_cliente", 0, "ID", idFactura)
-                End If
-
-                GUARDAR_DOUBLE("factura", "vuelto", vuelto, "ID", idFactura)
-                GUARDAR_INT("factura", "tipo_venta", TipoPago, "ID", idFactura)
-                GUARDAR_STR("factura", "cobrada", "Si", "ID", idFactura)
                 Dim NInv As Integer
                 For i As Integer = 0 To P_Caja.DGV_Caja.Rows.Count - 2
                     GUARDAR_VarCompInt4("factura_producto", idFactura, P_Caja.DGV_Caja.Rows(i).Cells(0).Value.ToString(), P_Caja.DGV_Caja.Rows(i).Cells(4).Value.ToString(), Convert.ToDouble(P_Caja.DGV_Caja.Rows(i).Cells(3).Value.ToString()))
@@ -164,28 +173,27 @@ Public Class P_TerminarVenta
                     GUARDAR_VarCompuestas("factura_comentario", idFactura, TXT_Comentario.Text)
                 End If
 
-                If MessageBox.Show("Venta realizada con exito." + vbCrLf + "¿Desea imprimir la factura correspondiente?", "Venta existosa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                    CREAR_FACTURA(idFactura, encabezadoFactura, facturaContenido, finFactura, False)
+                If imprimir Then
+                    CREAR_FACTURA(idFactura, False)
                     ImprimirFactura()
-
-                    'crea el archivo y lo imprime, no muestra nada
-                    MsgBox("Venta y factura completadas", vbOKOnly, "Buen Trabajo")
                 End If
 
                 P_Caja.LIMPIAR()
                 P_Caja.cargarNumFactura()
                 P_Caja.Show()
+                P_Caja.Select()
+                mensaje("Vuelto: ₡ " & vuelto, vbOKOnly, "Venta completada")
                 P_Caja.TXT_BuscarProducto.SelectAll()
                 Me.Close()
             Catch ex As Exception
-                MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                msgError("Error: " & ex.Message)
             End Try
         End If
 
     End Sub
 
     ' Manejar el evento PrintPage
-    Private Sub printDocument_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument.PrintPage
+    Private Sub PrintDocument_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument.PrintPage
         Dim font As New Font("Arial", 12)
         Dim fontProds As New Font("Segoe UI", 9)
         Dim brush As New SolidBrush(Color.Black)
@@ -245,8 +253,9 @@ Public Class P_TerminarVenta
         ' Configurar márgenes a cero
         printDoc.DefaultPageSettings.Margins = New Margins(0, 0, 0, 0)
 
-        Dim printPreview As New PrintPreviewDialog()
-        printPreview.Document = printDoc
+        Dim printPreview As New PrintPreviewDialog With {
+            .Document = printDoc
+        }
         If PrintDialog.ShowDialog() = DialogResult.OK Then ' Si el usuario selecciona OK, procedemos a imprimir 
             printDoc.Print()
         End If
@@ -254,12 +263,16 @@ Public Class P_TerminarVenta
 
 
     Private Sub BTN_RegresarVenta_Click(sender As Object, e As EventArgs) Handles BTN_RegresarVenta.Click
-        Me.Close()
-        P_Caja.TXT_BuscarProducto.Select()
+        P_Caja.Select()
         P_Caja.TXT_BuscarProducto.SelectAll()
+        Me.Close()
     End Sub
 
     Private Sub TabControlTVenta_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControlTVenta.SelectedIndexChanged
+        LIMPIAR()
+    End Sub
+
+    Friend Sub LIMPIAR()
         TipoPago = TabControlTVenta.SelectedIndex
         Select Case TipoPago
             Case 0 'Efectivo
@@ -341,8 +354,6 @@ Public Class P_TerminarVenta
                 TXT_DVuelto.Text = "0"
                 TXT_PagoEfectivo.Select()
                 TXT_PagoEfectivo.SelectAll()
-                TXT_PagoTarjeta.Select()
-                TXT_PagoTarjeta.SelectAll()
         End Select
     End Sub
 
@@ -361,11 +372,11 @@ Public Class P_TerminarVenta
         colocarTotal(TXT_DCliente)
     End Sub
 
-    Private Sub colocarTotal(txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox)
+    Private Sub ColocarTotal(txtEntregaCliente As Guna.UI2.WinForms.Guna2TextBox)
         txtEntregaCliente.Text = total
     End Sub
 
-    Private Function cargarRestante(efectivo As Boolean)
+    Private Function CargarRestante(efectivo As Boolean)
         If String.IsNullOrEmpty(TXT_PagoEfectivo.Text) Then
             TXT_PagoEfectivo.Text = 0
         End If
@@ -407,6 +418,8 @@ Public Class P_TerminarVenta
                 BTN_RegresarVenta.PerformClick()
             Case Keys.F7
                 BTN_TVenta.PerformClick()
+            Case Keys.F4
+                BTN_TVentaImp.PerformClick()
         End Select
     End Sub
 End Class

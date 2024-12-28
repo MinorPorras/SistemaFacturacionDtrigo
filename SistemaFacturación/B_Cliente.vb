@@ -27,9 +27,18 @@ Public Class B_Cliente
         Task.Run(Sub()
                      Try
                          T.Tables.Clear()
-                         SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] " &
-                             "FROM clientes where codigo LIKE '%" & TXT_BuscarCliente.Text & "%'" &
-                             " OR nombre LIKE '%" & TXT_BuscarCliente.Text & "%' ORDER BY Val(codigo) ASC"
+                         Dim busqueda As String = TXT_BuscarCliente.Text.Trim()
+                         Dim condicionBusqueda As String
+                         If busqueda = "" Then
+                             condicionBusqueda = "1=1" ' Esto siempre será verdadero, mostrando todos los registros
+                         Else
+                             condicionBusqueda = $"codigo LIKE '%{busqueda}%' OR nombre LIKE '%{busqueda}%'"
+                         End If
+                         SQL = "SELECT ID, codigo AS 'Código', nombre AS 'Nombre' " &
+                                  "FROM clientes " &
+                                  "WHERE " & condicionBusqueda &
+                                  " ORDER BY codigo ASC;"
+
                          Invoke(Sub()
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
@@ -38,17 +47,15 @@ Public Class B_Cliente
                                         DGV_BCliente.DataSource = bin
                                     Else ' Limpiar la fuente de datos si no se cargaron datos
                                         DGV_BCliente.DataSource = Nothing
-
                                     End If
                                     TXT_BuscarCliente.Select()
-
                                 End Sub)
                      Catch ex As Exception
                          If DGV_BCliente.IsHandleCreated Then
                              Invoke(Sub()
                                         If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                                             ' Mostrar un mensaje de error genérico
-                                            MsgBox("Error al cargar la lista de clientes: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                            msgError("Error al cargar la lista de clientes: " & ex.Message)
                                         End If
                                     End Sub)
                          End If
@@ -80,14 +87,17 @@ Public Class B_Cliente
     End Sub
 
     Private Sub BTN_RegresarBCLiente_Click(sender As Object, e As EventArgs) Handles BTN_RegresarBCLiente.Click
+        P_Caja.Show()
+        P_Caja.Select()
         Me.Close()
     End Sub
 
     Private Sub BTN_SelectCliente_Click(sender As Object, e As EventArgs) Handles BTN_SelectCliente.Click
+        P_Caja.Show()
         P_Caja.idCliente = DGV_BCliente.SelectedRows(0).Cells(0).Value.ToString()
         P_Caja.TXT_BuscarCliente.Text = TXT_codigo.Text
+        P_Caja.Select()
         Me.Close()
-
     End Sub
 
     Private Sub TXT_BuscarCliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarCliente.TextChanged
@@ -106,5 +116,11 @@ Public Class B_Cliente
             TXT_codigo.Text = ""
             TXT_Nombre.Text = ""
         End Try
+    End Sub
+
+    Friend Sub LIMPIAR()
+        TXT_BuscarCliente.Clear()
+        TXT_codigo.Clear()
+        TXT_Nombre.Clear()
     End Sub
 End Class

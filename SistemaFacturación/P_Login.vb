@@ -20,20 +20,13 @@
             If T.Tables(0).Rows(0).Item(0) = TXT_Clave.Text Then
                 idUsuActual = idUsu
                 nomUsuActual = LBL_Usu.Text
-
                 If T.Tables(0).Rows(0).Item(1) = 0 Then
-                    M_Inicio.BTN_Config.Enabled = False
-                    M_Inicio.BTN_Mantenimiento.Enabled = False
-                    M_Inicio.BTN_Reporte.Enabled = False
                     CuentaAdmin = False
                 Else
-                    M_Inicio.BTN_Config.Enabled = True
-                    M_Inicio.BTN_Mantenimiento.Enabled = True
-                    'Se coloca en False ya que la función aún no esta implementada
-                    M_Inicio.BTN_Reporte.Enabled = False
                     CuentaAdmin = True
                 End If
                 M_Inicio.Show()
+                M_Inicio.Select()
                 P_SelectUsu.Close()
                 Me.Close()
             Else
@@ -46,6 +39,7 @@
 
     Private Sub BTN_RegresarLogin_Click(sender As Object, e As EventArgs) Handles BTN_RegresarLogin.Click
         P_SelectUsu.Show()
+        P_SelectUsu.Select()
         Me.Close()
     End Sub
 End Class

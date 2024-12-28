@@ -36,7 +36,6 @@ Partial Class E_NuevoProducto
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.CKB_Fav = New Guna.UI2.WinForms.Guna2CheckBox()
         Me.TXT_PrecioBase = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.TXT_Impuesto = New Guna.UI2.WinForms.Guna2TextBox()
@@ -53,12 +52,15 @@ Partial Class E_NuevoProducto
         Me.LBL_IDMarca = New System.Windows.Forms.Label()
         Me.LBL_Prov = New System.Windows.Forms.Label()
         Me.LBL_IDCat = New System.Windows.Forms.Label()
-        Me.pBar_guardar = New Guna.UI2.WinForms.Guna2ProgressBar()
-        Me.CKB_variable = New Guna.UI2.WinForms.Guna2CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.LBL_IDImp = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.NUD_Inv = New Guna.UI2.WinForms.Guna2NumericUpDown()
+        Me.Guna2NotificationPaint1 = New Guna.UI2.WinForms.Guna2NotificationPaint(Me.components)
+        Me.SWT_Fav = New Guna.UI2.WinForms.Guna2ToggleSwitch()
+        Me.SWT_Var = New Guna.UI2.WinForms.Guna2ToggleSwitch()
+        Me.PRG_Guardando = New Guna.UI2.WinForms.Guna2WinProgressIndicator()
+        Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NUD_Inv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -74,7 +76,7 @@ Partial Class E_NuevoProducto
         '
         Me.Guna2PictureBox2.Image = CType(resources.GetObject("Guna2PictureBox2.Image"), System.Drawing.Image)
         Me.Guna2PictureBox2.ImageRotate = 0!
-        Me.Guna2PictureBox2.Location = New System.Drawing.Point(334, -99)
+        Me.Guna2PictureBox2.Location = New System.Drawing.Point(307, -95)
         Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
         Me.Guna2PictureBox2.Size = New System.Drawing.Size(409, 361)
         Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -218,27 +220,11 @@ Partial Class E_NuevoProducto
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(553, 185)
+        Me.Label8.Location = New System.Drawing.Point(539, 185)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(90, 23)
         Me.Label8.TabIndex = 77
         Me.Label8.Text = "Favorito:"
-        '
-        'CKB_Fav
-        '
-        Me.CKB_Fav.AutoSize = True
-        Me.CKB_Fav.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_Fav.CheckedState.BorderRadius = 0
-        Me.CKB_Fav.CheckedState.BorderThickness = 0
-        Me.CKB_Fav.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_Fav.Location = New System.Drawing.Point(649, 190)
-        Me.CKB_Fav.Name = "CKB_Fav"
-        Me.CKB_Fav.Size = New System.Drawing.Size(15, 14)
-        Me.CKB_Fav.TabIndex = 78
-        Me.CKB_Fav.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.CKB_Fav.UncheckedState.BorderRadius = 0
-        Me.CKB_Fav.UncheckedState.BorderThickness = 0
-        Me.CKB_Fav.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         '
         'TXT_PrecioBase
         '
@@ -482,7 +468,7 @@ Partial Class E_NuevoProducto
         '
         Me.LBL_IDMarca.AutoSize = True
         Me.LBL_IDMarca.ForeColor = System.Drawing.Color.Cornsilk
-        Me.LBL_IDMarca.Location = New System.Drawing.Point(857, 48)
+        Me.LBL_IDMarca.Location = New System.Drawing.Point(22, 25)
         Me.LBL_IDMarca.Name = "LBL_IDMarca"
         Me.LBL_IDMarca.Size = New System.Drawing.Size(45, 13)
         Me.LBL_IDMarca.TabIndex = 92
@@ -493,7 +479,7 @@ Partial Class E_NuevoProducto
         '
         Me.LBL_Prov.AutoSize = True
         Me.LBL_Prov.ForeColor = System.Drawing.Color.Cornsilk
-        Me.LBL_Prov.Location = New System.Drawing.Point(857, 74)
+        Me.LBL_Prov.Location = New System.Drawing.Point(22, 51)
         Me.LBL_Prov.Name = "LBL_Prov"
         Me.LBL_Prov.Size = New System.Drawing.Size(37, 13)
         Me.LBL_Prov.TabIndex = 93
@@ -504,40 +490,12 @@ Partial Class E_NuevoProducto
         '
         Me.LBL_IDCat.AutoSize = True
         Me.LBL_IDCat.ForeColor = System.Drawing.Color.Cornsilk
-        Me.LBL_IDCat.Location = New System.Drawing.Point(857, 97)
+        Me.LBL_IDCat.Location = New System.Drawing.Point(22, 74)
         Me.LBL_IDCat.Name = "LBL_IDCat"
         Me.LBL_IDCat.Size = New System.Drawing.Size(31, 13)
         Me.LBL_IDCat.TabIndex = 94
         Me.LBL_IDCat.Text = "idCat"
         Me.LBL_IDCat.Visible = False
-        '
-        'pBar_guardar
-        '
-        Me.pBar_guardar.BorderColor = System.Drawing.Color.White
-        Me.pBar_guardar.BorderThickness = 1
-        Me.pBar_guardar.FillColor = System.Drawing.Color.Transparent
-        Me.pBar_guardar.Location = New System.Drawing.Point(12, 545)
-        Me.pBar_guardar.Name = "pBar_guardar"
-        Me.pBar_guardar.Size = New System.Drawing.Size(999, 30)
-        Me.pBar_guardar.TabIndex = 95
-        Me.pBar_guardar.Text = "Guna2ProgressBar1"
-        Me.pBar_guardar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        '
-        'CKB_variable
-        '
-        Me.CKB_variable.AutoSize = True
-        Me.CKB_variable.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_variable.CheckedState.BorderRadius = 0
-        Me.CKB_variable.CheckedState.BorderThickness = 0
-        Me.CKB_variable.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.CKB_variable.Location = New System.Drawing.Point(501, 516)
-        Me.CKB_variable.Name = "CKB_variable"
-        Me.CKB_variable.Size = New System.Drawing.Size(15, 14)
-        Me.CKB_variable.TabIndex = 97
-        Me.CKB_variable.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
-        Me.CKB_variable.UncheckedState.BorderRadius = 0
-        Me.CKB_variable.UncheckedState.BorderThickness = 0
-        Me.CKB_variable.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         '
         'Label2
         '
@@ -554,7 +512,7 @@ Partial Class E_NuevoProducto
         '
         Me.LBL_IDImp.AutoSize = True
         Me.LBL_IDImp.ForeColor = System.Drawing.Color.Cornsilk
-        Me.LBL_IDImp.Location = New System.Drawing.Point(857, 120)
+        Me.LBL_IDImp.Location = New System.Drawing.Point(22, 97)
         Me.LBL_IDImp.Name = "LBL_IDImp"
         Me.LBL_IDImp.Size = New System.Drawing.Size(31, 13)
         Me.LBL_IDImp.TabIndex = 98
@@ -587,6 +545,65 @@ Partial Class E_NuevoProducto
         Me.NUD_Inv.TabIndex = 100
         Me.NUD_Inv.UpDownButtonFillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         '
+        'SWT_Fav
+        '
+        Me.SWT_Fav.Animated = True
+        Me.SWT_Fav.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Fav.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Fav.CheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Fav.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.SWT_Fav.Location = New System.Drawing.Point(629, 188)
+        Me.SWT_Fav.Name = "SWT_Fav"
+        Me.SWT_Fav.Size = New System.Drawing.Size(35, 20)
+        Me.SWT_Fav.TabIndex = 102
+        Me.SWT_Fav.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Fav.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Fav.UncheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Fav.UncheckedState.InnerColor = System.Drawing.Color.White
+        '
+        'SWT_Var
+        '
+        Me.SWT_Var.Animated = True
+        Me.SWT_Var.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Var.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Var.CheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Var.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.SWT_Var.Location = New System.Drawing.Point(501, 512)
+        Me.SWT_Var.Name = "SWT_Var"
+        Me.SWT_Var.Size = New System.Drawing.Size(35, 20)
+        Me.SWT_Var.TabIndex = 103
+        Me.SWT_Var.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Var.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Var.UncheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Var.UncheckedState.InnerColor = System.Drawing.Color.White
+        '
+        'PRG_Guardando
+        '
+        Me.PRG_Guardando.BackColor = System.Drawing.Color.Transparent
+        Me.PRG_Guardando.Location = New System.Drawing.Point(813, 51)
+        Me.PRG_Guardando.Name = "PRG_Guardando"
+        Me.PRG_Guardando.Size = New System.Drawing.Size(90, 90)
+        Me.PRG_Guardando.TabIndex = 104
+        Me.PRG_Guardando.UseTransparentBackground = True
+        '
+        'BTN_AutoCod
+        '
+        Me.BTN_AutoCod.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_AutoCod.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_AutoCod.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_AutoCod.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_AutoCod.FillColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BTN_AutoCod.Font = New System.Drawing.Font("Snap ITC", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_AutoCod.ForeColor = System.Drawing.Color.White
+        Me.BTN_AutoCod.ImageSize = New System.Drawing.Size(90, 90)
+        Me.BTN_AutoCod.Location = New System.Drawing.Point(379, 179)
+        Me.BTN_AutoCod.Name = "BTN_AutoCod"
+        Me.BTN_AutoCod.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_AutoCod.Size = New System.Drawing.Size(44, 44)
+        Me.BTN_AutoCod.TabIndex = 113
+        Me.BTN_AutoCod.Text = "+"
+        Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
+        '
         'E_NuevoProducto
         '
         Me.AcceptButton = Me.BTN_NProv
@@ -594,13 +611,15 @@ Partial Class E_NuevoProducto
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProv
-        Me.ClientSize = New System.Drawing.Size(1025, 596)
+        Me.ClientSize = New System.Drawing.Size(1025, 545)
+        Me.Controls.Add(Me.BTN_AutoCod)
+        Me.Controls.Add(Me.PRG_Guardando)
+        Me.Controls.Add(Me.SWT_Var)
+        Me.Controls.Add(Me.SWT_Fav)
         Me.Controls.Add(Me.NUD_Inv)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.LBL_IDImp)
-        Me.Controls.Add(Me.CKB_variable)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.pBar_guardar)
         Me.Controls.Add(Me.LBL_IDCat)
         Me.Controls.Add(Me.LBL_Prov)
         Me.Controls.Add(Me.LBL_IDMarca)
@@ -617,7 +636,6 @@ Partial Class E_NuevoProducto
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.TXT_PrecioBase)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.CKB_Fav)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label5)
@@ -653,7 +671,6 @@ Partial Class E_NuevoProducto
     Friend WithEvents Label7 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents CKB_Fav As Guna.UI2.WinForms.Guna2CheckBox
     Friend WithEvents Label8 As Label
     Friend WithEvents TXT_Impuesto As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label10 As Label
@@ -671,10 +688,13 @@ Partial Class E_NuevoProducto
     Friend WithEvents LBL_IDMarca As Label
     Friend WithEvents LBL_IDCat As Label
     Friend WithEvents LBL_Prov As Label
-    Friend WithEvents pBar_guardar As Guna.UI2.WinForms.Guna2ProgressBar
-    Friend WithEvents CKB_variable As Guna.UI2.WinForms.Guna2CheckBox
     Friend WithEvents Label2 As Label
     Friend WithEvents LBL_IDImp As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents NUD_Inv As Guna.UI2.WinForms.Guna2NumericUpDown
+    Friend WithEvents SWT_Fav As Guna.UI2.WinForms.Guna2ToggleSwitch
+    Friend WithEvents Guna2NotificationPaint1 As Guna.UI2.WinForms.Guna2NotificationPaint
+    Friend WithEvents SWT_Var As Guna.UI2.WinForms.Guna2ToggleSwitch
+    Friend WithEvents PRG_Guardando As Guna.UI2.WinForms.Guna2WinProgressIndicator
+    Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
 End Class

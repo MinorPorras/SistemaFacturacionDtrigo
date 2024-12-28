@@ -9,8 +9,9 @@ Public Class P_Hablador
     ' Método para inicializar el temporizador y otros componentes necesarios
     Private Sub InicializarComponentes()
         ' Inicializar el temporizador
-        searchTimer = New Timer()
-        searchTimer.Interval = 100
+        searchTimer = New Timer With {
+            .Interval = 100
+        }
         ' Medio segundo
         AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
     End Sub
@@ -24,14 +25,15 @@ Public Class P_Hablador
         Task.Run(Sub()
                      Try
                          T.Tables.Clear()
-                         SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta]" &
+                         SQL = "SELECT p.ID, p.codigo as 'Código', p.nombre as 'Nombre', v.precio_venta as 'Precio'" &
                                  " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                                 " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%' OR p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' ORDER BY Val(p.codigo) ASC;"
+                                 " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%' OR p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' ORDER BY p.codigo ASC;"
                          Invoke(Sub()
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
-                                        Dim bin As New BindingSource
-                                        bin.DataSource = T.Tables(0)
+                                        Dim bin As New BindingSource With {
+                                            .DataSource = T.Tables(0)
+                                        }
                                         DGV_BProd.DataSource = bin
                                     Else ' Limpiar la fuente de datos si no se cargaron datos
                                         DGV_BProd.DataSource = Nothing
@@ -43,7 +45,7 @@ Public Class P_Hablador
                                     If DGV_BProd.IsHandleCreated Then
                                         If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                                             ' Mostrar un mensaje de error genérico
-                                            MsgBox("Error al cargar la lista de clientes: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                            msgError("Error al cargar la lista de clientes: " & ex.Message)
                                         End If
                                     End If
                                 End Sub)
@@ -118,14 +120,21 @@ Public Class P_Hablador
     End Sub
 
     Friend Sub CREAR_HABLADORES(productos As List(Of String), precios As List(Of String), cant As List(Of Integer))
-        ' Configurar el PrintDocument
-        Dim printDoc As New Printing.PrintDocument()
+        Dim printDoc As New PrintDocument()
         AddHandler printDoc.PrintPage, AddressOf PrintDocument_PrintPage
         printDoc.DocumentName = "Habladores de Productos"
 
+        ' Configurar el tamaño de papel personalizado en pulgadas
+        Dim customPaperSize As New PaperSize("Custom", CInt(72 * 3.937), CInt(297 * 3.937))
+        printDoc.DefaultPageSettings.PaperSize = customPaperSize
+
+        ' Configurar márgenes a cero
+        printDoc.DefaultPageSettings.Margins = New Margins(0, 0, 0, 0)
+
         ' Imprimir el documento
-        Dim printDialog As New PrintDialog()
-        printDialog.Document = printDoc
+        Dim printDialog As New PrintDialog With {
+            .Document = printDoc
+        }
 
         If printDialog.ShowDialog() = DialogResult.OK Then
             printDoc.Print()
@@ -135,8 +144,8 @@ Public Class P_Hablador
 
     Private Sub PrintDocument_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument.PrintPage
         Dim font As New Font("Arial", 12)
-        Dim fontProds As New Font("Arial", 14, FontStyle.Bold)
-        Dim fontPrices As New Font("Arial", 14, FontStyle.Bold)
+        Dim fontProds As New Font("Arial", 12, FontStyle.Bold)
+        Dim fontPrices As New Font("Arial", 12, FontStyle.Bold)
         Dim brush As New SolidBrush(Color.Black)
         Dim stringFormatLeft As New StringFormat() With {
             .Alignment = StringAlignment.Near,
@@ -153,7 +162,7 @@ Public Class P_Hablador
         For i As Integer = 0 To productos.Count - 1
             For j As Integer = 1 To cantidad(i)
                 ' Dibujar la primera fila alineada a la izquierda con líneas
-                Dim lines As String = New String("-"c, 30) ' Ajustar el número de caracteres según sea necesario
+                Dim lines As New String("-"c, 30) ' Ajustar el número de caracteres según sea necesario
                 e.Graphics.DrawString(lines, font, brush, leftMargin, yPos, stringFormatLeft)
                 yPos += e.Graphics.MeasureString(lines, font).Height + 5
 

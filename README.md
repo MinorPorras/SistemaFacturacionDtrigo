@@ -1,3 +1,17 @@
+**Versión 2.0.0.3 (28 de diciembre de 2024)**
+- Se cambió el motor de base de datos de Microsoft Acces a SQLite y se hicieron los cambios pertinentes en el código para que funcione correctamente la migración
+- Se simplificó el proceso de muestra de cajas de texto con mensaje e información
+- Se aceleró el proceso de guardado de las ventas al presionar el botón de terminar haciendo que todos los datos se guarden junto al msimo tiempo
+- Se agregó un botón de terminar e imprimir aparte del de terminar venta, ahora si se desea imprimir la factura se presiona este botón, el que se utilizaba antes ya no pregunta si se desea imprimir, solo termina automaticamente y muestra una caja de texto con el vuelto a entregar
+- Se quitaron mensajes innecesarios dentro del código
+- Se eliminó la barra de progreso del botón de agregar producto ya que no funcionaba como se quería, ahora al comenzar el proceos de guardado apara un simbolo de carga hasta que se muestra el mensaje de que se guardó todo
+- Ahora al buscar productos se puede hacer un doble click sobre las cajas de texto de busqueda de categorías, proveedores y marcas para entrar en las pestalas de busqueda específicas de estas para encontrar más facilmente lo que se necesite
+- Ahora al regresar o moverte entre pestañas, el programa se asegura de que se muestre al frente la pestaña a la que se está entrando, esto para evitar que si hay más aplicaciones abiertas alguna pestaña quede detras de otras
+- Se modifico el como se ve la pestaña de configuración general, ahora está dividida en pestañas entre las que de momento está la de gestión de base de datos que el la que ya estaba ingresada y la de códigos automáticos, en esta se coloca el número de digitos que quieres que tengan los código creados automaticamente
+- Se modificaron los colores de los botones por los cuales te mueves entre pestañas de terminar venta y de la configuraciones
+- En conjunto con al pestaña de configuraciones se agregó la función para crear código automaticamente, para hacerlo primero se debe de configurar el número de digitos del código, luetgo al crear o modificar cualquier cosa en la pestaña de mantenimiento se tiene un botón verde con un "+" junto a la caja de texto del código, con solo presionarlo este debe de buscar el próximo código en la base de datos que no esté utilizado creandolo con el número de digitos ingresado
+- Se corrigió un error que hacia que al no colocar ningún comentario en una factura que se quería imprimir, al hacerlo esta se imprimía con el comentario de la última factura de la cual se hubiera registrado un comentario
+
 **Versión 1.2.0.1 27 de noviembre de 2024**
 - Ahora se puede filtrar las facturas a reimprimir para que muestre solo, la últimas 50 (por defecto activado para que cargue más rápido), las ultimas 100 o 200 o que las muestre todas
 - Se arregló un error que sucedía cuando despues de seleccionar un producto con precio variable no se cargaba correctamente la pestaña para agregar su precio
@@ -9,7 +23,7 @@
 **Version 1.2.0.0 26 de noviembre de 2024**
 - Ya se pueen agregar existencias de cada producto en la pestaña de mantenimiento, al terminar una venta se resta a estas existencias la cantidad que se vendio, las existencias pueden ser negativas en caso de que se venda más de lo que se tiene registrado y va desde un rango de -1000 hasta 1000000 unidades
 - Se pueden crear habladores en la pestaña de mantenimiento de productos, unicamente se debe de seleccionar los productos que se quieran imprimir, la cantidad de habladores por producto y presionarl el botón de imprimir}
-- Se añadieron iconos y se cambio el formato levemente de los menus contextuales de las pestañas de mantenimiento  para qeu sean más visibles
+- Se añadieron iconos y se cambio el formato levemente de los menus contextuales de las pestañas de mantenimiento para que sean más visibles
 - La caja de texto que muestra el total de la venta en la caja ahora es mas grande y está en negrita para que sea más visible en pantallas pequeñas  
 
 **Versión 1.1.0.6 (25 de noviembre de 2024)**

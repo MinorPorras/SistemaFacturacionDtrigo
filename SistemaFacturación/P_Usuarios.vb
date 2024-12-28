@@ -9,7 +9,7 @@ Public Class P_Usuarios
     Private Sub InicializarComponentes()
         ' Inicializar el temporizador
         searchTimer = New Timer()
-        searchTimer.Interval = 100
+        searchTimer.Interval = 200
         ' Medio segundo
         AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
     End Sub
@@ -25,23 +25,29 @@ Public Class P_Usuarios
     End Sub
 
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
-            Application.Exit()
-        End If
+        msgCerrarApp()
     End Sub
     Public Sub REFRESCAR()
         Task.Run(Sub()
                      Try
-                         Dim selectedRowIndex As Integer = -1
-                         If DGV_Cajero.SelectedRows.Count > 0 Then
-                             selectedRowIndex = DGV_Cajero.SelectedRows(0).Index
+                         Dim busqueda As String = TXT_BuscarUsuario.Text.Trim()
+                         Dim condicionBusqueda As String
+                         If busqueda = "" Then
+                             condicionBusqueda = "1=1" ' Esto siempre será verdadero, mostrando todos los registros
+                         Else
+                             condicionBusqueda = $"(u.codigo LIKE '%{busqueda}%' OR u.usuario LIKE '%{busqueda}%')"
                          End If
-                         T.Tables.Clear()
 
-                         SQL = "SELECT u.ID, u.codigo as [Código], u.usuario as [Cajero], u.clave, " &
-                               "IIf(u.tipo=0, 'Cajero', IIf(u.tipo=1, 'Administrador', 'Desconocido')) AS [Tipo], u.color as [Color] " &
-                               "FROM usuario u WHERE u.codigo LIKE '%" & TXT_BuscarUsuario.Text & "%' OR u.usuario LIKE '%" & TXT_BuscarUsuario.Text & "%' ORDER BY Val(u.codigo) ASC;"
+                         SQL = "SELECT u.ID, u.codigo AS 'Código', u.usuario AS 'Cajero', u.clave, " &
+                                  "CASE WHEN u.tipo = 0 THEN 'Cajero' " &
+                                  "WHEN u.tipo = 1 THEN 'Administrador' " &
+                                  "ELSE 'Desconocido' END AS 'Tipo', u.color AS 'Color' " &
+                                  "FROM usuario u " &
+                                  "WHERE " & condicionBusqueda &
+                                  " ORDER BY u.codigo ASC;"
+
                          Invoke(Sub()
+                                    T.Tables.Clear()
                                     MNU_ELIMINAR.Visible = False
                                     MNU_MODIFICAR.Visible = False
                                     Cargar_Tabla(T, SQL)
@@ -49,14 +55,8 @@ Public Class P_Usuarios
                                         Dim bin As New BindingSource
                                         bin.DataSource = T.Tables(0)
                                         DGV_Cajero.DataSource = bin
-                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Cajero.Rows.Count Then
-                                            DGV_Cajero.Rows(selectedRowIndex).Selected = True
-                                            DGV_Cajero.FirstDisplayedScrollingRowIndex = selectedRowIndex
-                                        End If
-                                        If T.Tables(0).Rows.Count > 0 Then
-                                            MNU_ELIMINAR.Visible = True
-                                            MNU_MODIFICAR.Visible = True
-                                        End If
+                                        MNU_ELIMINAR.Visible = True
+                                        MNU_MODIFICAR.Visible = True
                                     Else ' Limpiar la fuente de datos si no se cargaron datos
                                         DGV_Cajero.DataSource = Nothing
                                     End If
@@ -67,7 +67,7 @@ Public Class P_Usuarios
                                     If DGV_Cajero.IsHandleCreated Then
                                         If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                                             ' Mostrar un mensaje de error genérico
-                                            MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                            msgError("Error al cargar la lista de categorías: " & ex.Message)
                                         End If
                                     End If
 
@@ -79,6 +79,10 @@ Public Class P_Usuarios
 
     Private Sub DGV_Cajero_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_Cajero.DataBindingComplete
         Try
+            Dim selectedRowIndex As Integer = -1
+            If DGV_Cajero.SelectedRows.Count > 0 Then
+                selectedRowIndex = DGV_Cajero.SelectedRows(0).Index
+            End If
             For i As Integer = 0 To DGV_Cajero.Columns.Count - 1
                 DGV_Cajero.Columns(i).ReadOnly = True
                 Select Case i
@@ -114,6 +118,10 @@ Public Class P_Usuarios
             DGV_Cajero.GridColor = Color.DarkGray
             DGV_Cajero.Columns(0).Visible = False
             DGV_Cajero.Columns(3).Visible = False
+            If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Cajero.Rows.Count Then
+                DGV_Cajero.Rows(selectedRowIndex).Selected = True
+                DGV_Cajero.FirstDisplayedScrollingRowIndex = selectedRowIndex
+            End If
         Catch ex As Exception
             ' Manejar el error si alguna columna no existe
             Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
@@ -124,12 +132,14 @@ Public Class P_Usuarios
 
     Private Sub BTN_RegresarUsu_Click(sender As Object, e As EventArgs) Handles BTN_RegresarUsu.Click
         M_Mantenimiento.Show()
+        M_Mantenimiento.Select()
         Me.Close()
     End Sub
 
     Private Sub BTN_NUsuario_Click(sender As Object, e As EventArgs) Handles BTN_NUsuario.Click
         E_NuevoUsuario.ModUsu = False
         E_NuevoUsuario.Show()
+        E_NuevoUsuario.Select()
     End Sub
 
     Private Sub TXT_BuscarUsuario_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarUsuario.TextChanged
@@ -145,7 +155,7 @@ Public Class P_Usuarios
         Try
             If DGV_Cajero.SelectedRows.Count > 0 Then
                 ' Se pregunta una confirmación para eliminar el tema
-                If MsgBox("¿Desea eliminar el usuario: " & DGV_Cajero.SelectedRows(0).Cells(2).Value.ToString() & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
+                If msgEliminar("al cajero: " & DGV_Cajero.SelectedRows(0).Cells(2).Value.ToString()) Then
                     Dim idSucEliminar As Integer = Convert.ToInt32(DGV_Cajero.SelectedRows(0).Cells(0).Value.ToString())
                     ' Verificar si hay categorías asociadas
                     SQL = "SELECT COUNT(ID) FROM usuario WHERE ID = " & idSucEliminar
@@ -153,19 +163,18 @@ Public Class P_Usuarios
 
                     If T.Tables(0).Rows(0).Item(0) <> 0 Then
                         'Se elimina
-                        SQL = "DELETE FROM usuario WHERE ID = " & idSucEliminar
-                        EJECUTAR(SQL)
+                        ELIMINAR("usuario", "ID", idSucEliminar)
                         REFRESCAR()
-                        MsgBox("El usuario fue eliminada satisfactoriamente.", vbInformation + vbOKOnly, "Eliminado")
+                        msgDatoDel()
                     Else
-                        MsgBox("El usuario no existe", vbExclamation, "Error")
+                        msgError("El usuario no existe")
                     End If
                 End If
             Else
-                MsgBox("Seleccione un usuario para eliminar.", vbInformation + vbOKOnly, "Información")
+                msgError("Seleccione un usuario para eliminar.")
             End If
         Catch ex As Exception
-            MsgBox("Error al eliminar El usuario: " & ex.Message, vbCritical + vbOKOnly, "Error")
+            msgError("Error al eliminar El usuario: " & ex.Message)
         End Try
         TXT_BuscarUsuario.SelectAll()
     End Sub
@@ -190,15 +199,16 @@ Public Class P_Usuarios
             E_NuevoUsuario.ColorDialog1.Color = Color.FromArgb(red, green, blue)
             E_NuevoUsuario.ColorUsuario = DGV_Cajero.SelectedRows(0).Cells(5).Value.ToString()
             If String.IsNullOrEmpty(DGV_Cajero.SelectedRows(0).Cells(3).Value.ToString()) Then
-                E_NuevoUsuario.CBK_NoClaveUsu.Checked = True
+                E_NuevoUsuario.SWT_SinClave.Checked = True
             Else
-                E_NuevoUsuario.CBK_NoClaveUsu.Checked = False
+                E_NuevoUsuario.SWT_SinClave.Checked = False
             End If
             E_NuevoUsuario.ModUsu = True
             E_NuevoUsuario.CodigoPreMod = DGV_Cajero.SelectedRows(0).Cells(1).Value.ToString()
             E_NuevoUsuario.Show()
+            E_NuevoUsuario.Select()
         Catch ex As Exception
-            MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+            msgError("Error al extraer los datos para modificarlos: " & ex.Message)
         End Try
     End Sub
 End Class

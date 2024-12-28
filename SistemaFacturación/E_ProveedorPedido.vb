@@ -1,5 +1,7 @@
 ﻿Public Class E_ProveedorPedido
     Private Sub BTN_RegresarPed_Click(sender As Object, e As EventArgs) Handles BTN_RegresarPed.Click
+        E_NuevoProveedor.Show()
+        E_NuevoProveedor.Select()
         Me.Close()
     End Sub
 
@@ -21,7 +23,7 @@
         Catch ex As Exception
             If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                 ' Mostrar un mensaje de error genérico
-                MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                msgError("Error al cargar la lista de categorías: " & ex.Message)
             End If
         End Try
     End Sub
@@ -64,7 +66,7 @@
             REFRESCAR()
             VALIDAR()
         Else
-            MsgBox("Ninguna fila fue seleccionada", vbCritical + vbOKOnly, "Error")
+            msgError("Ninguna fila fue seleccionada")
         End If
 
     End Sub

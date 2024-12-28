@@ -3,6 +3,7 @@ Imports System.Deployment.Application
 Public Class P_SelectUsu
 
     Private Sub P_LoginCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Md_Inicializacion.CheckForUpdates()
         T.Tables.Clear()
         SQL = "SELECT ID, usuario, color FROM usuario"
         Cargar_Tabla(T, SQL)
@@ -11,8 +12,6 @@ Public Class P_SelectUsu
                 agregarBoton(FlowLayoutPanel1, T.Tables(0).Rows(i).Item(1), T.Tables(0).Rows(i).Item(0), i + 1, T.Tables(0).Rows(i).Item(2))
             Next
         End If
-
-
     End Sub
 
     Private Sub agregarBoton(flowpanel As FlowLayoutPanel, nombre As String, tag As Integer, cont As Integer, colorT As String)
@@ -43,41 +42,11 @@ Public Class P_SelectUsu
         P_Login.idUsu = Convert.ToInt32(botonClicado.Tag)
         P_Login.TXT_Clave.Select()
         P_Login.Show()
-        Me.Hide()
         P_Login.Select()
+        Me.Hide()
     End Sub
 
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
-            Application.Exit()
-        End If
+        msgCerrarApp()
     End Sub
-
-    Public Sub CheckForUpdates()
-        If ApplicationDeployment.IsNetworkDeployed Then
-            Dim ad As ApplicationDeployment = ApplicationDeployment.CurrentDeployment
-            Try
-                Dim info As UpdateCheckInfo = ad.CheckForDetailedUpdate()
-                If info.UpdateAvailable Then
-                    Dim doUpdate As Boolean = True
-                    If Not info.IsUpdateRequired Then
-                        Dim dr As DialogResult = MessageBox.Show("Hay una actualización disponible. ¿Deseas instalarla ahora?", "Actualización Disponible", MessageBoxButtons.YesNo)
-                        doUpdate = (dr = DialogResult.Yes)
-                        If doUpdate Then
-                            MessageBox.Show("La aplicación se actualizará. Por favor, reiníciala para aplicar los cambios.")
-                            Application.Restart()
-                            ad.Update()
-                        End If
-                    End If
-                End If
-            Catch dde As DeploymentDownloadException
-                MessageBox.Show("La nueva versión de la aplicación no puede ser descargada en este momento. Por favor, verifica tu conexión de red o inténtalo más tarde. Error: " & dde.Message)
-            Catch ide As InvalidDeploymentException
-                MessageBox.Show("No se puede comprobar una nueva versión de la aplicación. El despliegue ClickOnce está corrupto. Por favor, vuelve a desplegar la aplicación e inténtalo de nuevo. Error: " & ide.Message)
-            Catch ioe As InvalidOperationException
-                MessageBox.Show("Esta aplicación no puede ser actualizada. Probablemente no es una aplicación ClickOnce. Error: " & ioe.Message)
-            End Try
-        End If
-    End Sub
-
 End Class

@@ -5,15 +5,16 @@ Imports System.Threading.Tasks
 Public Class P_ReimprimirFact
     Friend encabezadoFactura As String
     Friend encabezadoProds As String
-    Friend facturaContenido As List(Of String) = New List(Of String)()
+    Friend facturaContenido As New List(Of String)()
     Friend finFactura As String
     Private searchTimer As Timer
 
     ' Método para inicializar el temporizador y otros componentes necesarios
     Private Sub InicializarComponentes()
         ' Inicializar el temporizador
-        searchTimer = New Timer()
-        searchTimer.Interval = 100
+        searchTimer = New Timer With {
+            .Interval = 100
+        }
         ' Medio segundo
         AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
     End Sub
@@ -30,7 +31,7 @@ Public Class P_ReimprimirFact
 
     Private Async Sub P_ReimprimirFact_Async_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Esperar un pequeño retraso para asegurarse de que el formulario está completamente cargado
-        Await Task.Delay(65)
+        Await Task.Delay(100)
         Me.Select()
         REFRESCAR()
     End Sub
@@ -38,42 +39,51 @@ Public Class P_ReimprimirFact
     Friend Sub REFRESCAR()
         Task.Run(Sub()
                      Try
-                         Dim selectedRowIndex As Integer = -1
-                         If DGV_ReimprimirFact.SelectedRows.Count > 0 Then
-                             selectedRowIndex = DGV_ReimprimirFact.SelectedRows(0).Index
-                         End If
                          T.Tables.Clear()
-                         Dim cant As String = ""
-                         If RDB_200.Checked = True Then
-                             cant = "top " & 200
-                         ElseIf RDB_100.Checked = True Then
-                             cant = "top " & 100
-                         ElseIf RDB_All.Checked = True Then
-                             cant = ""
+                         Dim busqueda As String = TXT_BuscarFact.Text.Trim()
+                         Dim condicionBusqueda As String
+                         If busqueda = "" Then
+                             condicionBusqueda = "1=1" ' Esto siempre será verdadero, mostrando todos los registros
                          Else
-                             cant = "top " & 50
+                             condicionBusqueda = $"(printf('%015d', CAST(f.num_factura AS INTEGER)) LIKE '%{busqueda}%')"
                          End If
-                         SQL = "SELECT " & cant & " f.ID, f.num_factura as [Num factura], f.fecha_emision as [Fecha de emisión], c.nombre as [Cliente], u.usuario as [Cajero], fc.comentario as [Comentario]" &
-                             ", f.total as [Total], f.efectivo_cliente as [Pago efectivo], f.tarjeta_cliente as [Pago tarjeta], f.vuelto as [Vuelto], " &
-                               "IIf(f.tipo_venta=0, 'Efectivo', IIf(f.tipo_venta=1, 'Tarjeta', IIf(f.tipo_venta=2, 'Sinpe', IIf(f.tipo_venta=3, 'Depósito', IIf(f.tipo_venta=4, 'Mixto'," &
-                               " 'Efectivo'))))) AS [Tipo venta], f.cobrada as [Cobrada] " &
-                               "FROM (((factura f LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE) " &
-                               "LEFT JOIN usuario u ON u.ID = f.ID_USUARIO) " &
-                               "LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID) where f.num_factura Like '%" & TXT_BuscarFact.Text & "%' ORDER BY Val(f.num_factura) DESC;"
+
+                         Dim cant As String = ""
+                         If RDB_200.Checked Then
+                             cant = "LIMIT 200"
+                         ElseIf RDB_100.Checked Then
+                             cant = "LIMIT 100"
+                         ElseIf RDB_All.Checked Then
+                             cant = "" ' Sin límite
+                         Else
+                             cant = "LIMIT 50"
+                         End If
+
+                         SQL = "SELECT f.ID, printf('%015d', CAST(f.num_factura AS INTEGER)) AS 'Num factura', f.fecha_emision AS 'Fecha de emisión', " &
+                                  "c.nombre AS 'Cliente', u.usuario AS 'Cajero', fc.comentario AS 'Comentario', f.total AS 'Total', " &
+                                  "f.efectivo_cliente AS 'Pago efectivo', f.tarjeta_cliente AS 'Pago tarjeta', f.vuelto AS 'Vuelto', " &
+                                  "CASE WHEN f.tipo_venta = 0 THEN 'Efectivo' " &
+                                       "WHEN f.tipo_venta = 1 THEN 'Tarjeta' " &
+                                       "WHEN f.tipo_venta = 2 THEN 'Sinpe' " &
+                                       "WHEN f.tipo_venta = 3 THEN 'Depósito' " &
+                                       "WHEN f.tipo_venta = 4 THEN 'Mixto' " &
+                                       "ELSE 'Efectivo' END AS 'Tipo venta', " &
+                                  "f.cobrada AS 'Cobrada' " &
+                                  "FROM factura f " &
+                                  "LEFT JOIN clientes c ON c.ID = f.ID_CLIENTE " &
+                                  "LEFT JOIN usuario u ON u.ID = f.ID_USUARIO " &
+                                  "LEFT JOIN factura_comentario fc ON fc.ID_Factura = f.ID " &
+                                  "WHERE " & condicionBusqueda & " " &
+                                  "ORDER BY CAST(f.num_factura AS INTEGER) DESC " & cant & ";"
                          Invoke(Sub()
                                     MNU_REIMPRIMIR.Visible = False
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
-                                        Dim bin As New BindingSource
-                                        bin.DataSource = T.Tables(0)
+                                        Dim bin As New BindingSource With {
+                                            .DataSource = T.Tables(0)
+                                        }
                                         DGV_ReimprimirFact.DataSource = bin
-                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_ReimprimirFact.Rows.Count Then
-                                            DGV_ReimprimirFact.Rows(selectedRowIndex).Selected = True
-                                            DGV_ReimprimirFact.FirstDisplayedScrollingRowIndex = selectedRowIndex
-                                        End If
-                                        If T.Tables(0).Rows.Count > 0 Then
-                                            MNU_REIMPRIMIR.Visible = True
-                                        End If
+                                        MNU_REIMPRIMIR.Visible = True
                                     Else ' Limpiar la fuente de datos si no se cargaron datos
                                         DGV_ReimprimirFact.DataSource = Nothing
                                     End If
@@ -84,7 +94,7 @@ Public Class P_ReimprimirFact
                                     If DGV_ReimprimirFact.IsHandleCreated Then
                                         If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                                             ' Mostrar un mensaje de error genérico
-                                            MsgBox("Error al cargar la lista de facturas: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                            msgError("Error al cargar la lista de facturas: " & ex.Message)
                                         End If
                                     End If
 
@@ -94,51 +104,52 @@ Public Class P_ReimprimirFact
     End Sub
 
     Private Sub DGV_ReimprimirFact_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_ReimprimirFact.DataBindingComplete
-        Try
-            For i As Integer = 0 To DGV_ReimprimirFact.Columns.Count - 1
-                DGV_ReimprimirFact.Columns(i).ReadOnly = True
-                Select Case i
-                    Case 1
-                        DGV_ReimprimirFact.Columns(i).Width = 60
-                    Case 2
-                        DGV_ReimprimirFact.Columns(i).Width = 60
-                    Case 3
-                        DGV_ReimprimirFact.Columns(i).Width = 70
-                    Case 4
-                        DGV_ReimprimirFact.Columns(i).Width = 70
-                    Case 5
-                        DGV_ReimprimirFact.Columns(i).Width = 100
-                    Case 6
-                        DGV_ReimprimirFact.Columns(i).Width = 40
-                    Case 7
-                        DGV_ReimprimirFact.Columns(i).Width = 40
-                    Case 8
-                        DGV_ReimprimirFact.Columns(i).Width = 30
-                    Case 9
-                        DGV_ReimprimirFact.Columns(i).Width = 30
-                    Case 10
-                        DGV_ReimprimirFact.Columns(i).Width = 40
-                    Case 11
-                        DGV_ReimprimirFact.Columns(i).Width = 50
-                End Select
-            Next
-
-            ' Formatear los números en la columna 1 a un número de 15 dígitos
-            For Each row As DataGridViewRow In DGV_ReimprimirFact.Rows
-                If row.Cells(1).Value IsNot Nothing Then
-                    Dim originalValue As Integer = Convert.ToInt32(row.Cells(1).Value)
-                    row.Cells(1).Value = originalValue.ToString("D15") ' Formato de 15 dígitos
-                End If
-            Next
-
-            DGV_ReimprimirFact.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-            DGV_ReimprimirFact.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells)
-            DGV_ReimprimirFact.GridColor = Color.DarkGray
-            DGV_ReimprimirFact.Columns(0).Visible = False
-        Catch ex As Exception
-            ' Manejar el error si alguna columna no existe
-            Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
-        End Try
+        Me.BeginInvoke(New MethodInvoker(Sub()
+                                             Try
+                                                 Dim selectedRowIndex As Integer = -1
+                                                 If DGV_ReimprimirFact.SelectedRows.Count > 0 Then
+                                                     selectedRowIndex = DGV_ReimprimirFact.SelectedRows(0).Index
+                                                 End If
+                                                 For i As Integer = 0 To DGV_ReimprimirFact.Columns.Count - 1
+                                                     DGV_ReimprimirFact.Columns(i).ReadOnly = True
+                                                     Select Case i
+                                                         Case 1
+                                                             DGV_ReimprimirFact.Columns(i).Width = 60
+                                                         Case 2
+                                                             DGV_ReimprimirFact.Columns(i).Width = 60
+                                                         Case 3
+                                                             DGV_ReimprimirFact.Columns(i).Width = 70
+                                                         Case 4
+                                                             DGV_ReimprimirFact.Columns(i).Width = 70
+                                                         Case 5
+                                                             DGV_ReimprimirFact.Columns(i).Width = 100
+                                                         Case 6
+                                                             DGV_ReimprimirFact.Columns(i).Width = 40
+                                                         Case 7
+                                                             DGV_ReimprimirFact.Columns(i).Width = 40
+                                                         Case 8
+                                                             DGV_ReimprimirFact.Columns(i).Width = 30
+                                                         Case 9
+                                                             DGV_ReimprimirFact.Columns(i).Width = 30
+                                                         Case 10
+                                                             DGV_ReimprimirFact.Columns(i).Width = 40
+                                                         Case 11
+                                                             DGV_ReimprimirFact.Columns(i).Width = 50
+                                                     End Select
+                                                 Next
+                                                 DGV_ReimprimirFact.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+                                                 DGV_ReimprimirFact.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.DisplayedCells)
+                                                 DGV_ReimprimirFact.GridColor = Color.DarkGray
+                                                 DGV_ReimprimirFact.Columns(0).Visible = False
+                                                 If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_ReimprimirFact.Rows.Count Then
+                                                     DGV_ReimprimirFact.Rows(selectedRowIndex).Selected = True
+                                                     DGV_ReimprimirFact.FirstDisplayedScrollingRowIndex = selectedRowIndex
+                                                 End If
+                                             Catch ex As Exception
+                                                 ' Manejar el error si alguna columna no existe
+                                                 Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
+                                             End Try
+                                         End Sub))
     End Sub
 
 
@@ -150,11 +161,11 @@ Public Class P_ReimprimirFact
 
         finFactura = ""
         T.Tables.Clear()
-        SQL = "SELECT ID FROM factura ORDER BY Val(num_factura) DESC;"
+        SQL = "SELECT ID FROM factura ORDER BY cast(num_factura as integer) DESC LIMIT 1;"
         Cargar_Tabla(T, SQL)
         If T.Tables(0).Rows.Count > 0 Then
             Dim idFact As String = T.Tables(0).Rows(0).Item(0).ToString()
-            CREAR_FACTURA(idFact, encabezadoFactura, facturaContenido, finFactura, True)
+            CREAR_FACTURA(idFact, True)
             ImprimirFactura()
         End If
     End Sub
@@ -167,18 +178,16 @@ Public Class P_ReimprimirFact
         Next
 
         finFactura = ""
-        CREAR_FACTURA(DGV_ReimprimirFact.SelectedRows(0).Cells(0).Value.ToString(), encabezadoFactura, facturaContenido, finFactura, True)
+        CREAR_FACTURA(DGV_ReimprimirFact.SelectedRows(0).Cells(0).Value.ToString(), True)
         ImprimirFactura()
     End Sub
 
 
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
-            Application.Exit()
-        End If
+        msgCerrarApp()
     End Sub
 
-    Private Sub printDocument_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument.PrintPage
+    Private Sub PrintDocument_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument.PrintPage
         Dim font As New Font("Arial", 12)
         Dim fontProds As New Font("Segoe UI", 9)
         Dim brush As New SolidBrush(Color.Black)
@@ -238,15 +247,16 @@ Public Class P_ReimprimirFact
         ' Configurar márgenes a cero
         printDoc.DefaultPageSettings.Margins = New Margins(0, 0, 0, 0)
 
-        Dim printPreview As New PrintPreviewDialog()
-        printPreview.Document = printDoc
+        Dim printPreview As New PrintPreviewDialog With {
+            .Document = printDoc
+        }
         printDoc.Print()
 
     End Sub
 
     Private Sub BTN_RegresarFact_Click(sender As Object, e As EventArgs) Handles BTN_RegresarFact.Click
         P_Caja.Show()
-        P_Caja.TXT_BuscarProducto.Select()
+        P_Caja.Select()
         P_Caja.TXT_BuscarProducto.SelectAll()
         Me.Close()
     End Sub

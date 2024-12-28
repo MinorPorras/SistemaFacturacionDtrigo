@@ -2,6 +2,8 @@
     Friend idCliente As String
     Friend ModCLi As Boolean = False
     Friend CodigoPreMod As String
+    Private Correcto As Boolean
+
     Private Sub E_NuevoCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If ModCLi = False Then
             idCliente = OBTENERPK("clientes", "ID")
@@ -9,32 +11,37 @@
         VALIDAR()
     End Sub
 
-    Private Sub VALIDAR()
+    Private Function VALIDAR()
         ' Si el texto no está vacío en el textbox habilita el botón de guardar/agregar
         If TXT_CodCliente.Text <> "" And txtNombreCliente.Text <> "" Then
             BTN_NCliente.Enabled = True
+            Return True
         Else
             BTN_NCliente.Enabled = False
+            Return False
         End If
-    End Sub
+    End Function
 
     Private Sub BTN_NCliente_Click(sender As Object, e As EventArgs) Handles BTN_NCliente.Click
-        If TXT_CodCliente.Text <> "" And txtNombreCliente.Text <> "" Then
+        If VALIDAR() Then
             Try
-                T.Tables.Clear()
+                Dim codigo As String = TXT_CodCliente.Text
                 If ModCLi = False Then
-                    SQL = "SELECT codigo FROM clientes WHERE codigo = '" + TXT_CodCliente.Text + "'"
-                Else
-                    If TXT_CodCliente.Text = CodigoPreMod Then
-                        SQL = "SELECT ID FROM clientes WHERE ID = 0"
+                    If Not EXISTECOD("clientes", "codigo", codigo) Then ' Si no se ha guardado la categoría
+                        Correcto = True
                     Else
-                        SQL = "SELECT codigo FROM clientes WHERE codigo = '" + TXT_CodCliente.Text + "'"
+                        Correcto = False
+                    End If
+                Else
+                    If codigo = CodigoPreMod Or Not EXISTECOD("clientes", "codigo", codigo) Then
+                        Correcto = True
+                    Else
+                        Correcto = False
                     End If
                 End If
-                Cargar_Tabla(T, SQL)
-                If T.Tables(0).Rows.Count = 0 Then
+                If Correcto Then
                     ' Comprobación de que se quiere modificar la información en la base de datos por parte del usuario
-                    If MessageBox.Show("¿Desea guardar los cambios?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    If msgGuardar() Then
                         Try
                             If ModCLi = False Then
                                 ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
@@ -44,8 +51,8 @@
                                 End If
                             End If
                             ' Actualizar los campos en la base de datos
-                            GUARDAR_STR("clientes", "codigo", TXT_CodCliente.Text, "ID", idCliente)
-                            GUARDAR_STR("clientes", "nombre", txtNombreCliente.Text, "ID", idCliente)
+                            GUARDAR_TEXT("clientes", "codigo", TXT_CodCliente.Text, "ID", idCliente)
+                            GUARDAR_TEXT("clientes", "nombre", txtNombreCliente.Text, "ID", idCliente)
 
                             If Not String.IsNullOrEmpty(TXT_CedCliente.Text) Then
                                 T.Tables.Clear()
@@ -54,10 +61,10 @@
                                 If T.Tables(0).Rows.Count <= 0 Then
                                     GUARDAR_VarCompuestas("cliente_cedula", idCliente, TXT_CedCliente.Text)
                                 Else
-                                    GUARDAR_STR("cliente_cedula", "cedula", TXT_CedCliente.Text, "ID_Cliente", idCliente)
+                                    GUARDAR_TEXT("cliente_cedula", "cedula", TXT_CedCliente.Text, "ID_Cliente", idCliente)
                                 End If
                             Else
-                                GUARDAR_STR("cliente_cedula", "cedula", TXT_CedCliente.Text, "ID_Cliente", idCliente)
+                                ELIMINAR("cliente_cedula", "ID_Cliente", idCliente)
                             End If
 
                             If Not String.IsNullOrEmpty(TXT_CorreoCliente.Text) Then
@@ -67,10 +74,10 @@
                                 If T.Tables(0).Rows.Count <= 0 Then
                                     GUARDAR_VarCompuestas("cliente_correo", idCliente, TXT_CorreoCliente.Text)
                                 Else
-                                    GUARDAR_STR("cliente_correo", "correo", TXT_CorreoCliente.Text, "ID_Cliente", idCliente)
+                                    GUARDAR_TEXT("cliente_correo", "correo", TXT_CorreoCliente.Text, "ID_Cliente", idCliente)
                                 End If
                             Else
-                                GUARDAR_STR("cliente_correo", "correo", TXT_CorreoCliente.Text, "ID_Cliente", idCliente)
+                                ELIMINAR("cliente_correo", "ID_Cliente", idCliente)
                             End If
 
                             If Not String.IsNullOrEmpty(TXT_TelCliente.Text) Then
@@ -80,29 +87,29 @@
                                 If T.Tables(0).Rows.Count <= 0 Then
                                     GUARDAR_VarCompuestas("cliente_telefono", idCliente, TXT_TelCliente.Text)
                                 Else
-                                    GUARDAR_STR("cliente_telefono", "telefono", TXT_TelCliente.Text, "ID_Cliente", idCliente)
+                                    GUARDAR_TEXT("cliente_telefono", "telefono", TXT_TelCliente.Text, "ID_Cliente", idCliente)
                                 End If
                             Else
-                                GUARDAR_STR("cliente_telefono", "telefono", TXT_TelCliente.Text, "ID_Cliente", idCliente)
+                                ELIMINAR("cliente_telefono", "ID_Cliente", idCliente)
                             End If
-
                             LIMPIAR()
-                            MsgBox("Datos almacenados satisfactoriamente", vbInformation + vbOKOnly, "Transacción exitosa")
+                            msgDatoAlm()
                             ' Muestra y refresca la pantalla del list view de Sucursales y cierra esta
                             P_Clientes.Show()
+                            P_Clientes.Select()
                             P_Clientes.REFRESCAR()
                             P_Clientes.TXT_BuscarCliente.SelectAll()
                             Me.Close()
                         Catch ex As Exception
-                            MsgBox("Error al actualizar los datos: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                            msgError("Error al actualizar los datos: " & ex.Message)
                         End Try
                     End If
                 Else
-                    MsgBox("El código " + TXT_CodCliente.Text + " ya existe, coloque un código distinto", vbCritical + vbOKOnly, "Error")
+                    msgError("El código " + TXT_CodCliente.Text + " ya existe, coloque un código distinto")
                     TXT_CodCliente.SelectAll()
                 End If
             Catch ex As Exception
-                MsgBox("Error: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                msgError("Error: " & ex.Message)
             End Try
         End If
     End Sub
@@ -117,8 +124,10 @@
 
     Private Sub BTN_RegresarCliente_Click(sender As Object, e As EventArgs) Handles BTN_RegresarCliente.Click
         P_Clientes.REFRESCAR()
-        Me.Close()
         P_Clientes.TXT_BuscarCliente.SelectAll()
+        P_Clientes.Show()
+        P_Clientes.Select()
+        Me.Close()
     End Sub
 
     Private Sub TXT_CodCliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_CodCliente.TextChanged
@@ -135,5 +144,29 @@
 
     Private Sub TXT_CorreoCliente_TextChanged(sender As Object, e As EventArgs) Handles TXT_CorreoCliente.TextChanged
         VALIDAR()
+    End Sub
+
+    Private Sub BTN_AutoCod_Click(sender As Object, e As EventArgs) Handles BTN_AutoCod.Click
+        ' Obtener todos los códigos existentes
+        Dim codigosExistentes As List(Of Integer) = ObtenerCodigosExistentes("clientes", "codigo")
+        ' Ordenarlos
+        codigosExistentes.Sort()
+
+        ' Número de dígitos según configuración
+        Dim numConfig As Integer = Integer.Parse(Md_Inicializacion.GetAppSetting("AutoCodCliente"))
+
+        ' Encontrar el primer número que no esté en uso
+        Dim codigoDisponible As Integer = 1
+        For Each codigo In codigosExistentes
+            If codigo = codigoDisponible Then
+                codigoDisponible += 1
+            ElseIf codigo > codigoDisponible Then
+                Exit For
+            End If
+        Next
+
+        ' Formatear el código disponible con ceros a la izquierda según numConfig
+        Dim CodActual As String = codigoDisponible.ToString("D" & numConfig)
+        TXT_CodCliente.Text = CodActual
     End Sub
 End Class

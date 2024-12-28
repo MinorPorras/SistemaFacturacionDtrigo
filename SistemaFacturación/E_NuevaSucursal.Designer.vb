@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class E_NuevaSucursal
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class E_NuevaSucursal
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(E_NuevaSucursal))
@@ -102,7 +102,7 @@ Partial Class E_NuevaSucursal
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(353, 213)
+        Me.Label2.Location = New System.Drawing.Point(341, 213)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(87, 23)
         Me.Label2.TabIndex = 16
@@ -122,12 +122,12 @@ Partial Class E_NuevaSucursal
         Me.TXT_NombreSucursal.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_NombreSucursal.ForeColor = System.Drawing.Color.Black
         Me.TXT_NombreSucursal.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_NombreSucursal.Location = New System.Drawing.Point(446, 208)
+        Me.TXT_NombreSucursal.Location = New System.Drawing.Point(434, 208)
         Me.TXT_NombreSucursal.Name = "TXT_NombreSucursal"
         Me.TXT_NombreSucursal.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_NombreSucursal.PlaceholderText = ""
         Me.TXT_NombreSucursal.SelectedText = ""
-        Me.TXT_NombreSucursal.Size = New System.Drawing.Size(419, 31)
+        Me.TXT_NombreSucursal.Size = New System.Drawing.Size(431, 31)
         Me.TXT_NombreSucursal.TabIndex = 17
         '
         'Label3
@@ -304,7 +304,7 @@ Partial Class E_NuevaSucursal
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(353, 261)
+        Me.Label7.Location = New System.Drawing.Point(341, 261)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(94, 23)
         Me.Label7.TabIndex = 28
@@ -324,12 +324,12 @@ Partial Class E_NuevaSucursal
         Me.TXT_TelefonoSucursal.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_TelefonoSucursal.ForeColor = System.Drawing.Color.Black
         Me.TXT_TelefonoSucursal.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_TelefonoSucursal.Location = New System.Drawing.Point(446, 255)
+        Me.TXT_TelefonoSucursal.Location = New System.Drawing.Point(434, 255)
         Me.TXT_TelefonoSucursal.Name = "TXT_TelefonoSucursal"
         Me.TXT_TelefonoSucursal.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_TelefonoSucursal.PlaceholderText = ""
         Me.TXT_TelefonoSucursal.SelectedText = ""
-        Me.TXT_TelefonoSucursal.Size = New System.Drawing.Size(419, 31)
+        Me.TXT_TelefonoSucursal.Size = New System.Drawing.Size(431, 31)
         Me.TXT_TelefonoSucursal.TabIndex = 29
         '
         'E_NuevaSucursal

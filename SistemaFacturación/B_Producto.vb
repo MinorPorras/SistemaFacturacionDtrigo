@@ -9,8 +9,9 @@ Public Class B_Producto
     ' Método para inicializar el temporizador y otros componentes necesarios
     Private Sub InicializarComponentes()
         ' Inicializar el temporizador
-        searchTimer = New Timer()
-        searchTimer.Interval = 100
+        searchTimer = New Timer With {
+            .Interval = 100
+        }
         ' Medio segundo
         AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
     End Sub
@@ -35,16 +36,28 @@ Public Class B_Producto
         Task.Run(Sub()
                      Try
                          T.Tables.Clear()
-                         SQL = "SELECT p.ID, p.codigo as [Código], p.nombre as [Nombre], v.precio_venta as [Precio de venta], p.variable as [Variable]" &
-                           " FROM producto p LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto" +
-                           " where p.codigo LIKE '%" & TXT_BuscarProd.Text & "%' OR p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' ORDER BY Val(p.codigo) ASC;"
+                         Dim busqueda As String = TXT_BuscarProd.Text.Trim()
+                         Dim condicionBusqueda As String
+                         If busqueda = "" Then
+                             condicionBusqueda = "1=1" ' Esto siempre será verdadero, mostrando todos los registros
+                         Else
+                             condicionBusqueda = $"p.codigo LIKE '%{busqueda}%' OR p.nombre LIKE '%{busqueda}%'"
+                         End If
+                         SQL = "SELECT p.ID, p.codigo AS 'Código', p.nombre AS 'Nombre', v.precio_venta AS 'Precio de venta', " &
+                                  "CASE WHEN p.variable = 1 THEN 'Si' ELSE 'No' END AS 'Variable' " &
+                                  "FROM producto p " &
+                                  "LEFT JOIN producto_precioVenta v ON p.ID = v.ID_Producto " &
+                                  "WHERE " & condicionBusqueda &
+                                  " ORDER BY p.codigo ASC;"
+
                          ' Asegúrate de que el control tiene un identificador de ventana antes de invocar
                          If DGV_BProd.IsHandleCreated Then
                              Invoke(Sub()
                                         Cargar_Tabla(T, SQL)
                                         If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
-                                            Dim bin As New BindingSource
-                                            bin.DataSource = T.Tables(0)
+                                            Dim bin As New BindingSource With {
+                                                .DataSource = T.Tables(0)
+                                            }
                                             DGV_BProd.DataSource = bin
                                         Else ' Limpiar la fuente de datos si no se cargaron datos
                                             DGV_BProd.DataSource = Nothing
@@ -60,7 +73,7 @@ Public Class B_Producto
                              Invoke(Sub()
                                         If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                                             ' Mostrar un mensaje de error genérico
-                                            MsgBox("Error al cargar la lista de clientes: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                            msgError("Error al cargar la lista de clientes: " & ex.Message)
                                         End If
                                     End Sub)
                          End If
@@ -99,9 +112,10 @@ Public Class B_Producto
     End Sub
 
     Private Sub BTN_RegresarPrd_Click(sender As Object, e As EventArgs) Handles BTN_RegresarPrd.Click
-        Me.Close()
-        P_Caja.TXT_BuscarProducto.Select()
+        P_Caja.Show()
+        P_Caja.Select()
         P_Caja.TXT_BuscarProducto.SelectAll()
+        Me.Close()
     End Sub
 
     Private Sub BTN_SelectProd_Click(sender As Object, e As EventArgs) Handles BTN_SelectProd.Click
@@ -113,10 +127,11 @@ Public Class B_Producto
                     E_ProductoVariable.LBL_Producto.Text = TXT_Nombre.Text
                     E_ProductoVariable.LBL_ID.Text = DGV_BProd.SelectedRows(0).Cells(0).Value.ToString()
                     E_ProductoVariable.Show()
+                    E_ProductoVariable.Select()
                 Else
                     P_Caja.Buscar_DatosProd(TXT_codigo, True)
                 End If
-                P_Caja.validadListView()
+                P_Caja.ValidarListView()
             Else
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value = LBL_IDProd.Text
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(1).Value = TXT_codigo.Text
@@ -138,10 +153,10 @@ Public Class B_Producto
             ModProd = False
             LIMPIAR()
             P_Caja.cargarTotal()
-            Me.Close()
             P_Caja.Show()
-            P_Caja.TXT_BuscarProducto.Select()
+            P_Caja.Select()
             P_Caja.TXT_BuscarProducto.SelectAll()
+            Me.Close()
         Else
             E_ProductoVariable.LBL_Cod.Text = TXT_codigo.Text
             E_ProductoVariable.LBL_Producto.Text = TXT_Nombre.Text
@@ -185,7 +200,7 @@ Public Class B_Producto
         Try
             TXT_codigo.Text = DGV_BProd.SelectedRows(0).Cells(1).Value.ToString()
             TXT_Nombre.Text = DGV_BProd.SelectedRows(0).Cells(2).Value.ToString()
-            If DGV_BProd.SelectedRows(0).Cells(4).Value.ToString() = 1 Then
+            If DGV_BProd.SelectedRows(0).Cells(4).Value.ToString() = "Si" Then
                 TXT_Precio.Text = "Variable"
             Else
                 TXT_Precio.Text = DGV_BProd.SelectedRows(0).Cells(3).Value.ToString()

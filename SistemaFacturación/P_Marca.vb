@@ -18,13 +18,12 @@ Public Class P_Marca
         REFRESCAR()
     End Sub
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        If MsgBox("¿Desea cerra la aplicación?", vbOKCancel + vbQuestion, "Cerrar sistema") = MsgBoxResult.Ok Then
-            Application.Exit()
-        End If
+        msgCerrarApp()
     End Sub
 
     Private Sub BTN_RegresarCat_Click(sender As Object, e As EventArgs) Handles BTN_RegresarMarca.Click
         M_Mantenimiento.Show()
+        M_Mantenimiento.Select()
         Me.Close()
     End Sub
 
@@ -36,14 +35,19 @@ Public Class P_Marca
     Public Sub REFRESCAR()
         Task.Run(Sub()
                      Try
-                         Dim selectedRowIndex As Integer = -1
-                         If DGV_Marca.SelectedRows.Count > 0 Then
-                             selectedRowIndex = DGV_Marca.SelectedRows(0).Index
-                         End If
                          T.Tables.Clear()
-                         SQL = "SELECT ID, codigo as [Código], nombre as [Nombre] FROM marca where codigo " &
-                             "LIKE '%" & TXT_BuscarMarca.Text & "%' OR nombre LIKE '%" & TXT_BuscarMarca.Text & "%'" &
-                             " ORDER BY Val(codigo) ASC;"
+                         Dim busqueda As String = TXT_BuscarMarca.Text.Trim()
+                         Dim condicionBusqueda As String
+                         If busqueda = "" Then
+                             condicionBusqueda = "1=1" ' Esto siempre será verdadero, mostrando todos los registros
+                         Else
+                             condicionBusqueda = $"(codigo LIKE '%{busqueda}%' OR nombre LIKE '%{busqueda}%')"
+                         End If
+                         SQL = "SELECT ID, codigo AS 'Código', nombre AS 'Nombre' " &
+                                  "FROM marca " &
+                                  "WHERE " & condicionBusqueda &
+                                  " ORDER BY codigo ASC;"
+
                          Invoke(Sub()
                                     MNU_ELIMINAR.Visible = False
                                     MNU_MODIFICAR.Visible = False
@@ -52,14 +56,8 @@ Public Class P_Marca
                                         Dim bin As New BindingSource
                                         bin.DataSource = T.Tables(0)
                                         DGV_Marca.DataSource = bin
-                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Marca.Rows.Count Then
-                                            DGV_Marca.Rows(selectedRowIndex).Selected = True
-                                            DGV_Marca.FirstDisplayedScrollingRowIndex = selectedRowIndex
-                                        End If
-                                        If T.Tables(0).Rows.Count > 0 Then
-                                            MNU_ELIMINAR.Visible = True
-                                            MNU_MODIFICAR.Visible = True
-                                        End If
+                                        MNU_ELIMINAR.Visible = True
+                                        MNU_MODIFICAR.Visible = True
                                     Else ' Limpiar la fuente de datos si no se cargaron datos
                                         DGV_Marca.DataSource = Nothing
                                     End If
@@ -70,7 +68,7 @@ Public Class P_Marca
                                     If DGV_Marca.IsHandleCreated Then
                                         If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
                                             ' Mostrar un mensaje de error genérico
-                                            MsgBox("Error al cargar la lista de categorías: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                            msgError("Error al cargar la lista de categorías: " & ex.Message)
                                         End If
                                     End If
                                 End Sub)
@@ -81,6 +79,10 @@ Public Class P_Marca
     ' Método para manejar el evento DataBindingComplete
     Private Sub DGV_Marca_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_Marca.DataBindingComplete
         Try
+            Dim selectedRowIndex As Integer = -1
+            If DGV_Marca.SelectedRows.Count > 0 Then
+                selectedRowIndex = DGV_Marca.SelectedRows(0).Index
+            End If
             For i As Integer = 0 To DGV_Marca.Columns.Count - 1
                 DGV_Marca.Columns(i).ReadOnly = True
                 Select Case i
@@ -93,6 +95,10 @@ Public Class P_Marca
             DGV_Marca.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
             DGV_Marca.GridColor = Color.DarkGray
             DGV_Marca.Columns(0).Visible = False
+            If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Marca.Rows.Count Then
+                DGV_Marca.Rows(selectedRowIndex).Selected = True
+                DGV_Marca.FirstDisplayedScrollingRowIndex = selectedRowIndex
+            End If
         Catch ex As Exception
             ' Manejar el error si alguna columna no existe
             Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
@@ -109,6 +115,7 @@ Public Class P_Marca
     Private Sub BTN_NCat_Click(sender As Object, e As EventArgs) Handles BTN_NMarca.Click
         E_NuevaMarca.ModMarca = False
         E_NuevaMarca.Show()
+        E_NuevaMarca.Select()
     End Sub
 
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
@@ -130,33 +137,28 @@ Public Class P_Marca
         Try
             If DGV_Marca.SelectedRows.Count > 0 Then
                 ' Se pregunta una confirmación para eliminar el tema
-                If MsgBox("¿Desea eliminar la marca: " & DGV_Marca.SelectedRows(0).Cells(2).Value.ToString() & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
-                    Dim idSucEliminar As Integer = Convert.ToInt32(DGV_Marca.SelectedRows(0).Cells(0).Value.ToString())
+                If msgEliminar(" la marca: " & DGV_Marca.SelectedRows(0).Cells(2).Value.ToString() & "?") Then
+                    Dim idEliminar As Integer = Convert.ToInt32(DGV_Marca.SelectedRows(0).Cells(0).Value.ToString())
                     ' Verificar si hay categorías asociadas
-                    SQL = "SELECT COUNT(ID) FROM marca WHERE ID = " & idSucEliminar
+                    SQL = "SELECT COUNT(ID) FROM marca WHERE ID = " & idEliminar
                     Cargar_Tabla(T, SQL)
 
                     If T.Tables(0).Rows(0).Item(0) <> 0 Then
                         'Se elimina
-                        SQL = "DELETE FROM producto_marca WHERE ID_Marca = " & idSucEliminar
-                        EJECUTAR(SQL)
-
-                        SQL = "DELETE FROM marca WHERE ID = " & idSucEliminar
-                        EJECUTAR(SQL)
-
+                        ELIMINAR("producto_marca", "ID_Marca", idEliminar)
+                        ELIMINAR("marca", "ID", idEliminar)
                         REFRESCAR()
-                        MsgBox("La marca fue eliminada satisfactoriamente.", vbInformation + vbOKOnly, "Eliminado")
-
+                        msgDatoDel()
                     Else
-                        MsgBox("La marca no existe", vbExclamation, "Error")
+                        msgError("La marca no existe")
                     End If
                 End If
             Else
-                MsgBox("Seleccione una marca para eliminar.", vbInformation + vbOKOnly, "Información")
+                msgError("Seleccione una marca para eliminar.")
             End If
         Catch ex As Exception
             Console.WriteLine(ex.Message)
-            MsgBox("Error al eliminar la marca: " & ex.Message, vbCritical + vbOKOnly, "Error")
+            msgError("Error al eliminar la marca: " & ex.Message)
         End Try
         TXT_BuscarMarca.SelectAll()
     End Sub

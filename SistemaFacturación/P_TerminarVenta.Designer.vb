@@ -75,6 +75,7 @@ Partial Class P_TerminarVenta
         Me.TXT_Comentario = New Guna.UI2.WinForms.Guna2TextBox()
         Me.PrintDocument = New System.Drawing.Printing.PrintDocument()
         Me.PrintDialog = New System.Windows.Forms.PrintDialog()
+        Me.BTN_TVentaImp = New Guna.UI2.WinForms.Guna2Button()
         Me.TabControlTVenta.SuspendLayout()
         Me.Efectivo.SuspendLayout()
         Me.Tarjeta.SuspendLayout()
@@ -105,23 +106,23 @@ Partial Class P_TerminarVenta
         Me.TabControlTVenta.SelectedIndex = 0
         Me.TabControlTVenta.Size = New System.Drawing.Size(909, 389)
         Me.TabControlTVenta.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty
-        Me.TabControlTVenta.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(52, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.TabControlTVenta.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         Me.TabControlTVenta.TabButtonHoverState.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!)
         Me.TabControlTVenta.TabButtonHoverState.ForeColor = System.Drawing.Color.White
-        Me.TabControlTVenta.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(52, Byte), Integer), CType(CType(70, Byte), Integer))
+        Me.TabControlTVenta.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         Me.TabControlTVenta.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty
-        Me.TabControlTVenta.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(57, Byte), Integer))
+        Me.TabControlTVenta.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         Me.TabControlTVenta.TabButtonIdleState.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!)
         Me.TabControlTVenta.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(156, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(167, Byte), Integer))
-        Me.TabControlTVenta.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(57, Byte), Integer))
+        Me.TabControlTVenta.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         Me.TabControlTVenta.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty
-        Me.TabControlTVenta.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(29, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.TabControlTVenta.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.TabControlTVenta.TabButtonSelectedState.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!)
         Me.TabControlTVenta.TabButtonSelectedState.ForeColor = System.Drawing.Color.White
-        Me.TabControlTVenta.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(CType(CType(76, Byte), Integer), CType(CType(132, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TabControlTVenta.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.TabControlTVenta.TabButtonSize = New System.Drawing.Size(260, 75)
         Me.TabControlTVenta.TabIndex = 0
-        Me.TabControlTVenta.TabMenuBackColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(57, Byte), Integer))
+        Me.TabControlTVenta.TabMenuBackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.TabControlTVenta.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.VerticalRight
         '
         'Efectivo
@@ -900,11 +901,11 @@ Partial Class P_TerminarVenta
         Me.BTN_TVenta.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_TVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTN_TVenta.FillColor = System.Drawing.Color.MediumSeaGreen
-        Me.BTN_TVenta.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
+        Me.BTN_TVenta.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTN_TVenta.ForeColor = System.Drawing.Color.White
-        Me.BTN_TVenta.Location = New System.Drawing.Point(510, 501)
+        Me.BTN_TVenta.Location = New System.Drawing.Point(581, 501)
         Me.BTN_TVenta.Name = "BTN_TVenta"
-        Me.BTN_TVenta.Size = New System.Drawing.Size(337, 53)
+        Me.BTN_TVenta.Size = New System.Drawing.Size(313, 53)
         Me.BTN_TVenta.TabIndex = 109
         Me.BTN_TVenta.Text = "[F7] Terminar venta"
         '
@@ -918,11 +919,11 @@ Partial Class P_TerminarVenta
         Me.BTN_RegresarVenta.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.BTN_RegresarVenta.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.BTN_RegresarVenta.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
+        Me.BTN_RegresarVenta.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTN_RegresarVenta.ForeColor = System.Drawing.Color.White
-        Me.BTN_RegresarVenta.Location = New System.Drawing.Point(58, 501)
+        Me.BTN_RegresarVenta.Location = New System.Drawing.Point(9, 501)
         Me.BTN_RegresarVenta.Name = "BTN_RegresarVenta"
-        Me.BTN_RegresarVenta.Size = New System.Drawing.Size(337, 53)
+        Me.BTN_RegresarVenta.Size = New System.Drawing.Size(276, 53)
         Me.BTN_RegresarVenta.TabIndex = 108
         Me.BTN_RegresarVenta.Text = "[F3] Regresar"
         '
@@ -958,7 +959,7 @@ Partial Class P_TerminarVenta
         Me.TXT_Comentario.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_Comentario.PlaceholderText = ""
         Me.TXT_Comentario.SelectedText = ""
-        Me.TXT_Comentario.Size = New System.Drawing.Size(735, 86)
+        Me.TXT_Comentario.Size = New System.Drawing.Size(745, 86)
         Me.TXT_Comentario.TabIndex = 129
         '
         'PrintDocument
@@ -968,12 +969,31 @@ Partial Class P_TerminarVenta
         '
         Me.PrintDialog.UseEXDialog = True
         '
+        'BTN_TVentaImp
+        '
+        Me.BTN_TVentaImp.BorderColor = System.Drawing.Color.Red
+        Me.BTN_TVentaImp.BorderRadius = 25
+        Me.BTN_TVentaImp.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BTN_TVentaImp.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_TVentaImp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_TVentaImp.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_TVentaImp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_TVentaImp.FillColor = System.Drawing.Color.DarkOrange
+        Me.BTN_TVentaImp.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_TVentaImp.ForeColor = System.Drawing.Color.White
+        Me.BTN_TVentaImp.Location = New System.Drawing.Point(297, 501)
+        Me.BTN_TVentaImp.Name = "BTN_TVentaImp"
+        Me.BTN_TVentaImp.Size = New System.Drawing.Size(276, 53)
+        Me.BTN_TVentaImp.TabIndex = 130
+        Me.BTN_TVentaImp.Text = "[F4] Terminar e imprimir"
+        '
         'P_TerminarVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(908, 569)
+        Me.Controls.Add(Me.BTN_TVentaImp)
         Me.Controls.Add(Me.TXT_Comentario)
         Me.Controls.Add(Me.Guna2HtmlLabel17)
         Me.Controls.Add(Me.BTN_TVenta)
@@ -1052,4 +1072,5 @@ Partial Class P_TerminarVenta
     Friend WithEvents PrintDialog As PrintDialog
     Friend WithEvents BTN_RestanteEfectivo As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents BTN_RestanteTarjeta As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents BTN_TVentaImp As Guna.UI2.WinForms.Guna2Button
 End Class

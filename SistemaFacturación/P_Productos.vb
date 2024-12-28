@@ -1,28 +1,29 @@
 ﻿Imports System.Threading.Tasks
 Public Class P_Productos
-    Private stringConsultaBase As String = "SELECT p.ID AS [ID], p.codigo AS [Código], p.nombre AS [Producto], d.descripcion AS [Descripción], " &
-                          "p.precio_base AS [Precio base], p.porc_impuesto AS [Impuesto], p.ganancia AS [Ganancia], " &
-                          "pv.precio_venta AS [P Venta], " &
-                          "IIf(p.variable=1, 'Si', 'No') AS [Var], " &
-                          "c.ID_Categoria AS [ID_cat], cat.nombre AS [Categoría], " &
-                          "pm.ID_Marca AS [ID_Marca], m.Nombre AS [Marca], pp.ID_Proveedor AS [ID_Prov], " &
-                          "pr.nombre AS [Proveedor], p.inventario as [Existencias], p.favorito AS [Fav] " &
-                          "FROM ((((((((producto p " &
-                          "LEFT JOIN producto_categoria c ON p.ID = c.ID_Producto) " &
-                          "LEFT JOIN categoria cat ON c.ID_Categoria = cat.ID) " &
-                          "LEFT JOIN producto_marca pm ON p.ID = pm.ID_Producto) " &
-                          "LEFT JOIN marca m ON m.ID = pm.ID_Marca) " &
-                          "LEFT JOIN producto_proveedor pp ON p.ID = pp.ID_Producto) " &
-                          "LEFT JOIN proveedor pr ON pp.ID_Proveedor = pr.ID) " &
-                          "LEFT JOIN producto_desc d ON p.ID = d.ID_Producto) " &
-                          "LEFT JOIN producto_precioVenta pv ON pv.ID_Producto = p.ID)"
+    Private stringConsultaBase As String = "SELECT p.ID AS 'ID', p.codigo AS 'Código', p.nombre AS 'Producto', d.descripcion AS 'Descripción', " &
+                          "p.precio_base AS 'Costo', p.porc_impuesto AS 'Imp', p.ganancia AS '%', " &
+                          "pv.precio_venta AS 'Venta', " &
+                          "CASE WHEN p.variable=1 THEN 'Si' ELSE 'No' END AS 'Var', " &
+                          "c.ID_Categoria AS 'ID_cat', cat.nombre AS 'Categoría', " &
+                          "pm.ID_Marca AS 'ID_Marca', m.Nombre AS 'Marca', pp.ID_Proveedor AS 'ID_Prov', " &
+                          "pr.nombre AS 'Proveedor', p.inventario AS 'Ex', p.favorito AS 'Fav' " &
+                          "FROM producto p " &
+                          "LEFT JOIN producto_categoria c ON p.ID = c.ID_Producto " &
+                          "LEFT JOIN categoria cat ON c.ID_Categoria = cat.ID " &
+                          "LEFT JOIN producto_marca pm ON p.ID = pm.ID_Producto " &
+                          "LEFT JOIN marca m ON m.ID = pm.ID_Marca " &
+                          "LEFT JOIN producto_proveedor pp ON p.ID = pp.ID_Producto " &
+                          "LEFT JOIN proveedor pr ON pp.ID_Proveedor = pr.ID " &
+                          "LEFT JOIN producto_desc d ON p.ID = d.ID_Producto " &
+                          "LEFT JOIN producto_precioVenta pv ON pv.ID_Producto = p.ID"
+
     Private searchTimer As Timer
 
     ' Método para inicializar el temporizador y otros componentes necesarios
     Private Sub InicializarComponentes()
         ' Inicializar el temporizador
         searchTimer = New Timer()
-        searchTimer.Interval = 300
+        searchTimer.Interval = 250
         ' Medio segundo
         AddHandler searchTimer.Tick, AddressOf OnSearchTimerTick
     End Sub
@@ -39,9 +40,9 @@ Public Class P_Productos
     End Sub
 
     Friend Sub cargarPestaña()
-        CKB_Categoria.Checked = False
-        CKB_Marca.Checked = False
-        CKB_Proveedor.Checked = False
+        SWT_Cat.Checked = False
+        SWT_Marca.Checked = False
+        SWT_Prov.Checked = False
         TXT_BuscarMarca.Enabled = False
         TXT_BuscarCat.Enabled = False
         TXT_BuscarProv.Enabled = False
@@ -52,68 +53,55 @@ Public Class P_Productos
     Public Sub REFRESCAR()
         Task.Run(Sub()
                      Try
-                         Dim selectedRowIndex As Integer = -1
-                         If DGV_Prods.SelectedRows.Count > 0 Then
-                             selectedRowIndex = DGV_Prods.SelectedRows(0).Index
-                         End If
-                         ' Se vuelven invisibles el menú contextual en caso de que no haya nada en la tabla
-                         Invoke(Sub()
-                                    MNU_ELIMINAR.Visible = False
-                                    MNU_MODIFICAR.Visible = False
-                                End Sub)
                          ' Se limpia todo en la tabla
                          T.Tables.Clear()
 
-                         ' Declaración de variables para búsqueda con el query
-                         Dim cat As String = ""
-                         Dim Prov As String = ""
-                         Dim Marca As String = ""
+                         Dim condicionBusqueda = String.Empty
 
+                         If Not String.IsNullOrEmpty(TXT_BuscarProd.Text) Then
+                             condicionBusqueda = " WHERE (p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' OR p.codigo LIKE '%" & TXT_BuscarProd.Text & "%') "
+                         Else
+                             condicionBusqueda = " WHERE 1=1 "
+                         End If
                          ' Se verifica que el checkbox de buscar por categoría esté seleccionado
-                         If CKB_Categoria.Checked = True AndAlso TXT_BuscarCat.Text <> "" Then
-                             cat = "AND cat.nombre LIKE '%" & TXT_BuscarCat.Text & "%' "
+                         If SWT_Cat.Checked = True AndAlso Not String.IsNullOrEmpty(TXT_BuscarCat.Text) Then
+                             condicionBusqueda += "AND cat.nombre LIKE '%" & TXT_BuscarCat.Text & "%' "
                          End If
 
                          ' Se verifica que el checkbox de buscar por marca esté seleccionado
-                         If CKB_Marca.Checked = True AndAlso TXT_BuscarMarca.Text <> "" Then
-                             Marca = "AND m.nombre LIKE '%" & TXT_BuscarMarca.Text & "%' "
+                         If SWT_Marca.Checked = True AndAlso Not String.IsNullOrEmpty(TXT_BuscarMarca.Text) Then
+                             condicionBusqueda += "AND m.nombre LIKE '%" & TXT_BuscarMarca.Text & "%' "
                          End If
 
                          ' Se verifica que el checkbox de buscar por proveedor esté seleccionado
-                         If CKB_Proveedor.Checked = True AndAlso TXT_BuscarProv.Text <> "" Then
-                             Prov = "AND pr.nombre LIKE '%" & TXT_BuscarProv.Text & "%' "
+                         If SWT_Prov.Checked = True AndAlso Not String.IsNullOrEmpty(TXT_BuscarProv.Text) Then
+                             condicionBusqueda += "AND pr.nombre LIKE '%" & TXT_BuscarProv.Text & "%' "
                          End If
-
                          ' Construcción del query basado en si se busca por código o por nombre
-                         SQL = stringConsultaBase + " WHERE (p.nombre LIKE '%" & TXT_BuscarProd.Text & "%' OR p.codigo LIKE '%" & TXT_BuscarProd.Text & "%') " & cat & Marca & Prov & " ORDER BY Val(p.codigo) ASC;"
+                         SQL = stringConsultaBase & condicionBusqueda & " ORDER BY p.codigo ASC;"
 
                          ' Luego de cargar los datos, actualizar la interfaz de usuario de manera segura 
                          Invoke(Sub()
+                                    MNU_ELIMINAR.Visible = False
+                                    MNU_MODIFICAR.Visible = False
                                     ' Cargar los datos en la tabla
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
-                                        DGV_Prods.Columns.Clear()
                                         Dim bin As New BindingSource
                                         bin.DataSource = T.Tables(0)
                                         DGV_Prods.DataSource = bin
-                                        If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Prods.Rows.Count Then
-                                            DGV_Prods.Rows(selectedRowIndex).Selected = True
-                                            DGV_Prods.FirstDisplayedScrollingRowIndex = selectedRowIndex
-                                        End If
-                                        If T.Tables(0).Rows.Count > 0 Then
-                                            MNU_ELIMINAR.Visible = True
-                                            MNU_MODIFICAR.Visible = True
-                                        End If
-                                        AddHandler DGV_Prods.DataBindingComplete, AddressOf DGV_Prods_DataBindingComplete
+                                        MNU_ELIMINAR.Visible = True
+                                        MNU_MODIFICAR.Visible = True
                                     Else ' Limpiar la fuente de datos si no se cargaron datos
                                         DGV_Prods.DataSource = Nothing
                                     End If
+                                    AddHandler DGV_Prods.Resize, AddressOf DGV_Prods_Resize
                                 End Sub)
                      Catch ex As Exception
                          If DGV_Prods.IsHandleCreated Then
                              Invoke(Sub()
                                         If ex.Message <> "InvalidArgument=El valor de '0' no es válido para 'index'." & vbCrLf & "Nombre del parámetro: index" Then
-                                            MsgBox("Error al cargar la lista de productos: " & ex.Message, vbCritical + vbOKOnly, "Error")
+                                            msgError("Error al cargar la lista de productos: " & ex.Message)
                                         End If
                                     End Sub)
                          End If
@@ -122,14 +110,31 @@ Public Class P_Productos
     End Sub
 
 
+    Private Sub DGV_Prods_Resize(sender As Object, e As EventArgs) Handles DGV_Prods.Resize
+        Dim totalColumnWidth As Integer = 0
+        For Each column As DataGridViewColumn In DGV_Prods.Columns
+            totalColumnWidth += column.Width
+        Next
+
+        If totalColumnWidth < DGV_Prods.Width Then
+            DGV_Prods.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        Else
+            DGV_Prods.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        End If
+    End Sub
+
     ' Método para manejar el evento DataBindingComplete
     Private Sub DGV_Prods_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DGV_Prods.DataBindingComplete
         Try
+            Dim selectedRowIndex As Integer = -1
+            If DGV_Prods.SelectedRows.Count > 0 Then
+                selectedRowIndex = DGV_Prods.SelectedRows(0).Index
+            End If
             For i As Integer = 0 To DGV_Prods.Columns.Count - 1
                 DGV_Prods.Columns(i).ReadOnly = True
                 Select Case i
                     Case 1
-                        DGV_Prods.Columns(i).Width = 80
+                        DGV_Prods.Columns(i).Width = 100
                     Case 2
                         DGV_Prods.Columns(i).Width = 200
                     Case 3
@@ -163,6 +168,10 @@ Public Class P_Productos
             DGV_Prods.Columns(9).Visible = False
             DGV_Prods.Columns(11).Visible = False
             DGV_Prods.Columns(13).Visible = False
+            If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Prods.Rows.Count Then
+                DGV_Prods.Rows(selectedRowIndex).Selected = True
+                DGV_Prods.FirstDisplayedScrollingRowIndex = selectedRowIndex
+            End If
         Catch ex As Exception
             ' Manejar el error si alguna columna no existe
             Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
@@ -171,55 +180,30 @@ Public Class P_Productos
 
     Private Sub BTN_NProd_Click(sender As Object, e As EventArgs) Handles BTN_NProd.Click
         E_NuevoProducto.Show()
+        E_NuevoProducto.Select()
     End Sub
 
     Private Sub BTN_RegresarProd_Click(sender As Object, e As EventArgs) Handles BTN_RegresarProd.Click
         M_Mantenimiento.Show()
+        M_Mantenimiento.Select()
         Me.Close()
-    End Sub
-
-    Private Sub CKB_Marca_CheckedChanged(sender As Object, e As EventArgs) Handles CKB_Marca.CheckedChanged
-        If CKB_Marca.Checked = False Then
-            TXT_BuscarMarca.Text = ""
-            TXT_BuscarMarca.Enabled = False
-        Else
-            TXT_BuscarMarca.Select()
-            TXT_BuscarMarca.Enabled = True
-        End If
-    End Sub
-
-    Private Sub CKB_Proveedor_CheckedChanged(sender As Object, e As EventArgs) Handles CKB_Proveedor.CheckedChanged
-        If CKB_Proveedor.Checked = False Then
-            TXT_BuscarProv.Text = ""
-            TXT_BuscarProv.Enabled = False
-        Else
-            TXT_BuscarProv.Enabled = True
-            TXT_BuscarProv.Select()
-        End If
-    End Sub
-
-    Private Sub CKB_Categoria_CheckedChanged(sender As Object, e As EventArgs) Handles CKB_Categoria.CheckedChanged
-        If CKB_Categoria.Checked = False Then
-            TXT_BuscarCat.Text = ""
-            TXT_BuscarCat.Enabled = False
-        Else
-            TXT_BuscarCat.Enabled = True
-            TXT_BuscarCat.Select()
-        End If
     End Sub
 
     Private Sub TXT_BuscarMarca_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles TXT_BuscarMarca.MouseDoubleClick
         B_Marca.Show()
+        B_Marca.Select()
         B_Marca.caso = "Prod"
     End Sub
 
     Private Sub TXT_BuscarProv_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles TXT_BuscarProv.MouseDoubleClick
         B_Proveedor.Show()
+        B_Proveedor.Select()
         B_Proveedor.caso = "Prod"
     End Sub
 
     Private Sub TXT_BuscarCat_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles TXT_BuscarCat.MouseDoubleClick
         B_Categoria.Show()
+        B_Categoria.Select()
         B_Categoria.caso = "Prod"
     End Sub
 
@@ -234,9 +218,9 @@ Public Class P_Productos
             E_NuevoProducto.TXT_Impuesto.Text = DGV_Prods.SelectedRows(0).Cells(5).Value.ToString()
             E_NuevoProducto.TXT_Ganancia.Text = DGV_Prods.SelectedRows(0).Cells(6).Value.ToString()
             If DGV_Prods.SelectedRows(0).Cells(8).Value.ToString() = "Si" Then
-                E_NuevoProducto.CKB_variable.Checked = True
+                E_NuevoProducto.SWT_Var.Checked = True
             Else
-                E_NuevoProducto.CKB_variable.Checked = False
+                E_NuevoProducto.SWT_Var.Checked = False
             End If
             E_NuevoProducto.TXT_PrecioVenta.Text = DGV_Prods.SelectedRows(0).Cells(7).Value.ToString()
             E_NuevoProducto.LBL_IDCat.Text = DGV_Prods.SelectedRows(0).Cells(9).Value.ToString()
@@ -246,9 +230,9 @@ Public Class P_Productos
             E_NuevoProducto.LBL_Prov.Text = DGV_Prods.SelectedRows(0).Cells(13).Value.ToString()
             E_NuevoProducto.TXT_Proveedor.Text = DGV_Prods.SelectedRows(0).Cells(14).Value.ToString()
             If DGV_Prods.SelectedRows(0).Cells(16).Value.ToString() = "Si" Then
-                E_NuevoProducto.CKB_Fav.Checked = True
+                E_NuevoProducto.SWT_Fav.Checked = True
             Else
-                E_NuevoProducto.CKB_Fav.Checked = False
+                E_NuevoProducto.SWT_Fav.Checked = False
             End If
             If Not String.IsNullOrEmpty(DGV_Prods.SelectedRows(0).Cells(15).Value.ToString()) Then
                 E_NuevoProducto.NUD_Inv.Value = DGV_Prods.SelectedRows(0).Cells(15).Value.ToString()
@@ -270,7 +254,7 @@ Public Class P_Productos
         Try
             If DGV_Prods.SelectedRows.Count > 0 Then
                 ' Se pregunta una confirmación para eliminar el tema
-                If MsgBox("¿Desea eliminar el producto: " & DGV_Prods.SelectedRows(0).Cells(2).Value.ToString() & "?", vbQuestion + vbYesNo, "Confirmar") = vbYes Then
+                If msgEliminar(" el producto: " & DGV_Prods.SelectedRows(0).Cells(2).Value.ToString() & "?") Then
                     Dim idEliminar As Integer = Convert.ToInt32(DGV_Prods.SelectedRows(0).Cells(0).Value.ToString())
                     ' Verificar si hay categorías asociadas
                     SQL = "SELECT COUNT(ID) FROM producto WHERE ID = " & idEliminar
@@ -278,36 +262,23 @@ Public Class P_Productos
 
                     If T.Tables(0).Rows(0).Item(0) <> 0 Then
                         'Se elimina
-                        SQL = "DELETE FROM producto_marca WHERE ID_Producto = " & idEliminar
-                        EJECUTAR(SQL)
-
-                        SQL = "DELETE FROM producto_categoria WHERE ID_Producto = " & idEliminar
-                        EJECUTAR(SQL)
-
-                        SQL = "DELETE FROM producto_proveedor WHERE ID_Producto = " & idEliminar
-                        EJECUTAR(SQL)
-
-                        SQL = "DELETE FROM producto_desc WHERE ID_Producto = " & idEliminar
-                        EJECUTAR(SQL)
-
-
-                        SQL = "DELETE FROM producto_precioVenta WHERE ID_Producto = " & idEliminar
-                        EJECUTAR(SQL)
-
-                        SQL = "DELETE FROM producto WHERE ID = " & idEliminar
-                        EJECUTAR(SQL)
-
+                        ELIMINAR("producto_marca", "ID_Producto", idEliminar)
+                        ELIMINAR("producto_categoria", "ID_Producto", idEliminar)
+                        ELIMINAR("producto_proveedor", "ID_Producto", idEliminar)
+                        ELIMINAR("producto_desc", "ID_Producto", idEliminar)
+                        ELIMINAR("producto_precioVenta", "ID_Producto", idEliminar)
+                        ELIMINAR("producto", "ID", idEliminar)
                         REFRESCAR()
-                        MsgBox("El producto fue eliminado satisfactoriamente.", vbInformation + vbOKOnly, "Eliminado")
+                        msgDatoDel()
                     Else
-                        MsgBox("El producto no existe", vbExclamation, "Error")
+                        msgError("El producto no existe")
                     End If
                 End If
             Else
-                MsgBox("Seleccione un producto para eliminar.", vbInformation + vbOKOnly, "Información")
+                msgError("Seleccione un producto para eliminar.")
             End If
         Catch ex As Exception
-            MsgBox("Error al eliminar el producto: " & ex.Message, vbCritical + vbOKOnly, "Error")
+            msgError("Error al eliminar el producto: " & ex.Message)
         End Try
         TXT_BuscarProd.SelectAll()
     End Sub
@@ -348,5 +319,53 @@ Public Class P_Productos
         P_Hablador.Show()
         P_Hablador.Select()
         Me.Close()
+    End Sub
+
+    Private Sub TXT_BuscarMarca_DoubleClick(sender As Object, e As EventArgs) Handles TXT_BuscarMarca.DoubleClick
+        B_Marca.caso = "Prod"
+        B_Marca.TXT_BuscarMarca.Text = TXT_BuscarMarca.Text
+        B_Marca.Show()
+    End Sub
+
+    Private Sub TXT_BuscarProv_DoubleClick(sender As Object, e As EventArgs) Handles TXT_BuscarProv.DoubleClick
+        B_Proveedor.caso = "Prod"
+        B_Proveedor.TXT_BuscarProv.Text = TXT_BuscarProv.Text
+        B_Proveedor.Show()
+    End Sub
+
+    Private Sub TXT_BuscarCat_DoubleClick(sender As Object, e As EventArgs) Handles TXT_BuscarCat.DoubleClick
+        B_Categoria.caso = "Prod"
+        B_Categoria.TXT_BuscarCat.Text = TXT_BuscarCat.Text
+        B_Categoria.Show()
+    End Sub
+
+    Private Sub SWT_Cat_CheckedChanged(sender As Object, e As EventArgs) Handles SWT_Cat.CheckedChanged
+        If SWT_Cat.Checked = False Then
+            TXT_BuscarCat.Text = ""
+            TXT_BuscarCat.Enabled = False
+        Else
+            TXT_BuscarCat.Enabled = True
+            TXT_BuscarCat.Select()
+        End If
+    End Sub
+
+    Private Sub SWT_Prov_CheckedChanged(sender As Object, e As EventArgs) Handles SWT_Prov.CheckedChanged
+        If SWT_Prov.Checked = False Then
+            TXT_BuscarProv.Text = ""
+            TXT_BuscarProv.Enabled = False
+        Else
+            TXT_BuscarProv.Enabled = True
+            TXT_BuscarProv.Select()
+        End If
+    End Sub
+
+    Private Sub SWT_Marca_CheckedChanged(sender As Object, e As EventArgs) Handles SWT_Marca.CheckedChanged
+        If SWT_Marca.Checked = False Then
+            TXT_BuscarMarca.Text = ""
+            TXT_BuscarMarca.Enabled = False
+        Else
+            TXT_BuscarMarca.Select()
+            TXT_BuscarMarca.Enabled = True
+        End If
     End Sub
 End Class
