@@ -8,7 +8,7 @@ Imports System.Runtime.InteropServices
 
 ' Revisar los valores de los atributos del ensamblado
 
-<Assembly: AssemblyTitle("Sistema Facturación Common")>
+<Assembly: AssemblyTitle("Sistema Facturación")>
 <Assembly: AssemblyDescription("Sistema de facturación para supermercados y tiendas")>
 <Assembly: AssemblyCompany("Minor Porras Varela")>
 <Assembly: AssemblyProduct("SistemaFacturación")>
@@ -28,5 +28,5 @@ Imports System.Runtime.InteropServices
 '      Revisión
 '
 
-<Assembly: AssemblyVersion("2.0.0.3")>
-<Assembly: AssemblyFileVersion("2.0.0.3")>
+<Assembly: AssemblyVersion("2.1.0.0")>
+<Assembly: AssemblyFileVersion("2.1.0.0")>

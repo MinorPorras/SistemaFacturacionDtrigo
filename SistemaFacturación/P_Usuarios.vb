@@ -211,4 +211,8 @@ Public Class P_Usuarios
             msgError("Error al extraer los datos para modificarlos: " & ex.Message)
         End Try
     End Sub
+
+    Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
+        entrarConfig(1)
+    End Sub
 End Class

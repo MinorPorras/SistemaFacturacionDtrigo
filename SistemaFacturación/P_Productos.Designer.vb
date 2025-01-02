@@ -49,6 +49,9 @@ Partial Class P_Productos
         Me.SWT_Prov = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.SWT_Cat = New Guna.UI2.WinForms.Guna2ToggleSwitch()
+        Me.BTN_Config = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.SWT_Recientes = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.DGV_Prods, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -141,12 +144,12 @@ Partial Class P_Productos
         Me.TXT_BuscarProd.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TXT_BuscarProd.IconRightSize = New System.Drawing.Size(40, 40)
-        Me.TXT_BuscarProd.Location = New System.Drawing.Point(42, 21)
+        Me.TXT_BuscarProd.Location = New System.Drawing.Point(12, 21)
         Me.TXT_BuscarProd.Name = "TXT_BuscarProd"
         Me.TXT_BuscarProd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarProd.PlaceholderText = "Buscar producto"
         Me.TXT_BuscarProd.SelectedText = ""
-        Me.TXT_BuscarProd.Size = New System.Drawing.Size(1203, 42)
+        Me.TXT_BuscarProd.Size = New System.Drawing.Size(1157, 42)
         Me.TXT_BuscarProd.TabIndex = 47
         '
         'Guna2BorderlessForm1
@@ -161,7 +164,7 @@ Partial Class P_Productos
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(38, 88)
+        Me.Label1.Location = New System.Drawing.Point(8, 88)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(72, 23)
         Me.Label1.TabIndex = 57
@@ -172,7 +175,7 @@ Partial Class P_Productos
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(425, 88)
+        Me.Label2.Location = New System.Drawing.Point(395, 88)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(109, 23)
         Me.Label2.TabIndex = 59
@@ -183,7 +186,7 @@ Partial Class P_Productos
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(839, 88)
+        Me.Label3.Location = New System.Drawing.Point(809, 88)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(105, 23)
         Me.Label3.TabIndex = 61
@@ -202,7 +205,7 @@ Partial Class P_Productos
         Me.TXT_BuscarMarca.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarMarca.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarMarca.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_BuscarMarca.Location = New System.Drawing.Point(116, 80)
+        Me.TXT_BuscarMarca.Location = New System.Drawing.Point(86, 80)
         Me.TXT_BuscarMarca.Name = "TXT_BuscarMarca"
         Me.TXT_BuscarMarca.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarMarca.PlaceholderText = "Doble click para buscar"
@@ -223,7 +226,7 @@ Partial Class P_Productos
         Me.TXT_BuscarProv.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarProv.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarProv.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_BuscarProv.Location = New System.Drawing.Point(540, 80)
+        Me.TXT_BuscarProv.Location = New System.Drawing.Point(510, 80)
         Me.TXT_BuscarProv.Name = "TXT_BuscarProv"
         Me.TXT_BuscarProv.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarProv.PlaceholderText = "Doble click para buscar"
@@ -244,7 +247,7 @@ Partial Class P_Productos
         Me.TXT_BuscarCat.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TXT_BuscarCat.ForeColor = System.Drawing.Color.Black
         Me.TXT_BuscarCat.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_BuscarCat.Location = New System.Drawing.Point(946, 80)
+        Me.TXT_BuscarCat.Location = New System.Drawing.Point(916, 80)
         Me.TXT_BuscarCat.Name = "TXT_BuscarCat"
         Me.TXT_BuscarCat.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_BuscarCat.PlaceholderText = "Doble click para buscar"
@@ -263,7 +266,7 @@ Partial Class P_Productos
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.DGV_Prods.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.DGV_Prods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.DGV_Prods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -346,7 +349,7 @@ Partial Class P_Productos
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Britannic Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(157, 129)
+        Me.Label5.Location = New System.Drawing.Point(83, 131)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(191, 16)
         Me.Label5.TabIndex = 71
@@ -359,9 +362,9 @@ Partial Class P_Productos
         Me.SWT_Marca.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.SWT_Marca.CheckedState.InnerBorderColor = System.Drawing.Color.White
         Me.SWT_Marca.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.SWT_Marca.Location = New System.Drawing.Point(116, 128)
+        Me.SWT_Marca.Location = New System.Drawing.Point(280, 127)
         Me.SWT_Marca.Name = "SWT_Marca"
-        Me.SWT_Marca.Size = New System.Drawing.Size(35, 20)
+        Me.SWT_Marca.Size = New System.Drawing.Size(37, 20)
         Me.SWT_Marca.TabIndex = 70
         Me.SWT_Marca.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         Me.SWT_Marca.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
@@ -373,7 +376,7 @@ Partial Class P_Productos
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Britannic Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(581, 128)
+        Me.Label4.Location = New System.Drawing.Point(507, 131)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(215, 16)
         Me.Label4.TabIndex = 73
@@ -386,7 +389,7 @@ Partial Class P_Productos
         Me.SWT_Prov.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.SWT_Prov.CheckedState.InnerBorderColor = System.Drawing.Color.White
         Me.SWT_Prov.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.SWT_Prov.Location = New System.Drawing.Point(540, 127)
+        Me.SWT_Prov.Location = New System.Drawing.Point(728, 127)
         Me.SWT_Prov.Name = "SWT_Prov"
         Me.SWT_Prov.Size = New System.Drawing.Size(35, 20)
         Me.SWT_Prov.TabIndex = 72
@@ -400,7 +403,7 @@ Partial Class P_Productos
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Britannic Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(987, 128)
+        Me.Label6.Location = New System.Drawing.Point(913, 131)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(212, 16)
         Me.Label6.TabIndex = 75
@@ -413,7 +416,7 @@ Partial Class P_Productos
         Me.SWT_Cat.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.SWT_Cat.CheckedState.InnerBorderColor = System.Drawing.Color.White
         Me.SWT_Cat.CheckedState.InnerColor = System.Drawing.Color.White
-        Me.SWT_Cat.Location = New System.Drawing.Point(946, 127)
+        Me.SWT_Cat.Location = New System.Drawing.Point(1131, 127)
         Me.SWT_Cat.Name = "SWT_Cat"
         Me.SWT_Cat.Size = New System.Drawing.Size(35, 20)
         Me.SWT_Cat.TabIndex = 74
@@ -422,6 +425,51 @@ Partial Class P_Productos
         Me.SWT_Cat.UncheckedState.InnerBorderColor = System.Drawing.Color.White
         Me.SWT_Cat.UncheckedState.InnerColor = System.Drawing.Color.White
         '
+        'BTN_Config
+        '
+        Me.BTN_Config.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BTN_Config.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_Config.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_Config.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_Config.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_Config.FillColor = System.Drawing.Color.Transparent
+        Me.BTN_Config.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_Config.ForeColor = System.Drawing.Color.White
+        Me.BTN_Config.Image = CType(resources.GetObject("BTN_Config.Image"), System.Drawing.Image)
+        Me.BTN_Config.ImageSize = New System.Drawing.Size(75, 75)
+        Me.BTN_Config.Location = New System.Drawing.Point(1202, 12)
+        Me.BTN_Config.Name = "BTN_Config"
+        Me.BTN_Config.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_Config.Size = New System.Drawing.Size(66, 66)
+        Me.BTN_Config.TabIndex = 120
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Britannic Bold", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(1192, 92)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(68, 16)
+        Me.Label7.TabIndex = 122
+        Me.Label7.Text = "Recientes"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'SWT_Recientes
+        '
+        Me.SWT_Recientes.CheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Recientes.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.SWT_Recientes.CheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Recientes.CheckedState.InnerColor = System.Drawing.Color.White
+        Me.SWT_Recientes.Location = New System.Drawing.Point(1198, 111)
+        Me.SWT_Recientes.Name = "SWT_Recientes"
+        Me.SWT_Recientes.Size = New System.Drawing.Size(58, 25)
+        Me.SWT_Recientes.TabIndex = 121
+        Me.SWT_Recientes.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Recientes.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
+        Me.SWT_Recientes.UncheckedState.InnerBorderColor = System.Drawing.Color.White
+        Me.SWT_Recientes.UncheckedState.InnerColor = System.Drawing.Color.White
+        '
         'P_Productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -429,6 +477,9 @@ Partial Class P_Productos
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProd
         Me.ClientSize = New System.Drawing.Size(1280, 665)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.SWT_Recientes)
+        Me.Controls.Add(Me.BTN_Config)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.SWT_Cat)
         Me.Controls.Add(Me.Label4)
@@ -480,4 +531,7 @@ Partial Class P_Productos
     Friend WithEvents SWT_Prov As Guna.UI2.WinForms.Guna2ToggleSwitch
     Friend WithEvents Label5 As Label
     Friend WithEvents SWT_Marca As Guna.UI2.WinForms.Guna2ToggleSwitch
+    Friend WithEvents BTN_Config As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents Label7 As Label
+    Friend WithEvents SWT_Recientes As Guna.UI2.WinForms.Guna2ToggleSwitch
 End Class

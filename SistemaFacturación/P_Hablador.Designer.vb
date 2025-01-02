@@ -50,6 +50,7 @@ Partial Class P_Hablador
         Me.BTN_RegresarPrd = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_Imprimir = New Guna.UI2.WinForms.Guna2Button()
         Me.PrintDocument = New System.Drawing.Printing.PrintDocument()
+        Me.BTN_Config = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.DGV_Hablador, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MNU_CONTX_IMP.SuspendLayout()
@@ -78,7 +79,7 @@ Partial Class P_Hablador
         Me.MNU_CONTX.RenderStyle.SelectionForeColor = System.Drawing.Color.White
         Me.MNU_CONTX.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.MNU_CONTX.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.MNU_CONTX.Size = New System.Drawing.Size(185, 52)
+        Me.MNU_CONTX.Size = New System.Drawing.Size(149, 30)
         '
         'MNU_SELECCIONAR
         '
@@ -87,7 +88,7 @@ Partial Class P_Hablador
         Me.MNU_SELECCIONAR.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.MNU_SELECCIONAR.Image = CType(resources.GetObject("MNU_SELECCIONAR.Image"), System.Drawing.Image)
         Me.MNU_SELECCIONAR.Name = "MNU_SELECCIONAR"
-        Me.MNU_SELECCIONAR.Size = New System.Drawing.Size(184, 26)
+        Me.MNU_SELECCIONAR.Size = New System.Drawing.Size(148, 26)
         Me.MNU_SELECCIONAR.Text = "Seleccionar"
         '
         'DGV_Hablador
@@ -369,12 +370,33 @@ Partial Class P_Hablador
         'PrintDocument
         '
         '
+        'BTN_Config
+        '
+        Me.BTN_Config.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BTN_Config.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_Config.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_Config.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_Config.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_Config.FillColor = System.Drawing.Color.Transparent
+        Me.BTN_Config.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_Config.ForeColor = System.Drawing.Color.White
+        Me.BTN_Config.Image = CType(resources.GetObject("BTN_Config.Image"), System.Drawing.Image)
+        Me.BTN_Config.ImageSize = New System.Drawing.Size(75, 75)
+        Me.BTN_Config.Location = New System.Drawing.Point(809, 12)
+        Me.BTN_Config.Name = "BTN_Config"
+        Me.BTN_Config.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_Config.Size = New System.Drawing.Size(66, 66)
+        Me.BTN_Config.TabIndex = 121
+        '
         'P_Hablador
         '
+        Me.AcceptButton = Me.BTN_Imprimir
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.CancelButton = Me.BTN_RegresarPrd
         Me.ClientSize = New System.Drawing.Size(887, 579)
+        Me.Controls.Add(Me.BTN_Config)
         Me.Controls.Add(Me.BTN_Imprimir)
         Me.Controls.Add(Me.BTN_RegresarPrd)
         Me.Controls.Add(Me.DGV_BProd)
@@ -416,4 +438,5 @@ Partial Class P_Hablador
     Friend WithEvents cant As DataGridViewTextBoxColumn
     Friend WithEvents BTN_Imprimir As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents PrintDocument As Printing.PrintDocument
+    Friend WithEvents BTN_Config As Guna.UI2.WinForms.Guna2CircleButton
 End Class

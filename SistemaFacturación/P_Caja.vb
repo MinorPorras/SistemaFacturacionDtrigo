@@ -12,6 +12,7 @@ Public Class P_Caja
     Friend cantProd As Integer = 1
     Friend idUsu As Integer
     Private Sub P_Caja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Bounds = Screen.PrimaryScreen.Bounds
         'Se desabilitan los botones con funciones que aún no se van a utlizar
         BTN_Conteo.Enabled = False
 
@@ -20,10 +21,10 @@ Public Class P_Caja
         MNU_CONTX.Enabled = True
 
         'Se cargan los productos favoritos
-        cargarBTNFav()
+        CargarBTNFav()
 
         'Se carga el último número de factura que se haya agregado, que va a ser el mas alto
-        cargarNumFactura()
+        CargarNumFactura()
 
         TXT_BuscarCliente.Text = "0001"
         DGV_Caja.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 128, 0)
@@ -389,7 +390,33 @@ Public Class P_Caja
     End Sub
 
     Private Sub BTN_GuardarCuenta_Click(sender As Object, e As EventArgs) Handles BTN_GuardarCuenta.Click
-
+        'Dim idFactura = OBTENERPK("factura", "ID")
+        'If MsgBox("¿Desea terminar la venta?", vbOKCancel + vbDefaultButton1, "Confirmar") = MsgBoxResult.Ok Then
+        '    Try
+        '        ' Si la PK que esté guardada en IdCat no existe en la base de datos en esa tabla...
+        '        If EXISTEPK("factura", "ID", idFactura) = False Then ' Si no se ha guardado la categoría
+        '            Dim insert As String = $"{idFactura}, {NumFactura}, '{Date.Now:yyyy-MM-dd HH:mm:ss}', {idCliente}, {idUsu}, {Total}, {0}, {0}, {0}, {0}, {0}"
+        '            GUARDAR_FACT("factura", insert)
+        '        End If
+        '        Dim NInv As Integer
+        '        For i As Integer = 0 To DGV_Caja.Rows.Count - 2
+        '            GUARDAR_VarCompInt4("factura_producto", idFactura, DGV_Caja.Rows(i).Cells(0).Value.ToString(), DGV_Caja.Rows(i).Cells(4).Value.ToString(), Convert.ToDouble(DGV_Caja.Rows(i).Cells(3).Value.ToString()))
+        '            T1.Tables.Clear()
+        '            SQL = "SELECT inventario FROM producto WHERE ID = " & DGV_Caja.Rows(i).Cells(0).Value.ToString()
+        '            Cargar_Tabla(T1, SQL)
+        '            If T1.Tables(0).Rows.Count > 0 Then
+        '                NInv = Convert.ToInt32(T1.Tables(0).Rows(0).Item(0)) - Convert.ToInt32(DGV_Caja.Rows(i).Cells(4).Value)
+        '                GUARDAR_INT("producto", "inventario", NInv, "ID", DGV_Caja.Rows(i).Cells(0).Value)
+        '            End If
+        '        Next
+        '        LIMPIAR()
+        '        CargarNumFactura()
+        '        mensaje("Cuenta guardada con exito" &, vbOKOnly, "Venta completada")
+        '        Me.Close()
+        '    Catch ex As Exception
+        '        msgError("Error: " & ex.Message)
+        '    End Try
+        'End If
     End Sub
 
     Private Sub BTN_Conteo_Click(sender As Object, e As EventArgs) Handles BTN_Conteo.Click

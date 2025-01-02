@@ -38,6 +38,7 @@ Partial Class P_Clientes
         Me.CerrarApp = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.BTN_NCliente = New Guna.UI2.WinForms.Guna2Button()
         Me.DGV_Cliente = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.BTN_Config = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_Cliente, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,14 +58,14 @@ Partial Class P_Clientes
         Me.MNU_CONTX.RenderStyle.SelectionForeColor = System.Drawing.Color.White
         Me.MNU_CONTX.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.MNU_CONTX.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.MNU_CONTX.Size = New System.Drawing.Size(185, 78)
+        Me.MNU_CONTX.Size = New System.Drawing.Size(136, 56)
         '
         'MNU_MODIFICAR
         '
         Me.MNU_MODIFICAR.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MNU_MODIFICAR.Image = CType(resources.GetObject("MNU_MODIFICAR.Image"), System.Drawing.Image)
         Me.MNU_MODIFICAR.Name = "MNU_MODIFICAR"
-        Me.MNU_MODIFICAR.Size = New System.Drawing.Size(184, 26)
+        Me.MNU_MODIFICAR.Size = New System.Drawing.Size(135, 26)
         Me.MNU_MODIFICAR.Text = "Modificar"
         Me.MNU_MODIFICAR.Visible = False
         '
@@ -73,7 +74,7 @@ Partial Class P_Clientes
         Me.MNU_ELIMINAR.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MNU_ELIMINAR.Image = CType(resources.GetObject("MNU_ELIMINAR.Image"), System.Drawing.Image)
         Me.MNU_ELIMINAR.Name = "MNU_ELIMINAR"
-        Me.MNU_ELIMINAR.Size = New System.Drawing.Size(184, 26)
+        Me.MNU_ELIMINAR.Size = New System.Drawing.Size(135, 26)
         Me.MNU_ELIMINAR.Text = "Eliminar"
         Me.MNU_ELIMINAR.Visible = False
         '
@@ -243,6 +244,24 @@ Partial Class P_Clientes
         Me.DGV_Cliente.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV_Cliente.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'BTN_Config
+        '
+        Me.BTN_Config.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BTN_Config.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_Config.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_Config.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_Config.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_Config.FillColor = System.Drawing.Color.Transparent
+        Me.BTN_Config.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_Config.ForeColor = System.Drawing.Color.White
+        Me.BTN_Config.Image = CType(resources.GetObject("BTN_Config.Image"), System.Drawing.Image)
+        Me.BTN_Config.ImageSize = New System.Drawing.Size(75, 75)
+        Me.BTN_Config.Location = New System.Drawing.Point(772, 84)
+        Me.BTN_Config.Name = "BTN_Config"
+        Me.BTN_Config.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_Config.Size = New System.Drawing.Size(66, 66)
+        Me.BTN_Config.TabIndex = 121
+        '
         'P_Clientes
         '
         Me.AcceptButton = Me.BTN_NCliente
@@ -251,6 +270,7 @@ Partial Class P_Clientes
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarCliente
         Me.ClientSize = New System.Drawing.Size(850, 667)
+        Me.Controls.Add(Me.BTN_Config)
         Me.Controls.Add(Me.DGV_Cliente)
         Me.Controls.Add(Me.BTN_NCliente)
         Me.Controls.Add(Me.BTN_RegresarCliente)
@@ -280,4 +300,5 @@ Partial Class P_Clientes
     Friend WithEvents CerrarApp As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents BTN_NCliente As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents DGV_Cliente As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents BTN_Config As Guna.UI2.WinForms.Guna2CircleButton
 End Class

@@ -1,15 +1,9 @@
 ﻿Imports System.Configuration
 Public Class ConfigGeneral
 
-    Private Sub regresar()
-        M_Inicio.Show()
-        M_Inicio.Select()
-        M_Inicio.REFRESCAR()
-        Me.Close()
-    End Sub
-
     Private Sub ConfigGeneral_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CargarAutoCods()
+        cargarFontSizes()
     End Sub
 
     Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
@@ -17,8 +11,8 @@ Public Class ConfigGeneral
     End Sub
 
 #Region "TabDB"
-    Private Sub BTN_RegresarConfig_Click_1(sender As Object, e As EventArgs) Handles BTN_RegresarConfig.Click
-        regresar()
+    Private Sub BTN_RegresarConfig_Click(sender As Object, e As EventArgs) Handles BTN_RegresarConfig.Click
+        Me.Close()
     End Sub
 
     Private Sub BTN_RspaldoDB_Click(sender As Object, e As EventArgs) Handles BTN_RspaldoDB.Click
@@ -80,7 +74,7 @@ Public Class ConfigGeneral
 #End Region
 
 #Region "tabCod"
-    Private Sub SWT_ModCod_CheckedChanged(sender As Object, e As EventArgs) Handles SWT_ModCod.CheckedChanged
+    Private Sub SWT_ModCod_CheckedChanged(sender As Object, e As EventArgs) Handles SWT_ModCod.Click
         If SWT_ModCod.Checked = True Then
             NUD_Cajero.Enabled = True
             NUD_Cat.Enabled = True
@@ -125,8 +119,36 @@ Public Class ConfigGeneral
         msgDatoAlm()
     End Sub
 
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles BTN_Regresar.Click
-        regresar()
+    Private Sub BTN_Regresar_Click(sender As Object, e As EventArgs) Handles BTN_Regresar.Click
+        Me.Close()
+    End Sub
+#End Region
+#Region "Hablador"
+    Private Sub cargarFontSizes()
+        NUD_SizePrecio.Value = Md_Inicializacion.GetAppSetting("FontSizeProd")
+        NUD_SizeProd.Value = Md_Inicializacion.GetAppSetting("FontSizePrecio")
+    End Sub
+    Private Sub BTN_ConfigRegHablador_Click(sender As Object, e As EventArgs) Handles BTN_ConfigRegHablador.Click
+        Me.Close()
+    End Sub
+
+    Private Sub BTN_ActualizarHablador_Click(sender As Object, e As EventArgs) Handles BTN_ActualizarHablador.Click
+        Md_Inicializacion.SetAppSetting("FontSizeProd", NUD_SizeProd.Value)
+        Md_Inicializacion.SetAppSetting("FontSizePrecio", NUD_SizePrecio.Value)
+        msgDatoAlm()
+    End Sub
+
+    Private Sub SWT_ModHablador_CheckedChanged(sender As Object, e As EventArgs) Handles SWT_ModHablador.CheckedChanged
+        If SWT_ModHablador.Checked Then
+            NUD_SizePrecio.Enabled = True
+            NUD_SizeProd.Enabled = True
+            BTN_ActualizarHablador.Enabled = True
+        Else
+            NUD_SizePrecio.Enabled = False
+            NUD_SizeProd.Enabled = False
+            BTN_ActualizarHablador.Enabled = False
+            cargarFontSizes()
+        End If
     End Sub
 #End Region
 End Class

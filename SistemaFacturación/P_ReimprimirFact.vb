@@ -295,4 +295,15 @@ Public Class P_ReimprimirFact
             searchTimer.Start()
         End If
     End Sub
+
+    Private Sub SWT_ActivarBFecha_CheckedChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub DTP_Fecha_ValueChanged(sender As Object, e As EventArgs)
+        If searchTimer IsNot Nothing Then
+            searchTimer.Stop()
+            searchTimer.Start()
+        End If
+    End Sub
 End Class

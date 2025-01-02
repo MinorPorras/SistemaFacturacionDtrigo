@@ -88,5 +88,9 @@ Module Md_Inicializacion
         End If
     End Function
 
-
+    Public Sub entrarConfig(index As Integer)
+        ConfigGeneral.Show()
+        ConfigGeneral.Select()
+        ConfigGeneral.TCO_Config.SelectedIndex = index
+    End Sub
 End Module

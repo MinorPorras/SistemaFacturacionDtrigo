@@ -195,4 +195,8 @@ Public Class P_Clientes
         E_NuevoCliente.Show()
         E_NuevoCliente.Select()
     End Sub
+
+    Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
+        entrarConfig(1)
+    End Sub
 End Class

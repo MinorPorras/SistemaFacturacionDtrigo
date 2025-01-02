@@ -36,6 +36,8 @@ Partial Class M_Mantenimiento
         Me.BTN_Producto = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_Marca = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_RegresarMant = New Guna.UI2.WinForms.Guna2Button()
+        Me.BTN_LogOut = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.BTN_Config = New Guna.UI2.WinForms.Guna2CircleButton()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -255,6 +257,42 @@ Partial Class M_Mantenimiento
         Me.BTN_RegresarMant.TabIndex = 20
         Me.BTN_RegresarMant.Text = "0. Regresar"
         '
+        'BTN_LogOut
+        '
+        Me.BTN_LogOut.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BTN_LogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_LogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_LogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_LogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_LogOut.FillColor = System.Drawing.Color.LightSeaGreen
+        Me.BTN_LogOut.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_LogOut.ForeColor = System.Drawing.Color.White
+        Me.BTN_LogOut.Image = CType(resources.GetObject("BTN_LogOut.Image"), System.Drawing.Image)
+        Me.BTN_LogOut.ImageSize = New System.Drawing.Size(45, 45)
+        Me.BTN_LogOut.Location = New System.Drawing.Point(752, 156)
+        Me.BTN_LogOut.Name = "BTN_LogOut"
+        Me.BTN_LogOut.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_LogOut.Size = New System.Drawing.Size(52, 52)
+        Me.BTN_LogOut.TabIndex = 120
+        '
+        'BTN_Config
+        '
+        Me.BTN_Config.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BTN_Config.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_Config.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_Config.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_Config.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_Config.FillColor = System.Drawing.Color.Transparent
+        Me.BTN_Config.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_Config.ForeColor = System.Drawing.Color.White
+        Me.BTN_Config.Image = CType(resources.GetObject("BTN_Config.Image"), System.Drawing.Image)
+        Me.BTN_Config.ImageSize = New System.Drawing.Size(75, 75)
+        Me.BTN_Config.Location = New System.Drawing.Point(745, 84)
+        Me.BTN_Config.Name = "BTN_Config"
+        Me.BTN_Config.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_Config.Size = New System.Drawing.Size(66, 66)
+        Me.BTN_Config.TabIndex = 119
+        '
         'M_Mantenimiento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -263,6 +301,8 @@ Partial Class M_Mantenimiento
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CancelButton = Me.BTN_RegresarMant
         Me.ClientSize = New System.Drawing.Size(823, 676)
+        Me.Controls.Add(Me.BTN_LogOut)
+        Me.Controls.Add(Me.BTN_Config)
         Me.Controls.Add(Me.BTN_RegresarMant)
         Me.Controls.Add(Me.BTN_Producto)
         Me.Controls.Add(Me.BTN_Marca)
@@ -297,4 +337,6 @@ Partial Class M_Mantenimiento
     Friend WithEvents BTN_Impuesto As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_Proveedor As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_Cliente As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents BTN_LogOut As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents BTN_Config As Guna.UI2.WinForms.Guna2CircleButton
 End Class

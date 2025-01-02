@@ -1,3 +1,12 @@
+**Versión 2.1 (2 de enero de 2025)**
+Feliz año esto es lo que trae la nueva actualización
+- Ahora en las configuraciones se puede personalizar el tamaño de la fuente de los precios y productos de los habladores
+- Se agergó el botón de cinfiguraciones desde más pestañas, principalmente las de mantenimiento para poder modificar los códigos auomáticos y en la pestaña de los habladores para entrar específicamente a sus configuraciones
+- Se cambió el texto en el botón con el que se cambia la carpeta en el que se guardan los respaldos desde las configuraciones
+- Se agregaron los atajos del teclado de la pestaña de habladores
+- Las tablas de los pedidos de los proveedores de la pestaña de inicio ahora se ven de la misma forma
+- Ahora al buscar productos se puede activar un filtro que te permite ver los productos que más recientemente se ha agregado, por lo que en la base de datos igualmente se ha agregado una fila nueva en la base de datos para almacenar este espacio
+
 **Versión 2.0.0.3 (28 de diciembre de 2024)**
 - Se cambió el motor de base de datos de Microsoft Acces a SQLite y se hicieron los cambios pertinentes en el código para que funcione correctamente la migración
 - Se simplificó el proceso de muestra de cajas de texto con mensaje e información

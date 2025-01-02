@@ -6,7 +6,7 @@ Public Class P_Productos
                           "CASE WHEN p.variable=1 THEN 'Si' ELSE 'No' END AS 'Var', " &
                           "c.ID_Categoria AS 'ID_cat', cat.nombre AS 'Categoría', " &
                           "pm.ID_Marca AS 'ID_Marca', m.Nombre AS 'Marca', pp.ID_Proveedor AS 'ID_Prov', " &
-                          "pr.nombre AS 'Proveedor', p.inventario AS 'Ex', p.favorito AS 'Fav' " &
+                          "pr.nombre AS 'Proveedor', p.inventario AS 'Ex', p.favorito AS 'Fav', p.fechaAdd as 'Agregado' " &
                           "FROM producto p " &
                           "LEFT JOIN producto_categoria c ON p.ID = c.ID_Producto " &
                           "LEFT JOIN categoria cat ON c.ID_Categoria = cat.ID " &
@@ -64,21 +64,28 @@ Public Class P_Productos
                              condicionBusqueda = " WHERE 1=1 "
                          End If
                          ' Se verifica que el checkbox de buscar por categoría esté seleccionado
-                         If SWT_Cat.Checked = True AndAlso Not String.IsNullOrEmpty(TXT_BuscarCat.Text) Then
+                         If SWT_Cat.Checked AndAlso Not String.IsNullOrEmpty(TXT_BuscarCat.Text) Then
                              condicionBusqueda += "AND cat.nombre LIKE '%" & TXT_BuscarCat.Text & "%' "
                          End If
 
                          ' Se verifica que el checkbox de buscar por marca esté seleccionado
-                         If SWT_Marca.Checked = True AndAlso Not String.IsNullOrEmpty(TXT_BuscarMarca.Text) Then
+                         If SWT_Marca.Checked AndAlso Not String.IsNullOrEmpty(TXT_BuscarMarca.Text) Then
                              condicionBusqueda += "AND m.nombre LIKE '%" & TXT_BuscarMarca.Text & "%' "
                          End If
 
                          ' Se verifica que el checkbox de buscar por proveedor esté seleccionado
-                         If SWT_Prov.Checked = True AndAlso Not String.IsNullOrEmpty(TXT_BuscarProv.Text) Then
+                         If SWT_Prov.Checked AndAlso Not String.IsNullOrEmpty(TXT_BuscarProv.Text) Then
                              condicionBusqueda += "AND pr.nombre LIKE '%" & TXT_BuscarProv.Text & "%' "
                          End If
+
+                         If SWT_Recientes.Checked Then
+                             condicionBusqueda += "Order By p.fechaAdd DESC;"
+                         Else
+                             condicionBusqueda += "ORDER BY p.codigo ASC;"
+                         End If
+
                          ' Construcción del query basado en si se busca por código o por nombre
-                         SQL = stringConsultaBase & condicionBusqueda & " ORDER BY p.codigo ASC;"
+                         SQL = stringConsultaBase & condicionBusqueda
 
                          ' Luego de cargar los datos, actualizar la interfaz de usuario de manera segura 
                          Invoke(Sub()
@@ -130,6 +137,10 @@ Public Class P_Productos
             If DGV_Prods.SelectedRows.Count > 0 Then
                 selectedRowIndex = DGV_Prods.SelectedRows(0).Index
             End If
+            If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Prods.Rows.Count Then
+                DGV_Prods.Rows(selectedRowIndex).Selected = True
+                DGV_Prods.FirstDisplayedScrollingRowIndex = selectedRowIndex
+            End If
             For i As Integer = 0 To DGV_Prods.Columns.Count - 1
                 DGV_Prods.Columns(i).ReadOnly = True
                 Select Case i
@@ -155,6 +166,7 @@ Public Class P_Productos
                         DGV_Prods.Columns(i).Width = 70
                     Case 16
                         DGV_Prods.Columns(i).Width = 30
+
                 End Select
             Next
             DGV_Prods.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
@@ -168,10 +180,6 @@ Public Class P_Productos
             DGV_Prods.Columns(9).Visible = False
             DGV_Prods.Columns(11).Visible = False
             DGV_Prods.Columns(13).Visible = False
-            If selectedRowIndex >= 0 AndAlso selectedRowIndex < DGV_Prods.Rows.Count Then
-                DGV_Prods.Rows(selectedRowIndex).Selected = True
-                DGV_Prods.FirstDisplayedScrollingRowIndex = selectedRowIndex
-            End If
         Catch ex As Exception
             ' Manejar el error si alguna columna no existe
             Console.WriteLine("Error al ocultar las columnas: " & ex.Message)
@@ -179,6 +187,7 @@ Public Class P_Productos
     End Sub
 
     Private Sub BTN_NProd_Click(sender As Object, e As EventArgs) Handles BTN_NProd.Click
+        E_NuevoProducto.ModProd = False
         E_NuevoProducto.Show()
         E_NuevoProducto.Select()
     End Sub
@@ -366,6 +375,18 @@ Public Class P_Productos
         Else
             TXT_BuscarMarca.Select()
             TXT_BuscarMarca.Enabled = True
+        End If
+    End Sub
+
+    Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
+        entrarConfig(1)
+    End Sub
+
+    Private Sub SWT_Recientes_CheckedChanged(sender As Object, e As EventArgs) Handles SWT_Recientes.CheckedChanged
+        If searchTimer IsNot Nothing Then
+            ' Reiniciar el temporizador cada vez que se cambia el texto
+            searchTimer.Stop()
+            searchTimer.Start()
         End If
     End Sub
 End Class

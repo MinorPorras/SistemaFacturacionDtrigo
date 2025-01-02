@@ -1,5 +1,7 @@
 ﻿Imports System.Configuration
 Imports System.Threading.Tasks
+Imports System.Drawing
+
 Public Class M_Inicio
     Dim LArray As String()
     Dim MArray As String()
@@ -169,10 +171,6 @@ Public Class M_Inicio
                      End Try
                  End Sub)
     End Sub
-
-
-
-
     Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
         msgCerrarApp()
     End Sub
@@ -198,9 +196,7 @@ Public Class M_Inicio
     End Sub
 
     Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
-        ConfigGeneral.Show()
-        ConfigGeneral.Select()
-        Me.Hide()
+        entrarConfig(0)
     End Sub
 
     Private Sub BTN_CajaVenta_Click_1(sender As Object, e As EventArgs) Handles BTN_CajaVenta.Click

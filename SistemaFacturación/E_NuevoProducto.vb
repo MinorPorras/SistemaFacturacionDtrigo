@@ -100,6 +100,7 @@ Public Class E_NuevoProducto
                                     ' Guarda la PK almacenada en IdCat dentro de la Base de datos en la tabla y PK indicado
                                     GUARDAR_PK("producto", "ID", idProd)
                                 End If
+                                GUARDAR_TIMEACTUAL("producto", "fechaAdd", "ID", idProd)
                             End If
 
                             ' Actualizar los campos en la base de datos
@@ -209,7 +210,6 @@ Public Class E_NuevoProducto
                             Else
                                 ELIMINAR("producto_proveedor", "ID_Producto", idProd)
                             End If
-
                             LIMPIAR()
                             msgDatoAlm()
                             PRG_Guardando.Stop()

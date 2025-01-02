@@ -143,9 +143,12 @@ Public Class P_Hablador
     End Sub
 
     Private Sub PrintDocument_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument.PrintPage
-        Dim font As New Font("Arial", 12)
-        Dim fontProds As New Font("Arial", 12, FontStyle.Bold)
-        Dim fontPrices As New Font("Arial", 12, FontStyle.Bold)
+        Dim tamañoProds As Integer = Md_Inicializacion.GetAppSetting("FontSizeProd")
+        Dim tamañoPrecio As Integer = Md_Inicializacion.GetAppSetting("FontSizePrecio")
+
+        Dim font As New Font("Arial", tamañoProds)
+        Dim fontProds As New Font("Arial", tamañoProds, FontStyle.Bold)
+        Dim fontPrices As New Font("Arial", tamañoPrecio, FontStyle.Bold)
         Dim brush As New SolidBrush(Color.Black)
         Dim stringFormatLeft As New StringFormat() With {
             .Alignment = StringAlignment.Near,
@@ -157,16 +160,30 @@ Public Class P_Hablador
         Dim leftMargin As Single = e.MarginBounds.Left
         Dim topMargin As Single = e.MarginBounds.Top
         Dim yPos As Single = topMargin
+        ' 1. Obtener el ancho del área de dibujo disponible:
+        Dim largoDisponible As Single = totalWidth - leftMargin ' Restamos el margen izquierdo
+
+        ' 2. Crear una cadena con un solo guión para medir su ancho:
+        Dim Guion As String = "-"
+
+        Dim largoGuion As Single = e.Graphics.MeasureString(Guion, font).Width
+        ' 3. Calcular cuántos guiones caben en el ancho disponible:
+        Dim NumGuion As Integer = CInt(Math.Floor(largoDisponible / largoGuion))
 
         ' Recorrer cada producto y crear habladores según la cantidad especificada
         For i As Integer = 0 To productos.Count - 1
             For j As Integer = 1 To cantidad(i)
-                ' Dibujar la primera fila alineada a la izquierda con líneas
-                Dim lines As New String("-"c, 30) ' Ajustar el número de caracteres según sea necesario
+
+                ' 4. Crear la cadena con el número calculado de guiones:
+                Dim lines As New String("-"c, NumGuion)
+
+                ' 5. Dibujar la línea:
                 e.Graphics.DrawString(lines, font, brush, leftMargin, yPos, stringFormatLeft)
+
+                ' 6. Actualizar la posición vertical para el siguiente elemento:
                 yPos += e.Graphics.MeasureString(lines, font).Height + 5
 
-                ' Añadir una línea adicional antes de escribir la información del producto
+                ' Añadir una línea adicional antes de escribir la información del producto (opcional):
                 yPos += e.Graphics.MeasureString(" ", font).Height
 
                 ' Dibujar el nombre del producto alineado a la izquierda
@@ -192,5 +209,9 @@ Public Class P_Hablador
                 End If
             Next
         Next
+    End Sub
+
+    Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
+        entrarConfig(2)
     End Sub
 End Class

@@ -81,4 +81,15 @@
     Private Sub BTN_FacTick_Click(sender As Object, e As EventArgs)
 
     End Sub
+
+    Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
+        entrarConfig(0)
+    End Sub
+
+    Private Sub BTN_LogOut_Click(sender As Object, e As EventArgs) Handles BTN_LogOut.Click
+        M_Inicio.LBL_Usu.Text = ""
+        P_SelectUsu.Show()
+        P_SelectUsu.Select()
+        Me.Close()
+    End Sub
 End Class

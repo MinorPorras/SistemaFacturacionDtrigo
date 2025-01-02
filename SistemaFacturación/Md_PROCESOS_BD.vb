@@ -59,7 +59,7 @@ Module Md_PROCESOS_BD
     End Sub
 
     Friend Sub GUARDAR_TIMEACTUAL(ByVal TABLA As String, ByVal ATRIBUTOS As String, ByVal PK As String, ByVal VALORPK As Integer)
-        SQL = "UPDATE " & TABLA & " SET " & ATRIBUTOS & " = CURRENT_TIMESTAMP WHERE " & PK & " = " & VALORPK
+        SQL = "UPDATE " & TABLA & " SET " & ATRIBUTOS & " = datetime('now', 'localtime') WHERE " & PK & " = " & VALORPK
         EJECUTAR(SQL)
     End Sub
 
