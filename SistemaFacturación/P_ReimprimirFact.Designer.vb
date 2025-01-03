@@ -31,11 +31,11 @@ Partial Class P_ReimprimirFact
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.MNU_CONTX = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.MNU_REIMPRIMIR = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MNU_Datos = New System.Windows.Forms.ToolStripMenuItem()
         Me.BTN_RegresarFact = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_ImpReciente = New Guna.UI2.WinForms.Guna2Button()
         Me.TXT_BuscarFact = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.CerrarApp = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.PrintDocument = New System.Drawing.Printing.PrintDocument()
         Me.PrintDialog = New System.Windows.Forms.PrintDialog()
         Me.DGV_ReimprimirFact = New Guna.UI2.WinForms.Guna2DataGridView()
@@ -44,11 +44,13 @@ Partial Class P_ReimprimirFact
         Me.RDB_All = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.RDB_200 = New Guna.UI2.WinForms.Guna2RadioButton()
         Me.RDB_100 = New Guna.UI2.WinForms.Guna2RadioButton()
-        Me.Guna2ImageButton1 = New Guna.UI2.WinForms.Guna2ImageButton()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.BTN_CerrarApp = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_ReimprimirFact, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GRB_Filtro.SuspendLayout()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -62,7 +64,7 @@ Partial Class P_ReimprimirFact
         'MNU_CONTX
         '
         Me.MNU_CONTX.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MNU_CONTX.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MNU_REIMPRIMIR})
+        Me.MNU_CONTX.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MNU_REIMPRIMIR, Me.MNU_Datos})
         Me.MNU_CONTX.Name = "MNU_CONTX"
         Me.MNU_CONTX.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.MNU_CONTX.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro
@@ -73,7 +75,7 @@ Partial Class P_ReimprimirFact
         Me.MNU_CONTX.RenderStyle.SelectionForeColor = System.Drawing.Color.White
         Me.MNU_CONTX.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
         Me.MNU_CONTX.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.MNU_CONTX.Size = New System.Drawing.Size(146, 30)
+        Me.MNU_CONTX.Size = New System.Drawing.Size(146, 56)
         '
         'MNU_REIMPRIMIR
         '
@@ -86,42 +88,52 @@ Partial Class P_ReimprimirFact
         Me.MNU_REIMPRIMIR.Text = "Reimprimir"
         Me.MNU_REIMPRIMIR.Visible = False
         '
+        'MNU_Datos
+        '
+        Me.MNU_Datos.BackColor = System.Drawing.Color.DarkGoldenrod
+        Me.MNU_Datos.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MNU_Datos.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.MNU_Datos.Image = CType(resources.GetObject("MNU_Datos.Image"), System.Drawing.Image)
+        Me.MNU_Datos.Name = "MNU_Datos"
+        Me.MNU_Datos.Size = New System.Drawing.Size(145, 26)
+        Me.MNU_Datos.Text = "Ver datos"
+        '
         'BTN_RegresarFact
         '
         Me.BTN_RegresarFact.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarFact.BorderRadius = 25
         Me.BTN_RegresarFact.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarFact.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarFact.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarFact.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarFact.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarFact.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarFact.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarFact.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarFact.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarFact.Image = CType(resources.GetObject("BTN_RegresarFact.Image"), System.Drawing.Image)
         Me.BTN_RegresarFact.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarFact.Location = New System.Drawing.Point(76, 617)
+        Me.BTN_RegresarFact.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarFact.Name = "BTN_RegresarFact"
-        Me.BTN_RegresarFact.Size = New System.Drawing.Size(473, 57)
+        Me.BTN_RegresarFact.Size = New System.Drawing.Size(611, 57)
         Me.BTN_RegresarFact.TabIndex = 51
         Me.BTN_RegresarFact.Text = "Regresar"
         '
         'BTN_ImpReciente
         '
         Me.BTN_ImpReciente.BorderColor = System.Drawing.Color.Red
-        Me.BTN_ImpReciente.BorderRadius = 25
         Me.BTN_ImpReciente.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_ImpReciente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_ImpReciente.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_ImpReciente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_ImpReciente.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_ImpReciente.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_ImpReciente.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_ImpReciente.ForeColor = System.Drawing.Color.White
         Me.BTN_ImpReciente.Image = CType(resources.GetObject("BTN_ImpReciente.Image"), System.Drawing.Image)
         Me.BTN_ImpReciente.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_ImpReciente.Location = New System.Drawing.Point(668, 617)
+        Me.BTN_ImpReciente.Location = New System.Drawing.Point(607, 0)
         Me.BTN_ImpReciente.Name = "BTN_ImpReciente"
-        Me.BTN_ImpReciente.Size = New System.Drawing.Size(475, 57)
+        Me.BTN_ImpReciente.Size = New System.Drawing.Size(612, 57)
         Me.BTN_ImpReciente.TabIndex = 50
         Me.BTN_ImpReciente.Text = "Imprimir más reciente"
         '
@@ -158,24 +170,6 @@ Partial Class P_ReimprimirFact
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Guna2PictureBox1.TabIndex = 48
         Me.Guna2PictureBox1.TabStop = False
-        '
-        'CerrarApp
-        '
-        Me.CerrarApp.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.CerrarApp.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.CerrarApp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.CerrarApp.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.CerrarApp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.CerrarApp.FillColor = System.Drawing.Color.SandyBrown
-        Me.CerrarApp.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.CerrarApp.ForeColor = System.Drawing.Color.White
-        Me.CerrarApp.Image = CType(resources.GetObject("CerrarApp.Image"), System.Drawing.Image)
-        Me.CerrarApp.ImageSize = New System.Drawing.Size(90, 90)
-        Me.CerrarApp.Location = New System.Drawing.Point(1141, 12)
-        Me.CerrarApp.Name = "CerrarApp"
-        Me.CerrarApp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.CerrarApp.Size = New System.Drawing.Size(66, 66)
-        Me.CerrarApp.TabIndex = 47
         '
         'PrintDocument
         '
@@ -348,19 +342,30 @@ Partial Class P_ReimprimirFact
         Me.RDB_100.UncheckedState.FillColor = System.Drawing.Color.Transparent
         Me.RDB_100.UncheckedState.InnerColor = System.Drawing.Color.Transparent
         '
-        'Guna2ImageButton1
+        'Guna2Panel1
         '
-        Me.Guna2ImageButton1.CheckedState.ImageSize = New System.Drawing.Size(64, 64)
-        Me.Guna2ImageButton1.HoverState.ImageSize = New System.Drawing.Size(64, 64)
-        Me.Guna2ImageButton1.Image = CType(resources.GetObject("Guna2ImageButton1.Image"), System.Drawing.Image)
-        Me.Guna2ImageButton1.ImageOffset = New System.Drawing.Point(0, 0)
-        Me.Guna2ImageButton1.ImageRotate = 0!
-        Me.Guna2ImageButton1.ImageSize = New System.Drawing.Size(70, 70)
-        Me.Guna2ImageButton1.Location = New System.Drawing.Point(1141, 12)
-        Me.Guna2ImageButton1.Name = "Guna2ImageButton1"
-        Me.Guna2ImageButton1.PressedState.ImageSize = New System.Drawing.Size(64, 64)
-        Me.Guna2ImageButton1.Size = New System.Drawing.Size(66, 66)
-        Me.Guna2ImageButton1.TabIndex = 86
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarFact)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_ImpReciente)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 628)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(1219, 57)
+        Me.Guna2Panel1.TabIndex = 87
+        '
+        'BTN_CerrarApp
+        '
+        Me.BTN_CerrarApp.BackColor = System.Drawing.Color.Red
+        Me.BTN_CerrarApp.CheckedState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_CerrarApp.HoverState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_CerrarApp.Image = CType(resources.GetObject("BTN_CerrarApp.Image"), System.Drawing.Image)
+        Me.BTN_CerrarApp.ImageOffset = New System.Drawing.Point(0, 0)
+        Me.BTN_CerrarApp.ImageRotate = 0!
+        Me.BTN_CerrarApp.ImageSize = New System.Drawing.Size(60, 60)
+        Me.BTN_CerrarApp.Location = New System.Drawing.Point(1164, -1)
+        Me.BTN_CerrarApp.Name = "BTN_CerrarApp"
+        Me.BTN_CerrarApp.PressedState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_CerrarApp.Size = New System.Drawing.Size(55, 53)
+        Me.BTN_CerrarApp.TabIndex = 125
         '
         'P_ReimprimirFact
         '
@@ -370,14 +375,12 @@ Partial Class P_ReimprimirFact
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarFact
         Me.ClientSize = New System.Drawing.Size(1219, 685)
-        Me.Controls.Add(Me.Guna2ImageButton1)
+        Me.Controls.Add(Me.BTN_CerrarApp)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.GRB_Filtro)
         Me.Controls.Add(Me.DGV_ReimprimirFact)
-        Me.Controls.Add(Me.BTN_RegresarFact)
-        Me.Controls.Add(Me.BTN_ImpReciente)
         Me.Controls.Add(Me.TXT_BuscarFact)
         Me.Controls.Add(Me.Guna2PictureBox1)
-        Me.Controls.Add(Me.CerrarApp)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "P_ReimprimirFact"
@@ -388,6 +391,7 @@ Partial Class P_ReimprimirFact
         CType(Me.DGV_ReimprimirFact, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GRB_Filtro.ResumeLayout(False)
         Me.GRB_Filtro.PerformLayout()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -397,7 +401,6 @@ Partial Class P_ReimprimirFact
     Friend WithEvents BTN_ImpReciente As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarFact As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents CerrarApp As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents MNU_CONTX As Guna.UI2.WinForms.Guna2ContextMenuStrip
     Friend WithEvents MNU_REIMPRIMIR As ToolStripMenuItem
     Friend WithEvents PrintDocument As Printing.PrintDocument
@@ -408,5 +411,7 @@ Partial Class P_ReimprimirFact
     Friend WithEvents RDB_50 As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents RDB_All As Guna.UI2.WinForms.Guna2RadioButton
     Friend WithEvents RDB_200 As Guna.UI2.WinForms.Guna2RadioButton
-    Friend WithEvents Guna2ImageButton1 As Guna.UI2.WinForms.Guna2ImageButton
+    Friend WithEvents MNU_Datos As ToolStripMenuItem
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents BTN_CerrarApp As Guna.UI2.WinForms.Guna2ImageButton
 End Class

@@ -35,8 +35,10 @@ Partial Class E_NuevoImpuesto
         Me.BTN_RegresarImp = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_NImpuesto = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NUD_Porc, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -150,39 +152,39 @@ Partial Class E_NuevoImpuesto
         'BTN_RegresarImp
         '
         Me.BTN_RegresarImp.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarImp.BorderRadius = 25
         Me.BTN_RegresarImp.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarImp.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarImp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarImp.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarImp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarImp.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarImp.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarImp.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarImp.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarImp.Image = CType(resources.GetObject("BTN_RegresarImp.Image"), System.Drawing.Image)
         Me.BTN_RegresarImp.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarImp.Location = New System.Drawing.Point(16, 306)
+        Me.BTN_RegresarImp.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarImp.Name = "BTN_RegresarImp"
-        Me.BTN_RegresarImp.Size = New System.Drawing.Size(196, 57)
+        Me.BTN_RegresarImp.Size = New System.Drawing.Size(216, 73)
         Me.BTN_RegresarImp.TabIndex = 34
         Me.BTN_RegresarImp.Text = "Regresar"
         '
         'BTN_NImpuesto
         '
         Me.BTN_NImpuesto.BorderColor = System.Drawing.Color.Red
-        Me.BTN_NImpuesto.BorderRadius = 25
         Me.BTN_NImpuesto.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NImpuesto.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NImpuesto.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_NImpuesto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_NImpuesto.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_NImpuesto.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_NImpuesto.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_NImpuesto.ForeColor = System.Drawing.Color.White
         Me.BTN_NImpuesto.Image = CType(resources.GetObject("BTN_NImpuesto.Image"), System.Drawing.Image)
         Me.BTN_NImpuesto.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NImpuesto.Location = New System.Drawing.Point(218, 306)
+        Me.BTN_NImpuesto.Location = New System.Drawing.Point(210, 0)
         Me.BTN_NImpuesto.Name = "BTN_NImpuesto"
-        Me.BTN_NImpuesto.Size = New System.Drawing.Size(195, 57)
+        Me.BTN_NImpuesto.Size = New System.Drawing.Size(220, 73)
         Me.BTN_NImpuesto.TabIndex = 33
         Me.BTN_NImpuesto.Text = "Guardar"
         '
@@ -204,6 +206,16 @@ Partial Class E_NuevoImpuesto
         Me.BTN_AutoCod.Text = "+"
         Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarImp)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_NImpuesto)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 310)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(430, 73)
+        Me.Guna2Panel1.TabIndex = 114
+        '
         'E_NuevoImpuesto
         '
         Me.AcceptButton = Me.BTN_NImpuesto
@@ -212,9 +224,8 @@ Partial Class E_NuevoImpuesto
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarImp
         Me.ClientSize = New System.Drawing.Size(430, 383)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.BTN_AutoCod)
-        Me.Controls.Add(Me.BTN_RegresarImp)
-        Me.Controls.Add(Me.BTN_NImpuesto)
         Me.Controls.Add(Me.NUD_Porc)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.TXT_DescImpuesto)
@@ -227,9 +238,10 @@ Partial Class E_NuevoImpuesto
         Me.KeyPreview = True
         Me.Name = "E_NuevoImpuesto"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Impuesto"
+        Me.Text = "Mantenimiento de impuestos"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NUD_Porc, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -246,4 +258,5 @@ Partial Class E_NuevoImpuesto
     Friend WithEvents BTN_RegresarImp As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_NImpuesto As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

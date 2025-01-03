@@ -40,14 +40,16 @@ Partial Class B_Producto
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TXT_Precio = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.DGV_BProd = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.TXT_CantProd = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.BTN_MenosCant = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.BTN_MasCant = New Guna.UI2.WinForms.Guna2CircleButton()
-        Me.DGV_BProd = New Guna.UI2.WinForms.Guna2DataGridView()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_BProd, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -105,39 +107,39 @@ Partial Class B_Producto
         'BTN_RegresarPrd
         '
         Me.BTN_RegresarPrd.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarPrd.BorderRadius = 25
         Me.BTN_RegresarPrd.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarPrd.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarPrd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarPrd.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarPrd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarPrd.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarPrd.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarPrd.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarPrd.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarPrd.Image = CType(resources.GetObject("BTN_RegresarPrd.Image"), System.Drawing.Image)
         Me.BTN_RegresarPrd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarPrd.Location = New System.Drawing.Point(99, 545)
+        Me.BTN_RegresarPrd.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarPrd.Name = "BTN_RegresarPrd"
-        Me.BTN_RegresarPrd.Size = New System.Drawing.Size(309, 57)
+        Me.BTN_RegresarPrd.Size = New System.Drawing.Size(481, 68)
         Me.BTN_RegresarPrd.TabIndex = 89
         Me.BTN_RegresarPrd.Text = "Regresar"
         '
         'BTN_SelectProd
         '
         Me.BTN_SelectProd.BorderColor = System.Drawing.Color.Red
-        Me.BTN_SelectProd.BorderRadius = 25
         Me.BTN_SelectProd.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectProd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectProd.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_SelectProd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_SelectProd.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_SelectProd.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_SelectProd.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_SelectProd.ForeColor = System.Drawing.Color.White
         Me.BTN_SelectProd.Image = CType(resources.GetObject("BTN_SelectProd.Image"), System.Drawing.Image)
         Me.BTN_SelectProd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_SelectProd.Location = New System.Drawing.Point(535, 545)
+        Me.BTN_SelectProd.Location = New System.Drawing.Point(481, 0)
         Me.BTN_SelectProd.Name = "BTN_SelectProd"
-        Me.BTN_SelectProd.Size = New System.Drawing.Size(309, 57)
+        Me.BTN_SelectProd.Size = New System.Drawing.Size(481, 68)
         Me.BTN_SelectProd.TabIndex = 88
         Me.BTN_SelectProd.Text = "Seleccionar"
         '
@@ -242,17 +244,6 @@ Partial Class B_Producto
         Me.TXT_Precio.Size = New System.Drawing.Size(210, 42)
         Me.TXT_Precio.TabIndex = 99
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(705, 427)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(92, 23)
-        Me.Label3.TabIndex = 101
-        Me.Label3.Text = "Cantidad"
-        '
         'Guna2TextBox1
         '
         Me.Guna2TextBox1.BorderRadius = 20
@@ -274,71 +265,6 @@ Partial Class B_Producto
         Me.Guna2TextBox1.SelectedText = ""
         Me.Guna2TextBox1.Size = New System.Drawing.Size(390, 84)
         Me.Guna2TextBox1.TabIndex = 102
-        '
-        'TXT_CantProd
-        '
-        Me.TXT_CantProd.BorderRadius = 20
-        Me.TXT_CantProd.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TXT_CantProd.DefaultText = "1"
-        Me.TXT_CantProd.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TXT_CantProd.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TXT_CantProd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXT_CantProd.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TXT_CantProd.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_CantProd.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXT_CantProd.ForeColor = System.Drawing.Color.Black
-        Me.TXT_CantProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.TXT_CantProd.Location = New System.Drawing.Point(650, 456)
-        Me.TXT_CantProd.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
-        Me.TXT_CantProd.Name = "TXT_CantProd"
-        Me.TXT_CantProd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TXT_CantProd.PlaceholderText = ""
-        Me.TXT_CantProd.SelectedText = ""
-        Me.TXT_CantProd.Size = New System.Drawing.Size(208, 42)
-        Me.TXT_CantProd.TabIndex = 103
-        Me.TXT_CantProd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'BTN_MenosCant
-        '
-        Me.BTN_MenosCant.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.BTN_MenosCant.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_MenosCant.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_MenosCant.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTN_MenosCant.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTN_MenosCant.FillColor = System.Drawing.Color.White
-        Me.BTN_MenosCant.Font = New System.Drawing.Font("Segoe UI", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_MenosCant.ForeColor = System.Drawing.Color.White
-        Me.BTN_MenosCant.Image = CType(resources.GetObject("BTN_MenosCant.Image"), System.Drawing.Image)
-        Me.BTN_MenosCant.ImageSize = New System.Drawing.Size(60, 60)
-        Me.BTN_MenosCant.Location = New System.Drawing.Point(591, 450)
-        Me.BTN_MenosCant.Name = "BTN_MenosCant"
-        Me.BTN_MenosCant.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.BTN_MenosCant.Size = New System.Drawing.Size(50, 50)
-        Me.BTN_MenosCant.TabIndex = 104
-        Me.BTN_MenosCant.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.BTN_MenosCant.TextOffset = New System.Drawing.Point(0, -5)
-        '
-        'BTN_MasCant
-        '
-        Me.BTN_MasCant.BackgroundImage = CType(resources.GetObject("BTN_MasCant.BackgroundImage"), System.Drawing.Image)
-        Me.BTN_MasCant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.BTN_MasCant.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.BTN_MasCant.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_MasCant.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_MasCant.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTN_MasCant.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTN_MasCant.FillColor = System.Drawing.Color.DeepSkyBlue
-        Me.BTN_MasCant.Font = New System.Drawing.Font("Segoe UI", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_MasCant.ForeColor = System.Drawing.Color.White
-        Me.BTN_MasCant.Image = CType(resources.GetObject("BTN_MasCant.Image"), System.Drawing.Image)
-        Me.BTN_MasCant.ImageSize = New System.Drawing.Size(60, 60)
-        Me.BTN_MasCant.Location = New System.Drawing.Point(867, 448)
-        Me.BTN_MasCant.Name = "BTN_MasCant"
-        Me.BTN_MasCant.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.BTN_MasCant.Size = New System.Drawing.Size(50, 50)
-        Me.BTN_MasCant.TabIndex = 105
-        Me.BTN_MasCant.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.BTN_MasCant.TextOffset = New System.Drawing.Point(-6, -5)
         '
         'DGV_BProd
         '
@@ -407,6 +333,92 @@ Partial Class B_Producto
         Me.DGV_BProd.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV_BProd.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarPrd)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_SelectProd)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 546)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(962, 68)
+        Me.Guna2Panel1.TabIndex = 107
+        '
+        'TXT_CantProd
+        '
+        Me.TXT_CantProd.BorderRadius = 20
+        Me.TXT_CantProd.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TXT_CantProd.DefaultText = "1"
+        Me.TXT_CantProd.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TXT_CantProd.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TXT_CantProd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXT_CantProd.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TXT_CantProd.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_CantProd.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXT_CantProd.ForeColor = System.Drawing.Color.Black
+        Me.TXT_CantProd.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.TXT_CantProd.Location = New System.Drawing.Point(633, 453)
+        Me.TXT_CantProd.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.TXT_CantProd.Name = "TXT_CantProd"
+        Me.TXT_CantProd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TXT_CantProd.PlaceholderText = ""
+        Me.TXT_CantProd.SelectedText = ""
+        Me.TXT_CantProd.Size = New System.Drawing.Size(208, 42)
+        Me.TXT_CantProd.TabIndex = 107
+        Me.TXT_CantProd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(688, 424)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(92, 23)
+        Me.Label3.TabIndex = 106
+        Me.Label3.Text = "Cantidad"
+        '
+        'BTN_MenosCant
+        '
+        Me.BTN_MenosCant.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BTN_MenosCant.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_MenosCant.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_MenosCant.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_MenosCant.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_MenosCant.FillColor = System.Drawing.Color.White
+        Me.BTN_MenosCant.Font = New System.Drawing.Font("Segoe UI", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_MenosCant.ForeColor = System.Drawing.Color.White
+        Me.BTN_MenosCant.Image = CType(resources.GetObject("BTN_MenosCant.Image"), System.Drawing.Image)
+        Me.BTN_MenosCant.ImageSize = New System.Drawing.Size(60, 60)
+        Me.BTN_MenosCant.Location = New System.Drawing.Point(574, 447)
+        Me.BTN_MenosCant.Name = "BTN_MenosCant"
+        Me.BTN_MenosCant.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_MenosCant.Size = New System.Drawing.Size(50, 50)
+        Me.BTN_MenosCant.TabIndex = 108
+        Me.BTN_MenosCant.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.BTN_MenosCant.TextOffset = New System.Drawing.Point(0, -5)
+        '
+        'BTN_MasCant
+        '
+        Me.BTN_MasCant.BackgroundImage = CType(resources.GetObject("BTN_MasCant.BackgroundImage"), System.Drawing.Image)
+        Me.BTN_MasCant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.BTN_MasCant.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.BTN_MasCant.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_MasCant.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.BTN_MasCant.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.BTN_MasCant.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_MasCant.FillColor = System.Drawing.Color.DeepSkyBlue
+        Me.BTN_MasCant.Font = New System.Drawing.Font("Segoe UI", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_MasCant.ForeColor = System.Drawing.Color.White
+        Me.BTN_MasCant.Image = CType(resources.GetObject("BTN_MasCant.Image"), System.Drawing.Image)
+        Me.BTN_MasCant.ImageSize = New System.Drawing.Size(60, 60)
+        Me.BTN_MasCant.Location = New System.Drawing.Point(850, 445)
+        Me.BTN_MasCant.Name = "BTN_MasCant"
+        Me.BTN_MasCant.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
+        Me.BTN_MasCant.Size = New System.Drawing.Size(50, 50)
+        Me.BTN_MasCant.TabIndex = 109
+        Me.BTN_MasCant.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.BTN_MasCant.TextOffset = New System.Drawing.Point(-6, -5)
+        '
         'B_Producto
         '
         Me.AcceptButton = Me.BTN_SelectProd
@@ -415,12 +427,13 @@ Partial Class B_Producto
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarPrd
         Me.ClientSize = New System.Drawing.Size(962, 614)
+        Me.Controls.Add(Me.TXT_CantProd)
+        Me.Controls.Add(Me.Guna2Panel1)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.BTN_MenosCant)
         Me.Controls.Add(Me.DGV_BProd)
         Me.Controls.Add(Me.BTN_MasCant)
-        Me.Controls.Add(Me.BTN_MenosCant)
-        Me.Controls.Add(Me.TXT_CantProd)
         Me.Controls.Add(Me.Guna2TextBox1)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.TXT_Precio)
         Me.Controls.Add(Me.LBL_IDProd)
@@ -428,8 +441,6 @@ Partial Class B_Producto
         Me.Controls.Add(Me.TXT_Nombre)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_codigo)
-        Me.Controls.Add(Me.BTN_RegresarPrd)
-        Me.Controls.Add(Me.BTN_SelectProd)
         Me.Controls.Add(Me.TXT_BuscarProd)
         Me.Controls.Add(Me.Guna2PictureBox2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -440,6 +451,7 @@ Partial Class B_Producto
         Me.Text = "Buscar Productos"
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_BProd, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -458,9 +470,10 @@ Partial Class B_Producto
     Friend WithEvents Label2 As Label
     Friend WithEvents TXT_Nombre As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Label3 As Label
+    Friend WithEvents DGV_BProd As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TXT_CantProd As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Label3 As Label
     Friend WithEvents BTN_MenosCant As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents BTN_MasCant As Guna.UI2.WinForms.Guna2CircleButton
-    Friend WithEvents DGV_BProd As Guna.UI2.WinForms.Guna2DataGridView
 End Class

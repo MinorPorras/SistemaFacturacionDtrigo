@@ -41,8 +41,10 @@ Partial Class B_Impuesto
         Me.TXT_porcentaje = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.DGV_BImp = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_BImp, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
@@ -114,39 +116,39 @@ Partial Class B_Impuesto
         'BTN_RegresarImpuesto
         '
         Me.BTN_RegresarImpuesto.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarImpuesto.BorderRadius = 25
         Me.BTN_RegresarImpuesto.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarImpuesto.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarImpuesto.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarImpuesto.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarImpuesto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarImpuesto.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarImpuesto.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarImpuesto.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarImpuesto.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarImpuesto.Image = CType(resources.GetObject("BTN_RegresarImpuesto.Image"), System.Drawing.Image)
         Me.BTN_RegresarImpuesto.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarImpuesto.Location = New System.Drawing.Point(40, 484)
+        Me.BTN_RegresarImpuesto.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarImpuesto.Name = "BTN_RegresarImpuesto"
-        Me.BTN_RegresarImpuesto.Size = New System.Drawing.Size(273, 57)
+        Me.BTN_RegresarImpuesto.Size = New System.Drawing.Size(357, 74)
         Me.BTN_RegresarImpuesto.TabIndex = 68
         Me.BTN_RegresarImpuesto.Text = "Regresar"
         '
         'BTN_SelectImpuesto
         '
         Me.BTN_SelectImpuesto.BorderColor = System.Drawing.Color.Red
-        Me.BTN_SelectImpuesto.BorderRadius = 25
         Me.BTN_SelectImpuesto.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectImpuesto.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectImpuesto.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_SelectImpuesto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_SelectImpuesto.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_SelectImpuesto.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_SelectImpuesto.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_SelectImpuesto.ForeColor = System.Drawing.Color.White
         Me.BTN_SelectImpuesto.Image = CType(resources.GetObject("BTN_SelectImpuesto.Image"), System.Drawing.Image)
         Me.BTN_SelectImpuesto.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_SelectImpuesto.Location = New System.Drawing.Point(380, 484)
+        Me.BTN_SelectImpuesto.Location = New System.Drawing.Point(356, 0)
         Me.BTN_SelectImpuesto.Name = "BTN_SelectImpuesto"
-        Me.BTN_SelectImpuesto.Size = New System.Drawing.Size(263, 57)
+        Me.BTN_SelectImpuesto.Size = New System.Drawing.Size(357, 74)
         Me.BTN_SelectImpuesto.TabIndex = 67
         Me.BTN_SelectImpuesto.Text = "Seleccionar"
         '
@@ -302,6 +304,16 @@ Partial Class B_Impuesto
         Me.DGV_BImp.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV_BImp.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarImpuesto)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_SelectImpuesto)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 479)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(713, 74)
+        Me.Guna2Panel1.TabIndex = 88
+        '
         'B_Impuesto
         '
         Me.AcceptButton = Me.BTN_SelectImpuesto
@@ -310,6 +322,7 @@ Partial Class B_Impuesto
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarImpuesto
         Me.ClientSize = New System.Drawing.Size(713, 553)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.DGV_BImp)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -318,8 +331,6 @@ Partial Class B_Impuesto
         Me.Controls.Add(Me.TXT_Desc)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_codigo)
-        Me.Controls.Add(Me.BTN_RegresarImpuesto)
-        Me.Controls.Add(Me.BTN_SelectImpuesto)
         Me.Controls.Add(Me.TXT_BuscarImp)
         Me.Controls.Add(Me.Guna2PictureBox2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -330,6 +341,7 @@ Partial Class B_Impuesto
         Me.Text = "Buscar impuestos"
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_BImp, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -348,4 +360,5 @@ Partial Class B_Impuesto
     Friend WithEvents Label3 As Label
     Friend WithEvents TXT_porcentaje As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents DGV_BImp As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Configuration
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports Guna.UI2.WinForms
 
 Public Class P_Caja
     Friend idCliente As Integer
@@ -15,6 +16,8 @@ Public Class P_Caja
         Me.Bounds = Screen.PrimaryScreen.Bounds
         'Se desabilitan los botones con funciones que aún no se van a utlizar
         BTN_Conteo.Enabled = False
+        BTN_CuentaCobrar.Enabled = False
+        BTN_GuardarCuenta.Enabled = False
 
         'Se desabilitann botones que tiene activaciones condicionales
         BTN_TVenta.Enabled = False
@@ -27,20 +30,23 @@ Public Class P_Caja
         CargarNumFactura()
 
         TXT_BuscarCliente.Text = "0001"
-        DGV_Caja.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 128, 0)
-        DGV_Caja.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 120, 30)
-        DGV_Caja.Columns(3).DefaultCellStyle.Format = "#,##"
-        DGV_Caja.Columns(5).DefaultCellStyle.Format = "#,##"
-        DGV_Caja.Font = New Font("Arial", 12)
-        DGV_Caja.ColumnHeadersHeight = 25
-        DGV_Caja.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True
-        DGV_Caja.Columns(1).Width = 50
-        DGV_Caja.Columns(2).Width = 270
-        DGV_Caja.Columns(3).Width = 45
-        DGV_Caja.Columns(4).Width = 35
-        DGV_Caja.Columns(5).Width = 60
+        If DGV_Caja IsNot Nothing Then
+            DGV_Caja.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 128, 0)
+            DGV_Caja.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 120, 30)
+            DGV_Caja.Columns(3).DefaultCellStyle.Format = "#,##"
+            DGV_Caja.Columns(5).DefaultCellStyle.Format = "#,##"
+            DGV_Caja.Font = New Font("Arial", 11)
+            DGV_Caja.ColumnHeadersHeight = 25
+            DGV_Caja.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True
+            idCliente = 1
 
-        idCliente = 1
+            DGV_Caja.Columns(1).Width = (DGV_Caja.Width * 0.18)
+            DGV_Caja.Columns(2).Width = (DGV_Caja.Width * 0.5)
+            DGV_Caja.Columns(3).Width = (DGV_Caja.Width * 0.11)
+            DGV_Caja.Columns(4).Width = (DGV_Caja.Width * 0.1)
+            DGV_Caja.Columns(5).Width = (DGV_Caja.Width * 0.11)
+        End If
+
 
         'Se coloca la imagen y los datos de la fecha y el día y se inicia el contador para que los vaya actualizando
         PIC_Logo.ImageLocation = ConfigurationManager.AppSettings("Logo").ToString()
@@ -128,10 +134,6 @@ Public Class P_Caja
         Me.Close()
     End Sub
 
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        msgCerrarApp()
-    End Sub
-
     Private Sub TXT_BuscarCliente_DoubleClick(sender As Object, e As EventArgs) Handles TXT_BuscarCliente.DoubleClick
         B_Cliente.Show()
         B_Cliente.Select()
@@ -174,7 +176,7 @@ Public Class P_Caja
                 If Not buscado Then
                     cantProd = 1
                 End If
-                agregarProd(T.Tables(0).Rows(0).Item(0).ToString(), txtCodProd.Text, T.Tables(0).Rows(0).Item(1).ToString(), T.Tables(0).Rows(0).Item(2).ToString(), cantProd)
+                AgregarProd(T.Tables(0).Rows(0).Item(0).ToString(), txtCodProd.Text, T.Tables(0).Rows(0).Item(1).ToString(), T.Tables(0).Rows(0).Item(2).ToString(), cantProd)
                 DGV_Caja.Columns(3).DefaultCellStyle.Format = "#,##"
                 DGV_Caja.Columns(5).DefaultCellStyle.Format = "#,##"
                 cantProd = 1
@@ -216,7 +218,7 @@ Public Class P_Caja
             Cargar_Tabla(T, SQL)
             If T.Tables(0).Rows.Count > 0 Then
                 If T.Tables(0).Rows(0).Item(1) = 0 Then
-                    agregarProd(btnFav.Tag.ToString(), T.Tables(0).Rows(0).Item(0), btnFav.Text, T.Tables(0).Rows(0).Item(2), 1)
+                    AgregarProd(btnFav.Tag.ToString(), T.Tables(0).Rows(0).Item(0), btnFav.Text, T.Tables(0).Rows(0).Item(2), 1)
                 Else
                     E_ProductoVariable.LBL_Cod.Text = T.Tables(0).Rows(0).Item(0)
                     E_ProductoVariable.LBL_Producto.Text = btnFav.Text
@@ -231,35 +233,35 @@ Public Class P_Caja
     End Sub
 
     Private Sub BTN_Fav1_Click(sender As Object, e As EventArgs) Handles BTN_Fav1.Click
-        agregarProdFav(BTN_Fav1)
+        AgregarProdFav(BTN_Fav1)
     End Sub
 
     Private Sub BTN_Fav2_Click(sender As Object, e As EventArgs) Handles BTN_Fav2.Click
-        agregarProdFav(BTN_Fav2)
+        AgregarProdFav(BTN_Fav2)
     End Sub
 
     Private Sub BTN_Fav3_Click(sender As Object, e As EventArgs) Handles BTN_Fav3.Click
-        agregarProdFav(BTN_Fav3)
+        AgregarProdFav(BTN_Fav3)
     End Sub
 
     Private Sub BTN_Fav4_Click(sender As Object, e As EventArgs) Handles BTN_Fav4.Click
-        agregarProdFav(BTN_Fav4)
+        AgregarProdFav(BTN_Fav4)
     End Sub
 
     Private Sub BTN_Fav5_Click(sender As Object, e As EventArgs) Handles BTN_Fav5.Click
-        agregarProdFav(BTN_Fav5)
+        AgregarProdFav(BTN_Fav5)
     End Sub
 
     Private Sub BTN_Fav6_Click(sender As Object, e As EventArgs) Handles BTN_Fav6.Click
-        agregarProdFav(BTN_Fav6)
+        AgregarProdFav(BTN_Fav6)
     End Sub
 
     Private Sub BTN_Fav7_Click(sender As Object, e As EventArgs) Handles BTN_Fav7.Click
-        agregarProdFav(BTN_Fav7)
+        AgregarProdFav(BTN_Fav7)
     End Sub
 
     Private Sub BTN_Fav8_Click(sender As Object, e As EventArgs) Handles BTN_Fav8.Click
-        agregarProdFav(BTN_Fav8)
+        AgregarProdFav(BTN_Fav8)
     End Sub
 
     Private Sub BTN_DelFactura_Click(sender As Object, e As EventArgs) Handles BTN_DelFactura.Click
@@ -267,7 +269,7 @@ Public Class P_Caja
         TXT_BuscarProducto.Clear()
         TXT_BuscarProducto.SelectAll()
         ValidarListView()
-        cargarTotal()
+        CargarTotal()
     End Sub
 
     Private Sub TXT_BuscarProducto_TextChanged(sender As Object, e As EventArgs) Handles TXT_BuscarProducto.TextChanged
@@ -326,7 +328,7 @@ Public Class P_Caja
         StrNumFactura = ""
 
         'Se carga el último número de factura que se haya agregado, que va a ser el mas alto
-        cargarNumFactura()
+        CargarNumFactura()
 
     End Sub
 
@@ -334,15 +336,18 @@ Public Class P_Caja
         B_Producto.ModProd = True
         B_Producto.Show()
         B_Producto.Select()
+        B_Producto.LBL_IDProd.Text = DGV_Caja.SelectedRows(0).Cells(0).Value.ToString()
+        B_Producto.idModProd = DGV_Caja.SelectedRows(0).Cells(0).Value.ToString()
+        B_Producto.TXT_BuscarProd.Text = DGV_Caja.SelectedRows(0).Cells(2).Value.ToString()
+        B_Producto.TXT_CantProd.Text = DGV_Caja.SelectedRows(0).Cells(4).Value.ToString()
         ValidarListView()
-        cargarTotal()
-
+        CargarTotal()
     End Sub
 
     Private Sub MNU_ELIMINAR_Click(sender As Object, e As EventArgs) Handles MNU_ELIMINAR.Click
         DGV_Caja.Rows.RemoveAt(DGV_Caja.SelectedRows(0).Index)
         ValidarListView()
-        cargarTotal()
+        CargarTotal()
     End Sub
 
     Private Sub BTN_Reprint_Click(sender As Object, e As EventArgs) Handles BTN_Reprint.Click
@@ -376,17 +381,13 @@ Public Class P_Caja
             Dim precioVenta As Double = Convert.ToDouble(DGV_Caja.SelectedRows(0).Cells(3).Value)
             DGV_Caja.SelectedRows(0).Cells(5).Value = precioVenta * cant
         End If
-        cargarTotal()
+        CargarTotal()
     End Sub
 
     Private Sub P_Caja_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         Me.Select()
         TXT_BuscarProducto.Select()
         TXT_BuscarProducto.SelectAll()
-    End Sub
-
-    Private Sub BTN_CuentaCobrar_Click(sender As Object, e As EventArgs) Handles BTN_CuentaCobrar.Click
-
     End Sub
 
     Private Sub BTN_GuardarCuenta_Click(sender As Object, e As EventArgs) Handles BTN_GuardarCuenta.Click
@@ -419,7 +420,7 @@ Public Class P_Caja
         'End If
     End Sub
 
-    Private Sub BTN_Conteo_Click(sender As Object, e As EventArgs) Handles BTN_Conteo.Click
-
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
+        msgCerrarApp()
     End Sub
 End Class

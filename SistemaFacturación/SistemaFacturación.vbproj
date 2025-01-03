@@ -219,6 +219,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="P_DatosFactura.Designer.vb">
+      <DependentUpon>P_DatosFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_DatosFactura.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="REPORTES.vb" />
     <Content Include="bd\backupDB\RespaldosSF\dbSistemaFacturaciónStock.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -451,6 +457,9 @@
     <Compile Include="P_Usuarios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Content Include="recursos\ICO_BuscarBlanco.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -491,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_Caja.resx">
       <DependentUpon>P_Caja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_DatosFactura.resx">
+      <DependentUpon>P_DatosFactura.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_Hablador.resx">
       <DependentUpon>P_Hablador.vb</DependentUpon>

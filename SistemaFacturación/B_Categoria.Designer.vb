@@ -38,8 +38,10 @@ Partial Class B_Categoria
         Me.TXT_BuscarCat = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.DGV_BCat = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_BCat, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -118,39 +120,39 @@ Partial Class B_Categoria
         'BTN_RegresarCat
         '
         Me.BTN_RegresarCat.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarCat.BorderRadius = 25
         Me.BTN_RegresarCat.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarCat.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarCat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarCat.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarCat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarCat.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarCat.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarCat.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarCat.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarCat.Image = CType(resources.GetObject("BTN_RegresarCat.Image"), System.Drawing.Image)
         Me.BTN_RegresarCat.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarCat.Location = New System.Drawing.Point(50, 443)
+        Me.BTN_RegresarCat.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarCat.Name = "BTN_RegresarCat"
-        Me.BTN_RegresarCat.Size = New System.Drawing.Size(289, 57)
+        Me.BTN_RegresarCat.Size = New System.Drawing.Size(364, 64)
         Me.BTN_RegresarCat.TabIndex = 68
         Me.BTN_RegresarCat.Text = "Regresar"
         '
         'BTN_SelectCat
         '
         Me.BTN_SelectCat.BorderColor = System.Drawing.Color.Red
-        Me.BTN_SelectCat.BorderRadius = 25
         Me.BTN_SelectCat.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectCat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectCat.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_SelectCat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_SelectCat.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_SelectCat.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_SelectCat.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_SelectCat.ForeColor = System.Drawing.Color.White
         Me.BTN_SelectCat.Image = CType(resources.GetObject("BTN_SelectCat.Image"), System.Drawing.Image)
         Me.BTN_SelectCat.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_SelectCat.Location = New System.Drawing.Point(361, 443)
+        Me.BTN_SelectCat.Location = New System.Drawing.Point(363, 0)
         Me.BTN_SelectCat.Name = "BTN_SelectCat"
-        Me.BTN_SelectCat.Size = New System.Drawing.Size(289, 57)
+        Me.BTN_SelectCat.Size = New System.Drawing.Size(363, 64)
         Me.BTN_SelectCat.TabIndex = 67
         Me.BTN_SelectCat.Text = "Seleccionar"
         '
@@ -253,6 +255,16 @@ Partial Class B_Categoria
         Me.DGV_BCat.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV_BCat.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_SelectCat)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarCat)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 466)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(726, 64)
+        Me.Guna2Panel1.TabIndex = 76
+        '
         'B_Categoria
         '
         Me.AcceptButton = Me.BTN_SelectCat
@@ -262,13 +274,12 @@ Partial Class B_Categoria
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.CancelButton = Me.BTN_RegresarCat
         Me.ClientSize = New System.Drawing.Size(726, 530)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.DGV_BCat)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TXT_Nombre)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_codigo)
-        Me.Controls.Add(Me.BTN_RegresarCat)
-        Me.Controls.Add(Me.BTN_SelectCat)
         Me.Controls.Add(Me.TXT_BuscarCat)
         Me.Controls.Add(Me.Guna2PictureBox2)
         Me.DoubleBuffered = True
@@ -280,6 +291,7 @@ Partial Class B_Categoria
         Me.Text = "Buscar categoría"
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_BCat, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -295,4 +307,5 @@ Partial Class B_Categoria
     Friend WithEvents TXT_BuscarCat As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents DGV_BCat As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

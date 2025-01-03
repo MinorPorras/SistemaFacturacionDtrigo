@@ -17,9 +17,6 @@ Public Class P_Clientes
         searchTimer.Stop()
         REFRESCAR()
     End Sub
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        msgCerrarApp()
-    End Sub
 
     Public Sub REFRESCAR()
         Task.Run(Sub()
@@ -194,6 +191,10 @@ Public Class P_Clientes
         E_NuevoCliente.ModCLi = False
         E_NuevoCliente.Show()
         E_NuevoCliente.Select()
+    End Sub
+
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
+        msgCerrarApp()
     End Sub
 
     Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click

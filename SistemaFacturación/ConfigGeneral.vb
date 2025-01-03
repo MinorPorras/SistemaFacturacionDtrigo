@@ -5,8 +5,7 @@ Public Class ConfigGeneral
         CargarAutoCods()
         cargarFontSizes()
     End Sub
-
-    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
+    Private Sub Guna2ImageButton1_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
         msgCerrarApp()
     End Sub
 
@@ -123,6 +122,7 @@ Public Class ConfigGeneral
         Me.Close()
     End Sub
 #End Region
+
 #Region "Hablador"
     Private Sub cargarFontSizes()
         NUD_SizePrecio.Value = Md_Inicializacion.GetAppSetting("FontSizeProd")
@@ -151,4 +151,5 @@ Public Class ConfigGeneral
         End If
     End Sub
 #End Region
+
 End Class

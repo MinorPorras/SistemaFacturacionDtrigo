@@ -25,11 +25,6 @@ Public Class B_Producto
     Private Sub B_Producto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InicializarComponentes()
         REFRESCAR()
-        If Not P_Caja.DGV_Caja.RowCount > 0 Then
-            LBL_IDProd.Text = P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value
-            idModProd = P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value
-            TXT_BuscarProd.Text = P_Caja.DGV_Caja.SelectedRows(0).Cells(2).Value
-        End If
     End Sub
 
     Public Sub REFRESCAR()
@@ -126,12 +121,20 @@ Public Class B_Producto
                     E_ProductoVariable.LBL_Cod.Text = TXT_codigo.Text
                     E_ProductoVariable.LBL_Producto.Text = TXT_Nombre.Text
                     E_ProductoVariable.LBL_ID.Text = DGV_BProd.SelectedRows(0).Cells(0).Value.ToString()
+                    ModProd = False
+                    LIMPIAR()
                     E_ProductoVariable.Show()
                     E_ProductoVariable.Select()
                 Else
                     P_Caja.Buscar_DatosProd(TXT_codigo, True)
+                    ModProd = False
+                    LIMPIAR()
+                    P_Caja.Show()
+                    P_Caja.Select()
+                    P_Caja.TXT_BuscarProducto.SelectAll()
                 End If
                 P_Caja.ValidarListView()
+                Me.Close()
             Else
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(0).Value = LBL_IDProd.Text
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(1).Value = TXT_codigo.Text
@@ -149,19 +152,20 @@ Public Class B_Producto
                     subtotal = Convert.ToDouble(TXT_CantProd.Text) * Convert.ToDouble(P_Caja.DGV_Caja.SelectedRows(0).Cells(3).Value)
                 End If
                 P_Caja.DGV_Caja.SelectedRows(0).Cells(5).Value = subtotal.ToString()
+                ModProd = False
+                LIMPIAR()
+                P_Caja.Show()
+                P_Caja.Select()
+                P_Caja.TXT_BuscarProducto.SelectAll()
+                Me.Close()
             End If
-            ModProd = False
-            LIMPIAR()
-            P_Caja.cargarTotal()
-            P_Caja.Show()
-            P_Caja.Select()
-            P_Caja.TXT_BuscarProducto.SelectAll()
-            Me.Close()
         Else
             E_ProductoVariable.LBL_Cod.Text = TXT_codigo.Text
             E_ProductoVariable.LBL_Producto.Text = TXT_Nombre.Text
             E_ProductoVariable.LBL_ID.Text = DGV_BProd.SelectedRows(0).Cells(0).Value.ToString()
             E_ProductoVariable.Show()
+            E_ProductoVariable.Select()
+            Me.Close()
         End If
     End Sub
 

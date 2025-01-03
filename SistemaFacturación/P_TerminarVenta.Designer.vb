@@ -76,12 +76,14 @@ Partial Class P_TerminarVenta
         Me.PrintDocument = New System.Drawing.Printing.PrintDocument()
         Me.PrintDialog = New System.Windows.Forms.PrintDialog()
         Me.BTN_TVentaImp = New Guna.UI2.WinForms.Guna2Button()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.TabControlTVenta.SuspendLayout()
         Me.Efectivo.SuspendLayout()
         Me.Tarjeta.SuspendLayout()
         Me.Sinpe.SuspendLayout()
         Me.deposito.SuspendLayout()
         Me.Mixto.SuspendLayout()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -895,35 +897,35 @@ Partial Class P_TerminarVenta
         'BTN_TVenta
         '
         Me.BTN_TVenta.BorderColor = System.Drawing.Color.Red
-        Me.BTN_TVenta.BorderRadius = 25
         Me.BTN_TVenta.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_TVenta.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_TVenta.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_TVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_TVenta.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_TVenta.FillColor = System.Drawing.Color.MediumSeaGreen
-        Me.BTN_TVenta.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_TVenta.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold)
         Me.BTN_TVenta.ForeColor = System.Drawing.Color.White
-        Me.BTN_TVenta.Location = New System.Drawing.Point(581, 501)
+        Me.BTN_TVenta.Location = New System.Drawing.Point(581, 0)
         Me.BTN_TVenta.Name = "BTN_TVenta"
-        Me.BTN_TVenta.Size = New System.Drawing.Size(313, 53)
+        Me.BTN_TVenta.Size = New System.Drawing.Size(327, 69)
         Me.BTN_TVenta.TabIndex = 109
         Me.BTN_TVenta.Text = "[F7] Terminar venta"
         '
         'BTN_RegresarVenta
         '
         Me.BTN_RegresarVenta.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarVenta.BorderRadius = 25
         Me.BTN_RegresarVenta.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarVenta.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarVenta.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarVenta.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarVenta.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarVenta.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.BTN_RegresarVenta.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_RegresarVenta.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarVenta.ForeColor = System.Drawing.Color.White
-        Me.BTN_RegresarVenta.Location = New System.Drawing.Point(9, 501)
+        Me.BTN_RegresarVenta.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarVenta.Name = "BTN_RegresarVenta"
-        Me.BTN_RegresarVenta.Size = New System.Drawing.Size(276, 53)
+        Me.BTN_RegresarVenta.Size = New System.Drawing.Size(294, 69)
         Me.BTN_RegresarVenta.TabIndex = 108
         Me.BTN_RegresarVenta.Text = "[F3] Regresar"
         '
@@ -972,20 +974,31 @@ Partial Class P_TerminarVenta
         'BTN_TVentaImp
         '
         Me.BTN_TVentaImp.BorderColor = System.Drawing.Color.Red
-        Me.BTN_TVentaImp.BorderRadius = 25
         Me.BTN_TVentaImp.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_TVentaImp.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_TVentaImp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_TVentaImp.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_TVentaImp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_TVentaImp.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_TVentaImp.FillColor = System.Drawing.Color.DarkOrange
-        Me.BTN_TVentaImp.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_TVentaImp.Font = New System.Drawing.Font("Ebrima", 15.75!, System.Drawing.FontStyle.Bold)
         Me.BTN_TVentaImp.ForeColor = System.Drawing.Color.White
-        Me.BTN_TVentaImp.Location = New System.Drawing.Point(297, 501)
+        Me.BTN_TVentaImp.Location = New System.Drawing.Point(291, 0)
         Me.BTN_TVentaImp.Name = "BTN_TVentaImp"
-        Me.BTN_TVentaImp.Size = New System.Drawing.Size(276, 53)
+        Me.BTN_TVentaImp.Size = New System.Drawing.Size(290, 69)
         Me.BTN_TVentaImp.TabIndex = 130
         Me.BTN_TVentaImp.Text = "[F4] Terminar e imprimir"
+        '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_TVentaImp)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_TVenta)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarVenta)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 500)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(908, 69)
+        Me.Guna2Panel1.TabIndex = 131
         '
         'P_TerminarVenta
         '
@@ -993,11 +1006,9 @@ Partial Class P_TerminarVenta
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(908, 569)
-        Me.Controls.Add(Me.BTN_TVentaImp)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.TXT_Comentario)
         Me.Controls.Add(Me.Guna2HtmlLabel17)
-        Me.Controls.Add(Me.BTN_TVenta)
-        Me.Controls.Add(Me.BTN_RegresarVenta)
         Me.Controls.Add(Me.TabControlTVenta)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1016,6 +1027,7 @@ Partial Class P_TerminarVenta
         Me.deposito.PerformLayout()
         Me.Mixto.ResumeLayout(False)
         Me.Mixto.PerformLayout()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1073,4 +1085,5 @@ Partial Class P_TerminarVenta
     Friend WithEvents BTN_RestanteEfectivo As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents BTN_RestanteTarjeta As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents BTN_TVentaImp As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

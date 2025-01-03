@@ -72,10 +72,6 @@
         E_NuevoImpuesto.Select()
     End Sub
 
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        msgCerrarApp()
-    End Sub
-
     Private Sub MNU_MODIFICAR_Click(sender As Object, e As EventArgs) Handles MNU_MODIFICAR.Click
         Try
             E_NuevoImpuesto.idImpuesto = DGV_Imp.SelectedRows(0).Cells(0).Value.ToString()
@@ -116,6 +112,10 @@
         Catch ex As Exception
             msgError("Error al eliminar el impuesto: " & ex.Message)
         End Try
+    End Sub
+
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
+        msgCerrarApp()
     End Sub
 
     Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click

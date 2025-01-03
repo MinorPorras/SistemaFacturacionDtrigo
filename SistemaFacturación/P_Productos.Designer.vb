@@ -49,30 +49,32 @@ Partial Class P_Productos
         Me.SWT_Prov = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.SWT_Cat = New Guna.UI2.WinForms.Guna2ToggleSwitch()
-        Me.BTN_Config = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.SWT_Recientes = New Guna.UI2.WinForms.Guna2ToggleSwitch()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.BTN_Config = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.DGV_Prods, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BTN_NProd
         '
         Me.BTN_NProd.BorderColor = System.Drawing.Color.Red
-        Me.BTN_NProd.BorderRadius = 25
         Me.BTN_NProd.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_NProd.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NProd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NProd.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_NProd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_NProd.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_NProd.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_NProd.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_NProd.ForeColor = System.Drawing.Color.White
         Me.BTN_NProd.Image = CType(resources.GetObject("BTN_NProd.Image"), System.Drawing.Image)
         Me.BTN_NProd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NProd.Location = New System.Drawing.Point(858, 584)
+        Me.BTN_NProd.Location = New System.Drawing.Point(829, 0)
         Me.BTN_NProd.Name = "BTN_NProd"
-        Me.BTN_NProd.Size = New System.Drawing.Size(405, 57)
+        Me.BTN_NProd.Size = New System.Drawing.Size(451, 61)
         Me.BTN_NProd.TabIndex = 51
         Me.BTN_NProd.Text = "Agregar"
         '
@@ -113,20 +115,20 @@ Partial Class P_Productos
         'BTN_RegresarProd
         '
         Me.BTN_RegresarProd.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarProd.BorderRadius = 25
         Me.BTN_RegresarProd.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarProd.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarProd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarProd.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarProd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarProd.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarProd.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarProd.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarProd.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarProd.Image = CType(resources.GetObject("BTN_RegresarProd.Image"), System.Drawing.Image)
         Me.BTN_RegresarProd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarProd.Location = New System.Drawing.Point(12, 584)
+        Me.BTN_RegresarProd.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarProd.Name = "BTN_RegresarProd"
-        Me.BTN_RegresarProd.Size = New System.Drawing.Size(376, 57)
+        Me.BTN_RegresarProd.Size = New System.Drawing.Size(401, 61)
         Me.BTN_RegresarProd.TabIndex = 48
         Me.BTN_RegresarProd.Text = "Regresar"
         '
@@ -327,20 +329,20 @@ Partial Class P_Productos
         'BTN_Hablador
         '
         Me.BTN_Hablador.BorderColor = System.Drawing.Color.Red
-        Me.BTN_Hablador.BorderRadius = 25
         Me.BTN_Hablador.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_Hablador.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Hablador.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Hablador.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_Hablador.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_Hablador.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_Hablador.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.BTN_Hablador.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_Hablador.ForeColor = System.Drawing.Color.White
         Me.BTN_Hablador.Image = CType(resources.GetObject("BTN_Hablador.Image"), System.Drawing.Image)
         Me.BTN_Hablador.ImageSize = New System.Drawing.Size(50, 50)
-        Me.BTN_Hablador.Location = New System.Drawing.Point(419, 584)
+        Me.BTN_Hablador.Location = New System.Drawing.Point(399, 0)
         Me.BTN_Hablador.Name = "BTN_Hablador"
-        Me.BTN_Hablador.Size = New System.Drawing.Size(405, 57)
+        Me.BTN_Hablador.Size = New System.Drawing.Size(430, 61)
         Me.BTN_Hablador.TabIndex = 69
         Me.BTN_Hablador.Text = "Crear hablador"
         '
@@ -425,24 +427,6 @@ Partial Class P_Productos
         Me.SWT_Cat.UncheckedState.InnerBorderColor = System.Drawing.Color.White
         Me.SWT_Cat.UncheckedState.InnerColor = System.Drawing.Color.White
         '
-        'BTN_Config
-        '
-        Me.BTN_Config.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.BTN_Config.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_Config.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_Config.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTN_Config.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTN_Config.FillColor = System.Drawing.Color.Transparent
-        Me.BTN_Config.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_Config.ForeColor = System.Drawing.Color.White
-        Me.BTN_Config.Image = CType(resources.GetObject("BTN_Config.Image"), System.Drawing.Image)
-        Me.BTN_Config.ImageSize = New System.Drawing.Size(75, 75)
-        Me.BTN_Config.Location = New System.Drawing.Point(1202, 12)
-        Me.BTN_Config.Name = "BTN_Config"
-        Me.BTN_Config.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.BTN_Config.Size = New System.Drawing.Size(66, 66)
-        Me.BTN_Config.TabIndex = 120
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -470,23 +454,49 @@ Partial Class P_Productos
         Me.SWT_Recientes.UncheckedState.InnerBorderColor = System.Drawing.Color.White
         Me.SWT_Recientes.UncheckedState.InnerColor = System.Drawing.Color.White
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarProd)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_Hablador)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_NProd)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 576)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(1280, 61)
+        Me.Guna2Panel1.TabIndex = 123
+        '
+        'BTN_Config
+        '
+        Me.BTN_Config.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_Config.CheckedState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_Config.HoverState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_Config.Image = CType(resources.GetObject("BTN_Config.Image"), System.Drawing.Image)
+        Me.BTN_Config.ImageOffset = New System.Drawing.Point(0, 0)
+        Me.BTN_Config.ImageRotate = 0!
+        Me.BTN_Config.ImageSize = New System.Drawing.Size(60, 60)
+        Me.BTN_Config.Location = New System.Drawing.Point(1216, -1)
+        Me.BTN_Config.Name = "BTN_Config"
+        Me.BTN_Config.PressedState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_Config.Size = New System.Drawing.Size(64, 64)
+        Me.BTN_Config.TabIndex = 125
+        '
         'P_Productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProd
-        Me.ClientSize = New System.Drawing.Size(1280, 665)
+        Me.ClientSize = New System.Drawing.Size(1280, 637)
+        Me.Controls.Add(Me.BTN_Config)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.SWT_Recientes)
-        Me.Controls.Add(Me.BTN_Config)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.SWT_Cat)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.SWT_Prov)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.SWT_Marca)
-        Me.Controls.Add(Me.BTN_Hablador)
         Me.Controls.Add(Me.DGV_Prods)
         Me.Controls.Add(Me.TXT_BuscarCat)
         Me.Controls.Add(Me.TXT_BuscarProv)
@@ -494,17 +504,16 @@ Partial Class P_Productos
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.BTN_NProd)
-        Me.Controls.Add(Me.BTN_RegresarProd)
         Me.Controls.Add(Me.TXT_BuscarProd)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "P_Productos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Lista de Productos"
+        Me.Text = "Productos"
         Me.MNU_CONTX.ResumeLayout(False)
         CType(Me.DGV_Prods, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -531,7 +540,8 @@ Partial Class P_Productos
     Friend WithEvents SWT_Prov As Guna.UI2.WinForms.Guna2ToggleSwitch
     Friend WithEvents Label5 As Label
     Friend WithEvents SWT_Marca As Guna.UI2.WinForms.Guna2ToggleSwitch
-    Friend WithEvents BTN_Config As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents Label7 As Label
     Friend WithEvents SWT_Recientes As Guna.UI2.WinForms.Guna2ToggleSwitch
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents BTN_Config As Guna.UI2.WinForms.Guna2ImageButton
 End Class

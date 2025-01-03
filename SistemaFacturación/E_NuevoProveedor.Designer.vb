@@ -38,7 +38,9 @@ Partial Class E_NuevoProveedor
         Me.BTN_NProv = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_Pedidos = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -194,59 +196,59 @@ Partial Class E_NuevoProveedor
         'BTN_RegresarProv
         '
         Me.BTN_RegresarProv.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarProv.BorderRadius = 25
         Me.BTN_RegresarProv.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarProv.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarProv.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarProv.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarProv.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarProv.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarProv.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarProv.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarProv.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarProv.Image = CType(resources.GetObject("BTN_RegresarProv.Image"), System.Drawing.Image)
         Me.BTN_RegresarProv.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarProv.Location = New System.Drawing.Point(25, 345)
+        Me.BTN_RegresarProv.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarProv.Name = "BTN_RegresarProv"
-        Me.BTN_RegresarProv.Size = New System.Drawing.Size(206, 63)
+        Me.BTN_RegresarProv.Size = New System.Drawing.Size(231, 67)
         Me.BTN_RegresarProv.TabIndex = 60
         Me.BTN_RegresarProv.Text = "Regresar"
         '
         'BTN_NProv
         '
         Me.BTN_NProv.BorderColor = System.Drawing.Color.Red
-        Me.BTN_NProv.BorderRadius = 25
         Me.BTN_NProv.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NProv.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NProv.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_NProv.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_NProv.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_NProv.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_NProv.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_NProv.ForeColor = System.Drawing.Color.White
         Me.BTN_NProv.Image = CType(resources.GetObject("BTN_NProv.Image"), System.Drawing.Image)
         Me.BTN_NProv.ImageSize = New System.Drawing.Size(60, 60)
-        Me.BTN_NProv.Location = New System.Drawing.Point(480, 345)
+        Me.BTN_NProv.Location = New System.Drawing.Point(484, 0)
         Me.BTN_NProv.Name = "BTN_NProv"
-        Me.BTN_NProv.Size = New System.Drawing.Size(203, 63)
+        Me.BTN_NProv.Size = New System.Drawing.Size(229, 67)
         Me.BTN_NProv.TabIndex = 59
         Me.BTN_NProv.Text = "Guardar"
         '
         'BTN_Pedidos
         '
         Me.BTN_Pedidos.BorderColor = System.Drawing.Color.Red
-        Me.BTN_Pedidos.BorderRadius = 25
         Me.BTN_Pedidos.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Pedidos.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_Pedidos.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_Pedidos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_Pedidos.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_Pedidos.FillColor = System.Drawing.Color.DarkOrange
         Me.BTN_Pedidos.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_Pedidos.ForeColor = System.Drawing.Color.White
         Me.BTN_Pedidos.Image = CType(resources.GetObject("BTN_Pedidos.Image"), System.Drawing.Image)
         Me.BTN_Pedidos.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.BTN_Pedidos.ImageSize = New System.Drawing.Size(60, 60)
-        Me.BTN_Pedidos.Location = New System.Drawing.Point(237, 345)
+        Me.BTN_Pedidos.Location = New System.Drawing.Point(229, 0)
         Me.BTN_Pedidos.Name = "BTN_Pedidos"
-        Me.BTN_Pedidos.Size = New System.Drawing.Size(237, 63)
+        Me.BTN_Pedidos.Size = New System.Drawing.Size(255, 67)
         Me.BTN_Pedidos.TabIndex = 61
         Me.BTN_Pedidos.Text = "Pedidos"
         Me.BTN_Pedidos.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
@@ -269,6 +271,17 @@ Partial Class E_NuevoProveedor
         Me.BTN_AutoCod.Text = "+"
         Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarProv)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_Pedidos)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_NProv)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 346)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(713, 67)
+        Me.Guna2Panel1.TabIndex = 114
+        '
         'E_NuevoProveedor
         '
         Me.AcceptButton = Me.BTN_NProv
@@ -276,11 +289,9 @@ Partial Class E_NuevoProveedor
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProv
-        Me.ClientSize = New System.Drawing.Size(713, 433)
+        Me.ClientSize = New System.Drawing.Size(713, 413)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.BTN_AutoCod)
-        Me.Controls.Add(Me.BTN_Pedidos)
-        Me.Controls.Add(Me.BTN_RegresarProv)
-        Me.Controls.Add(Me.BTN_NProv)
         Me.Controls.Add(Me.TXT_TelProv)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.TXT_CorreoProv)
@@ -295,8 +306,9 @@ Partial Class E_NuevoProveedor
         Me.KeyPreview = True
         Me.Name = "E_NuevoProveedor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Proveedor"
+        Me.Text = "Mantenimiento de proveedores"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -316,4 +328,5 @@ Partial Class E_NuevoProveedor
     Friend WithEvents BTN_NProv As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_Pedidos As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

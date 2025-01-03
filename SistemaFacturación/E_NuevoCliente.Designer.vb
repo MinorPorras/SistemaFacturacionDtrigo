@@ -39,7 +39,9 @@ Partial Class E_NuevoCliente
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TXT_CorreoCliente = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -52,39 +54,39 @@ Partial Class E_NuevoCliente
         'BTN_RegresarCliente
         '
         Me.BTN_RegresarCliente.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarCliente.BorderRadius = 25
         Me.BTN_RegresarCliente.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarCliente.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarCliente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarCliente.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarCliente.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarCliente.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarCliente.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarCliente.Image = CType(resources.GetObject("BTN_RegresarCliente.Image"), System.Drawing.Image)
         Me.BTN_RegresarCliente.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarCliente.Location = New System.Drawing.Point(36, 380)
+        Me.BTN_RegresarCliente.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarCliente.Name = "BTN_RegresarCliente"
-        Me.BTN_RegresarCliente.Size = New System.Drawing.Size(223, 57)
+        Me.BTN_RegresarCliente.Size = New System.Drawing.Size(263, 63)
         Me.BTN_RegresarCliente.TabIndex = 36
         Me.BTN_RegresarCliente.Text = "Regresar"
         '
         'BTN_NCliente
         '
         Me.BTN_NCliente.BorderColor = System.Drawing.Color.Red
-        Me.BTN_NCliente.BorderRadius = 25
         Me.BTN_NCliente.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NCliente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_NCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_NCliente.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_NCliente.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_NCliente.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_NCliente.ForeColor = System.Drawing.Color.White
         Me.BTN_NCliente.Image = CType(resources.GetObject("BTN_NCliente.Image"), System.Drawing.Image)
         Me.BTN_NCliente.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NCliente.Location = New System.Drawing.Point(270, 380)
+        Me.BTN_NCliente.Location = New System.Drawing.Point(259, 0)
         Me.BTN_NCliente.Name = "BTN_NCliente"
-        Me.BTN_NCliente.Size = New System.Drawing.Size(215, 57)
+        Me.BTN_NCliente.Size = New System.Drawing.Size(265, 63)
         Me.BTN_NCliente.TabIndex = 35
         Me.BTN_NCliente.Text = "Agregar"
         '
@@ -282,6 +284,16 @@ Partial Class E_NuevoCliente
         Me.BTN_AutoCod.Text = "+"
         Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarCliente)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_NCliente)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 388)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(524, 63)
+        Me.Guna2Panel1.TabIndex = 114
+        '
         'E_NuevoCliente
         '
         Me.AcceptButton = Me.BTN_NCliente
@@ -289,7 +301,8 @@ Partial Class E_NuevoCliente
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarCliente
-        Me.ClientSize = New System.Drawing.Size(524, 459)
+        Me.ClientSize = New System.Drawing.Size(524, 451)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.BTN_AutoCod)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.TXT_CorreoCliente)
@@ -302,15 +315,14 @@ Partial Class E_NuevoCliente
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_CodCliente)
         Me.Controls.Add(Me.Guna2PictureBox1)
-        Me.Controls.Add(Me.BTN_RegresarCliente)
-        Me.Controls.Add(Me.BTN_NCliente)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "E_NuevoCliente"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Cliente"
+        Me.Text = "Mantenimiento de clientes"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -331,4 +343,5 @@ Partial Class E_NuevoCliente
     Friend WithEvents Label3 As Label
     Friend WithEvents txtNombreCliente As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

@@ -378,15 +378,15 @@ Public Class P_Productos
         End If
     End Sub
 
-    Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
-        entrarConfig(1)
-    End Sub
-
     Private Sub SWT_Recientes_CheckedChanged(sender As Object, e As EventArgs) Handles SWT_Recientes.CheckedChanged
         If searchTimer IsNot Nothing Then
             ' Reiniciar el temporizador cada vez que se cambia el texto
             searchTimer.Stop()
             searchTimer.Start()
         End If
+    End Sub
+
+    Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
+        entrarConfig(1)
     End Sub
 End Class

@@ -51,9 +51,9 @@ Module Md_CONEXION
 #End Region
 
 #Region "Interaccion"
-    Public Sub cargarTablaParam(ByVal t As DataSet, ByVal consulta As String, ByVal parametros As List(Of SQLiteParameter))
+    Public Sub CargarTablaParam(ByVal t As DataSet, ByVal consulta As String, ByVal parametros As List(Of SQLiteParameter))
         CONECTAR()
-        Using cmd As New SQLiteCommand(consulta, Db)
+        Using cmd As New SQLiteCommand(consulta, db)
             If parametros IsNot Nothing Then
                 For Each param As SQLiteParameter In parametros
                     cmd.Parameters.Add(param)

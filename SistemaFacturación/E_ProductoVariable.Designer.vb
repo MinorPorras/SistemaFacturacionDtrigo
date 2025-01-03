@@ -34,6 +34,8 @@ Partial Class E_ProductoVariable
         Me.BTN_RegresarPrd = New Guna.UI2.WinForms.Guna2Button()
         Me.BTN_SelectProd = New Guna.UI2.WinForms.Guna2Button()
         Me.LBL_ID = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -130,39 +132,39 @@ Partial Class E_ProductoVariable
         '
         Me.BTN_RegresarPrd.BackColor = System.Drawing.SystemColors.Control
         Me.BTN_RegresarPrd.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarPrd.BorderRadius = 25
         Me.BTN_RegresarPrd.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarPrd.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarPrd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarPrd.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarPrd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarPrd.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarPrd.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarPrd.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarPrd.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarPrd.Image = CType(resources.GetObject("BTN_RegresarPrd.Image"), System.Drawing.Image)
         Me.BTN_RegresarPrd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarPrd.Location = New System.Drawing.Point(31, 210)
+        Me.BTN_RegresarPrd.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarPrd.Name = "BTN_RegresarPrd"
-        Me.BTN_RegresarPrd.Size = New System.Drawing.Size(149, 57)
+        Me.BTN_RegresarPrd.Size = New System.Drawing.Size(200, 60)
         Me.BTN_RegresarPrd.TabIndex = 111
         '
         'BTN_SelectProd
         '
         Me.BTN_SelectProd.BackColor = System.Drawing.SystemColors.Control
         Me.BTN_SelectProd.BorderColor = System.Drawing.Color.Red
-        Me.BTN_SelectProd.BorderRadius = 25
         Me.BTN_SelectProd.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectProd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectProd.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_SelectProd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_SelectProd.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_SelectProd.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_SelectProd.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_SelectProd.ForeColor = System.Drawing.Color.White
         Me.BTN_SelectProd.Image = CType(resources.GetObject("BTN_SelectProd.Image"), System.Drawing.Image)
         Me.BTN_SelectProd.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_SelectProd.Location = New System.Drawing.Point(220, 210)
+        Me.BTN_SelectProd.Location = New System.Drawing.Point(200, 0)
         Me.BTN_SelectProd.Name = "BTN_SelectProd"
-        Me.BTN_SelectProd.Size = New System.Drawing.Size(149, 57)
+        Me.BTN_SelectProd.Size = New System.Drawing.Size(200, 60)
         Me.BTN_SelectProd.TabIndex = 110
         '
         'LBL_ID
@@ -178,6 +180,16 @@ Partial Class E_ProductoVariable
         Me.LBL_ID.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit
         Me.LBL_ID.Visible = False
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_SelectProd)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarPrd)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 196)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(400, 60)
+        Me.Guna2Panel1.TabIndex = 113
+        '
         'E_ProductoVariable
         '
         Me.AcceptButton = Me.BTN_SelectProd
@@ -185,10 +197,9 @@ Partial Class E_ProductoVariable
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.CancelButton = Me.BTN_RegresarPrd
-        Me.ClientSize = New System.Drawing.Size(400, 290)
+        Me.ClientSize = New System.Drawing.Size(400, 256)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.LBL_ID)
-        Me.Controls.Add(Me.BTN_RegresarPrd)
-        Me.Controls.Add(Me.BTN_SelectProd)
         Me.Controls.Add(Me.TXT_PrecioVenta)
         Me.Controls.Add(Me.Guna2HtmlLabel1)
         Me.Controls.Add(Me.LBL_Cod)
@@ -200,7 +211,8 @@ Partial Class E_ProductoVariable
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "E_ProductoVariable"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Ingresar precio del producto"
+        Me.Text = "Agregar precio"
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -216,4 +228,5 @@ Partial Class E_ProductoVariable
     Friend WithEvents BTN_RegresarPrd As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents BTN_SelectProd As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents LBL_ID As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

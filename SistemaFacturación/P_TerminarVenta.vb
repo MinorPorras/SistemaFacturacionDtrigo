@@ -181,8 +181,10 @@ Public Class P_TerminarVenta
                 P_Caja.LIMPIAR()
                 P_Caja.cargarNumFactura()
                 P_Caja.Show()
+                P_Caja.Refresh()
                 P_Caja.Select()
                 mensaje("Vuelto: ₡ " & vuelto, vbOKOnly, "Venta completada")
+                P_Caja.TXT_BuscarProducto.Select()
                 P_Caja.TXT_BuscarProducto.SelectAll()
                 Me.Close()
             Catch ex As Exception
@@ -264,6 +266,7 @@ Public Class P_TerminarVenta
 
     Private Sub BTN_RegresarVenta_Click(sender As Object, e As EventArgs) Handles BTN_RegresarVenta.Click
         P_Caja.Select()
+        P_Caja.TXT_BuscarProducto.Select()
         P_Caja.TXT_BuscarProducto.SelectAll()
         Me.Close()
     End Sub

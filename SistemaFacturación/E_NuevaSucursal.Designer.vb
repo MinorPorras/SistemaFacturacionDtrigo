@@ -43,7 +43,9 @@ Partial Class E_NuevaSucursal
         Me.OFD_LogoSucursal = New System.Windows.Forms.OpenFileDialog()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TXT_TelefonoSucursal = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -161,7 +163,7 @@ Partial Class E_NuevaSucursal
         Me.TXT_DireccionSucursal.PlaceholderText = ""
         Me.TXT_DireccionSucursal.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.TXT_DireccionSucursal.SelectedText = ""
-        Me.TXT_DireccionSucursal.Size = New System.Drawing.Size(705, 99)
+        Me.TXT_DireccionSucursal.Size = New System.Drawing.Size(504, 99)
         Me.TXT_DireccionSucursal.TabIndex = 19
         '
         'Label4
@@ -227,7 +229,7 @@ Partial Class E_NuevaSucursal
         Me.TXT_EmailSucursal.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_EmailSucursal.PlaceholderText = ""
         Me.TXT_EmailSucursal.SelectedText = ""
-        Me.TXT_EmailSucursal.Size = New System.Drawing.Size(705, 31)
+        Me.TXT_EmailSucursal.Size = New System.Drawing.Size(504, 31)
         Me.TXT_EmailSucursal.TabIndex = 23
         '
         'BTN_LogoSucursal
@@ -238,11 +240,11 @@ Partial Class E_NuevaSucursal
         Me.BTN_LogoSucursal.Image = CType(resources.GetObject("BTN_LogoSucursal.Image"), System.Drawing.Image)
         Me.BTN_LogoSucursal.ImageOffset = New System.Drawing.Point(0, 0)
         Me.BTN_LogoSucursal.ImageRotate = 0!
-        Me.BTN_LogoSucursal.ImageSize = New System.Drawing.Size(310, 310)
-        Me.BTN_LogoSucursal.Location = New System.Drawing.Point(160, 461)
+        Me.BTN_LogoSucursal.ImageSize = New System.Drawing.Size(190, 190)
+        Me.BTN_LogoSucursal.Location = New System.Drawing.Point(681, 300)
         Me.BTN_LogoSucursal.Name = "BTN_LogoSucursal"
         Me.BTN_LogoSucursal.PressedState.ImageSize = New System.Drawing.Size(64, 64)
-        Me.BTN_LogoSucursal.Size = New System.Drawing.Size(263, 221)
+        Me.BTN_LogoSucursal.Size = New System.Drawing.Size(184, 145)
         Me.BTN_LogoSucursal.TabIndex = 24
         '
         'Label6
@@ -250,7 +252,7 @@ Partial Class E_NuevaSucursal
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(38, 558)
+        Me.Label6.Location = New System.Drawing.Point(742, 261)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(60, 23)
         Me.Label6.TabIndex = 25
@@ -259,39 +261,39 @@ Partial Class E_NuevaSucursal
         'BTN_RegresarNSuc
         '
         Me.BTN_RegresarNSuc.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarNSuc.BorderRadius = 25
         Me.BTN_RegresarNSuc.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarNSuc.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarNSuc.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarNSuc.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarNSuc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarNSuc.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarNSuc.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarNSuc.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarNSuc.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarNSuc.Image = CType(resources.GetObject("BTN_RegresarNSuc.Image"), System.Drawing.Image)
         Me.BTN_RegresarNSuc.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarNSuc.Location = New System.Drawing.Point(489, 616)
+        Me.BTN_RegresarNSuc.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarNSuc.Name = "BTN_RegresarNSuc"
-        Me.BTN_RegresarNSuc.Size = New System.Drawing.Size(322, 57)
+        Me.BTN_RegresarNSuc.Size = New System.Drawing.Size(428, 66)
         Me.BTN_RegresarNSuc.TabIndex = 27
         Me.BTN_RegresarNSuc.Text = "Regresar"
         '
         'BTN_GuardarNSucursal
         '
         Me.BTN_GuardarNSucursal.BorderColor = System.Drawing.Color.Red
-        Me.BTN_GuardarNSucursal.BorderRadius = 25
         Me.BTN_GuardarNSucursal.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_GuardarNSucursal.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_GuardarNSucursal.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_GuardarNSucursal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_GuardarNSucursal.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_GuardarNSucursal.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_GuardarNSucursal.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_GuardarNSucursal.ForeColor = System.Drawing.Color.White
         Me.BTN_GuardarNSucursal.Image = CType(resources.GetObject("BTN_GuardarNSucursal.Image"), System.Drawing.Image)
         Me.BTN_GuardarNSucursal.ImageSize = New System.Drawing.Size(60, 60)
-        Me.BTN_GuardarNSucursal.Location = New System.Drawing.Point(489, 471)
+        Me.BTN_GuardarNSucursal.Location = New System.Drawing.Point(421, 0)
         Me.BTN_GuardarNSucursal.Name = "BTN_GuardarNSucursal"
-        Me.BTN_GuardarNSucursal.Size = New System.Drawing.Size(322, 110)
+        Me.BTN_GuardarNSucursal.Size = New System.Drawing.Size(456, 66)
         Me.BTN_GuardarNSucursal.TabIndex = 26
         Me.BTN_GuardarNSucursal.Text = "Agregar"
         '
@@ -329,8 +331,18 @@ Partial Class E_NuevaSucursal
         Me.TXT_TelefonoSucursal.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_TelefonoSucursal.PlaceholderText = ""
         Me.TXT_TelefonoSucursal.SelectedText = ""
-        Me.TXT_TelefonoSucursal.Size = New System.Drawing.Size(431, 31)
+        Me.TXT_TelefonoSucursal.Size = New System.Drawing.Size(230, 31)
         Me.TXT_TelefonoSucursal.TabIndex = 29
+        '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarNSuc)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_GuardarNSucursal)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 470)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(877, 66)
+        Me.Guna2Panel1.TabIndex = 30
         '
         'E_NuevaSucursal
         '
@@ -339,11 +351,10 @@ Partial Class E_NuevaSucursal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarNSuc
-        Me.ClientSize = New System.Drawing.Size(877, 728)
+        Me.ClientSize = New System.Drawing.Size(877, 536)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.TXT_TelefonoSucursal)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.BTN_RegresarNSuc)
-        Me.Controls.Add(Me.BTN_GuardarNSucursal)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.BTN_LogoSucursal)
         Me.Controls.Add(Me.TXT_EmailSucursal)
@@ -362,8 +373,9 @@ Partial Class E_NuevaSucursal
         Me.KeyPreview = True
         Me.Name = "E_NuevaSucursal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Sucursal"
+        Me.Text = "Mantenimiento de sucursal"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -388,4 +400,5 @@ Partial Class E_NuevaSucursal
     Friend WithEvents OFD_LogoSucursal As OpenFileDialog
     Friend WithEvents TXT_TelefonoSucursal As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

@@ -17,9 +17,6 @@ Public Class P_Categoria
         searchTimer.Stop()
         REFRESCAR()
     End Sub
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        msgCerrarApp()
-    End Sub
 
     Private Sub BTN_RegresarCat_Click(sender As Object, e As EventArgs) Handles BTN_RegresarCat.Click
         M_Mantenimiento.Show()
@@ -187,6 +184,10 @@ Public Class P_Categoria
             msgError("Error al eliminar la categoria: " & ex.Message)
         End Try
         TXT_BuscarCat.SelectAll()
+    End Sub
+
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
+        msgCerrarApp()
     End Sub
 
     Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click

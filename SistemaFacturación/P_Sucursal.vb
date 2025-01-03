@@ -45,13 +45,13 @@
         End Try
     End Sub
 
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        msgCerrarApp()
-    End Sub
-
     Private Sub BTN_RegresarNSuc_Click(sender As Object, e As EventArgs) Handles BTN_RegresarNSuc.Click
         M_Mantenimiento.Show()
         M_Mantenimiento.Select()
         Me.Close()
+    End Sub
+
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
+        msgCerrarApp()
     End Sub
 End Class

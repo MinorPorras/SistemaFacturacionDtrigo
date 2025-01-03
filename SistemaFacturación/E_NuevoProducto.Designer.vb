@@ -61,8 +61,10 @@ Partial Class E_NuevoProducto
         Me.SWT_Var = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.PRG_Guardando = New Guna.UI2.WinForms.Guna2WinProgressIndicator()
         Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NUD_Inv, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -427,40 +429,42 @@ Partial Class E_NuevoProducto
         'BTN_RegresarProv
         '
         Me.BTN_RegresarProv.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarProv.BorderRadius = 25
+        Me.BTN_RegresarProv.BorderRadius = 2
         Me.BTN_RegresarProv.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarProv.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarProv.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarProv.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarProv.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarProv.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BTN_RegresarProv.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarProv.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarProv.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarProv.Image = CType(resources.GetObject("BTN_RegresarProv.Image"), System.Drawing.Image)
         Me.BTN_RegresarProv.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarProv.Location = New System.Drawing.Point(703, 454)
+        Me.BTN_RegresarProv.Location = New System.Drawing.Point(0, 84)
         Me.BTN_RegresarProv.Name = "BTN_RegresarProv"
-        Me.BTN_RegresarProv.Size = New System.Drawing.Size(285, 70)
+        Me.BTN_RegresarProv.Size = New System.Drawing.Size(334, 79)
         Me.BTN_RegresarProv.TabIndex = 91
         Me.BTN_RegresarProv.Text = "Regresar"
         '
         'BTN_NProv
         '
         Me.BTN_NProv.BorderColor = System.Drawing.Color.Red
-        Me.BTN_NProv.BorderRadius = 25
+        Me.BTN_NProv.BorderRadius = 2
         Me.BTN_NProv.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_NProv.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NProv.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NProv.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_NProv.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_NProv.Dock = System.Windows.Forms.DockStyle.Top
         Me.BTN_NProv.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_NProv.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_NProv.ForeColor = System.Drawing.Color.White
         Me.BTN_NProv.Image = CType(resources.GetObject("BTN_NProv.Image"), System.Drawing.Image)
         Me.BTN_NProv.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NProv.Location = New System.Drawing.Point(703, 377)
+        Me.BTN_NProv.Location = New System.Drawing.Point(0, 0)
         Me.BTN_NProv.Name = "BTN_NProv"
-        Me.BTN_NProv.Size = New System.Drawing.Size(285, 71)
+        Me.BTN_NProv.Size = New System.Drawing.Size(334, 88)
         Me.BTN_NProv.TabIndex = 90
         Me.BTN_NProv.Text = "Guardar"
         '
@@ -604,6 +608,15 @@ Partial Class E_NuevoProducto
         Me.BTN_AutoCod.Text = "+"
         Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_NProv)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarProv)
+        Me.Guna2Panel1.Location = New System.Drawing.Point(693, 381)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(334, 163)
+        Me.Guna2Panel1.TabIndex = 114
+        '
         'E_NuevoProducto
         '
         Me.AcceptButton = Me.BTN_NProv
@@ -612,6 +625,7 @@ Partial Class E_NuevoProducto
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarProv
         Me.ClientSize = New System.Drawing.Size(1025, 545)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.BTN_AutoCod)
         Me.Controls.Add(Me.PRG_Guardando)
         Me.Controls.Add(Me.SWT_Var)
@@ -623,8 +637,6 @@ Partial Class E_NuevoProducto
         Me.Controls.Add(Me.LBL_IDCat)
         Me.Controls.Add(Me.LBL_Prov)
         Me.Controls.Add(Me.LBL_IDMarca)
-        Me.Controls.Add(Me.BTN_RegresarProv)
-        Me.Controls.Add(Me.BTN_NProv)
         Me.Controls.Add(Me.TXT_PrecioVenta)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.TXT_Ganancia)
@@ -652,9 +664,10 @@ Partial Class E_NuevoProducto
         Me.KeyPreview = True
         Me.Name = "E_NuevoProducto"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Producto"
+        Me.Text = "Mantenimiento de productos"
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NUD_Inv, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -697,4 +710,5 @@ Partial Class E_NuevoProducto
     Friend WithEvents SWT_Var As Guna.UI2.WinForms.Guna2ToggleSwitch
     Friend WithEvents PRG_Guardando As Guna.UI2.WinForms.Guna2WinProgressIndicator
     Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

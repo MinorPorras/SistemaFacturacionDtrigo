@@ -24,7 +24,7 @@ Public Class P_Usuarios
         REFRESCAR()
     End Sub
 
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
+    Private Sub CerrarApp_Click(sender As Object, e As EventArgs)
         msgCerrarApp()
     End Sub
     Public Sub REFRESCAR()
@@ -212,7 +212,11 @@ Public Class P_Usuarios
         End Try
     End Sub
 
-    Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
+    Private Sub Guna2ImageButton1_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
         entrarConfig(1)
+    End Sub
+
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
+        msgCerrarApp()
     End Sub
 End Class

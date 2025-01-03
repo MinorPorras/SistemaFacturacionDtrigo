@@ -35,13 +35,17 @@ Partial Class P_Clientes
         Me.BTN_RegresarCliente = New Guna.UI2.WinForms.Guna2Button()
         Me.TXT_BuscarCliente = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.CerrarApp = New Guna.UI2.WinForms.Guna2CircleButton()
         Me.BTN_NCliente = New Guna.UI2.WinForms.Guna2Button()
         Me.DGV_Cliente = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.BTN_Config = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.BTN_Config = New Guna.UI2.WinForms.Guna2ImageButton()
+        Me.BTN_CerrarApp = New Guna.UI2.WinForms.Guna2ImageButton()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_Cliente, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
+        Me.Guna2Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'MNU_CONTX
@@ -88,20 +92,20 @@ Partial Class P_Clientes
         'BTN_RegresarCliente
         '
         Me.BTN_RegresarCliente.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarCliente.BorderRadius = 25
         Me.BTN_RegresarCliente.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarCliente.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarCliente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarCliente.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarCliente.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarCliente.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarCliente.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarCliente.Image = CType(resources.GetObject("BTN_RegresarCliente.Image"), System.Drawing.Image)
         Me.BTN_RegresarCliente.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarCliente.Location = New System.Drawing.Point(36, 596)
+        Me.BTN_RegresarCliente.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarCliente.Name = "BTN_RegresarCliente"
-        Me.BTN_RegresarCliente.Size = New System.Drawing.Size(322, 57)
+        Me.BTN_RegresarCliente.Size = New System.Drawing.Size(432, 64)
         Me.BTN_RegresarCliente.TabIndex = 34
         Me.BTN_RegresarCliente.Text = "Regresar"
         '
@@ -139,40 +143,22 @@ Partial Class P_Clientes
         Me.Guna2PictureBox1.TabIndex = 31
         Me.Guna2PictureBox1.TabStop = False
         '
-        'CerrarApp
-        '
-        Me.CerrarApp.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.CerrarApp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.CerrarApp.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.CerrarApp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.CerrarApp.Enabled = False
-        Me.CerrarApp.FillColor = System.Drawing.Color.SandyBrown
-        Me.CerrarApp.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.CerrarApp.ForeColor = System.Drawing.Color.White
-        Me.CerrarApp.Image = CType(resources.GetObject("CerrarApp.Image"), System.Drawing.Image)
-        Me.CerrarApp.ImageSize = New System.Drawing.Size(90, 90)
-        Me.CerrarApp.Location = New System.Drawing.Point(772, 12)
-        Me.CerrarApp.Name = "CerrarApp"
-        Me.CerrarApp.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.CerrarApp.Size = New System.Drawing.Size(66, 66)
-        Me.CerrarApp.TabIndex = 30
-        '
         'BTN_NCliente
         '
         Me.BTN_NCliente.BorderColor = System.Drawing.Color.Red
-        Me.BTN_NCliente.BorderRadius = 25
         Me.BTN_NCliente.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NCliente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_NCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_NCliente.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_NCliente.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_NCliente.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_NCliente.ForeColor = System.Drawing.Color.White
         Me.BTN_NCliente.Image = CType(resources.GetObject("BTN_NCliente.Image"), System.Drawing.Image)
         Me.BTN_NCliente.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NCliente.Location = New System.Drawing.Point(486, 596)
+        Me.BTN_NCliente.Location = New System.Drawing.Point(431, 0)
         Me.BTN_NCliente.Name = "BTN_NCliente"
-        Me.BTN_NCliente.Size = New System.Drawing.Size(322, 57)
+        Me.BTN_NCliente.Size = New System.Drawing.Size(419, 64)
         Me.BTN_NCliente.TabIndex = 44
         Me.BTN_NCliente.Text = "Agregar"
         '
@@ -244,23 +230,56 @@ Partial Class P_Clientes
         Me.DGV_Cliente.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV_Cliente.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarCliente)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_NCliente)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 603)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(850, 64)
+        Me.Guna2Panel1.TabIndex = 122
+        '
+        'Guna2Panel4
+        '
+        Me.Guna2Panel4.Controls.Add(Me.BTN_Config)
+        Me.Guna2Panel4.Controls.Add(Me.BTN_CerrarApp)
+        Me.Guna2Panel4.Location = New System.Drawing.Point(792, 3)
+        Me.Guna2Panel4.Name = "Guna2Panel4"
+        Me.Guna2Panel4.Size = New System.Drawing.Size(58, 115)
+        Me.Guna2Panel4.TabIndex = 128
+        '
         'BTN_Config
         '
-        Me.BTN_Config.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.BTN_Config.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_Config.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.BTN_Config.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.BTN_Config.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.BTN_Config.FillColor = System.Drawing.Color.Transparent
-        Me.BTN_Config.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_Config.ForeColor = System.Drawing.Color.White
+        Me.BTN_Config.BackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_Config.CheckedState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_Config.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BTN_Config.HoverState.ImageSize = New System.Drawing.Size(64, 64)
         Me.BTN_Config.Image = CType(resources.GetObject("BTN_Config.Image"), System.Drawing.Image)
-        Me.BTN_Config.ImageSize = New System.Drawing.Size(75, 75)
-        Me.BTN_Config.Location = New System.Drawing.Point(772, 84)
+        Me.BTN_Config.ImageOffset = New System.Drawing.Point(0, 0)
+        Me.BTN_Config.ImageRotate = 0!
+        Me.BTN_Config.ImageSize = New System.Drawing.Size(60, 60)
+        Me.BTN_Config.Location = New System.Drawing.Point(0, 54)
         Me.BTN_Config.Name = "BTN_Config"
-        Me.BTN_Config.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.BTN_Config.Size = New System.Drawing.Size(66, 66)
-        Me.BTN_Config.TabIndex = 121
+        Me.BTN_Config.PressedState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_Config.Size = New System.Drawing.Size(58, 54)
+        Me.BTN_Config.TabIndex = 123
+        '
+        'BTN_CerrarApp
+        '
+        Me.BTN_CerrarApp.BackColor = System.Drawing.Color.Red
+        Me.BTN_CerrarApp.CheckedState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_CerrarApp.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BTN_CerrarApp.HoverState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_CerrarApp.Image = CType(resources.GetObject("BTN_CerrarApp.Image"), System.Drawing.Image)
+        Me.BTN_CerrarApp.ImageOffset = New System.Drawing.Point(0, 0)
+        Me.BTN_CerrarApp.ImageRotate = 0!
+        Me.BTN_CerrarApp.ImageSize = New System.Drawing.Size(60, 60)
+        Me.BTN_CerrarApp.Location = New System.Drawing.Point(0, 0)
+        Me.BTN_CerrarApp.Name = "BTN_CerrarApp"
+        Me.BTN_CerrarApp.PressedState.ImageSize = New System.Drawing.Size(64, 64)
+        Me.BTN_CerrarApp.Size = New System.Drawing.Size(58, 54)
+        Me.BTN_CerrarApp.TabIndex = 122
         '
         'P_Clientes
         '
@@ -270,13 +289,11 @@ Partial Class P_Clientes
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarCliente
         Me.ClientSize = New System.Drawing.Size(850, 667)
-        Me.Controls.Add(Me.BTN_Config)
+        Me.Controls.Add(Me.Guna2Panel4)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.DGV_Cliente)
-        Me.Controls.Add(Me.BTN_NCliente)
-        Me.Controls.Add(Me.BTN_RegresarCliente)
         Me.Controls.Add(Me.TXT_BuscarCliente)
         Me.Controls.Add(Me.Guna2PictureBox1)
-        Me.Controls.Add(Me.CerrarApp)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
@@ -286,6 +303,8 @@ Partial Class P_Clientes
         Me.MNU_CONTX.ResumeLayout(False)
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_Cliente, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
+        Me.Guna2Panel4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -297,8 +316,10 @@ Partial Class P_Clientes
     Friend WithEvents BTN_RegresarCliente As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarCliente As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents CerrarApp As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents BTN_NCliente As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents DGV_Cliente As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents BTN_Config As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2Panel4 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents BTN_Config As Guna.UI2.WinForms.Guna2ImageButton
+    Friend WithEvents BTN_CerrarApp As Guna.UI2.WinForms.Guna2ImageButton
 End Class

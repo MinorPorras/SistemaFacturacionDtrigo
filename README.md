@@ -1,3 +1,11 @@
+**Versión 2.2 (3 de enero de 2025)**
+- Ahora al cancelar la impresión de los habaldores se mantienen los productos de los que se quería imprimir el hablador en la tabla, anteriormente estos eran eliminados
+- Anteriormente luego de garegra un producto con precio variable en la caja utilizando la busqueda de productos en este no se mostraba correctamente la pestaña donde se ingresa el precio bajo el que se venderá el producto
+- Ahor al terminar la venta o al regresar de esta pestaña a la cajase mantendrá correctamente seleccionado la caja de texto de productos
+- Se cambió el texto del botón con el cual se entra en la pestaña para reimprimir facturas pasadas y ahora además de reimprimirlas se puede ver la información de la factura sin tener que reimprimirlas
+- Se modificó toda la interfaz, principalmente los botones y la distribición de ciertas pestañas, implementando con esto en la caja una forma de que se adapte al tamaño de la pantalla en la que se está mostrando
+- Se arregló un error que se producía al modificar productos ya agregados en la caja, en el que al presionar el botón de modificar los datos de este no eran correctamente enviados a la pestaña donde se modificaba
+
 **Versión 2.1 (2 de enero de 2025)**
 Feliz año esto es lo que trae la nueva actualización
 - Ahora en las configuraciones se puede personalizar el tamaño de la fuente de los precios y productos de los habladores

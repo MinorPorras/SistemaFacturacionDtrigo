@@ -138,8 +138,8 @@ Public Class P_Hablador
 
         If printDialog.ShowDialog() = DialogResult.OK Then
             printDoc.Print()
+            DGV_Hablador.Rows.Clear()
         End If
-        DGV_Hablador.Rows.Clear()
     End Sub
 
     Private Sub PrintDocument_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument.PrintPage

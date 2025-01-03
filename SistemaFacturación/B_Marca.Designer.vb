@@ -38,8 +38,10 @@ Partial Class B_Marca
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TXT_Nombre = New Guna.UI2.WinForms.Guna2TextBox()
         Me.DGV_BMarca = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_BMarca, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -52,39 +54,39 @@ Partial Class B_Marca
         'BTN_RegresarMarca
         '
         Me.BTN_RegresarMarca.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarMarca.BorderRadius = 25
         Me.BTN_RegresarMarca.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarMarca.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarMarca.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarMarca.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarMarca.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarMarca.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarMarca.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarMarca.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarMarca.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarMarca.Image = CType(resources.GetObject("BTN_RegresarMarca.Image"), System.Drawing.Image)
         Me.BTN_RegresarMarca.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarMarca.Location = New System.Drawing.Point(58, 437)
+        Me.BTN_RegresarMarca.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarMarca.Name = "BTN_RegresarMarca"
-        Me.BTN_RegresarMarca.Size = New System.Drawing.Size(286, 57)
+        Me.BTN_RegresarMarca.Size = New System.Drawing.Size(369, 68)
         Me.BTN_RegresarMarca.TabIndex = 58
         Me.BTN_RegresarMarca.Text = "Regresar"
         '
         'BTN_SelectMarca
         '
         Me.BTN_SelectMarca.BorderColor = System.Drawing.Color.Red
-        Me.BTN_SelectMarca.BorderRadius = 25
         Me.BTN_SelectMarca.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectMarca.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectMarca.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_SelectMarca.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_SelectMarca.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_SelectMarca.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_SelectMarca.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_SelectMarca.ForeColor = System.Drawing.Color.White
         Me.BTN_SelectMarca.Image = CType(resources.GetObject("BTN_SelectMarca.Image"), System.Drawing.Image)
         Me.BTN_SelectMarca.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_SelectMarca.Location = New System.Drawing.Point(375, 437)
+        Me.BTN_SelectMarca.Location = New System.Drawing.Point(369, 0)
         Me.BTN_SelectMarca.Name = "BTN_SelectMarca"
-        Me.BTN_SelectMarca.Size = New System.Drawing.Size(283, 57)
+        Me.BTN_SelectMarca.Size = New System.Drawing.Size(369, 68)
         Me.BTN_SelectMarca.TabIndex = 57
         Me.BTN_SelectMarca.Text = "Seleccionar"
         '
@@ -255,6 +257,16 @@ Partial Class B_Marca
         Me.DGV_BMarca.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV_BMarca.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarMarca)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_SelectMarca)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 441)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(738, 68)
+        Me.Guna2Panel1.TabIndex = 89
+        '
         'B_Marca
         '
         Me.AcceptButton = Me.BTN_SelectMarca
@@ -263,13 +275,12 @@ Partial Class B_Marca
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarMarca
         Me.ClientSize = New System.Drawing.Size(738, 509)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.DGV_BMarca)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TXT_Nombre)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_codigo)
-        Me.Controls.Add(Me.BTN_RegresarMarca)
-        Me.Controls.Add(Me.BTN_SelectMarca)
         Me.Controls.Add(Me.TXT_BuscarMarca)
         Me.Controls.Add(Me.Guna2PictureBox2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -280,6 +291,7 @@ Partial Class B_Marca
         Me.Text = "Buscar marcas"
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_BMarca, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -295,4 +307,5 @@ Partial Class B_Marca
     Friend WithEvents TXT_Nombre As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents DGV_BMarca As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

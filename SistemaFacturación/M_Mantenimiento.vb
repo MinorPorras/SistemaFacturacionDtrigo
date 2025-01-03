@@ -26,10 +26,6 @@
         End If
     End Sub
 
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        msgCerrarApp()
-    End Sub
-
     Private Sub BTN_Sucursal_Click(sender As Object, e As EventArgs) Handles BTN_Sucursal.Click
         P_Sucursal.Show()
         P_Sucursal.Select()
@@ -78,14 +74,13 @@
         Me.Close()
     End Sub
 
-    Private Sub BTN_FacTick_Click(sender As Object, e As EventArgs)
-
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
+        msgCerrarApp()
     End Sub
 
     Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
         entrarConfig(0)
     End Sub
-
     Private Sub BTN_LogOut_Click(sender As Object, e As EventArgs) Handles BTN_LogOut.Click
         M_Inicio.LBL_Usu.Text = ""
         P_SelectUsu.Show()

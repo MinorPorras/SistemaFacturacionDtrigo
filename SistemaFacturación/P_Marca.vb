@@ -17,9 +17,6 @@ Public Class P_Marca
         searchTimer.Stop()
         REFRESCAR()
     End Sub
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
-        msgCerrarApp()
-    End Sub
 
     Private Sub BTN_RegresarCat_Click(sender As Object, e As EventArgs) Handles BTN_RegresarMarca.Click
         M_Mantenimiento.Show()
@@ -161,6 +158,10 @@ Public Class P_Marca
             msgError("Error al eliminar la marca: " & ex.Message)
         End Try
         TXT_BuscarMarca.SelectAll()
+    End Sub
+
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
+        msgCerrarApp()
     End Sub
 
     Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click

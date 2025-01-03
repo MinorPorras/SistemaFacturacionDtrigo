@@ -39,8 +39,10 @@ Partial Class B_Cliente
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.LBL_IDCliente = New System.Windows.Forms.Label()
         Me.DGV_BCliente = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_BCliente, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
@@ -112,39 +114,39 @@ Partial Class B_Cliente
         'BTN_RegresarBCLiente
         '
         Me.BTN_RegresarBCLiente.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarBCLiente.BorderRadius = 25
         Me.BTN_RegresarBCLiente.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarBCLiente.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarBCLiente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarBCLiente.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarBCLiente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarBCLiente.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarBCLiente.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarBCLiente.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarBCLiente.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarBCLiente.Image = CType(resources.GetObject("BTN_RegresarBCLiente.Image"), System.Drawing.Image)
         Me.BTN_RegresarBCLiente.ImageSize = New System.Drawing.Size(50, 50)
-        Me.BTN_RegresarBCLiente.Location = New System.Drawing.Point(28, 435)
+        Me.BTN_RegresarBCLiente.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarBCLiente.Name = "BTN_RegresarBCLiente"
-        Me.BTN_RegresarBCLiente.Size = New System.Drawing.Size(287, 57)
+        Me.BTN_RegresarBCLiente.Size = New System.Drawing.Size(345, 63)
         Me.BTN_RegresarBCLiente.TabIndex = 78
         Me.BTN_RegresarBCLiente.Text = "Regresar"
         '
         'BTN_SelectCliente
         '
         Me.BTN_SelectCliente.BorderColor = System.Drawing.Color.Red
-        Me.BTN_SelectCliente.BorderRadius = 25
         Me.BTN_SelectCliente.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectCliente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_SelectCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_SelectCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_SelectCliente.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_SelectCliente.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_SelectCliente.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_SelectCliente.ForeColor = System.Drawing.Color.White
         Me.BTN_SelectCliente.Image = CType(resources.GetObject("BTN_SelectCliente.Image"), System.Drawing.Image)
         Me.BTN_SelectCliente.ImageSize = New System.Drawing.Size(50, 50)
-        Me.BTN_SelectCliente.Location = New System.Drawing.Point(345, 435)
+        Me.BTN_SelectCliente.Location = New System.Drawing.Point(344, 0)
         Me.BTN_SelectCliente.Name = "BTN_SelectCliente"
-        Me.BTN_SelectCliente.Size = New System.Drawing.Size(283, 57)
+        Me.BTN_SelectCliente.Size = New System.Drawing.Size(345, 63)
         Me.BTN_SelectCliente.TabIndex = 77
         Me.BTN_SelectCliente.Text = "Seleccionar"
         '
@@ -268,6 +270,16 @@ Partial Class B_Cliente
         Me.DGV_BCliente.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGV_BCliente.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarBCLiente)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_SelectCliente)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 454)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(689, 63)
+        Me.Guna2Panel1.TabIndex = 87
+        '
         'B_Cliente
         '
         Me.AcceptButton = Me.BTN_SelectCliente
@@ -276,14 +288,13 @@ Partial Class B_Cliente
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarBCLiente
         Me.ClientSize = New System.Drawing.Size(689, 517)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.DGV_BCliente)
         Me.Controls.Add(Me.LBL_IDCliente)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TXT_Nombre)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXT_codigo)
-        Me.Controls.Add(Me.BTN_RegresarBCLiente)
-        Me.Controls.Add(Me.BTN_SelectCliente)
         Me.Controls.Add(Me.TXT_BuscarCliente)
         Me.Controls.Add(Me.Guna2PictureBox2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -294,6 +305,7 @@ Partial Class B_Cliente
         Me.Text = "Buscar cliente"
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_BCliente, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -304,10 +316,11 @@ Partial Class B_Cliente
     Friend WithEvents Label1 As Label
     Friend WithEvents TXT_codigo As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents BTN_RegresarBCLiente As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents BTN_SelectCliente As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents TXT_BuscarCliente As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
     Friend WithEvents LBL_IDCliente As Label
     Friend WithEvents DGV_BCliente As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents BTN_SelectCliente As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

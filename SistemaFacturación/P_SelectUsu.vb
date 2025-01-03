@@ -30,6 +30,7 @@ Public Class P_SelectUsu
         nuevoBTN.AutoSize = True
         nuevoBTN.FillColor = Color.FromArgb(r, b, g)
         nuevoBTN.Margin = New Padding(15, 15, 0, 0)
+        nuevoBTN.Dock = DockStyle.Bottom
 
         AddHandler nuevoBTN.Click, AddressOf BotonUsu_Click
 
@@ -46,7 +47,7 @@ Public Class P_SelectUsu
         Me.Hide()
     End Sub
 
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
         msgCerrarApp()
     End Sub
 End Class

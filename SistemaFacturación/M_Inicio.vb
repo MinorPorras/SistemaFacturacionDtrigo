@@ -32,7 +32,7 @@ Public Class M_Inicio
             BTN_Config.Enabled = True
             BTN_Mantenimiento.Enabled = True
             'Se coloca en False ya que la función aún no esta implementada
-            BTN_Reporte.Enabled = False
+            BTN_Reporte.Enabled = True
         End If
         LBL_Sucursal.Text = "Sucursal: " + ConfigurationManager.AppSettings("Empresa").ToString()
         LBL_Telefono.Text = "Telefono: " + ConfigurationManager.AppSettings("Telefono").ToString()
@@ -45,6 +45,7 @@ Public Class M_Inicio
         Task.Run(Sub()
                      cargarCalProveedores("dia_recibido", "proveedor_recibirPedido")
                  End Sub)
+        CargarEstilosDGV()
         LBL_Usu.Text = nomUsuActual
     End Sub
 
@@ -171,8 +172,28 @@ Public Class M_Inicio
                      End Try
                  End Sub)
     End Sub
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
+
+    Private Sub CargarEstilosDGV()
+        DGV_LHacerPed.ColumnHeadersDefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9.75, FontStyle.Bold)
+        DGV_LHacerPed.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DGV_LHacerPed.GridColor = Color.FromArgb(231, 229, 255)
+        DGV_LHacerPed.ThemeStyle.AlternatingRowsStyle.Font = New Font("Microsoft Sans Serif", 8.25)
+        DGV_LHacerPed.ThemeStyle.RowsStyle.Font = New Font("Microsoft Sans Serif", 8.25)
+        DGV_LHacerPed.DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8.25)
+        DGV_LHacerPed.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        DGV_LRebPed.ColumnHeadersDefaultCellStyle.Font = New Font("Microsoft Sans Serif", 9.75, FontStyle.Bold)
+        DGV_LRebPed.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DGV_LRebPed.GridColor = Color.FromArgb(231, 229, 255)
+        DGV_LRebPed.ThemeStyle.AlternatingRowsStyle.Font = New Font("Microsoft Sans Serif", 8.25)
+        DGV_LRebPed.ThemeStyle.RowsStyle.Font = New Font("Microsoft Sans Serif", 8.25)
+        DGV_LRebPed.DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8.25)
+        DGV_LRebPed.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+    End Sub
+
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
         msgCerrarApp()
+
     End Sub
 
     Private Sub BTN_Mantenimiento_Click(sender As Object, e As EventArgs) Handles BTN_Mantenimiento.Click
@@ -182,7 +203,7 @@ Public Class M_Inicio
     End Sub
 
     Private Sub BTN_Reporte_Click(sender As Object, e As EventArgs) Handles BTN_Reporte.Click
-        MsgBox("Los reportes´para esta versión no están implentados, espero a futuras versiones para poder visualizarlos", vbOKOnly, "Función no implementada")
+        MsgBox("Los reportes no están implementados para esta versión, por favor espere a futuras versiones para poder visualizarlos", vbOKOnly, "Función no implementada")
     End Sub
 
     Private Sub Inicio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles MyBase.KeyPress
@@ -194,17 +215,16 @@ Public Class M_Inicio
             BTN_CajaVenta.PerformClick()
         End If
     End Sub
-
-    Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
-        entrarConfig(0)
-    End Sub
-
     Private Sub BTN_CajaVenta_Click_1(sender As Object, e As EventArgs) Handles BTN_CajaVenta.Click
         P_Caja.Show()
         P_Caja.Select()
         P_Caja.LBL_Usu.Text = nomUsuActual
         P_Caja.idUsu = idUsuActual
         Me.Close()
+    End Sub
+
+    Private Sub BTN_Config_Click(sender As Object, e As EventArgs) Handles BTN_Config.Click
+        entrarConfig(0)
     End Sub
 
     Private Sub BTN_LogOut_Click(sender As Object, e As EventArgs) Handles BTN_LogOut.Click

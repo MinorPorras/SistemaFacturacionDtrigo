@@ -35,45 +35,47 @@ Partial Class E_NuevaCategoria
         Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BTN_RegresarCat
         '
         Me.BTN_RegresarCat.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarCat.BorderRadius = 25
         Me.BTN_RegresarCat.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarCat.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarCat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarCat.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarCat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarCat.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarCat.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarCat.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarCat.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarCat.Image = CType(resources.GetObject("BTN_RegresarCat.Image"), System.Drawing.Image)
         Me.BTN_RegresarCat.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarCat.Location = New System.Drawing.Point(209, 367)
+        Me.BTN_RegresarCat.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarCat.Name = "BTN_RegresarCat"
-        Me.BTN_RegresarCat.Size = New System.Drawing.Size(202, 57)
+        Me.BTN_RegresarCat.Size = New System.Drawing.Size(251, 61)
         Me.BTN_RegresarCat.TabIndex = 41
         Me.BTN_RegresarCat.Text = "Regresar"
         '
         'BTN_NCat
         '
         Me.BTN_NCat.BorderColor = System.Drawing.Color.Red
-        Me.BTN_NCat.BorderRadius = 25
         Me.BTN_NCat.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NCat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NCat.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_NCat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_NCat.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_NCat.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_NCat.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_NCat.ForeColor = System.Drawing.Color.White
         Me.BTN_NCat.Image = CType(resources.GetObject("BTN_NCat.Image"), System.Drawing.Image)
         Me.BTN_NCat.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NCat.Location = New System.Drawing.Point(209, 295)
+        Me.BTN_NCat.Location = New System.Drawing.Point(223, 0)
         Me.BTN_NCat.Name = "BTN_NCat"
-        Me.BTN_NCat.Size = New System.Drawing.Size(202, 57)
+        Me.BTN_NCat.Size = New System.Drawing.Size(278, 61)
         Me.BTN_NCat.TabIndex = 40
         Me.BTN_NCat.Text = "Guardar"
         '
@@ -86,9 +88,9 @@ Partial Class E_NuevaCategoria
         Me.BTN_Color.FillColor = System.Drawing.Color.White
         Me.BTN_Color.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BTN_Color.ForeColor = System.Drawing.Color.Black
-        Me.BTN_Color.Location = New System.Drawing.Point(12, 295)
+        Me.BTN_Color.Location = New System.Drawing.Point(373, 199)
         Me.BTN_Color.Name = "BTN_Color"
-        Me.BTN_Color.Size = New System.Drawing.Size(180, 129)
+        Me.BTN_Color.Size = New System.Drawing.Size(105, 81)
         Me.BTN_Color.TabIndex = 39
         Me.BTN_Color.Text = "Seleccione un color"
         '
@@ -111,7 +113,7 @@ Partial Class E_NuevaCategoria
         Me.TXT_NombreCat.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_NombreCat.PlaceholderText = ""
         Me.TXT_NombreCat.SelectedText = ""
-        Me.TXT_NombreCat.Size = New System.Drawing.Size(309, 31)
+        Me.TXT_NombreCat.Size = New System.Drawing.Size(253, 31)
         Me.TXT_NombreCat.TabIndex = 36
         '
         'Label2
@@ -144,7 +146,7 @@ Partial Class E_NuevaCategoria
         Me.TXT_CodCat.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TXT_CodCat.PlaceholderText = ""
         Me.TXT_CodCat.SelectedText = ""
-        Me.TXT_CodCat.Size = New System.Drawing.Size(175, 31)
+        Me.TXT_CodCat.Size = New System.Drawing.Size(203, 31)
         Me.TXT_CodCat.TabIndex = 34
         '
         'Label1
@@ -162,7 +164,7 @@ Partial Class E_NuevaCategoria
         '
         Me.Guna2PictureBox1.Image = CType(resources.GetObject("Guna2PictureBox1.Image"), System.Drawing.Image)
         Me.Guna2PictureBox1.ImageRotate = 0!
-        Me.Guna2PictureBox1.Location = New System.Drawing.Point(2, -85)
+        Me.Guna2PictureBox1.Location = New System.Drawing.Point(41, -85)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
         Me.Guna2PictureBox1.Size = New System.Drawing.Size(409, 361)
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -186,13 +188,23 @@ Partial Class E_NuevaCategoria
         Me.BTN_AutoCod.Font = New System.Drawing.Font("Snap ITC", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTN_AutoCod.ForeColor = System.Drawing.Color.White
         Me.BTN_AutoCod.ImageSize = New System.Drawing.Size(90, 90)
-        Me.BTN_AutoCod.Location = New System.Drawing.Point(283, 199)
+        Me.BTN_AutoCod.Location = New System.Drawing.Point(311, 199)
         Me.BTN_AutoCod.Name = "BTN_AutoCod"
         Me.BTN_AutoCod.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
         Me.BTN_AutoCod.Size = New System.Drawing.Size(44, 44)
         Me.BTN_AutoCod.TabIndex = 111
         Me.BTN_AutoCod.Text = "+"
         Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
+        '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarCat)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_NCat)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 301)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(501, 61)
+        Me.Guna2Panel1.TabIndex = 112
         '
         'E_NuevaCategoria
         '
@@ -201,10 +213,9 @@ Partial Class E_NuevaCategoria
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarCat
-        Me.ClientSize = New System.Drawing.Size(421, 457)
+        Me.ClientSize = New System.Drawing.Size(501, 362)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.BTN_AutoCod)
-        Me.Controls.Add(Me.BTN_RegresarCat)
-        Me.Controls.Add(Me.BTN_NCat)
         Me.Controls.Add(Me.BTN_Color)
         Me.Controls.Add(Me.TXT_NombreCat)
         Me.Controls.Add(Me.Label2)
@@ -216,8 +227,9 @@ Partial Class E_NuevaCategoria
         Me.KeyPreview = True
         Me.Name = "E_NuevaCategoria"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Categoría"
+        Me.Text = "Mantenimiento de categorías"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -234,4 +246,5 @@ Partial Class E_NuevaCategoria
     Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
     Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

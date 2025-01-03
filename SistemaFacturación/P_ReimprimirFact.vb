@@ -77,6 +77,7 @@ Public Class P_ReimprimirFact
                                   "ORDER BY CAST(f.num_factura AS INTEGER) DESC " & cant & ";"
                          Invoke(Sub()
                                     MNU_REIMPRIMIR.Visible = False
+                                    MNU_Datos.Visible = False
                                     Cargar_Tabla(T, SQL)
                                     If T.Tables.Count > 0 AndAlso T.Tables(0).Rows.Count > 0 Then
                                         Dim bin As New BindingSource With {
@@ -84,6 +85,7 @@ Public Class P_ReimprimirFact
                                         }
                                         DGV_ReimprimirFact.DataSource = bin
                                         MNU_REIMPRIMIR.Visible = True
+                                        MNU_Datos.Visible = True
                                     Else ' Limpiar la fuente de datos si no se cargaron datos
                                         DGV_ReimprimirFact.DataSource = Nothing
                                     End If
@@ -182,8 +184,26 @@ Public Class P_ReimprimirFact
         ImprimirFactura()
     End Sub
 
+    Private Sub MNU_Datos_Click(sender As Object, e As EventArgs) Handles MNU_Datos.Click
+        P_DatosFactura.idFact = DGV_ReimprimirFact.SelectedRows(0).Cells(0).Value.ToString()
+        P_DatosFactura.TXT_NumFact.Text = DGV_ReimprimirFact.SelectedRows(0).Cells(1).Value.ToString()
+        P_DatosFactura.TXT_FechaEmision.Text = DGV_ReimprimirFact.SelectedRows(0).Cells(2).Value.ToString()
+        P_DatosFactura.TXT_Cliente.Text = DGV_ReimprimirFact.SelectedRows(0).Cells(3).Value.ToString()
+        P_DatosFactura.TXT_Cajero.Text = DGV_ReimprimirFact.SelectedRows(0).Cells(4).Value.ToString()
+        P_DatosFactura.TXT_Comentario.Text = DGV_ReimprimirFact.SelectedRows(0).Cells(5).Value.ToString()
+        P_DatosFactura.TXT_Total.Text = DGV_ReimprimirFact.SelectedRows(0).Cells(6).Value.ToString()
+        P_DatosFactura.TXT_Efectivo.Text = DGV_ReimprimirFact.SelectedRows(0).Cells(7).Value.ToString()
+        P_DatosFactura.TXT_Tarjeta.Text = DGV_ReimprimirFact.SelectedRows(0).Cells(8).Value.ToString()
+        P_DatosFactura.TXT_Vuelto.Text = DGV_ReimprimirFact.SelectedRows(0).Cells(9).Value.ToString()
+        P_DatosFactura.TXT_TipoPago.Text = DGV_ReimprimirFact.SelectedRows(0).Cells(10).Value.ToString()
+        P_DatosFactura.Show()
+        P_DatosFactura.Select()
+        P_DatosFactura.cargarProds()
+        Me.Close()
+    End Sub
 
-    Private Sub CerrarApp_Click(sender As Object, e As EventArgs) Handles CerrarApp.Click
+
+    Private Sub CerrarApp_Click(sender As Object, e As EventArgs)
         msgCerrarApp()
     End Sub
 
@@ -296,14 +316,14 @@ Public Class P_ReimprimirFact
         End If
     End Sub
 
-    Private Sub SWT_ActivarBFecha_CheckedChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub DTP_Fecha_ValueChanged(sender As Object, e As EventArgs)
         If searchTimer IsNot Nothing Then
             searchTimer.Stop()
             searchTimer.Start()
         End If
+    End Sub
+
+    Private Sub BTN_CerrarApp_Click(sender As Object, e As EventArgs) Handles BTN_CerrarApp.Click
+        msgCerrarApp()
     End Sub
 End Class

@@ -41,7 +41,9 @@ Partial Class E_NuevoUsuario
         Me.SWT_SinClave = New Guna.UI2.WinForms.Guna2ToggleSwitch()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.BTN_AutoCod = New Guna.UI2.WinForms.Guna2CircleButton()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -179,39 +181,39 @@ Partial Class E_NuevoUsuario
         'BTN_RegresarUsu
         '
         Me.BTN_RegresarUsu.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarUsu.BorderRadius = 25
         Me.BTN_RegresarUsu.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarUsu.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarUsu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarUsu.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarUsu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarUsu.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarUsu.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarUsu.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarUsu.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarUsu.Image = CType(resources.GetObject("BTN_RegresarUsu.Image"), System.Drawing.Image)
         Me.BTN_RegresarUsu.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarUsu.Location = New System.Drawing.Point(11, 539)
+        Me.BTN_RegresarUsu.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarUsu.Name = "BTN_RegresarUsu"
-        Me.BTN_RegresarUsu.Size = New System.Drawing.Size(215, 57)
+        Me.BTN_RegresarUsu.Size = New System.Drawing.Size(229, 68)
         Me.BTN_RegresarUsu.TabIndex = 30
         Me.BTN_RegresarUsu.Text = "Regresar"
         '
         'BTN_NUsuario
         '
         Me.BTN_NUsuario.BorderColor = System.Drawing.Color.Red
-        Me.BTN_NUsuario.BorderRadius = 25
         Me.BTN_NUsuario.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NUsuario.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NUsuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_NUsuario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_NUsuario.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_NUsuario.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_NUsuario.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_NUsuario.ForeColor = System.Drawing.Color.White
         Me.BTN_NUsuario.Image = CType(resources.GetObject("BTN_NUsuario.Image"), System.Drawing.Image)
         Me.BTN_NUsuario.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_NUsuario.Location = New System.Drawing.Point(232, 539)
+        Me.BTN_NUsuario.Location = New System.Drawing.Point(225, 0)
         Me.BTN_NUsuario.Name = "BTN_NUsuario"
-        Me.BTN_NUsuario.Size = New System.Drawing.Size(213, 57)
+        Me.BTN_NUsuario.Size = New System.Drawing.Size(233, 68)
         Me.BTN_NUsuario.TabIndex = 29
         Me.BTN_NUsuario.Text = "Guardar"
         '
@@ -289,6 +291,16 @@ Partial Class E_NuevoUsuario
         Me.BTN_AutoCod.Text = "+"
         Me.BTN_AutoCod.TextOffset = New System.Drawing.Point(2, -2)
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarUsu)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_NUsuario)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 541)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(458, 68)
+        Me.Guna2Panel1.TabIndex = 114
+        '
         'E_NuevoUsuario
         '
         Me.AcceptButton = Me.BTN_NUsuario
@@ -297,13 +309,12 @@ Partial Class E_NuevoUsuario
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarUsu
         Me.ClientSize = New System.Drawing.Size(458, 609)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.BTN_AutoCod)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.SWT_SinClave)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.CBX_tipoCuenta)
-        Me.Controls.Add(Me.BTN_RegresarUsu)
-        Me.Controls.Add(Me.BTN_NUsuario)
         Me.Controls.Add(Me.BTN_Color)
         Me.Controls.Add(Me.TXT_ClaveUsuario)
         Me.Controls.Add(Me.Label3)
@@ -317,8 +328,9 @@ Partial Class E_NuevoUsuario
         Me.KeyPreview = True
         Me.Name = "E_NuevoUsuario"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Usuario"
+        Me.Text = "Mantenimiento de usuarios"
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -341,4 +353,5 @@ Partial Class E_NuevoUsuario
     Friend WithEvents SWT_SinClave As Guna.UI2.WinForms.Guna2ToggleSwitch
     Friend WithEvents Label5 As Label
     Friend WithEvents BTN_AutoCod As Guna.UI2.WinForms.Guna2CircleButton
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class

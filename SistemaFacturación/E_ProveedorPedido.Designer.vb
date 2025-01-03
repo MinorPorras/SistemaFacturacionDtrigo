@@ -42,8 +42,10 @@ Partial Class E_ProveedorPedido
         Me.DGV_Pedido = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.HacerPed = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RebPed = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.MNU_CONTX.SuspendLayout()
         CType(Me.DGV_Pedido, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MNU_CONTX
@@ -83,7 +85,7 @@ Partial Class E_ProveedorPedido
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(427, 200)
+        Me.Label6.Location = New System.Drawing.Point(427, 182)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(312, 23)
         Me.Label6.TabIndex = 62
@@ -102,7 +104,7 @@ Partial Class E_ProveedorPedido
         Me.CBX_RecibirPedido.ForeColor = System.Drawing.Color.Black
         Me.CBX_RecibirPedido.ItemHeight = 30
         Me.CBX_RecibirPedido.Items.AddRange(New Object() {"", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"})
-        Me.CBX_RecibirPedido.Location = New System.Drawing.Point(472, 240)
+        Me.CBX_RecibirPedido.Location = New System.Drawing.Point(472, 222)
         Me.CBX_RecibirPedido.Name = "CBX_RecibirPedido"
         Me.CBX_RecibirPedido.Size = New System.Drawing.Size(213, 36)
         Me.CBX_RecibirPedido.TabIndex = 61
@@ -112,7 +114,7 @@ Partial Class E_ProveedorPedido
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(427, 77)
+        Me.Label5.Location = New System.Drawing.Point(427, 59)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(299, 23)
         Me.Label5.TabIndex = 60
@@ -131,7 +133,7 @@ Partial Class E_ProveedorPedido
         Me.CBX_DiaPedido.ForeColor = System.Drawing.Color.Black
         Me.CBX_DiaPedido.ItemHeight = 30
         Me.CBX_DiaPedido.Items.AddRange(New Object() {"", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"})
-        Me.CBX_DiaPedido.Location = New System.Drawing.Point(472, 121)
+        Me.CBX_DiaPedido.Location = New System.Drawing.Point(472, 103)
         Me.CBX_DiaPedido.Name = "CBX_DiaPedido"
         Me.CBX_DiaPedido.Size = New System.Drawing.Size(213, 36)
         Me.CBX_DiaPedido.TabIndex = 59
@@ -141,7 +143,7 @@ Partial Class E_ProveedorPedido
         Me.LBL_Proveedor.AutoSize = True
         Me.LBL_Proveedor.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBL_Proveedor.ForeColor = System.Drawing.Color.White
-        Me.LBL_Proveedor.Location = New System.Drawing.Point(138, 40)
+        Me.LBL_Proveedor.Location = New System.Drawing.Point(138, 22)
         Me.LBL_Proveedor.Name = "LBL_Proveedor"
         Me.LBL_Proveedor.Size = New System.Drawing.Size(103, 23)
         Me.LBL_Proveedor.TabIndex = 64
@@ -150,41 +152,40 @@ Partial Class E_ProveedorPedido
         'BTN_RegresarPed
         '
         Me.BTN_RegresarPed.BorderColor = System.Drawing.Color.Red
-        Me.BTN_RegresarPed.BorderRadius = 25
         Me.BTN_RegresarPed.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_RegresarPed.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarPed.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_RegresarPed.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_RegresarPed.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_RegresarPed.Dock = System.Windows.Forms.DockStyle.Left
         Me.BTN_RegresarPed.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BTN_RegresarPed.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_RegresarPed.ForeColor = System.Drawing.Color.White
         Me.BTN_RegresarPed.Image = CType(resources.GetObject("BTN_RegresarPed.Image"), System.Drawing.Image)
         Me.BTN_RegresarPed.ImageSize = New System.Drawing.Size(40, 40)
-        Me.BTN_RegresarPed.Location = New System.Drawing.Point(32, 350)
+        Me.BTN_RegresarPed.Location = New System.Drawing.Point(0, 0)
         Me.BTN_RegresarPed.Name = "BTN_RegresarPed"
-        Me.BTN_RegresarPed.Size = New System.Drawing.Size(322, 57)
+        Me.BTN_RegresarPed.Size = New System.Drawing.Size(392, 63)
         Me.BTN_RegresarPed.TabIndex = 65
         Me.BTN_RegresarPed.Text = "Regresar"
         '
         'BTN_NProv
         '
-        Me.BTN_NProv.AutoRoundedCorners = True
         Me.BTN_NProv.BorderColor = System.Drawing.Color.Red
-        Me.BTN_NProv.BorderRadius = 27
         Me.BTN_NProv.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.BTN_NProv.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NProv.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.BTN_NProv.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.BTN_NProv.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.BTN_NProv.Dock = System.Windows.Forms.DockStyle.Right
         Me.BTN_NProv.FillColor = System.Drawing.Color.MediumSeaGreen
         Me.BTN_NProv.Font = New System.Drawing.Font("Ebrima", 20.25!, System.Drawing.FontStyle.Bold)
         Me.BTN_NProv.ForeColor = System.Drawing.Color.White
         Me.BTN_NProv.Image = CType(resources.GetObject("BTN_NProv.Image"), System.Drawing.Image)
         Me.BTN_NProv.ImageSize = New System.Drawing.Size(60, 60)
-        Me.BTN_NProv.Location = New System.Drawing.Point(413, 350)
+        Me.BTN_NProv.Location = New System.Drawing.Point(380, 0)
         Me.BTN_NProv.Name = "BTN_NProv"
-        Me.BTN_NProv.Size = New System.Drawing.Size(313, 57)
+        Me.BTN_NProv.Size = New System.Drawing.Size(386, 63)
         Me.BTN_NProv.TabIndex = 66
         Me.BTN_NProv.Text = "Agregar"
         '
@@ -193,7 +194,7 @@ Partial Class E_ProveedorPedido
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Britannic Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(28, 40)
+        Me.Label1.Location = New System.Drawing.Point(28, 22)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(115, 23)
         Me.Label1.TabIndex = 67
@@ -230,7 +231,7 @@ Partial Class E_ProveedorPedido
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DGV_Pedido.DefaultCellStyle = DataGridViewCellStyle3
         Me.DGV_Pedido.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DGV_Pedido.Location = New System.Drawing.Point(32, 66)
+        Me.DGV_Pedido.Location = New System.Drawing.Point(32, 48)
         Me.DGV_Pedido.MultiSelect = False
         Me.DGV_Pedido.Name = "DGV_Pedido"
         Me.DGV_Pedido.ReadOnly = True
@@ -280,6 +281,16 @@ Partial Class E_ProveedorPedido
         Me.RebPed.Name = "RebPed"
         Me.RebPed.ReadOnly = True
         '
+        'Guna2Panel1
+        '
+        Me.Guna2Panel1.Controls.Add(Me.BTN_RegresarPed)
+        Me.Guna2Panel1.Controls.Add(Me.BTN_NProv)
+        Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 332)
+        Me.Guna2Panel1.Name = "Guna2Panel1"
+        Me.Guna2Panel1.Size = New System.Drawing.Size(766, 63)
+        Me.Guna2Panel1.TabIndex = 78
+        '
         'E_ProveedorPedido
         '
         Me.AcceptButton = Me.BTN_NProv
@@ -287,11 +298,10 @@ Partial Class E_ProveedorPedido
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CancelButton = Me.BTN_RegresarPed
-        Me.ClientSize = New System.Drawing.Size(766, 436)
+        Me.ClientSize = New System.Drawing.Size(766, 395)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.DGV_Pedido)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.BTN_NProv)
-        Me.Controls.Add(Me.BTN_RegresarPed)
         Me.Controls.Add(Me.LBL_Proveedor)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.CBX_RecibirPedido)
@@ -305,6 +315,7 @@ Partial Class E_ProveedorPedido
         Me.Text = "Días de pedidos"
         Me.MNU_CONTX.ResumeLayout(False)
         CType(Me.DGV_Pedido, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -324,4 +335,5 @@ Partial Class E_ProveedorPedido
     Friend WithEvents DGV_Pedido As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents HacerPed As DataGridViewTextBoxColumn
     Friend WithEvents RebPed As DataGridViewTextBoxColumn
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
 End Class
