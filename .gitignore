@@ -16,7 +16,7 @@
 # Mono auto generated files
 mono_crash.*
 
-# Build results
+# Ignorar resultados de compilación
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -32,6 +32,27 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+
+# No ignorar carpetas específicas x64/ y x86/
+!x64/
+!x64/**
+
+!x86/
+!x86/**
+
+# No ignorar archivos SQLite.interop.dll en carpetas x64 y x86
+!x64/SQLite.interop.dll
+!x64/**/SQLite.interop.dll
+
+!x86/SQLite.interop.dll
+!x86/**/SQLite.interop.dll
+
+# Ignorar carpetas bd/backupDB, excepto los archivos dbSistemaFacturacionStock.db
+SistemaFacturación/bd/backupDB/*
+!SistemaFacturación/bd/backupDB/dbSistemaFacturacionStock.db
+!SistemaFacturación/bd/backupDB/RespaldosSF/dbSistemaFacturacionStock.db
+!SistemaFacturación/bd/backupDB/
+!SistemaFacturación/bd/backupDB/RespaldosSF/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
