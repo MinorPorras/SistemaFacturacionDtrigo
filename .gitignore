@@ -48,11 +48,12 @@ bld/
 !x86/**/SQLite.interop.dll
 
 # Ignorar carpetas bd/backupDB, excepto los archivos dbSistemaFacturacionStock.db
-SistemaFacturación/bd/backupDB/*
-!SistemaFacturación/bd/backupDB/dbSistemaFacturacionStock.db
-!SistemaFacturación/bd/backupDB/RespaldosSF/dbSistemaFacturacionStock.db
-!SistemaFacturación/bd/backupDB/
-!SistemaFacturación/bd/backupDB/RespaldosSF/
+bd/backupDB/*
+!bd/backupDB/dbSistemaFacturacionStock.db
+!bd/backupDB/RespaldosSF/dbSistemaFacturacionStock.db
+!bd/backupDB/
+!bd/backupDB/RespaldosSF/
+
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
