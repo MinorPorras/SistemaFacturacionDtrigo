@@ -32,8 +32,8 @@
     <ProductName>Sistema de Facturación Common</ProductName>
     <PublisherName>Minor Porras Varela</PublisherName>
     <SuiteName>Sistema Fact</SuiteName>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2.1.0.%2a</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>2.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
